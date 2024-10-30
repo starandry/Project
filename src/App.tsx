@@ -1,10 +1,13 @@
-import './App.scss';
+import {Background} from './components';
+import './app.module.scss';
 
 function App() {
     return (
-        <>
-            <h1>Hello world!</h1>
-        </>
+        <Background
+            path={'../../../public/images/collage-of-movie-posters.jpg'}
+            desc={'A movie mosaic.'}
+            className={'movie-collage'}
+        />
     );
 }
 
