@@ -1,0 +1,6 @@
+@use '../../../styles/mixins' as *;
+
+.movie-collage {
+    @include sizes(100vw, 100vh);
+    object-fit: cover;
+}

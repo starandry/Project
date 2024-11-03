@@ -1,0 +1,47 @@
+@use '../../../styles/mixins' as *;
+
+.loginForm {
+  @include rowing(null,  null, column);
+  @include sizes(575px);
+  padding: 40px;
+  margin: 0 auto;
+  border-radius: 12px;
+  color: #ffffff;
+  background-color: #242426;
+}
+
+.title {
+  @include fonts(600, 24px, white, 36px);
+  padding-bottom: 40px;
+}
+
+.forgotPassword {
+  @include fonts(500, 14px, #80858B !important, 24px);
+  padding-bottom: 40px;
+}
+
+.basement {
+  @include fonts(500, 16px, #80858B, 24px);
+  text-align: center;
+  padding-top: 30px;
+}
+
+@include screenSize(md) {
+  .loginForm {
+    @include sizes(76vw);
+  }
+}
+
+@include screenSize(sm) {
+  .title {
+    @include fonts(null, 20px, null, 32px);
+  }
+
+  .basement {
+    @include fonts(null, 14px, null, 20px);
+  }
+
+  .loginForm {
+    @include sizes(91vw);
+  }
+}

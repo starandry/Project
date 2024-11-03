@@ -1,0 +1,11 @@
+@use '../../../styles/mixins' as *;
+
+.logo {
+  margin: 40px 60px;
+}
+
+@include screenSize(sm) {
+  .logo {
+    margin: 20px auto;
+  }
+}

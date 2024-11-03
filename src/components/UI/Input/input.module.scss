@@ -1,0 +1,42 @@
+@use '../../../styles/mixins' as *;
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 25px;
+}
+
+.passwordInput {
+  padding-bottom: 7px;
+}
+
+.label {
+  @include fonts(600, 16px, white, 24px);
+  display: block;
+  padding-bottom: 8px;
+  color: #fff;
+}
+
+.input {
+  @include fonts(500, 16px, #80858B !important, 24px);
+  padding: 16px 20px;
+  color: #e1e1e1; // Светлый текст для инпута
+  background-color: #2c2c2c; // Тёмный фон инпута
+  border: none;
+  border-radius: 10px; // Округлённые углы
+  outline: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:focus {
+    background-color: #383838; // Немного светлее при фокусе
+    box-shadow: 0 0 0 2px #6a5acd; // Фиолетовая обводка на фокусе
+  }
+
+  &:hover {
+    background-color: #383838; // Светлее при наведении
+  }
+}
+
+.input::placeholder {
+  color: #7a7a7a; // Более тёмный оттенок для текста плейсхолдера
+}
