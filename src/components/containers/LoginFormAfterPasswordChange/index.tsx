@@ -1,16 +1,14 @@
 import React, { FC, useState } from 'react';
 import { Button } from '../../UI/Button';
 import { Input } from '../../UI/Input';
-import { Link } from 'react-router-dom';
-import styles from './loginForm.module.scss';
+import { CLink } from '../../UI/CLink';
+import styles from './loginFormAfterPasswordChange.module.scss';
 
-type LoginFormProps = {
+type LoginFormAfterPasswordChangeProps = {
     onLogin: (email: string, password: string) => void;
-    onToggleForm: () => void;
-    onForgotPassword: () => void;
 };
 
-const LoginForm: FC<LoginFormProps> = ({ onLogin, onToggleForm, onForgotPassword  }) => {
+const LoginFormAfterPasswordChange: FC<LoginFormAfterPasswordChangeProps> = ({ onLogin }) => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
@@ -23,9 +21,11 @@ const LoginForm: FC<LoginFormProps> = ({ onLogin, onToggleForm, onForgotPassword
         <form onSubmit={handleSubmit} className={styles.loginForm}>
             <h2 className={styles.title}>Sign In</h2>
 
+            <p className={styles.successMessage}>Your password has been changed!</p>
+
             <Input
                 type="email"
-                id="log-email"
+                id="after-email"
                 label="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -35,27 +35,26 @@ const LoginForm: FC<LoginFormProps> = ({ onLogin, onToggleForm, onForgotPassword
 
             <Input
                 type="password"
-                id="log-password"
+                id="after-password"
                 label="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Your password"
                 required
-                className="passwordInput"
             />
 
             <div className={styles.forgotPassword}>
-                <Link to="#" onClick={onForgotPassword}>Forgot password?</Link>
+                <CLink href="#">Forgot password?</CLink>
             </div>
 
             <Button type="submit" className="btn-login">Sign in</Button>
 
-            <p className={styles.basement}>
+            <p className={styles.footerText}>
                 Don’t have an account?
-                <Link to="#" onClick={onToggleForm} className={styles.signupLink}>Sign Up</Link>
+                <CLink href="#" className="signupLink">Sign Up</CLink>
             </p>
         </form>
     );
 };
 
-export { LoginForm };
+export { LoginFormAfterPasswordChange };

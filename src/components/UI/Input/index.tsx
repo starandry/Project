@@ -13,8 +13,10 @@ type InputProps = {
 };
 
 const Input: FC<InputProps> = ({ type, id, label, value, onChange, placeholder, required = false, className }) => {
+    const inputClassName = `${styles.input} ${className ? styles[className] : ''}`;
+
     return (
-        <div className={`${styles.inputContainer} ${className ? styles[className] : ''}`}>
+        <div className={styles.inputContainer}>
             <label htmlFor={id} className={styles.label}>{label}</label>
             <input
                 type={type}
@@ -23,10 +25,11 @@ const Input: FC<InputProps> = ({ type, id, label, value, onChange, placeholder, 
                 onChange={onChange}
                 placeholder={placeholder}
                 required={required}
-                className={styles.input}
+                className={inputClassName}
             />
         </div>
     );
 };
 
-export {Input};
+export { Input };
+

@@ -7,7 +7,7 @@ type LinkProps = {
     className?: string;
 };
 
-const Link: FC<LinkProps> = ({ href, children, className }) => {
+const CLink: FC<LinkProps> = ({ href, children, className }) => {
     return (
         <a href={href} className={`${styles.link} ${className ? styles[className] : ''}`}>
             {children}
@@ -15,4 +15,4 @@ const Link: FC<LinkProps> = ({ href, children, className }) => {
     );
 };
 
-export { Link };
+export { CLink };

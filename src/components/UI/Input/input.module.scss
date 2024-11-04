@@ -40,3 +40,7 @@
 .input::placeholder {
   color: #7a7a7a; // Более тёмный оттенок для текста плейсхолдера
 }
+
+.customPasswordInput::placeholder {
+  color: white;
+}

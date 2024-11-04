@@ -1,6 +1,5 @@
 import React from 'react';
 
-// Определяем компонент Home
 const Home: React.FC = () => {
     return (
         <div>
