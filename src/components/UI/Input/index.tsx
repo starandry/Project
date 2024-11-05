@@ -3,9 +3,9 @@ import styles from './input.module.scss';
 
 type InputProps = {
     type: string;
-    id: string;
-    label: string;
-    value: string;
+    id?: string;
+    label?: string;
+    value?: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
     required?: boolean;

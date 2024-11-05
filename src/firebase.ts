@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore"; // Импорт Firestore
+import { getFirestore } from "firebase/firestore";
+import { getAuth, Auth } from "firebase/auth"; // Импорт Auth
 import { getAnalytics, Analytics } from "firebase/analytics";
 import { FirebaseApp } from "firebase/app";
 
@@ -17,6 +18,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app: FirebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(app); // Инициализация Firestore
+const auth: Auth = getAuth(app); // Инициализация Auth
 
 // Optional: Initialize Analytics only if available
 let analytics: Analytics | undefined;
@@ -24,5 +26,5 @@ if (typeof window !== "undefined") {
     analytics = getAnalytics(app);
 }
 
-// Экспорт Firestore базы данных
-export { app, analytics, db };
+// Экспорт Firebase приложения, Auth и Firestore базы данных
+export { app, analytics, db, auth };

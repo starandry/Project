@@ -1,9 +1,12 @@
+import React, { ReactNode } from 'react';
 import styles from './background.module.scss';
 
-const Background = ({ path, desc = '', className = '' }) => {
-    const computedClassName = styles[className] ? styles[className] : className;
+type BackgroundProps = {
+    children: ReactNode;
+};
 
-    return <img src={path} alt={desc} className={computedClassName} />;
+const Background: React.FC<BackgroundProps> = ({ children }) => {
+    return <div className={styles.background}>{children}</div>;
 };
 
 export { Background };

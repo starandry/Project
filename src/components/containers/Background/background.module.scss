@@ -1,6 +1,8 @@
-@use '../../../styles/mixins' as *;
+/*@use '../../../styles/mixins' as *;*/
 
-.movie-collage {
-    @include sizes(100vw, 100vh);
-    object-fit: cover;
+.background {
+    min-height: 100vh;
+    padding: 40px 60px 60px;
+    /*object-fit: cover;*/
+    background-color: #000;
 }

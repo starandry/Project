@@ -10,13 +10,3 @@
     color: #ffffff;
   }
 }
-
-.signupLink {
-  @include fonts(null, 16px, #7B61FF);
-  padding-left: 5px;
-}
-
-.signinLink {
-  @include fonts(null, 16px, #7B61FF);
-  padding-left: 5px;
-}

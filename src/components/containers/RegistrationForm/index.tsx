@@ -1,24 +1,22 @@
 import React, { FC, useState } from 'react';
 import { Button } from '../../UI/Button';
 import { Input } from '../../UI/Input';
-import { Link, useNavigate  } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { db } from '../../../firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import styles from './registrationForm.module.scss';
 
 type RegistrationFormProps = {
-    onRegister: (username: string, email: string, password: string, confirmPassword: string) => void;
     onToggleForm: () => void;
+    onReg: (b: boolean) => void;
 };
 
-const RegistrationForm: FC<RegistrationFormProps> = ({ onRegister, onToggleForm  }) => {
+const RegistrationForm: FC<RegistrationFormProps> = ({ onToggleForm, onReg }) => {
     const [username, setUsername] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
-
-    const navigate = useNavigate(); // Инициализация useNavigate
 
     // Функция для добавления пользователя в Firestore
     const addUserToFirestore = async () => {
@@ -48,14 +46,8 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ onRegister, onToggleForm 
         }
 
         // Сохранение данных в Firebase
-        const isSuccessful = await addUserToFirestore();
+        onReg(await addUserToFirestore());
 
-        if (isSuccessful) {
-            onRegister(username, email, password, confirmPassword);
-            navigate('/'); // Перенаправление на домашнюю страницу
-        }
-
-        onRegister(username, email, password, confirmPassword);
     };
 
     return (

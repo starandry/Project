@@ -5,7 +5,7 @@ export default defineConfig({
     css: {
         preprocessorOptions: {
             scss: {
-                api: 'modern-compiler', // Современный компилятор SCSS
+                silenceDeprecations: ["legacy-js-api"],// Современный компилятор SCSS
             },
         },
     },
