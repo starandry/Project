@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import styles from './button.module.scss';
 
 type ButtonProps = {
     className?: string;
@@ -8,7 +7,7 @@ type ButtonProps = {
 };
 
 const Button: FC<ButtonProps> = ({ className = '', type = 'submit', children }) => {
-    const computedClassName = className ? styles[className] : className;
+    const computedClassName = className ? className : '';
 
     return (
         <button type={type} className={computedClassName}>

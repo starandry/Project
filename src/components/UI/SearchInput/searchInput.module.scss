@@ -1,29 +1,26 @@
+@use '../../../styles/mixins' as *;
+
 .searchInputContainer {
-  display: flex;
-  align-items: center;
-  background-color: #2c2c2c; /* Цвет фона input */
+  @include rowing(space-between, center);
+  flex-grow: .8;
+  margin-right: 40px;
+  padding: 10px;
   border-radius: 8px;
-  padding: 5px 10px;
-  width: 100%;
-  max-width: 400px;
+  background-color: #323537;
 }
 
 .searchInput {
-  flex: 1;
-  background: transparent;
+  @include fonts(500, 16px, white, 24px);
+  padding: 0 5px 10px;
   border: none;
   outline: none;
-  color: #fff; /* Цвет текста */
-  font-size: 16px;
-  padding: 5px;
+  background: transparent;
 }
 
 .searchButton {
-  background: none;
+  @include rowing(center, center);
+  padding: 5px;
   border: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
+  background: none;
 }

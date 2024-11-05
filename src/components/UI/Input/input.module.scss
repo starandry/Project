@@ -1,9 +1,7 @@
 @use '../../../styles/mixins' as *;
 
 .inputContainer {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 25px;
+
 }
 
 .passwordInput {
@@ -18,7 +16,7 @@
 }
 
 .input {
-  @include fonts(500, 16px, #80858B !important, 24px);
+  @include fonts(500, 16px, #80858B, 24px);
   padding: 16px 20px;
   color: #e1e1e1; // Светлый текст для инпута
   background-color: #2c2c2c; // Тёмный фон инпута

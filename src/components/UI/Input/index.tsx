@@ -13,7 +13,7 @@ type InputProps = {
 };
 
 const Input: FC<InputProps> = ({ type, id, label, value, onChange, placeholder, required = false, className }) => {
-    const inputClassName = `${styles.input} ${className ? styles[className] : ''}`;
+    const inputClassName = `${styles.input} ${className || ''}`;
 
     return (
         <div className={styles.inputContainer}>
