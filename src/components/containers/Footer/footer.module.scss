@@ -1,0 +1,6 @@
+@use '../../../styles/mixins' as *;
+
+.footer {
+  @include rowing(center);
+  position: relative;
+}

@@ -2,4 +2,5 @@
 
 .header {
   @include rowing(end, center);
+  padding-bottom: 60px;
 }

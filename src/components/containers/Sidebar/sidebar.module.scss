@@ -1,0 +1,40 @@
+@use '../../../styles/mixins' as *;
+
+.navItem {
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #8c61ff; // Цвет при наведении
+  }
+}
+
+.menuLink {
+  @include rowing(null, center);
+  padding-bottom: 40px;
+
+  &:hover {
+    .text {
+      color: #8c61ff;
+    }
+
+    svg path {
+      fill: #8c61ff;
+    }
+  }
+}
+
+.text {
+  @include fonts(600, 18px, #80858B, 24px);
+  padding-left: 25px;
+}
+
+.active {
+  .text {
+    color: #8c61ff;
+  }
+
+  svg path {
+    fill: #8c61ff;
+  }
+}

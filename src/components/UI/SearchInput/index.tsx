@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './searchInput.module.scss';
-import {Button} from "../Button";
-import {Input} from "../Input";
-import {SortIcon} from "../Icon/icon.component.tsx";
-
+import { Button } from "../Button";
+import { Input } from "../Input";
+import { SortIcon } from "../Icon/icon.component.tsx";
 
 interface SearchInputProps {
     placeholder?: string;
@@ -20,10 +19,10 @@ const SearchInput: React.FC<SearchInputProps> = ({ placeholder = "Search", onCha
                 onChange={(e) => onChange(e.target.value)}
             />
             <Button className={styles.searchButton}>
-                <SortIcon/>
+                <SortIcon />
             </Button>
         </div>
     );
 };
 
-export {SearchInput};
+export { SearchInput };

@@ -1,0 +1,15 @@
+@use '../../styles/mixins' as *;
+
+.showMoreButton {
+  @include rowing(center, center);
+  @include fonts(500, 16px, #fff, 24px);
+  padding: 10px 25px;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  background-color: #323537;
+
+  > span {
+    padding-right: 10px;
+  }
+}

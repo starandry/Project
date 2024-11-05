@@ -1,14 +1,17 @@
 import React from 'react';
 import styles from './copyright.module.scss';
 
-const Copyright: React.FC = () => {
+interface CopyrightProps {
+    className?: keyof typeof styles; // className — это ключ из объекта styles
+}
+
+const Copyright: React.FC<CopyrightProps> = ({ className }) => {
     return (
-        <div className={styles.copyrightContainer}>
-            <p className={styles.copyright}>
-                © All Rights Reserved
-            </p>
-        </div>
+        <p className={`${styles.copyright} ${className ? styles[className] : ''}`}>
+            © All Rights Reserved
+        </p>
     );
 };
 
 export { Copyright };
+
