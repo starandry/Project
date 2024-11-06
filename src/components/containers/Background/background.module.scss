@@ -1,8 +1,7 @@
-/*@use '../../../styles/mixins' as *;*/
+@use '../../../styles/mixins' as *;
 
 .background {
     min-height: 100vh;
-    padding: 40px 60px 60px;
-    /*object-fit: cover;*/
+    padding: 40px 70px 0;
     background-color: #000;
 }

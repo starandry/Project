@@ -2,7 +2,7 @@
 
 .searchInputContainer {
   @include rowing(space-between, center);
-  flex-grow: .8;
+  flex-grow: 1;
   margin-right: 40px;
   padding: 10px;
   border-radius: 8px;

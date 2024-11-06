@@ -1,0 +1,22 @@
+.movieGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: min-content;
+  grid-gap: 40px;
+  max-width: 100%;
+  overflow-y: auto;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    grid-gap: 30px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+    max-width: 272px;
+    height: auto;
+  }
+}

@@ -9,4 +9,6 @@ export * from './containers/ResetPasswordForm';
 export * from './containers/ForgotPasswordForm';
 export * from './containers/NewPasswordForm';
 export * from './containers/LoginFormAfterPasswordChange';
+export * from './containers/MovieGallery';
 export * from './UI/Сopyright';
+export * from './UI/MovieCard';

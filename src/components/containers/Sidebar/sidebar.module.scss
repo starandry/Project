@@ -13,7 +13,7 @@
   @include rowing(null, center);
   padding-bottom: 40px;
 
-  &:hover {
+  /*&:hover {
     .text {
       color: #8c61ff;
     }
@@ -21,7 +21,7 @@
     svg path {
       fill: #8c61ff;
     }
-  }
+  }*/
 }
 
 .text {
@@ -36,5 +36,22 @@
 
   svg path {
     fill: #8c61ff;
+  }
+}
+
+.sidebarWrapp {
+  @include rowing(space-between);
+  @include sizes(null, calc(100vh - 216px));
+  padding: 49px 0;
+
+  nav {
+    padding-right: 30px;
+    margin-right: 11vw;
+  }
+}
+
+@include screenSize(lg) {
+  .sidebarWrapp nav {
+    display: none;
   }
 }

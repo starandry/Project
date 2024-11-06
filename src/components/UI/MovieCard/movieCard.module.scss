@@ -1,0 +1,28 @@
+@use '../../../styles/mixins' as *;
+
+.movieCard {
+  @include rowing(null,  null, column);
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  .poster {
+    @include sizes(100%, auto);
+    max-height: 344px;
+    object-fit: cover;
+  }
+
+  .info {
+    padding: 10px;
+
+    .title {
+      @include fonts(700, 16px, #fff, 24px);
+    }
+
+    .genre {
+      @include fonts(600, 16px, #AFB2B6, 24px);
+    }
+  }
+}
