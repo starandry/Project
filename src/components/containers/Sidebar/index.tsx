@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import {Routes, Route, Link, Outlet} from 'react-router-dom';
 import styles from './sidebar.module.scss';
-/*import {MovieGallery} from "../MovieGallery";*/
-import { menuItems, routes } from '../../../routes/menuRoutes.tsx';
+import { menuItems } from '../../../routes/menuRoutes.tsx';
+import {MovieGallery} from "../MovieGallery";
 
 const Sidebar: React.FC = () => {
     const [activePath, setActivePath] = useState('/'); // отслеживания активной ссылки
@@ -29,10 +29,11 @@ const Sidebar: React.FC = () => {
                     ))}
                 </ul>
             </nav>
+            <Outlet />
             <Routes>
-                {routes.map((route, index) => (
-                    <Route key={index} path={route.path} element={route.element} />
-                ))}
+                <Route path="/" element={<MovieGallery/>}>
+                    <Route index element={<MovieGallery/>}/>
+                </Route>
             </Routes>
         </div>
     );

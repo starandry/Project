@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styles from './userProfile.module.scss';
 import { Hamburger } from "../../UI/Icon/icon.component.tsx";
+/*import { menuItems, routes } from '../../../routes/menuRoutes.tsx';
+import {Link, Route, Routes} from "react-router-dom";*/
 
 interface UserProfileProps {
     name: string;
@@ -10,7 +12,12 @@ interface UserProfileProps {
 const UserProfile: React.FC<UserProfileProps> = ({ name, circleColor }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
+    /*const [activePath, setActivePath] = useState('/');*/ // отслеживания активной ссылки
 
+    /*const handleLinkClick = (path: string) => {
+        setActivePath(path); // активный путь при клике
+    };
+*/
     // Функция для переключения состояния выпадающего меню
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
@@ -45,11 +52,25 @@ const UserProfile: React.FC<UserProfileProps> = ({ name, circleColor }) => {
                 <span className={styles.dropdownIcon} onClick={toggleDropdown}>&#9662;</span> {/* Стрелка вниз */}
             </div>
 
-            {isHamburgerOpen && (
-                <div className={styles.hamburgerMenu}>
-
+           {/* {isHamburgerOpen && (
+                <div>
+                    {menuItems.map((item) => (
+                        <Link
+                            to={item.path}
+                            className={`${styles.menuLink} ${activePath === item.path ? styles.active : ''}`}
+                            onClick={() => handleLinkClick(item.path)}
+                        >
+                            {item.icon}
+                            <span className={styles.text}>{item.label}</span>
+                        </Link>
+                    ))}
+                    <Routes>
+                        {routes.map((route, index) => (
+                            <Route key={index} path={route.path} element={route.element} />
+                        ))}
+                    </Routes>
                 </div>
-            )}
+            )}*/}
 
             {/*{isDropdownOpen && (
                 <select className={styles.selectMenu} onChange={handleSelectChange}>
