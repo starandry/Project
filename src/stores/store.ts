@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
+import pathsReducer from './slices/pathSlice.ts';
 
 export const store = configureStore({
     reducer: {
-
+        paths: pathsReducer,
     },
 });
 

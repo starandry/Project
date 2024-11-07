@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
-import {Routes, Route, Link, Outlet} from 'react-router-dom';
+import React from "react";
+import {Routes, Route, Link} from 'react-router-dom';
 import styles from './sidebar.module.scss';
-import { menuItems } from '../../../routes/menuRoutes.tsx';
-import {MovieGallery} from "../MovieGallery";
+import { menuItems, routes } from '../../../routes/menuRoutes.tsx';
+import {useActivePath} from "../../../hooks/useActivePath.ts";
 
 const Sidebar: React.FC = () => {
-    const [activePath, setActivePath] = useState('/'); // отслеживания активной ссылки
-
-    const handleLinkClick = (path: string) => {
-        setActivePath(path); // активный путь при клике
-    };
+    const { activePath, handleLinkClick } = useActivePath();
 
     return (
         <div className={styles.sidebarWrapp}>
@@ -29,11 +25,10 @@ const Sidebar: React.FC = () => {
                     ))}
                 </ul>
             </nav>
-            <Outlet />
             <Routes>
-                <Route path="/" element={<MovieGallery/>}>
-                    <Route index element={<MovieGallery/>}/>
-                </Route>
+                {routes.map((route, index) => (
+                    <Route key={index} path={route.path} element={route.element} />
+                ))}
             </Routes>
         </div>
     );

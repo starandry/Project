@@ -1,10 +1,22 @@
-// import { createSlice } from '@reduxjs/toolkit'
-// import type { PayloadAction } from '@reduxjs/toolkit'
-//
-// export interface CounterState {
-//     value: number
-// }
-//
-// const initialState: CounterState = {
-//     value: 0,
-// }
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+export interface PathsState {
+    value: string;
+}
+
+const initialState: PathsState = {
+    value: '/',
+}
+
+const pathsSlice = createSlice({
+    name: 'paths',
+    initialState,
+    reducers: {
+        addPoints: (state, action: PayloadAction<string>) => {
+            state.value = action.payload;
+        },
+    },
+});
+
+export const { addPoints } = pathsSlice.actions;
+export default pathsSlice.reducer;
