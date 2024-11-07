@@ -21,7 +21,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ name, circleColor }) => {
     };
 
     // Функция для обработки выбора в меню
-    const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+   /* const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedOption = event.target.value;
         if (selectedOption === 'Profile') {
             console.log('Profile selected');
@@ -29,7 +29,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ name, circleColor }) => {
         } else if (selectedOption === 'Logout') {
             console.log('Logout selected');
         }
-    };
+    };*/
 
     return (
         <div className={styles.userProfile}>
@@ -45,13 +45,19 @@ const UserProfile: React.FC<UserProfileProps> = ({ name, circleColor }) => {
                 <span className={styles.dropdownIcon} onClick={toggleDropdown}>&#9662;</span> {/* Стрелка вниз */}
             </div>
 
-            {isDropdownOpen && (
+            {isHamburgerOpen && (
+                <div className={styles.hamburgerMenu}>
+
+                </div>
+            )}
+
+            {/*{isDropdownOpen && (
                 <select className={styles.selectMenu} onChange={handleSelectChange}>
                     <option value="">Select an option</option>
                     <option value="Profile">Profile</option>
                     <option value="Logout">Logout</option>
                 </select>
-            )}
+            )}*/}
         </div>
     );
 };

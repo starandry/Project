@@ -1,16 +1,8 @@
 import React, { useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import styles from './sidebar.module.scss';
-import { Home, Trends, Favorites, Settings } from "../../UI/Icon/icon.component.tsx";
-import {MovieGallery} from "../MovieGallery";
-
-// Массив с описанием пунктов меню
-const menuItems = [
-    { path: '/', label: 'Home', icon: <Home /> },
-    { path: '/trends', label: 'Trends', icon: <Trends /> },
-    { path: '/favorites', label: 'Favorites', icon: <Favorites /> },
-    { path: '/settings', label: 'Settings', icon: <Settings /> },
-];
+/*import {MovieGallery} from "../MovieGallery";*/
+import { menuItems, routes } from '../../../routes/menuRoutes.tsx';
 
 const Sidebar: React.FC = () => {
     const [activePath, setActivePath] = useState('/'); // отслеживания активной ссылки
@@ -38,8 +30,9 @@ const Sidebar: React.FC = () => {
                 </ul>
             </nav>
             <Routes>
-                <Route path="/" element={<MovieGallery/>}/>
-                {/*<Route path="/trends" element={<Test/>}/>*/}
+                {routes.map((route, index) => (
+                    <Route key={index} path={route.path} element={route.element} />
+                ))}
             </Routes>
         </div>
     );
