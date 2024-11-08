@@ -5,19 +5,20 @@ type ButtonProps = {
     className?: string;
     type?: 'submit' | 'reset' | 'button';
     children: React.ReactNode;
+    onClick?: () => void;
 };
 
-const Button: FC<ButtonProps> = ({ className = '', type = 'submit', children }) => {
-    // Просто передаем className без использования styles[className]
+const Button: FC<ButtonProps> = ({ className = '', type = 'submit', children, onClick }) => {
     const computedClassName = `${styles.button} ${className}`;
 
     return (
-        <button type={type} className={computedClassName}>
+        <button type={type} className={computedClassName} onClick={onClick}>
             {children}
         </button>
     );
 };
 
 export { Button };
+
 
 

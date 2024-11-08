@@ -31,6 +31,10 @@
         @media (max-width: 768px) {
             @content;
         }
+    } @else if $breakpoint == md-sm {
+        @media (max-width: 630px) {
+            @content;
+        }
     } @else if $breakpoint == sm {
         @media (max-width: 450px) {
             @content;

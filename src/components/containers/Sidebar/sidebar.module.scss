@@ -55,3 +55,15 @@
     display: none;
   }
 }
+
+@include screenSize(md) {
+  .sidebarWrapp {
+    @include sizes(null, calc(100vh - 232px));
+  }
+}
+
+@include screenSize(md-sm) {
+  .sidebarWrapp {
+    @include sizes(null, calc(100vh - 276px));
+  }
+}

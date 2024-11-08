@@ -2,6 +2,13 @@
 
 .background {
     min-height: 100vh;
-    padding: 40px 70px 0;
+    padding: 3.26vh 3.65vw 0;
     background-color: #000;
+}
+
+@include screenSize(md) {
+    .background {
+        @include rowing(null, null, column);
+        padding: 3.26vh 7vw 0;
+    }
 }

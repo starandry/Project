@@ -6,8 +6,16 @@ import {UserProfile} from "../../components/containers/UserProfile";
 import {Header} from "../../components/containers/Header";
 import {Sidebar} from "../../components/containers/Sidebar";
 import styles from './main.module.scss';
+import { useDispatch } from 'react-redux';
+import { incrementPage } from '../../stores/slices/moviesSlice.ts';
+import { AppDispatch } from '../../stores/store';
 
 const Main: React.FC = () => {
+    const dispatch = useDispatch<AppDispatch>();
+
+    const handleShowMore = () => {
+        dispatch(incrementPage());
+    };
 
     const handleSearchChange = (value: string) => {
         // Заглушка: здесь можно будет добавить обработку ввода
@@ -24,7 +32,7 @@ const Main: React.FC = () => {
             <Sidebar/>
             <Footer>
                 <Copyright className='sidebarCopyright'/>
-                <Button className={styles.showMoreButton} type='button'>
+                <Button className={styles.showMoreButton} type='button' onClick={handleShowMore}>
                     <span>Show more</span>
                     <SpinnerIcon/>
                 </Button>

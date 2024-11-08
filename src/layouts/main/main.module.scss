@@ -15,3 +15,13 @@
     padding-right: 10px;
   }
 }
+
+@include screenSize(md) {
+  .showMoreButton {
+    right: unset;
+  }
+}
+
+@include screenSize(md-sm) {
+
+}

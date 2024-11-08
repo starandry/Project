@@ -11,6 +11,12 @@
   padding: 0;
 }
 
+@include screenSize(md) {
+  .copyright {
+    display: none;
+  }
+}
+
 @include screenSize(sm) {
   .copyright {
     padding-bottom: 0;

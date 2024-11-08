@@ -4,6 +4,22 @@
   margin-right: 10.9vw;
 }
 
+@include screenSize(md) {
+  .logo {
+    margin-right: 5vw;
+  }
+}
+
+@include screenSize(md-sm) {
+  .wrapLogo {
+    flex-grow: 1;
+  }
+
+  .logo {
+    order: 0;
+  }
+}
+
 /*
 @include screenSize(sm) {
   .logo {

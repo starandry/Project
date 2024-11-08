@@ -2,6 +2,7 @@
 
 .movieCard {
   @include rowing(null,  null, column);
+  position: relative;
   transition: transform 0.3s;
 
   &:hover {
@@ -11,6 +12,7 @@
   .poster {
     @include sizes(100%, auto);
     max-height: 344px;
+    border-radius: 20px;
     object-fit: cover;
   }
 
@@ -24,5 +26,41 @@
     .genre {
       @include fonts(600, 16px, #AFB2B6, 24px);
     }
+  }
+}
+
+.raiting, .lowRaiting, .middleRating {
+  @include fonts(700, 16px, #fff, 24px);
+  position: absolute;
+  top: 1.5vh;
+  left: 1vw;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background-color: #00A340;
+}
+
+.middleRating {
+  background-color: #F3A608;
+}
+
+.lowRaiting {
+  background-color: #F45D2D;
+}
+
+@include screenSize(lg) {
+  .raiting, .lowRaiting, .middleRating {
+    left: 2vw;
+  }
+}
+
+@include screenSize(md) {
+  .raiting, .lowRaiting, .middleRating {
+    left: 3vw;
+  }
+}
+
+@include screenSize(sm) {
+  .raiting, .lowRaiting, .middleRating {
+    left: 6vw;
   }
 }
