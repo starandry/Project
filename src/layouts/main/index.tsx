@@ -6,15 +6,18 @@ import {UserProfile} from "../../components/containers/UserProfile";
 import {Header} from "../../components/containers/Header";
 import {Sidebar} from "../../components/containers/Sidebar";
 import styles from './main.module.scss';
-import { useDispatch } from 'react-redux';
-import { incrementPage } from '../../stores/slices/moviesSlice.ts';
-import { AppDispatch } from '../../stores/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { incrementPage, loadMoreMoviesAsync } from '../../stores/slices/moviesSlice.ts';
+import {AppDispatch, RootState} from '../../stores/store';
+
 
 const Main: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
+    const { page } = useSelector((state: RootState) => state.movies);
 
     const handleShowMore = () => {
         dispatch(incrementPage());
+        dispatch(loadMoreMoviesAsync(page));
     };
 
     const handleSearchChange = (value: string) => {

@@ -8,6 +8,13 @@ export const fetchMoviesAsync = createAsyncThunk(
     }
 );
 
+export const loadMoreMoviesAsync = createAsyncThunk(
+    'movies/loadMoreMovies',
+    async (page: number) => {
+        return await fetchMovies(page);
+    }
+);
+
 const moviesSlice = createSlice({
     name: 'movies',
     initialState: {
@@ -29,9 +36,21 @@ const moviesSlice = createSlice({
             })
             .addCase(fetchMoviesAsync.fulfilled, (state, action) => {
                 state.loading = false;
-                state.movies = [...state.movies, ...action.payload]; //  новые фильмы к уже загруженным
+                state.movies = [...action.payload];
             })
             .addCase(fetchMoviesAsync.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message || 'Не удалось загрузить фильмы';
+            })
+            .addCase(loadMoreMoviesAsync.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(loadMoreMoviesAsync.fulfilled, (state, action) => {
+                state.loading = false;
+                state.movies = [...state.movies, ...action.payload];
+            })
+            .addCase(loadMoreMoviesAsync.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message || 'Не удалось загрузить фильмы';
             });
