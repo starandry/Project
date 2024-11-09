@@ -24,3 +24,14 @@ export const fetchMovies = async (page: number = 1): Promise<Movie[]> => {
     }
 };
 
+export const fetchHighRatedMovies = async (page: number, minRating: number): Promise<Movie[]> => {
+    const movies = await fetchMovies(page);
+    console.log("Fetched Movies:", movies); // Посмотреть полученные фильмы
+    const filteredMovies = movies.filter(movie => {
+        const rating = parseFloat(movie.imdbRating);
+        console.log(`Movie: ${movie.Title}, Rating: ${rating}, MinRating: ${minRating}`);
+        return rating >= minRating;
+    });
+    console.log("Filtered Movies:", filteredMovies); // Посмотреть отфильтрованные фильмы
+    return filteredMovies;
+};

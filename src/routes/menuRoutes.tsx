@@ -13,5 +13,5 @@ export const menuItems = [
 // маршруты
 export const routes = [
     { path: '/', element: <MovieGallery /> },
-    {/*<Route path="/trends" element={<Test/>}/>*/}
+    { path: '/trends', element: <MovieGallery /> },
 ];
