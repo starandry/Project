@@ -43,7 +43,6 @@ const moviesSlice = createSlice({
             })
             .addCase(fetchMoviesAsync.fulfilled, (state, action) => {
                 state.loading = false;
-                state.page = 1;
                 state.movies = [...action.payload];
             })
             .addCase(fetchMoviesAsync.rejected, (state, action) => {
@@ -68,7 +67,6 @@ const moviesSlice = createSlice({
             })
             .addCase(fetchHighRatedMoviesAsync.fulfilled, (state, action) => {
                 state.loading = false;
-                state.page = 1;
                 state.movies = [...action.payload];
             })
             .addCase(fetchHighRatedMoviesAsync.rejected, (state, action) => {
