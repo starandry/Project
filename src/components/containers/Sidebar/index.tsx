@@ -1,14 +1,22 @@
 import React from "react";
-import {Routes, Route, Link} from 'react-router-dom';
+import {Routes, Route, Link, useLocation} from 'react-router-dom';
 import styles from './sidebar.module.scss';
 import { menuItems, routes } from '../../../routes/menuRoutes.tsx';
 import {useActivePath} from "../../../hooks/useActivePath.ts";
 
 const Sidebar: React.FC = () => {
     const { activePath, handleLinkClick } = useActivePath();
+    const location = useLocation();
+    let sidebarClass;
+
+    if (location.pathname === '/trends') {
+        sidebarClass = `${styles.sidebarWrapp}   ${styles.trendsSidebar}`;
+    } else {
+        sidebarClass =  styles.sidebarWrapp;
+    }
 
     return (
-        <div className={styles.sidebarWrapp}>
+        <div className={sidebarClass}>
             <nav>
                 <ul>
                     {menuItems.map((item, index) => (

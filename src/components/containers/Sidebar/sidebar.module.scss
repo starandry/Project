@@ -50,6 +50,12 @@
   }
 }
 
+.trendsSidebar {
+  nav {
+    margin-right: 9vw;
+  }
+}
+
 @include screenSize(lg) {
   .sidebarWrapp nav {
     display: none;

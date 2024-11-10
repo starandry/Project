@@ -4,8 +4,12 @@
   margin-right: 10.9vw;
 }
 
+.logoTrends {
+  margin-right: 8.85vw;
+}
+
 @include screenSize(md) {
-  .logo {
+  .logoTrends {
     margin-right: 5vw;
   }
 }

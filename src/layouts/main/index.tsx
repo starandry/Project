@@ -15,6 +15,10 @@ const Main: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const { page } = useSelector((state: RootState) => state.movies);
 
+    if (location.pathname === '/trends') {
+
+    }
+
     const handleShowMore = () => {
         dispatch(incrementPage());
         dispatch(loadMoreMoviesAsync(page));

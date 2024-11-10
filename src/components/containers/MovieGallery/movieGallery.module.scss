@@ -8,21 +8,18 @@
   max-width: 100%;
   overflow-y: auto;
   flex-grow: 1;
+}
 
-  /*@media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    grid-gap: 30px;
-    max-width: 272px;
-    height: auto;
-  }*/
+.movieGalleryTrends {
+  @include sizes(null, 81vh);
 }
 
 @include screenSize(lg) {
   .movieGallery {
+    @include sizes(null, auto);
     grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
     grid-gap: 30px;
     max-width: 100%;
-    height: auto;
   }
 }
 

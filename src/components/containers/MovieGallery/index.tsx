@@ -12,6 +12,10 @@ const MovieGallery: React.FC = () => {
    const location = useLocation();
    const { movies, loading, error, page } = useSelector((state: RootState) => state.movies);
 
+   const galleryClass = location.pathname === '/trends'
+       ? `${styles.movieGallery} ${styles.movieGalleryTrends}`
+       : styles.movieGallery;
+
    useEffect(() => {
       if (location.pathname === '/' ) {
          dispatch(fetchMoviesAsync(page));
@@ -24,7 +28,7 @@ const MovieGallery: React.FC = () => {
    if (error) return <p>{error}</p>;
 
    return (
-       <div className={styles.movieGallery}>
+       <div className={galleryClass}>
           {movies.map((movie) => (
               <MovieCard key={movie.imdbID} movie={movie} />
           ))}

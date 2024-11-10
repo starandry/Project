@@ -16,6 +16,10 @@
     object-fit: cover;
   }
 
+  .trendsPoster {
+    max-height: 390px;
+  }
+
   .info {
     padding: 10px;
 
@@ -45,6 +49,21 @@
 
 .lowRaiting {
   background-color: #F45D2D;
+}
+
+
+.fireIcon {
+  display: none;
+}
+
+.trendsFireIcon {
+  display: block;
+  margin-right: 5px;
+}
+
+.raitingTrends {
+  @include rowing(center, center);
+  background: #7B61FF;
 }
 
 @include screenSize(lg) {
