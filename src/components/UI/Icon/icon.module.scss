@@ -9,8 +9,8 @@
 }
 
 @include screenSize(md) {
-  .logoTrends {
-    margin-right: 5vw;
+  .logo {
+    margin-right: 9.5vw;
   }
 }
 
@@ -24,9 +24,8 @@
   }
 }
 
-/*
 @include screenSize(sm) {
   .logo {
-    margin: 20px auto;
+    margin-right: 5vw;
   }
-}*/
+}

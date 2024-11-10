@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import styles from './button.module.scss';
-import {useLocation} from "react-router-dom";
 
 type ButtonProps = {
     className?: string;
@@ -10,12 +9,7 @@ type ButtonProps = {
 };
 
 const Button: FC<ButtonProps> = ({ className = '', type = 'submit', children, onClick }) => {
-    const location = useLocation();
-    let computedClassName = `${styles.button} ${className}`;
-
-    if (location.pathname === '/trends') {
-        computedClassName = `${styles.btnNone}`
-    }
+    const computedClassName = `${styles.button} ${className}`;
 
     return (
         <button type={type} className={computedClassName} onClick={onClick}>

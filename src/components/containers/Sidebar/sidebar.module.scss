@@ -66,10 +66,21 @@
   .sidebarWrapp {
     @include sizes(null, calc(100vh - 232px));
   }
+
+  .trendsSidebar {
+   @include rowing(null, null, column);
+   @include sizes(null, calc(100vh - 90px));
+  }
 }
 
 @include screenSize(md-sm) {
   .sidebarWrapp {
     @include sizes(null, calc(100vh - 276px));
+  }
+}
+
+@include screenSize(xs) {
+  .sidebarWrapp {
+    @include sizes(null, calc(100vh - 232px));
   }
 }

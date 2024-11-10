@@ -3,10 +3,6 @@ import {useLocation} from "react-router-dom";
 
 let logoIcon;
 
-/*const location = useLocation();*/
-
-
-
 export const Logo = ({ width = '158', height = '40' }) => {
     const location = useLocation();
 

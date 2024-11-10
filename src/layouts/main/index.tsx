@@ -9,20 +9,26 @@ import styles from './main.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { incrementPage, loadMoreMoviesAsync } from '../../stores/slices/moviesSlice.ts';
 import {AppDispatch, RootState} from '../../stores/store';
+import {useLocation} from "react-router-dom";
 
 
 const Main: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
+    const location = useLocation();
     const { page } = useSelector((state: RootState) => state.movies);
-
-    if (location.pathname === '/trends') {
-
-    }
+    let btnClas, customFooter;
 
     const handleShowMore = () => {
         dispatch(incrementPage());
         dispatch(loadMoreMoviesAsync(page));
     };
+
+    if (location.pathname === '/trends') {
+        btnClas = `${styles.showMoreButton} ${styles.btnNone}`;
+        customFooter = styles.customFooter;
+    } else {
+        btnClas = styles.showMoreButton;
+    }
 
     const handleSearchChange = (value: string) => {
         // Заглушка: здесь можно будет добавить обработку ввода
@@ -37,9 +43,9 @@ const Main: React.FC = () => {
                 <UserProfile name='Artem Lapitsky' circleColor='#7B61FF'/>
             </Header>
             <Sidebar/>
-            <Footer>
+            <Footer className={customFooter}>
                 <Copyright className='sidebarCopyright'/>
-                <Button className={styles.showMoreButton} type='button' onClick={handleShowMore}>
+                <Button className={btnClas} type='button' onClick={handleShowMore}>
                     <span>Show more</span>
                     <SpinnerIcon/>
                 </Button>

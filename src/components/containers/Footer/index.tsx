@@ -1,9 +1,17 @@
-import styles from './footer.module.scss'
+import React from 'react';
+import styles from './footer.module.scss';
 
-const Footer = ( { children }) => {
-    return  <div className={styles.footer}>
-        { children }
-    </div>
-}
+type FooterProps = {
+    children: React.ReactNode;
+    className?: string;
+};
+
+const Footer: React.FC<FooterProps> = ({ children, className }) => {
+    return (
+        <div className={`${styles.footer} ${className || ''}`}>
+            {children}
+        </div>
+    );
+};
 
 export { Footer };

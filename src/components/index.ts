@@ -12,3 +12,4 @@ export * from './containers/LoginFormAfterPasswordChange';
 export * from './containers/MovieGallery';
 export * from './UI/Сopyright';
 export * from './UI/MovieCard';
+export * from './UI/SectionTitle';

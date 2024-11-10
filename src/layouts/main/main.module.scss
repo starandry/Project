@@ -16,9 +16,17 @@
   }
 }
 
+.btnNone {
+  display: none;
+}
+
 @include screenSize(md) {
   .showMoreButton {
     right: unset;
+  }
+
+  .customFooter {
+    display: none;
   }
 }
 
