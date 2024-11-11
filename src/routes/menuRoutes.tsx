@@ -14,4 +14,5 @@ export const menuItems = [
 export const routes = [
     { path: '/', element: <MovieGallery /> },
     { path: '/trends', element: <MovieGallery /> },
+    { path: '/favorites', element: <MovieGallery /> },
 ];

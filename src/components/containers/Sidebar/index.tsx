@@ -7,9 +7,10 @@ import {useActivePath} from "../../../hooks/useActivePath.ts";
 const Sidebar: React.FC = () => {
     const { activePath, handleLinkClick } = useActivePath();
     const location = useLocation();
+    const currentPath = location.pathname;
     let sidebarClass;
 
-    if (location.pathname === '/trends') {
+    if (currentPath === '/trends' || currentPath === '/favorites') {
         sidebarClass = `${styles.sidebarWrapp}   ${styles.trendsSidebar}`;
     } else {
         sidebarClass =  styles.sidebarWrapp;

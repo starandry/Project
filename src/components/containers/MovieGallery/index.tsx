@@ -12,14 +12,21 @@ const MovieGallery: React.FC = () => {
    const dispatch = useDispatch<AppDispatch>();
    const location = useLocation();
    const { movies, loading, error, page } = useSelector((state: RootState) => state.movies);
-   let galleryClass, titleHome;
+   const currentPath = location.pathname;
+   let galleryClass, titleHome, sectionTitleText;
 
-   if (location.pathname === '/trends') {
+   if (currentPath === '/trends' || currentPath === '/favorites') {
       galleryClass = `${styles.movieGallery} ${styles.movieGalleryTrends}`;
       titleHome = `${styles.titleHome} ${styles.titleTrends}`;
    } else {
       galleryClass = styles.movieGallery;
       titleHome = styles.titleHome;
+   }
+
+   if (currentPath === '/trends') {
+      sectionTitleText = 'Trends';
+   } else if (currentPath === '/favorites') {
+      sectionTitleText = 'Favorites';
    }
 
    useEffect(() => {
@@ -35,7 +42,7 @@ const MovieGallery: React.FC = () => {
 
    return (
        <>
-          <SectionTitle text="Trends" className={titleHome}/>
+          <SectionTitle text={sectionTitleText} className={titleHome}/>
           <div className={galleryClass}>
              {movies.map((movie) => (
                  <MovieCard key={movie.imdbID} movie={movie} />

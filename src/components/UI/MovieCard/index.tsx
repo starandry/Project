@@ -1,7 +1,10 @@
 import React from 'react';
 import styles from './movieCard.module.scss';
 import {useLocation} from "react-router-dom";
-import {FireIcon} from "../Icon/icon.component.tsx";
+import {FavouriteIcon, FireIcon} from "../Icon/icon.component.tsx";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../../stores/store.ts";
+import {toggleFavourite} from "../../../stores/slices/favouritesSlice.ts";
 
 type Movie = {
     imdbID: string;
@@ -18,8 +21,19 @@ type MovieCardProps = {
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
     const location = useLocation();
+    const dispatch = useDispatch();
     const rating = parseFloat(movie.imdbRating);
+    const currentPath = location.pathname;
     let ratingClass, posterClass, fireIconClass;
+
+    //лежит ли  фильм в хранилище избранных
+    const isFavourite = useSelector((state: RootState) =>
+        state.favourites.some(favMovie => favMovie.imdbID === movie.imdbID)
+    );
+
+    const handleFavouriteClick = () => {
+        dispatch(toggleFavourite(movie));
+    };
 
     if (rating < 5) {
         ratingClass = styles.lowRaiting;
@@ -29,10 +43,14 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
         ratingClass = styles.raiting;
     }
 
-    if (location.pathname === '/trends') {
+    if (currentPath === '/trends') {
         posterClass = `${styles.poster} ${styles.trendsPoster}`;
         fireIconClass = `${styles.fireIcon} ${styles.trendsFireIcon}`;
         ratingClass += ` ${styles.raitingTrends}`
+    } else if (location.pathname === '/favorites' && !isFavourite) {
+        return null //карточка не показывается
+    } else if (currentPath === '/favorites') {
+        posterClass = `${styles.poster} ${styles.trendsPoster}`;
     } else {
         posterClass = styles.poster;
         fireIconClass = styles.fireIcon;
@@ -44,6 +62,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
             <span className={ratingClass}>
                 <FireIcon className={fireIconClass}/>
                 <span>{movie.imdbRating}</span>
+            </span>
+            <span className={styles.favouriteIconWrapper} onClick={handleFavouriteClick}>
+                <FavouriteIcon isActive={isFavourite}/>
             </span>
 
             <img

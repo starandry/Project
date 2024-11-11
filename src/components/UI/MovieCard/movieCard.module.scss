@@ -66,9 +66,22 @@
   background: #7B61FF;
 }
 
+.favouriteIconWrapper {
+  position: absolute;
+  top: 1.5vh;
+  right: 1vw;
+  padding: 6px 12px 3px;
+  border-radius: 6px;
+  background-color: #323537;
+}
+
 @include screenSize(lg) {
   .raiting, .lowRaiting, .middleRating {
     left: 2vw;
+  }
+
+  .favouriteIconWrapper {
+    right: 2vw;
   }
 }
 
@@ -76,10 +89,18 @@
   .raiting, .lowRaiting, .middleRating {
     left: 3vw;
   }
+
+  .favouriteIconWrapper {
+    right: 3vw;
+  }
 }
 
 @include screenSize(sm) {
   .raiting, .lowRaiting, .middleRating {
     left: 6vw;
+  }
+
+  .favouriteIconWrapper {
+    right: 6vw;
   }
 }

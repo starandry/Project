@@ -16,6 +16,7 @@ const Main: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const location = useLocation();
     const { page } = useSelector((state: RootState) => state.movies);
+    const currentPath = location.pathname;
     let btnClas, customFooter;
 
     const handleShowMore = () => {
@@ -23,7 +24,7 @@ const Main: React.FC = () => {
         dispatch(loadMoreMoviesAsync(page));
     };
 
-    if (location.pathname === '/trends') {
+    if (currentPath === '/trends' || currentPath === '/favorites') {
         btnClas = `${styles.showMoreButton} ${styles.btnNone}`;
         customFooter = styles.customFooter;
     } else {
