@@ -1,0 +1,124 @@
+@use '../../../styles/mixins' as *;
+
+.profileSettings {
+  @include sizes(null, 85vh);
+  flex-grow: 1;
+  min-width: 0;
+  overflow-y: auto;
+}
+
+.section, .sectionTheme {
+  @include sizes(100%);
+  padding-bottom: 40px;
+}
+
+.sectionTheme {
+  padding-bottom: 30px;
+}
+
+.titleProfile {
+  @include fonts(600, 24px, #fff, 36px);
+  padding-bottom: 15px;
+}
+
+.wrapProfile {
+  @include rowing();
+  @include sizes(100%);
+  flex-wrap: wrap;
+}
+
+.wrapPassword {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 40px;
+}
+
+.wrapTheme {
+  @include rowing(null, null, column);
+}
+
+.wrapProfile, .wrapPassword, .wrapColor {
+  gap: 40px;
+  padding: 40px;
+  border-radius: 10px;
+  background-color: #242426;
+}
+
+.wrapColor {
+  @include rowing(space-between, center);
+  padding: 30px 40px;
+  margin-bottom: 38px;
+
+  label {
+    @include fonts(700);
+    padding-bottom: 4px;
+  }
+
+  span {
+    @include fonts(500, 16px, #AFB2B6, 24px);
+  }
+}
+
+.inputConfirmPassword {
+  grid-area: 2 / 2;
+}
+
+.inputGroup, .inputConfirmPassword {
+  @include rowing(null, null, column);
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.inputPassword {
+  &::placeholder {
+    @include fonts(500, 16px, #80858B, 24px);
+  }
+}
+
+.inputName, .inputPassword {
+  @include fonts(600, 16px, #fff, 24px);
+  background-color: #323537;
+}
+
+.labelUsSet {
+  @include fonts(600, 16px, #fff, 24px);
+  padding-bottom: 10px;
+}
+
+.buttonGroup {
+  @include rowing(end);
+}
+
+.cancelButton {
+  margin-right: 40px;
+  background-color: #323537;
+}
+
+.saveButton {
+  background-color: #7B61FF;
+}
+
+.cancelButton, .saveButton {
+  @include fonts(600, 16px, #fff, 24px);
+  padding: 15px 100px;
+  border: none;
+  border-radius: 10px;
+}
+
+.spacer {
+  @include sizes(234px);
+  flex-shrink: 0;
+}
+
+@include screenSize(lg) {
+  .spacer {
+    display: none;
+  }
+}
+
+@include screenSize(md) {
+  .sectionTheme {
+    padding-bottom: 0;
+  }
+}

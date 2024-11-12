@@ -10,6 +10,8 @@ export * from './containers/ForgotPasswordForm';
 export * from './containers/NewPasswordForm';
 export * from './containers/LoginFormAfterPasswordChange';
 export * from './containers/MovieGallery';
+export * from './containers/UserSettings';
 export * from './UI/Сopyright';
 export * from './UI/MovieCard';
 export * from './UI/SectionTitle';
+export * from './UI/SubTitle';

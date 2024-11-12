@@ -7,7 +7,7 @@ export const Logo = ({ width = '158', height = '40' }) => {
     const location = useLocation();
     const currentPath = location.pathname;
 
-    if (currentPath === '/trends' || currentPath === '/favorites') {
+    if (currentPath === '/trends' || currentPath === '/favorites'|| currentPath === '/settings') {
         logoIcon = `${styles.logo} ${styles.logoTrends}`;
     } else {
         logoIcon = styles.logo;

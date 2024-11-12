@@ -40,7 +40,7 @@
 }
 
 .sidebarWrapp {
-  @include rowing(space-between);
+  @include rowing();
   @include sizes(null, calc(100vh - 216px));
   padding: 49px 0;
 
@@ -70,6 +70,10 @@
   .trendsSidebar {
    @include rowing(null, null, column);
    @include sizes(null, calc(100vh - 90px));
+  }
+
+  .settingsSidebar {
+    @include sizes(null, calc(100vh - 110px));
   }
 }
 

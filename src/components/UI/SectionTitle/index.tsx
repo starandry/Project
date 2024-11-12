@@ -8,7 +8,7 @@ type SectionTitleProps = {
 const SectionTitle: React.FC<SectionTitleProps> = ({ text, className }) => {
 
     return (
-        <h2 className={`${className || ''} ${styles.title}`}>{text}</h2>
+        <h1 className={`${className || ''} ${styles.title}`}>{text}</h1>
     );
 };
 

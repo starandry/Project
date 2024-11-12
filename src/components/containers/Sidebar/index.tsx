@@ -12,6 +12,8 @@ const Sidebar: React.FC = () => {
 
     if (currentPath === '/trends' || currentPath === '/favorites') {
         sidebarClass = `${styles.sidebarWrapp}   ${styles.trendsSidebar}`;
+    } else if (currentPath === '/settings') {
+        sidebarClass = `${styles.sidebarWrapp}  ${styles.trendsSidebar} ${styles.settingsSidebar}`;
     } else {
         sidebarClass =  styles.sidebarWrapp;
     }

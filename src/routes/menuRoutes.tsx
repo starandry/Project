@@ -1,6 +1,7 @@
 import React from 'react';
 import { Home, Trends, Favorites, Settings } from '../components/UI/Icon/icon.component.tsx';
 import { MovieGallery } from '../components';
+import UserSettings from "../components/containers/UserSettings";
 
 // пункты меню
 export const menuItems = [
@@ -15,4 +16,5 @@ export const routes = [
     { path: '/', element: <MovieGallery /> },
     { path: '/trends', element: <MovieGallery /> },
     { path: '/favorites', element: <MovieGallery /> },
+    { path: '/settings', element: <UserSettings/> },
 ];
