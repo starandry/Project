@@ -17,6 +17,7 @@ const Main: React.FC = () => {
     const location = useLocation();
     const { page } = useSelector((state: RootState) => state.movies);
     const currentPath = location.pathname;
+    const isDark = useSelector((state: RootState) => state.theme.isDark);
     let btnClas, customFooter;
 
     const handleShowMore = () => {
@@ -28,7 +29,13 @@ const Main: React.FC = () => {
         btnClas = `${styles.showMoreButton} ${styles.btnNone}`;
         customFooter = styles.customFooter;
     } else {
-        btnClas = styles.showMoreButton;
+        btnClas = `${styles.showMoreButton}`;
+    }
+
+    if (isDark) {
+        btnClas += ` ${styles.btnDark}`;
+    } else {
+        btnClas += ` ${styles.btnLigth}`;
     }
 
     const handleSearchChange = (value: string) => {

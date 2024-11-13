@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import styles from './button.module.scss';
+import '../../../styles/_globals.scss'
 
 type ButtonProps = {
     className?: string;
@@ -9,6 +10,7 @@ type ButtonProps = {
 };
 
 const Button: FC<ButtonProps> = ({ className = '', type = 'submit', children, onClick }) => {
+
     const computedClassName = `${styles.button} ${className}`;
 
     return (

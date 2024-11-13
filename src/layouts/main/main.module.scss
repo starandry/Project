@@ -20,6 +20,14 @@
   display: none;
 }
 
+.btnDark {
+  background-color: #323537;
+}
+
+.btnLigth {
+  background-color: #AFB2B6;
+}
+
 @include screenSize(md) {
   .showMoreButton {
     right: unset;
