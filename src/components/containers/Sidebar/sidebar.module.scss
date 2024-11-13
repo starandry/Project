@@ -12,16 +12,6 @@
 .menuLink {
   @include rowing(null, center);
   padding-bottom: 40px;
-
-  /*&:hover {
-    .text {
-      color: #8c61ff;
-    }
-
-    svg path {
-      fill: #8c61ff;
-    }
-  }*/
 }
 
 .text {
@@ -81,10 +71,19 @@
   .sidebarWrapp {
     @include sizes(null, calc(100vh - 276px));
   }
+
+  .settingsSidebar {
+    @include sizes(null, calc(100vh - 210px));
+    padding: 35px 0 0;
+  }
 }
 
 @include screenSize(xs) {
   .sidebarWrapp {
     @include sizes(null, calc(100vh - 232px));
+  }
+
+  .settingsSidebar {
+    @include sizes(null, calc(100vh - 210px));
   }
 }

@@ -4,11 +4,24 @@
     min-height: 100vh;
     padding: 3.26vh 3.65vw 0;
     background-color: #000;
+    overflow: hidden;
 }
 
 @include screenSize(md) {
     .background {
         @include rowing(null, null, column);
         padding: 3.26vh 7vw 0;
+    }
+}
+
+@include screenSize(md-sm) {
+    .backgroundSettings {
+        padding: 2vh 7vw 0;
+    }
+}
+
+@include screenSize(xs) {
+    .backgroundSettings {
+        padding: 2vh 5vw 0;
     }
 }

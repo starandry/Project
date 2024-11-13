@@ -1,7 +1,7 @@
 @use '../../../styles/mixins' as *;
 
 .profileSettings {
-  @include sizes(null, 85vh);
+  @include sizes(null, 119%);
   flex-grow: 1;
   min-width: 0;
   overflow-y: auto;
@@ -120,5 +120,61 @@
 @include screenSize(md) {
   .sectionTheme {
     padding-bottom: 0;
+  }
+
+  .wrapColor {
+    padding: 50px 40px;
+  }
+
+  .wrapProfile, .wrapPassword {
+    padding: 30px 40px;
+  }
+}
+
+@include screenSize(md-sm) {
+  .titleProfile {
+    @include fonts(600, 20px, #fff, 32px);
+  }
+
+  .section {
+    padding-bottom: 30px;
+  }
+
+  .wrapPassword {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .inputGroup, .inputConfirmPassword {
+    grid-column: 1 / -1;
+
+    &:nth-child(1) {
+      grid-row: 1;
+    }
+
+    &:nth-child(2) {
+      grid-row: 2;
+    }
+
+    &:nth-child(3) {
+      grid-row: 3;
+    }
+  }
+
+  .wrapColor {
+    padding: 25px 25px;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+  }
+
+  .cancelButton {
+    margin: 0 0 15px;
+  }
+
+  .wrapProfile, .wrapPassword {
+    padding: 30px 25px;
+    gap: 20px;
   }
 }
