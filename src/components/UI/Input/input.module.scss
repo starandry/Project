@@ -24,15 +24,6 @@
   border-radius: 10px; // Округлённые углы
   outline: none;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-
-  &:focus {
-    background-color: #383838; // Немного светлее при фокусе
-    box-shadow: 0 0 0 2px #6a5acd; // Фиолетовая обводка на фокусе
-  }
-
-  &:hover {
-    background-color: #383838; // Светлее при наведении
-  }
 }
 
 .input::placeholder {

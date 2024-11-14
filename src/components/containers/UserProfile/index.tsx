@@ -4,6 +4,8 @@ import { Hamburger } from "../../UI/Icon/icon.component.tsx";
 import { menuItems } from '../../../routes/menuRoutes.tsx';
 import { Link } from "react-router-dom";
 import { useActivePath } from '../../../hooks/useActivePath.ts';
+import {useSelector} from "react-redux";
+import {RootState} from "../../../stores/store.ts";
 
 interface UserProfileProps {
     name: string;
@@ -13,6 +15,14 @@ interface UserProfileProps {
 const UserProfile: React.FC<UserProfileProps> = ({ name, circleColor }) => {
     const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
     const { activePath, handleLinkClick } = useActivePath();
+    const isDark = useSelector((state: RootState) => state.theme.isDark);
+    let compName;
+
+    if (isDark) {
+        compName = styles.userName;
+    } else {
+        compName = `${styles.userName} ${styles.lightUserName}`;
+    }
 
     const toggleHamburger = () => {
         setIsHamburgerOpen(!isHamburgerOpen);
@@ -28,7 +38,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ name, circleColor }) => {
                 >
                     <Hamburger className={styles.hamburger} />
                 </div>
-                <span className={styles.userName}>{name}</span>
+                <span className={compName}>{name}</span>
             </div>
 
             <div className={`${styles.menuItems} ${isHamburgerOpen ? styles.open : ''}`}>

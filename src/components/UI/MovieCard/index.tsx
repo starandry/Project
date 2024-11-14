@@ -23,8 +23,15 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
     const location = useLocation();
     const dispatch = useDispatch();
     const rating = parseFloat(movie.imdbRating);
+    const isDark = useSelector((state: RootState) => state.theme.isDark);
     const currentPath = location.pathname;
-    let ratingClass, posterClass, fireIconClass;
+    let ratingClass, posterClass, fireIconClass, compTitle;
+
+    if (isDark) {
+        compTitle = styles.title;
+    } else {
+        compTitle = `${styles.title} ${styles.lightTitle}`;
+    }
 
     //лежит ли  фильм в хранилище избранных
     const isFavourite = useSelector((state: RootState) =>
@@ -73,7 +80,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
                 className={posterClass}
             />
             <div className={styles.info}>
-                <h3 className={styles.title}>{movie.Title}</h3>
+                <h3 className={compTitle}>{movie.Title}</h3>
                 <p className={styles.genre}>{movie.Genre}</p>
             </div>
         </div>

@@ -3,6 +3,8 @@ import styles from './searchInput.module.scss';
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { SortIcon } from "../Icon/icon.component.tsx";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../stores/store.ts";
 
 interface SearchInputProps {
     placeholder?: string;
@@ -10,15 +12,26 @@ interface SearchInputProps {
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({ placeholder = "Search", onChange }) => {
+    const compSearchInput = styles.searchInput;
+    const compsearchButton = styles.searchButton;
+    const isDark = useSelector((state: RootState) => state.theme.isDark);
+    let compWrapp;
+
+    if (isDark) {
+        compWrapp = styles.searchInputContainer;
+    } else {
+        compWrapp = `${styles.searchInputContainer} ${styles.lightSearchInputContainer}`;
+    }
+
     return (
-        <div className={styles.searchInputContainer}>
+        <div className={compWrapp}>
             <Input
                 type="text"
-                className={styles.searchInput}
+                className={compSearchInput}
                 placeholder={placeholder}
                 onChange={(e) => onChange(e.target.value)}
             />
-            <Button className={styles.searchButton}>
+            <Button className={compsearchButton}>
                 <SortIcon />
             </Button>
         </div>

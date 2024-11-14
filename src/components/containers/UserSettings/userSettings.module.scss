@@ -21,6 +21,10 @@
   padding-bottom: 15px;
 }
 
+.lightTitleProfile {
+  color: #242426;
+}
+
 .wrapProfile {
   @include rowing();
   @include sizes(100%);
@@ -45,6 +49,12 @@
   background-color: #242426;
 }
 
+.lightWrapProfile,
+.lightWrapPassword,
+.lightWrapColor {
+  border: 1px solid #AFB2B6;
+  background-color: #fff;
+}
 .wrapColor {
   @include rowing(space-between, center);
   padding: 30px 40px;
@@ -81,9 +91,25 @@
   background-color: #323537;
 }
 
+.lightInputPassword {
+  color: #000;
+  border: 1px solid #AFB2B6;
+  background-color: #fff;
+}
+
+.lightInputName {
+  color: #000;
+  border: 1px solid #AFB2B6;
+  background-color: #fff;
+}
+
 .labelUsSet {
   @include fonts(600, 16px, #fff, 24px);
   padding-bottom: 10px;
+}
+
+.lightLabelUsSet {
+  color: #80858B;
 }
 
 .buttonGroup {
@@ -104,6 +130,10 @@
   padding: 15px 100px;
   border: none;
   border-radius: 10px;
+}
+
+.lightCancelButton {
+  background-color: #AFB2B6;
 }
 
 .spacer {

@@ -8,6 +8,11 @@
   background-color: #323537;
 }
 
+.lightSearchInputContainer {
+  border: 1px solid #AFB2B6;
+  background-color: #fff;
+}
+
 .searchInput {
   @include fonts(500, 16px, white, 24px);
   padding: 0 5px 10px;

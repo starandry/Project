@@ -27,6 +27,10 @@
       @include fonts(700, 16px, #fff, 24px);
     }
 
+    .lightTitle {
+      color: #000;
+    }
+
     .genre {
       @include fonts(600, 16px, #AFB2B6, 24px);
     }
