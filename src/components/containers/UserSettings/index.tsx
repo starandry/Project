@@ -8,6 +8,7 @@ import Switch from 'react-switch';
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../stores/store.ts";
 import {setDarkMode} from "../../../stores/slices/themeSlice.ts";
+import {Spacer} from "../../UI/Spacer";
 
 const UserSettings: React.FC = () => {
     const dispatch = useDispatch();
@@ -127,7 +128,7 @@ const UserSettings: React.FC = () => {
                     </Wrapper>
                 </Wrapper>
             </form>
-            <p className={styles.spacer}></p>
+            <Spacer className={styles.spacer}/>
         </>
     );
 };

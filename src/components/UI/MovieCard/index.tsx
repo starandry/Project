@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './movieCard.module.scss';
-import {useLocation} from "react-router-dom";
+import {useLocation, Link} from "react-router-dom";
 import {FavouriteIcon, FireIcon} from "../Icon/icon.component.tsx";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../stores/store.ts";
@@ -73,15 +73,16 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
             <span className={styles.favouriteIconWrapper} onClick={handleFavouriteClick}>
                 <FavouriteIcon isActive={isFavourite}/>
             </span>
-
-            <img
-                src={movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/300x450'}
-                alt={movie.Title}
-                className={posterClass}
-            />
+            <Link to={`/movie/${movie.imdbID}`}>
+                <img
+                    src={movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/300x450'}
+                    alt={movie.Title}
+                    className={posterClass}
+                />
+            </Link>
             <div className={styles.info}>
                 <h3 className={compTitle}>{movie.Title}</h3>
-                <p className={styles.genre}>{movie.Genre}</p>
+                <p className={styles.genre}>{movie.Genre.split(',').map(genre => genre.trim()).join(' • ')}</p>
             </div>
         </div>
     );

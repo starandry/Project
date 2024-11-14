@@ -1,0 +1,107 @@
+@use '../../../styles/mixins' as *;
+
+.movieDetails {
+  @include rowing();
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    "area1 area2"
+    "area1 area3";
+  grid-template-columns: auto 1fr;
+  grid-auto-rows: min-content;
+  gap: 40px;
+}
+
+.wrappPoster {
+  grid-area: area1;
+}
+
+.movieHeader {
+  grid-area: area2;
+}
+
+.movieInfo {
+  grid-area: area3;
+}
+
+.poster {
+  border-radius: 20px;
+}
+
+.genre {
+  @include fonts(500, 16px, #AFB2B6, 24px);
+}
+
+.title {
+  @include fonts(600, 40px, #fff, 60px);
+  padding-bottom: 25px;
+}
+
+.infoBadges {
+  @include rowing();
+}
+
+.rating, .IMDWrap, .runtimeWrap {
+  @include rowing(center, center);
+  @include fonts(600, 16px, #fff, 24px);
+  margin-right: 20px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background-color: #00A340;
+}
+
+.IMDWrap, .runtimeWrap {
+  background-color: #323537;
+}
+
+.plot {
+  @include fonts(500, 16px, #fff, 24px);
+  padding-bottom: 40px;
+}
+
+.detailsWrap {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+
+  > span {
+    @include fonts(600, 16px, #AFB2B6, 24px);
+  }
+
+  > p {
+    @include fonts(500, 16px, #fff, 24px);
+  }
+}
+
+.spacer {
+  @include sizes(234px);
+  flex-shrink: 0;
+}
+
+@include screenSize(lg) {
+  .spacer {
+    display: none;
+  }
+}
+
+@include screenSize(md) {
+  .poster {
+    @include sizes(220px);
+  }
+}
+
+@include screenSize(md-sm) {
+  .container {
+    grid-template-areas:
+    "area2"
+    "area1"
+    "area3";
+    grid-template-columns: 1fr;
+  }
+
+  .poster {
+    @include sizes(100%);
+  }
+}

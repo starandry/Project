@@ -1,5 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchMovies, Movie, fetchHighRatedMovies } from '../../services/movieService.ts';
+import { fetchMovies, Movie, fetchHighRatedMovies, fetchMovieDetails } from '../../services/movieService.ts';
+
+export const fetchMovieDetailsAsync = createAsyncThunk(
+    'movies/fetchMovieDetails',
+    async (imdbID: string) => {
+        return await fetchMovieDetails(imdbID);
+    }
+);
 
 export const fetchMoviesAsync = createAsyncThunk(
     'movies/fetchMovies',
@@ -26,6 +33,7 @@ const moviesSlice = createSlice({
     name: 'movies',
     initialState: {
         movies: [] as Movie[],
+        movieDetails: null as Movie | null,
         loading: false,
         error: null as string | null,
         page: 1,
@@ -33,7 +41,10 @@ const moviesSlice = createSlice({
     reducers: {
         incrementPage(state) {
             state.page += 1;
-        }
+        },
+        clearMovieDetails(state) {
+            state.movieDetails = null;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -72,9 +83,22 @@ const moviesSlice = createSlice({
             .addCase(fetchHighRatedMoviesAsync.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message || 'Не удалось загрузить фильмы с высоким рейтингом';
+            })
+            .addCase(fetchMovieDetailsAsync.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+                state.movieDetails = null;
+            })
+            .addCase(fetchMovieDetailsAsync.fulfilled, (state, action) => {
+                state.loading = false;
+                state.movieDetails = action.payload;
+            })
+            .addCase(fetchMovieDetailsAsync.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message || 'Не удалось загрузить детали фильма';
             });
     },
 });
 
-export const { incrementPage } = moviesSlice.actions;
+export const { incrementPage, clearMovieDetails } = moviesSlice.actions;
 export default moviesSlice.reducer;
