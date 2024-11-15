@@ -5,12 +5,13 @@ import { fetchMovieDetailsAsync, clearMovieDetails, fetchRecommendedMoviesAsync 
 import { RootState, AppDispatch  } from '../../../stores/store.ts';
 import styles from './movieDetails.module.scss';
 import { MovieDetails as MovieDetailsType } from '../../../services/movieService.ts';
-import { Movie, fetchRecommendedMovies } from "../../../services/movieService";
+import { Movie } from "../../../services/movieService";
 import {Wrapper} from "../Wrapper";
 import {Spacer} from "../../UI/Spacer";
 import {FavouriteIcon, IMDbBadge, ShareIcon} from "../../UI/Icon/icon.component.tsx";
 import {toggleFavourite} from "../../../stores/slices/favouritesSlice.ts";
-import {MovieCard} from "../../UI/MovieCard";
+import {CardSlider} from "../CardSlider";
+import {SubTitle} from "../../UI/SubTitle";
 
 const MovieDetails: React.FC = () => {
     const { imdbID } = useParams<{ imdbID: string }>();
@@ -60,24 +61,10 @@ const MovieDetails: React.FC = () => {
         }
     }, [dispatch, movieDetails]);
 
-    useEffect(() => {
-        const testFetchRecommendedMovies = async () => {
-            try {
-                const genres = ['Action', 'Adventure'];
-                const recommendedMovies = await fetchRecommendedMovies(genres);
-                console.log('Рекомендованные фильмы:', recommendedMovies);
-            } catch (error) {
-                console.error('Ошибка при получении рекомендованных фильмов:', error);
-            }
-        };
-
-        testFetchRecommendedMovies();
-    }, []);
-
     if (loading) return <p>Загрузка...</p>;
     if (error) return <p>{error}</p>;
     if (!movieDetails) return null;
-    console.log(recommendedMovies);
+
     return (
         <Wrapper>
             <Wrapper className={styles.movieDetails}>
@@ -124,17 +111,13 @@ const MovieDetails: React.FC = () => {
                             <span>Director:</span><p>{movieDetails.Director}</p>
                             <span>Writers:</span><p>{movieDetails.Writer}</p>
                         </Wrapper>
+                        <Wrapper className={styles.wrapCardSlider}>
+                            <SubTitle text={'Recommendations'}/>
+                            <CardSlider cards={recommendedMovies}/>
+                        </Wrapper>
                     </Wrapper>
                 </Wrapper>
                 <Spacer className={styles.spacer}/>
-            </Wrapper>
-            <Wrapper className={styles.wrappSlider}>
-                {recommendedMovies.map((movie) => (
-                    <Wrapper className={styles.test}>
-                        <MovieCard key={movie.imdbID} movie={movie} />
-                    </Wrapper>
-
-                ))}
             </Wrapper>
         </Wrapper>
     );

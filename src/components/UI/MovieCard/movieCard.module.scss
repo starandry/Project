@@ -20,6 +20,10 @@
     max-height: 390px;
   }
 
+  .moviePoster {
+    @include sizes(100%);
+  }
+
   .info {
     padding: 10px;
 
@@ -35,6 +39,10 @@
       @include fonts(600, 16px, #AFB2B6, 24px);
     }
   }
+}
+
+.seriesCard {
+  @include sizes(245px);
 }
 
 .raiting, .lowRaiting, .middleRating {

@@ -25,7 +25,7 @@ const Main: React.FC = () => {
         dispatch(loadMoreMoviesAsync(page));
     };
 
-    if (currentPath === '/trends' || currentPath === '/favorites' || currentPath === '/settings') {
+    if (currentPath === '/trends' || currentPath === '/favorites' || currentPath === '/settings' || currentPath.startsWith('/movie/')) {
         btnClas = `${styles.showMoreButton} ${styles.btnNone}`;
         customFooter = styles.customFooter;
     } else {

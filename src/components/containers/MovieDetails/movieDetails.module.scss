@@ -23,6 +23,8 @@
 }
 
 .movieInfo {
+  @include rowing(null, null, column);
+  @include sizes(null, 125%);
   grid-area: area3;
 }
 
@@ -97,8 +99,9 @@
   @include rowing();
 }
 
-.test {
-  @include sizes(220px);
+.wrapCardSlider {
+  @include sizes(58vw);
+  margin-top: auto;
 }
 
 .spacer {

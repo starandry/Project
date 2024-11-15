@@ -61,10 +61,19 @@ export const fetchMovieDetails = async (imdbID: string): Promise<Movie> => {
 
 export const fetchRecommendedMovies = async (genres: string[]): Promise<Movie[]> => {
     const genre = genres[0]; // первый жанр для запроса
-    const response = await axios.get(`${API_URL}&s=${genre}&type=movie`);
+    const movies: { imdbID: string }[] = [];
 
-    if (response.data.Response === 'True') {
-        const movies = response.data.Search;
+
+
+        // до 20 фильмов (2 страницs по 10 фильмов)
+        for (let page = 1; page <= 2; page++) {
+            const response = await axios.get(`${API_URL}&s=${genre}&type=movie&page=${page}`);
+            if (response.data.Response === 'True') {
+                movies.push(...response.data.Search);
+            } else {
+                break;
+            }
+        }
 
         // детали для каждого фильма, чтобы узнать жанры
         const detailedMoviesPromises = movies.map(async (movie: { imdbID: string }) => {
@@ -82,7 +91,5 @@ export const fetchRecommendedMovies = async (genres: string[]): Promise<Movie[]>
             const matchingGenres = genres.filter(genre => movieGenres.includes(genre));
             return matchingGenres.length >= 2;
         });
-    } else {
-        throw new Error(response.data.Error);
-    }
+
 };

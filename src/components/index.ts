@@ -12,6 +12,7 @@ export * from './containers/LoginFormAfterPasswordChange';
 export * from './containers/MovieGallery';
 export * from './containers/UserSettings';
 export * from './containers/MovieDetails';
+export * from './containers/CardSlider';
 export * from './UI/Сopyright';
 export * from './UI/MovieCard';
 export * from './UI/SectionTitle';

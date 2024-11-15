@@ -5,15 +5,7 @@ import {FavouriteIcon, FireIcon} from "../Icon/icon.component.tsx";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../stores/store.ts";
 import {toggleFavourite} from "../../../stores/slices/favouritesSlice.ts";
-
-type Movie = {
-    imdbID: string;
-    Title: string;
-    Year: string;
-    Poster: string;
-    Genre: string;
-    imdbRating: string;
-};
+import { Movie } from '../../../types';
 
 type MovieCardProps = {
     movie: Movie;
@@ -25,7 +17,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
     const rating = parseFloat(movie.imdbRating);
     const isDark = useSelector((state: RootState) => state.theme.isDark);
     const currentPath = location.pathname;
-    let ratingClass, posterClass, fireIconClass, compTitle;
+    let ratingClass, posterClass, fireIconClass, compTitle, seriesCard;
 
     if (isDark) {
         compTitle = styles.title;
@@ -54,18 +46,23 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
         posterClass = `${styles.poster} ${styles.trendsPoster}`;
         fireIconClass = `${styles.fireIcon} ${styles.trendsFireIcon}`;
         ratingClass += ` ${styles.raitingTrends}`
+        seriesCard = styles.movieCard;
     } else if (location.pathname === '/favorites' && !isFavourite) {
         return null //карточка не показывается
     } else if (currentPath === '/favorites') {
         posterClass = `${styles.poster} ${styles.trendsPoster}`;
+    } else if (currentPath.startsWith('/movie/')) {
+        posterClass = `${styles.poster} ${styles.moviePoster}`;
+        seriesCard = `${styles.movieCard} ${styles.seriesCard}`;
     } else {
         posterClass = styles.poster;
         fireIconClass = styles.fireIcon;
+        seriesCard = styles.movieCard;
     }
 
 
     return (
-        <div className={styles.movieCard}>
+        <div className={seriesCard}>
             <span className={ratingClass}>
                 <FireIcon className={fireIconClass}/>
                 <span>{movie.imdbRating}</span>
