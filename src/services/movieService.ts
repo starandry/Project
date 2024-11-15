@@ -58,3 +58,31 @@ export const fetchMovieDetails = async (imdbID: string): Promise<Movie> => {
         throw new Error(response.data.Error);
     }
 };
+
+export const fetchRecommendedMovies = async (genres: string[]): Promise<Movie[]> => {
+    const genre = genres[0]; // первый жанр для запроса
+    const response = await axios.get(`${API_URL}&s=${genre}&type=movie`);
+
+    if (response.data.Response === 'True') {
+        const movies = response.data.Search;
+
+        // детали для каждого фильма, чтобы узнать жанры
+        const detailedMoviesPromises = movies.map(async (movie: { imdbID: string }) => {
+            const detailsResponse = await axios.get(`${API_URL}&i=${movie.imdbID}`);
+            return detailsResponse.data;
+        });
+
+        const detailedMovies = await Promise.all(detailedMoviesPromises);
+
+        //фильмы, у которых хотя бы два жанра совпадают
+        return detailedMovies.filter((movie: Movie) => {
+            // жанры кот  есть  у найденного фильма
+            const movieGenres = movie.Genre.split(',').map(genre => genre.trim());
+            //жанры кот  совпадают  с исходным фильмом
+            const matchingGenres = genres.filter(genre => movieGenres.includes(genre));
+            return matchingGenres.length >= 2;
+        });
+    } else {
+        throw new Error(response.data.Error);
+    }
+};

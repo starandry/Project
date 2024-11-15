@@ -30,6 +30,24 @@
   border-radius: 20px;
 }
 
+.iconPanel {
+  @include rowing(center);
+  @include sizes(100%, 60px);
+  margin-top: 30px;
+  border-radius: 10px;
+  background-color: #323537;
+}
+
+.divider {
+  @include sizes(2px);
+  background-color: #000;
+}
+
+.wrapFavourite, .wrapShare {
+  @include rowing(center,center);
+  flex-grow: 1;
+}
+
 .genre {
   @include fonts(500, 16px, #AFB2B6, 24px);
 }
@@ -73,6 +91,14 @@
   > p {
     @include fonts(500, 16px, #fff, 24px);
   }
+}
+
+.wrappSlider {
+  @include rowing();
+}
+
+.test {
+  @include sizes(220px);
 }
 
 .spacer {

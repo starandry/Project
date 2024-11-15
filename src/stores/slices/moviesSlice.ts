@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchMovies, Movie, fetchHighRatedMovies, fetchMovieDetails } from '../../services/movieService.ts';
+import { fetchMovies, Movie, fetchHighRatedMovies, fetchMovieDetails, fetchRecommendedMovies  } from '../../services/movieService.ts';
 
 export const fetchMovieDetailsAsync = createAsyncThunk(
     'movies/fetchMovieDetails',
@@ -29,6 +29,13 @@ export const fetchHighRatedMoviesAsync = createAsyncThunk(
     }
 );
 
+export const fetchRecommendedMoviesAsync = createAsyncThunk(
+    'movies/fetchRecommendedMovies',
+    async (genres: string[]) => {
+        return await fetchRecommendedMovies(genres);
+    }
+);
+
 const moviesSlice = createSlice({
     name: 'movies',
     initialState: {
@@ -37,6 +44,7 @@ const moviesSlice = createSlice({
         loading: false,
         error: null as string | null,
         page: 1,
+        recommendedMovies: [] as Movie[],
     },
     reducers: {
         incrementPage(state) {
@@ -96,6 +104,18 @@ const moviesSlice = createSlice({
             .addCase(fetchMovieDetailsAsync.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message || 'Не удалось загрузить детали фильма';
+            })
+            .addCase(fetchRecommendedMoviesAsync.pending, (state) => {
+                    state.loading = true;
+                    state.error = null;
+                })
+            .addCase(fetchRecommendedMoviesAsync.fulfilled, (state, action) => {
+                state.loading = false;
+                state.recommendedMovies = action.payload;
+            })
+            .addCase(fetchRecommendedMoviesAsync.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message || 'Не удалось загрузить рекомендации';
             });
     },
 });
