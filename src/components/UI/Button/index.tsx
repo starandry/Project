@@ -21,6 +21,3 @@ const Button: FC<ButtonProps> = ({ className = '', type = 'submit', children, on
 };
 
 export { Button };
-
-
-

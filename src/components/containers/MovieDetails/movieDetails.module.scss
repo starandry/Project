@@ -100,7 +100,8 @@
 }
 
 .wrapCardSlider {
-  @include sizes(58vw);
+  @include sizes(57vw);
+  overflow: hidden;
   margin-top: auto;
 }
 

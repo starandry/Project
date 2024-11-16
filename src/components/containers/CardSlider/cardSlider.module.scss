@@ -1,5 +1,26 @@
 @use '../../../styles/mixins' as *;
 
 .wrapSlider {
-  @include sizes(290px);
+
+}
+
+.customPrev {
+  right: 70px;
+}
+
+.customNext {
+  right: 30px;
+}
+
+.customPrev, .customNext {
+  position: absolute;
+  top: -60px;
+  border: 0;
+  cursor: pointer;
+  background-color: #000;
+}
+
+.disabled svg path {
+  fill: #AFB2B6;
+  cursor: not-allowed;
 }
