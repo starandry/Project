@@ -23,8 +23,6 @@
 }
 
 .movieInfo {
-  @include rowing(null, null, column);
-  @include sizes(null, 125%);
   grid-area: area3;
 }
 
@@ -102,7 +100,8 @@
 .wrapCardSlider {
   @include sizes(57vw);
   overflow: hidden;
-  margin-top: auto;
+  padding-top: 12vh;
+  margin-left: auto;
 }
 
 .spacer {

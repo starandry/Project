@@ -111,13 +111,13 @@ const MovieDetails: React.FC = () => {
                             <span>Director:</span><p>{movieDetails.Director}</p>
                             <span>Writers:</span><p>{movieDetails.Writer}</p>
                         </Wrapper>
-                        <Wrapper className={styles.wrapCardSlider}>
-                            <SubTitle text={'Recommendations'}/>
-                            <CardSlider cards={recommendedMovies}/>
-                        </Wrapper>
                     </Wrapper>
                 </Wrapper>
                 <Spacer className={styles.spacer}/>
+            </Wrapper>
+            <Wrapper className={styles.wrapCardSlider}>
+                <SubTitle text={'Recommendations'}/>
+                <CardSlider cards={recommendedMovies}/>
             </Wrapper>
         </Wrapper>
     );
