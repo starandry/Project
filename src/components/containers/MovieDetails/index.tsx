@@ -66,7 +66,7 @@ const MovieDetails: React.FC = () => {
     if (!movieDetails) return null;
 
     return (
-        <Wrapper>
+        <Wrapper className={styles.wrappMovieDetails}>
             <Wrapper className={styles.movieDetails}>
                 <Wrapper className={styles.container}>
                     <Wrapper className={styles.wrappPoster}>
@@ -115,9 +115,12 @@ const MovieDetails: React.FC = () => {
                 </Wrapper>
                 <Spacer className={styles.spacer}/>
             </Wrapper>
-            <Wrapper className={styles.wrapCardSlider}>
-                <SubTitle text={'Recommendations'}/>
-                <CardSlider cards={recommendedMovies}/>
+            <Wrapper className={styles.wrappRecommended}>
+                <Spacer className={styles.recommendedSpacer}/>
+                <Wrapper className={styles.wrapCardSlider}>
+                    <SubTitle text={'Recommendations'}/>
+                    <CardSlider cards={recommendedMovies}/>
+                </Wrapper>
             </Wrapper>
         </Wrapper>
     );

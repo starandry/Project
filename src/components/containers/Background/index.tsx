@@ -17,6 +17,8 @@ const Background: React.FC<BackgroundProps> = ({ children }) => {
 
     if(currentPath === '/settings') {
         compBackground = `${styles.background} ${styles.backgroundSettings}`;
+    } else if (currentPath.startsWith('/movie/')) {
+        compBackground = `${styles.background} ${styles.backgroundMovie}`;
     } else {
         compBackground = `${styles.background}`;
     }

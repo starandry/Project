@@ -7,6 +7,10 @@
     overflow: hidden;
 }
 
+.backgroundMovie {
+    overflow: auto;
+}
+
 @include screenSize(md) {
     .background {
         @include rowing(null, null, column);

@@ -1,5 +1,10 @@
 @use '../../../styles/mixins' as *;
 
+.wrappMovieDetails {
+  @include rowing(space-between, null, column);
+  @include sizes(null, 1250px);
+}
+
 .movieDetails {
   @include rowing();
 }
@@ -100,13 +105,20 @@
 .wrapCardSlider {
   @include sizes(57vw);
   overflow: hidden;
-  padding-top: 12vh;
-  margin-left: auto;
+  padding-top: 4vh;
 }
 
 .spacer {
   @include sizes(234px);
   flex-shrink: 0;
+}
+
+.wrappRecommended {
+  @include rowing();
+}
+
+.recommendedSpacer {
+  @include sizes(320px);
 }
 
 @include screenSize(lg) {
