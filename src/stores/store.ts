@@ -3,6 +3,7 @@ import pathsReducer from './slices/pathSlice.ts';
 import moviesReducer from './slices/moviesSlice';
 import favouritesReducer from './slices/favouritesSlice';
 import themeReducer from './slices/themeSlice.ts';
+import filtersReducer from './slices/filtersSlice.ts';
 
 export const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
         movies: moviesReducer,
         favourites: favouritesReducer,
         theme: themeReducer,
+        filters: filtersReducer,
     },
 });
 
