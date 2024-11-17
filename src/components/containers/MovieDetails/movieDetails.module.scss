@@ -63,6 +63,16 @@
   padding-bottom: 25px;
 }
 
+.titleLight {
+  color: #000;
+}
+
+.movieInfo {
+  .plotLight, .desc {
+    color: #000;
+  }
+}
+
 .infoBadges {
   @include rowing();
 }
@@ -107,6 +117,10 @@
   @include sizes(57vw);
   overflow: hidden;
   padding-top: 4vh;
+
+  .recLight {
+    color: #000;
+  }
 }
 
 .spacer {
@@ -116,6 +130,11 @@
 
 .wrappRecommended {
   @include rowing();
+}
+
+.movieRecommend {
+  @include fonts(600, 24px, #fff, 36px);
+  padding: 0 0 30px 25px;
 }
 
 .recommendedSpacer {
@@ -149,8 +168,25 @@
 }
 
 @include screenSize(md) {
+
+  .title {
+    @include fonts(600, 32px, #fff, 48px);
+  }
+
   .poster {
     @include sizes((calc(120px + 13vw)));
+  }
+
+  .wrappMovieDetails {
+    @include sizes(null, 1310px)
+  }
+
+  .movieRecommend {
+    padding: 0 0 40px 25px;
+  }
+
+  .wrapCardSlider {
+    @include sizes(54vw);
   }
 }
 
@@ -163,7 +199,30 @@
     grid-template-columns: 1fr;
   }
 
+  .title {
+    @include fonts(600, 28px, #fff, 42px);
+  }
+
   .poster {
     @include sizes(100%);
+  }
+
+  .wrapCardSlider {
+    padding: 4vh 0;
+  }
+
+  .recommendedSpacer {
+    display: none;
+  }
+
+  .movieRecommend {
+    padding-left: 0;
+    font-size: 20px;
+  }
+}
+
+@include screenSize(xs) {
+  .wrapCardSlider {
+    padding-bottom: 2vh;
   }
 }

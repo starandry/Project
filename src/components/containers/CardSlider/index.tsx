@@ -35,8 +35,6 @@ const CardSlider: React.FC<SliderProps> = ({ cards }) => {
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
-     /*   centerMode: true,
-        centerPadding: "80px", */
         beforeChange: (oldIndex, newIndex) => {
             setIsPrevDisabled(newIndex === 0);
             setIsNextDisabled(newIndex >= cards.length - 4);
@@ -56,14 +54,12 @@ const CardSlider: React.FC<SliderProps> = ({ cards }) => {
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 2.2,
                     slidesToScroll: 1,
-
-                    centerPadding: "80px" // Добавляет отступ для выступов
                 }
             },
             {
-                breakpoint: 480,
+                breakpoint: 630,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1

@@ -9,3 +9,9 @@
 .slick-slide {
  @include rowing(center);
 }
+
+@include screenSize(md-sm) {
+  .slick-track {
+    gap: unset;
+  }
+}

@@ -5,11 +5,15 @@
 }
 
 .customPrev {
-  right: 70px;
+  right: 50px;
 }
 
 .customNext {
-  right: 30px;
+  right: 10px;
+}
+
+.btnLight {
+  background-color: #fff;
 }
 
 .customPrev, .customNext {
@@ -23,4 +27,24 @@
 .disabled svg path {
   fill: #AFB2B6;
   cursor: not-allowed;
+}
+
+@include screenSize(md) {
+  .customPrev {
+    right: 75px;
+  }
+
+  .customNext {
+    right: 45px;
+  }
+}
+
+@include screenSize(md-sm) {
+  .customPrev {
+    right: 45px;
+  }
+
+  .customNext {
+    right: 15px;
+  }
 }

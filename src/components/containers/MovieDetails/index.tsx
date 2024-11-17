@@ -20,6 +20,18 @@ const MovieDetails: React.FC = () => {
     const recommendedMovies = useSelector((state: RootState) => state.movies.recommendedMovies as Movie[]);
     const loading = useSelector((state: RootState) => state.movies.loading);
     const error = useSelector((state: RootState) => state.movies.error);
+    const isDark = useSelector((state: RootState) => state.theme.isDark);
+    let titleMovie, plotMovie, recMovie;
+
+    if (isDark) {
+        titleMovie = styles.title;
+        plotMovie = styles.plot;
+        recMovie = styles.movieRecommend;
+    } else {
+        titleMovie = `${styles.title} ${styles.titleLight}`;
+        plotMovie = `${styles.plot} ${styles.plotLight}`;
+        recMovie = `${styles.movieRecommend} ${styles.recLight}`;
+    }
 
     const handleFavouriteClick = () => {
         dispatch(toggleFavourite(movieDetails));
@@ -85,7 +97,7 @@ const MovieDetails: React.FC = () => {
                     </Wrapper>
                     <Wrapper className={styles.movieHeader}>
                         <p className={styles.genre}>{movieDetails.Genre.split(',').map(genre => genre.trim()).join(' • ')}</p>
-                        <h2 className={styles.title}>{movieDetails.Title}</h2>
+                        <h2 className={titleMovie}>{movieDetails.Title}</h2>
                         <Wrapper className={styles.infoBadges}>
                 <span className={styles.rating}>
                     <span>{movieDetails.imdbRating}</span>
@@ -100,16 +112,16 @@ const MovieDetails: React.FC = () => {
                         </Wrapper>
                     </Wrapper>
                     <Wrapper className={styles.movieInfo}>
-                        <p className={styles.plot}>{movieDetails.Plot}</p>
+                        <p className={plotMovie}>{movieDetails.Plot}</p>
                         <Wrapper className={styles.detailsWrap}>
-                            <span>Year:</span><p>{movieDetails.Year}</p>
-                            <span>Released:</span><p>{movieDetails.Released}</p>
-                            <span>BoxOffice:</span><p>{movieDetails.BoxOffice}</p>
-                            <span>Country:</span><p>{movieDetails.Country}</p>
-                            <span>Production:</span><p>{movieDetails.Production}</p>
-                            <span>Actors:</span><p>{movieDetails.Actors}</p>
-                            <span>Director:</span><p>{movieDetails.Director}</p>
-                            <span>Writers:</span><p>{movieDetails.Writer}</p>
+                            <span>Year:</span><p className={styles.desc}>{movieDetails.Year}</p>
+                            <span>Released:</span><p className={styles.desc}>{movieDetails.Released}</p>
+                            <span>BoxOffice:</span><p className={styles.desc}>{movieDetails.BoxOffice}</p>
+                            <span>Country:</span><p className={styles.desc}>{movieDetails.Country}</p>
+                            <span>Production:</span><p className={styles.desc}>{movieDetails.Production}</p>
+                            <span>Actors:</span><p className={styles.desc}>{movieDetails.Actors}</p>
+                            <span>Director:</span><p className={styles.desc}>{movieDetails.Director}</p>
+                            <span>Writers:</span><p className={styles.desc}>{movieDetails.Writer}</p>
                         </Wrapper>
                     </Wrapper>
                 </Wrapper>
@@ -118,7 +130,7 @@ const MovieDetails: React.FC = () => {
             <Wrapper className={styles.wrappRecommended}>
                 <Spacer className={styles.recommendedSpacer}/>
                 <Wrapper className={styles.wrapCardSlider}>
-                    <SubTitle text={'Recommendations'}/>
+                    <SubTitle className={recMovie} text={'Recommendations'}/>
                     <CardSlider cards={recommendedMovies}/>
                 </Wrapper>
             </Wrapper>
