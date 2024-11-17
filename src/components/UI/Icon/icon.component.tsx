@@ -12,6 +12,8 @@ export const Logo = ({ width = '158', height = '40' }) => {
 
     if (currentPath === '/trends' || currentPath === '/favorites'|| currentPath === '/settings') {
         logoIcon = `${styles.logo} ${styles.logoTrends}`;
+    } else if (currentPath.startsWith('/movie/')) {
+        logoIcon = `${styles.logo} ${styles.logoMovie}`;
     } else {
         logoIcon = `${styles.logo}`;
     }

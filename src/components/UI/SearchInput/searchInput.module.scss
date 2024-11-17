@@ -29,9 +29,19 @@
   background: none;
 }
 
+@include screenSize(md) {
+  .searchInput {
+    @include sizes(155px);
+  }
+}
+
 @include screenSize(md-sm) {
   .searchInputContainer {
     order: 2;
     margin-top: 30px;
+  }
+
+  .searchInput {
+    @include sizes(unset);
   }
 }

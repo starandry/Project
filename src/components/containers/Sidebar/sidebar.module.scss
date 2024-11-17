@@ -69,6 +69,10 @@
   .settingsSidebar {
     @include sizes(null, calc(100vh - 110px));
   }
+
+  .movieSidebar {
+    @include sizes(null, calc(100vh - 180px));
+  }
 }
 
 @include screenSize(md-sm) {

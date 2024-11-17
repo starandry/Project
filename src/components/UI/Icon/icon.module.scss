@@ -12,6 +12,10 @@
   .logo {
     margin-right: 5vw;
   }
+
+  .logoMovie {
+    margin-right: 13vw;
+  }
 }
 
 @include screenSize(md-sm) {

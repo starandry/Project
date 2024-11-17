@@ -150,7 +150,7 @@
 
 @include screenSize(md) {
   .poster {
-    @include sizes(220px);
+    @include sizes((calc(120px + 13vw)));
   }
 }
 
