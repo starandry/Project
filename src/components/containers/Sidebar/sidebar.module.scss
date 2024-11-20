@@ -1,0 +1,97 @@
+@use '../../../styles/mixins' as *;
+
+.navItem {
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #8c61ff; // Цвет при наведении
+  }
+}
+
+.menuLink {
+  @include rowing(null, center);
+  padding-bottom: 40px;
+}
+
+.text {
+  @include fonts(600, 18px, #80858B, 24px);
+  padding-left: 25px;
+}
+
+.active {
+  .text {
+    color: #8c61ff;
+  }
+
+  svg path {
+    fill: #8c61ff;
+  }
+}
+
+.sidebarWrapp {
+  @include rowing();
+  @include sizes(null, calc(100vh - 216px));
+  padding: 49px 0;
+
+  nav {
+    padding-right: 30px;
+    margin-right: 11vw;
+  }
+}
+
+.trendsSidebar {
+  nav {
+    margin-right: 9vw;
+  }
+}
+
+.movieSidebar {
+  padding: 50px 0 0;
+}
+
+@include screenSize(lg) {
+  .sidebarWrapp nav {
+    display: none;
+  }
+}
+
+@include screenSize(md) {
+  .sidebarWrapp {
+    @include sizes(null, calc(100vh - 232px));
+  }
+
+  .trendsSidebar {
+   @include rowing(null, null, column);
+   @include sizes(null, calc(100vh - 90px));
+  }
+
+  .settingsSidebar {
+    @include sizes(null, calc(100vh - 110px));
+  }
+
+  .movieSidebar {
+    @include sizes(null, calc(100vh - 180px));
+  }
+}
+
+@include screenSize(md-sm) {
+  .sidebarWrapp {
+    @include sizes(null, calc(100vh - 276px));
+  }
+
+  .settingsSidebar {
+    @include sizes(null, calc(100vh - 210px));
+    padding: 35px 0 0;
+  }
+}
+
+@include screenSize(xs) {
+  .sidebarWrapp {
+    @include sizes(null, calc(100vh - 232px));
+  }
+
+  .settingsSidebar {
+    @include sizes(null, calc(100vh - 210px));
+  }
+}

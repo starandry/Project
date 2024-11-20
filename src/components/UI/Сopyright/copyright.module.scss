@@ -1,0 +1,34 @@
+@use '../../../styles/mixins' as *;
+
+.copyright {
+  @include fonts(500, 16px, #AFB2B6, 24px);
+  padding-bottom: 65px;
+}
+
+.sidebarCopyright {
+  position: absolute;
+  left: 0;
+  padding: 0;
+}
+
+.settCopyright {
+  color: #AFB2B6;
+}
+
+@include screenSize(lg) {
+  .settCopyright {
+    display: none;
+  }
+}
+
+@include screenSize(md) {
+  .copyright {
+    display: none;
+  }
+}
+
+@include screenSize(sm) {
+  .copyright {
+    padding-bottom: 0;
+  }
+}

@@ -1,0 +1,10 @@
+@use '../../../styles/mixins' as *;
+
+.header {
+  @include rowing(end, center);
+  padding-bottom: 10px;
+
+  @media (max-width: 730px) {
+    flex-wrap: wrap;
+  }
+}

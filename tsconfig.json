@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": true, //Предупреждает о неиспользуемых локальных переменных
+        "noUnusedParameters": true, //Предупреждает о неиспользуемых параметрах функций
+        "noFallthroughCasesInSwitch": true, //Предотвращает случайное выполнение кода в следующем блоке case в выражениях switch
+        "noUncheckedSideEffectImports": true //Предупреждает о возможных побочных эффектах при импорте модулей
+    },
+    "files": [],
+    "references": [
+        {
+            "path": "./tsconfig.app.json"
+        }, //настройки для клиентской части
+        {
+            "path": "./tsconfig.node.json"
+        } //настройки для серверной части
+    ]
+}

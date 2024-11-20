@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        //параметры компилятора
+        "target": "ES2020",
+        "useDefineForClassFields": true, //инициализация полей классов происходит с помощью defineProperty
+        "lib": ["ES2020", "DOM", "DOM.Iterable"],
+        "module": "ESNext",
+        "skipLibCheck": true, //Отключает проверку типов в файлах библиотек (нод модуля)
+
+        /* Bundler mode */
+        "moduleResolution": "Bundler", //использовать режим разрешения модулей, совместимый с vite
+        "allowImportingTsExtensions": true, //Разрешает явное указание расширений .ts при импорте модулей
+        "isolatedModules": true, //Гарантирует, что каждый файл компилируется отдельно, как если бы он был модулем
+        "moduleDetection": "force", //Принуждает компилятор считать все файлы с импортами или экспортами модулями
+        "noEmit": true, //Отключает генерацию файлов JavaScript это  для vite
+        "jsx": "react-jsx" //Указывает поддержку нового JSX-трансформера React, который не требует явного импорта React в каждом файле.
+    },
+    "include": ["src"] //TypeScript будет обрабатывать только файлы внутри папки src
+}

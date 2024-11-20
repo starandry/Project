@@ -1,0 +1,39 @@
+@use '../../styles/mixins' as *;
+
+.showMoreButton {
+  @include rowing(center, center);
+  @include fonts(500, 16px, #fff, 24px);
+  position: absolute;
+  right: 35%;
+  padding: 10px 25px;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  background-color: #323537;
+
+  > span {
+    padding-right: 10px;
+  }
+}
+
+.btnNone {
+  display: none;
+}
+
+.btnDark {
+  background-color: #323537;
+}
+
+.btnLigth {
+  background-color: #AFB2B6;
+}
+
+@include screenSize(md) {
+  .showMoreButton {
+    right: unset;
+  }
+
+  .customFooter {
+    display: none;
+  }
+}

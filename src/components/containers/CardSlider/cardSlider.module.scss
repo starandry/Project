@@ -1,0 +1,50 @@
+@use '../../../styles/mixins' as *;
+
+.wrapSlider {
+
+}
+
+.customPrev {
+  right: 50px;
+}
+
+.customNext {
+  right: 10px;
+}
+
+.btnLight {
+  background-color: #fff;
+}
+
+.customPrev, .customNext {
+  position: absolute;
+  top: -60px;
+  border: 0;
+  cursor: pointer;
+  background-color: #000;
+}
+
+.disabled svg path {
+  fill: #AFB2B6;
+  cursor: not-allowed;
+}
+
+@include screenSize(md) {
+  .customPrev {
+    right: 75px;
+  }
+
+  .customNext {
+    right: 45px;
+  }
+}
+
+@include screenSize(md-sm) {
+  .customPrev {
+    right: 45px;
+  }
+
+  .customNext {
+    right: 15px;
+  }
+}
