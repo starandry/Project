@@ -93,3 +93,22 @@ export const fetchRecommendedMovies = async (genres: string[]): Promise<Movie[]>
         });
 
 };
+
+export const fetchMoviesBySearch = async (query: string, page: number = 1): Promise<Movie[]> => {
+    if (!query) {
+        throw new Error("Search query cannot be empty");
+    }
+
+    const response = await axios.get(`${API_URL}&s=${encodeURIComponent(query)}&type=movie&page=${page}`);
+
+    if (response.data.Response === 'True') {
+        const movieDetailsPromises = response.data.Search.map(async (movie: { imdbID: string }) => {
+            const detailsResponse = await axios.get(`${API_URL}&i=${movie.imdbID}`);
+            return detailsResponse.data;
+        });
+
+        return await Promise.all(movieDetailsPromises);
+    } else {
+        throw new Error(response.data.Error || "No movies found");
+    }
+};

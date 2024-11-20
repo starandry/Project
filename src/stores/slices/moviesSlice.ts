@@ -1,5 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchMovies, Movie, fetchHighRatedMovies, fetchMovieDetails, fetchRecommendedMovies  } from '../../services/movieService.ts';
+import { fetchMovies, Movie, fetchHighRatedMovies, fetchMovieDetails, fetchRecommendedMovies, fetchMoviesBySearch  } from '../../services/movieService.ts';
+
+export const fetchMoviesBySearchAsync = createAsyncThunk(
+    'movies/fetchMoviesBySearch',
+    async ({ query, page }: { query: string; page: number }) => {
+        return await fetchMoviesBySearch(query, page);
+    }
+);
 
 export const fetchMovieDetailsAsync = createAsyncThunk(
     'movies/fetchMovieDetails',
@@ -116,6 +123,18 @@ const moviesSlice = createSlice({
             .addCase(fetchRecommendedMoviesAsync.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message || 'Не удалось загрузить рекомендации';
+            })
+            .addCase(fetchMoviesBySearchAsync.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(fetchMoviesBySearchAsync.fulfilled, (state, action) => {
+                state.loading = false;
+                state.movies = [...action.payload]; // Замена тек фильмов результатами поиска
+            })
+            .addCase(fetchMoviesBySearchAsync.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message || 'Не удалось найти фильмы';
             });
     },
 });
