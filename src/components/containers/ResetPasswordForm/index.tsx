@@ -29,8 +29,13 @@ const ResetPasswordForm: FC = () => {
         }
 
         try {
-            let test = await sendPasswordResetEmail(auth, email);
-            console.log(test);
+            const actionCodeSettings = {
+                url: `${window.location.origin}/password`, // URL для редиректа
+                handleCodeInApp: true, //  вход завершится в приложении
+            };
+
+            const qw = await sendPasswordResetEmail(auth, email, actionCodeSettings);
+            console.log(qw);
             setMessage('Password reset email sent!');
             setError('');
 
