@@ -7,7 +7,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../../stores/store.ts";
 import {FilterModal} from "../../containers/FilterModal";
 
-interface SearchInputProps {
+export type SearchInputProps = {
     placeholder?: string;
     onChange: (value: string) => void;
 }
@@ -17,6 +17,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ placeholder = "Search", onCha
     const compSearchInput = styles.searchInput;
     const compsearchButton = styles.searchButton;
     const isDark = useSelector((state: RootState) => state.theme.isDark);
+    const isHamburgerOpen = useSelector((state: RootState) => state.hamburger.isOpen); // Получаем состояние гамбургера
     let compWrapp;
 
     if (isDark) {
@@ -32,6 +33,14 @@ const SearchInput: React.FC<SearchInputProps> = ({ placeholder = "Search", onCha
     const handleCloseModal = () => {
         setModalOpen(false); // Закрываем модальное окно
     };
+
+    // Логика на основе состояния гамбургера
+    if (isHamburgerOpen) {
+        compWrapp = `${compWrapp} ${styles.serachHumb}`; // класс, если гамбургер открыт
+        if (window.innerWidth < 450) {
+            placeholder = '';
+        }
+    }
 
     return (
         <div className={compWrapp}>

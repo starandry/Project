@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, {useCallback, useState} from 'react';
 import {Background, Button, Copyright, Footer} from "../../components";
 import {Logo, SpinnerIcon} from "../../components/UI/Icon/icon.component.tsx";
 import {SearchInput} from "../../components/UI/SearchInput";
@@ -7,11 +7,7 @@ import {Header} from "../../components/containers/Header";
 import {Sidebar} from "../../components/containers/Sidebar";
 import styles from './main.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    fetchMoviesBySearchAsync,
-    incrementPage,
-    loadMoreMoviesAsync,
-} from '../../stores/slices/moviesSlice.ts';
+import { incrementPage, loadMoreMoviesAsync, fetchMoviesBySearchAsync } from '../../stores/slices/moviesSlice.ts';
 import {AppDispatch, RootState} from '../../stores/store';
 import {useLocation} from "react-router-dom";
 

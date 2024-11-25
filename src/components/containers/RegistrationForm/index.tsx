@@ -1,22 +1,38 @@
 import React, { FC, useState } from 'react';
 import { Button } from '../../UI/Button';
 import { Input } from '../../UI/Input';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { db } from '../../../firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, query, where, getDocs } from 'firebase/firestore';
 import styles from './registrationForm.module.scss';
+import { useDispatch } from 'react-redux';
+import { setAuthenticated } from '../../../stores/slices/authSlice.ts';
 
-type RegistrationFormProps = {
-    onToggleForm: () => void;
-    onReg: (b: boolean) => void;
-};
-
-const RegistrationForm: FC<RegistrationFormProps> = ({ onToggleForm, onReg }) => {
+const RegistrationForm: FC = () => {
     const [username, setUsername] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
+
+    // Проверка существующего пользователя по email
+    const isEmailTaken = async (email: string): Promise<boolean> => {
+        const usersRef = collection(db, "users");
+        const q = query(usersRef, where("email", "==", email));
+        const querySnapshot = await getDocs(q);
+        return !querySnapshot.empty; // true, если пользователь с таким email уже существует
+    };
+
+    // Проверка существующего пользователя по имени пользователя (username)
+    const isUsernameTaken = async (username: string): Promise<boolean> => {
+        const usersRef = collection(db, "users");
+        const q = query(usersRef, where("username", "==", username));
+        const querySnapshot = await getDocs(q);
+        return !querySnapshot.empty; // true, если пользователь с таким username уже существует
+    };
+
 
     // Функция для добавления пользователя в Firestore
     const addUserToFirestore = async () => {
@@ -45,8 +61,26 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ onToggleForm, onReg }) =>
             return;
         }
 
+        // Проверка email
+        if (await isEmailTaken(email)) {
+            setError("A user with this email already exists.");
+            return;
+        }
+
+        // Проверка username
+        if (await isUsernameTaken(username)) {
+            setError("A user with this username already exists.");
+            return;
+        }
+
         // Сохранение данных в Firebase
-        onReg(await addUserToFirestore());
+        const success = await addUserToFirestore();
+
+        if (success) {
+            setError(null); // Убираем ошибки при успешной регистрации
+            dispatch(setAuthenticated(true));
+            navigate("/");
+        }
 
     };
 
@@ -58,6 +92,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ onToggleForm, onReg }) =>
 
             <Input
                 type="text"
+                className={styles.inputUsername}
                 id="username"
                 label="Username"
                 value={username}
@@ -68,6 +103,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ onToggleForm, onReg }) =>
 
             <Input
                 type="email"
+                className={styles.inputEmail}
                 id="email"
                 label="Email"
                 value={email}
@@ -78,6 +114,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ onToggleForm, onReg }) =>
 
             <Input
                 type="password"
+                className={styles.inputPassword}
                 id="password"
                 label="Password"
                 value={password}
@@ -88,6 +125,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ onToggleForm, onReg }) =>
 
             <Input
                 type="password"
+                className={styles.inputConfirmPassword}
                 id="confirmPassword"
                 label="Confirm Password"
                 value={confirmPassword}
@@ -96,11 +134,11 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ onToggleForm, onReg }) =>
                 required
             />
 
-            <Button type="submit" className="btn-register">Sign Up</Button>
+            <Button type="submit" className={styles.btnRegister}>Sign Up</Button>
 
             <p className={styles.basement}>
                 Already have an account?
-                <Link to="#" onClick={onToggleForm} className="signinLink">Sign In</Link>
+                <Link to="/" className={styles.signLink}>Sign In</Link>
             </p>
         </form>
     );

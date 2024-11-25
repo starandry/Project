@@ -29,6 +29,12 @@
   background: none;
 }
 
+.serachHumb {
+  @include sizes(calc(100vw - 355px));
+  flex-grow: unset;
+  margin-top: 100px;
+}
+
 @include screenSize(md) {
   .searchInput {
     @include sizes(155px);
@@ -43,5 +49,11 @@
 
   .searchInput {
     @include sizes(unset);
+  }
+
+  .serachHumb {
+    @include sizes(calc(100vw - 280px));
+    margin: 100px 0 0 -40px;
+    order: 2;
   }
 }

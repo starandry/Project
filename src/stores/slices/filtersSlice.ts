@@ -1,15 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface FiltersState {
-    movieName: string;
-    genres: string[];
-    yearFrom: string;
-    yearTo: string;
-    ratingFrom: string;
-    ratingTo: string;
-    country: string;
-    sortBy: 'Rating' | 'Year' | null;
-}
+import { FiltersState } from '../../types';
 
 const initialState: FiltersState = {
     movieName: '',
@@ -20,6 +10,7 @@ const initialState: FiltersState = {
     ratingTo: '',
     country: '',
     sortBy: 'Rating',
+    showButtons: false,
 };
 
 const filtersSlice = createSlice({
@@ -35,6 +26,7 @@ const filtersSlice = createSlice({
             state.ratingTo = action.payload.ratingTo;
             state.country = action.payload.country;
             state.sortBy = action.payload.sortBy;
+            state.showButtons = action.payload.showButtons;
         },
         clearFilters(state) {
             // сброс фильтров до начальных значений
@@ -46,6 +38,7 @@ const filtersSlice = createSlice({
             state.ratingTo = '';
             state.country = '';
             state.sortBy = 'Rating';
+            state.showButtons = false;
         },
     },
 });

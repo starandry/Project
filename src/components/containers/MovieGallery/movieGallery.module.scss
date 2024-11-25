@@ -1,5 +1,9 @@
 @use '../../../styles/mixins' as *;
 
+.btnContainer {
+  @include rowing();
+}
+
 .wrapGallery {
   flex-grow: 1;
 }
