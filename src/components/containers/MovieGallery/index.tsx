@@ -1,18 +1,32 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {MovieCard} from '../../UI/MovieCard';
 import styles from './movieGallery.module.scss';
 import {useDispatch, useSelector} from 'react-redux';
-import {fetchHighRatedMoviesAsync, fetchMoviesAsync} from '../../../stores/slices/moviesSlice.ts';
+import {
+   fetchHighRatedMoviesAsync,
+   fetchMoviesAsync,
+   fetchMoviesByFilterAsync,
+} from '../../../stores/slices/moviesSlice.ts';
+import { selectFavourites } from '../../../stores/slices/favouritesSlice';
 import {AppDispatch, RootState} from '../../../stores/store.ts';
 import {useLocation} from 'react-router-dom';
 import {MIN_RATING} from "../../../constants/APIconstats.ts";
 import {SectionTitle} from "../../UI/SectionTitle";
+import ImageCard from "../ImageCard";
+import { FiltersState } from '../../../types';
+import { selectButtons, clearFilterByValue, selectFilters, clearFilters } from '../../../stores/slices/filtersSlice.ts';
+import { BigCloseIcon } from '../../UI/Icon/icon.component.tsx';
+import { Button } from '../../UI/Button';
 
 const MovieGallery: React.FC = () => {
    const dispatch = useDispatch<AppDispatch>();
    const location = useLocation();
    const { movies, loading, error, page } = useSelector((state: RootState) => state.movies);
+   const showButtons = useSelector((state: { filters: FiltersState }) => state.filters.showButtons);
+   const favourites = useSelector(selectFavourites);
    const currentPath = location.pathname;
+   const selectedButtons = useSelector(selectButtons);
+   const filters = useSelector(selectFilters);
    let galleryClass, titleHome, sectionTitleText;
 
    if (currentPath === '/trends' || currentPath === '/favorites') {
@@ -37,19 +51,56 @@ const MovieGallery: React.FC = () => {
       }
    }, [dispatch, location.pathname, page]);
 
-   if (loading && movies.length === 0) return <p>Загрузка...</p>;
+   useEffect(() =>  {
+      if (selectedButtons === '') {
+         dispatch(clearFilters());
+      }
+   });
+
+   useEffect(() => {
+      if (showButtons) {
+         dispatch(fetchMoviesByFilterAsync({ filters }));
+      }
+   }, [filters, dispatch, showButtons]);
+
+   if (loading && movies.length === 0) {
+      return <p>Загрузка...</p>;
+   }
+
+   if (currentPath === '/favorites' && favourites.length === 0) {
+      return <>
+         <ImageCard
+             imageSrc={'images/empty-state.png'}
+             altText={'Empty state'} caption={'Empty state text'}/>
+      </>
+   }
+
+   const handleBtnRemove = (btn: string) => {
+      dispatch(clearFilterByValue(btn));
+      dispatch(fetchMoviesByFilterAsync({ filters }));
+   };
+
    if (error) return <p>{error}</p>;
 
    return (
        <>
-          <SectionTitle text={sectionTitleText} className={titleHome}/>
+          <SectionTitle text={sectionTitleText} className={titleHome} />
           <div className={galleryClass}>
+             {showButtons && (
+                 <div className={styles.btnContainer}>
+                    {selectedButtons.split(', ').map((btn) => (
+                        <Button key={btn} className={styles.button}>
+                           <span className={styles.signGenre}>{btn}</span>
+                           <BigCloseIcon onClick={() => handleBtnRemove(btn)}/>
+                        </Button>
+                    ))}
+                 </div>
+             )}
              {movies.map((movie) => (
                  <MovieCard key={movie.imdbID} movie={movie} />
              ))}
           </div>
        </>
-
    );
 };
 

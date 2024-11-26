@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchMovieDetailsAsync, clearMovieDetails, fetchRecommendedMoviesAsync } from '../../../stores/slices/moviesSlice.ts';
 import { RootState, AppDispatch  } from '../../../stores/store.ts';
 import styles from './movieDetails.module.scss';
-import { MovieDetails as MovieDetailsType } from '../../../services/movieService.ts';
-import { Movie } from "../../../services/movieService";
+import { MovieDetails as MovieDetailsType } from '../../../types';
+import { Movie } from "../../../types";
 import {Wrapper} from "../Wrapper";
 import {Spacer} from "../../UI/Spacer";
 import {FavouriteIcon, IMDbBadge, ShareIcon} from "../../UI/Icon/icon.component.tsx";
@@ -21,15 +21,17 @@ const MovieDetails: React.FC = () => {
     const loading = useSelector((state: RootState) => state.movies.loading);
     const error = useSelector((state: RootState) => state.movies.error);
     const isDark = useSelector((state: RootState) => state.theme.isDark);
-    let titleMovie, plotMovie, recMovie;
+    let titleMovie, plotMovie, recMovie, descMpvie;
 
     if (isDark) {
         titleMovie = styles.title;
         plotMovie = styles.plot;
         recMovie = styles.movieRecommend;
+        descMpvie = styles.desc;
     } else {
         titleMovie = `${styles.title} ${styles.titleLight}`;
         plotMovie = `${styles.plot} ${styles.plotLight}`;
+        descMpvie = `${styles.desc} ${styles.descLight}`;
         recMovie = `${styles.movieRecommend} ${styles.recLight}`;
     }
 
@@ -114,18 +116,17 @@ const MovieDetails: React.FC = () => {
                     <Wrapper className={styles.movieInfo}>
                         <p className={plotMovie}>{movieDetails.Plot}</p>
                         <Wrapper className={styles.detailsWrap}>
-                            <span>Year:</span><p className={styles.desc}>{movieDetails.Year}</p>
-                            <span>Released:</span><p className={styles.desc}>{movieDetails.Released}</p>
-                            <span>BoxOffice:</span><p className={styles.desc}>{movieDetails.BoxOffice}</p>
-                            <span>Country:</span><p className={styles.desc}>{movieDetails.Country}</p>
-                            <span>Production:</span><p className={styles.desc}>{movieDetails.Production}</p>
-                            <span>Actors:</span><p className={styles.desc}>{movieDetails.Actors}</p>
-                            <span>Director:</span><p className={styles.desc}>{movieDetails.Director}</p>
-                            <span>Writers:</span><p className={styles.desc}>{movieDetails.Writer}</p>
+                            <span>Year:</span><p className={descMpvie}>{movieDetails.Year}</p>
+                            <span>Released:</span><p className={descMpvie}>{movieDetails.Released}</p>
+                            <span>BoxOffice:</span><p className={descMpvie}>{movieDetails.BoxOffice}</p>
+                            <span>Country:</span><p className={descMpvie}>{movieDetails.Country}</p>
+                            <span>Production:</span><p className={descMpvie}>{movieDetails.Production}</p>
+                            <span>Actors:</span><p className={descMpvie}>{movieDetails.Actors}</p>
+                            <span>Director:</span><p className={descMpvie}>{movieDetails.Director}</p>
+                            <span>Writers:</span><p className={descMpvie}>{movieDetails.Writer}</p>
                         </Wrapper>
                     </Wrapper>
                 </Wrapper>
-                <Spacer className={styles.spacer}/>
             </Wrapper>
             <Wrapper className={styles.wrappRecommended}>
                 <Spacer className={styles.recommendedSpacer}/>

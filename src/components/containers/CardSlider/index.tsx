@@ -1,17 +1,17 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {MovieCard} from "../../UI/MovieCard";
+import { MovieCard } from "../../UI/MovieCard";
 import { Movie } from '../../../types';
-import {Wrapper} from "../Wrapper";
+import { Wrapper } from "../Wrapper";
 import styles from './cardSlider.module.scss';
 import './cardSlider.scss';
-import {ArrowLeft, ArrowRigth} from "../../UI/Icon/icon.component.tsx";
+import { ArrowLeft, ArrowRigth } from "../../UI/Icon/icon.component.tsx";
 
-interface SliderProps {
+export type SliderProps = {
     cards: Movie[];
-}
+};
 
 const CustomPrevArrow = ({ onClick, disabled }: { onClick?: () => void, disabled?: boolean }) => (
     <button onClick={onClick} className={`${styles.customPrev} ${disabled ? styles.disabled : ''}`} disabled={disabled}>
@@ -35,7 +35,7 @@ const CardSlider: React.FC<SliderProps> = ({ cards }) => {
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
-        beforeChange: (oldIndex, newIndex) => {
+        beforeChange: (oldIndex: number, newIndex: number) => {
             setIsPrevDisabled(newIndex === 0);
             setIsNextDisabled(newIndex >= cards.length - 4);
         },
@@ -71,10 +71,9 @@ const CardSlider: React.FC<SliderProps> = ({ cards }) => {
     return (
         <Slider {...settings}>
             {cards.map((card) => (
-                <Wrapper className={styles.wrapSlider}>
-                    <MovieCard key={card.imdbID} movie={card} />
+                <Wrapper className={styles.wrapSlider} key={card.imdbID}>
+                    <MovieCard movie={card} wrapperClassName={'favouriteNone'}/>
                 </Wrapper>
-
             ))}
         </Slider>
     );
