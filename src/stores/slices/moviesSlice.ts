@@ -60,6 +60,7 @@ const moviesSlice = createSlice({
         error: null as string | null,
         page: 1,
         recommendedMovies: [] as Movie[],
+        search: false,
     },
     reducers: {
         incrementPage(state) {
@@ -68,6 +69,12 @@ const moviesSlice = createSlice({
         clearMovieDetails(state) {
             state.movieDetails = null;
         },
+        setSearchTrue(state) {
+            state.search = true;
+        },
+        setSearchFalse(state) {
+            state.search = false;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -159,5 +166,5 @@ const moviesSlice = createSlice({
     },
 });
 
-export const { incrementPage, clearMovieDetails } = moviesSlice.actions;
+export const { incrementPage, clearMovieDetails, setSearchTrue, setSearchFalse } = moviesSlice.actions;
 export default moviesSlice.reducer;

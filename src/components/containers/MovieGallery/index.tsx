@@ -14,14 +14,19 @@ import {MIN_RATING} from "../../../constants/APIconstats.ts";
 import {SectionTitle} from "../../UI/SectionTitle";
 import ImageCard from "../ImageCard";
 import { FiltersState } from '../../../types';
-import { selectButtons, clearFilterByValue, selectFilters, clearFilters } from '../../../stores/slices/filtersSlice.ts';
+import {
+   selectButtons,
+   selectFilters,
+   clearFilters,
+   clearFilterAndFetchMovies
+} from '../../../stores/slices/filtersSlice.ts';
 import { BigCloseIcon } from '../../UI/Icon/icon.component.tsx';
 import { Button } from '../../UI/Button';
 
 const MovieGallery: React.FC = () => {
    const dispatch = useDispatch<AppDispatch>();
    const location = useLocation();
-   const { movies, loading, error, page } = useSelector((state: RootState) => state.movies);
+   const { movies, loading, error, page, search } = useSelector((state: RootState) => state.movies);
    const showButtons = useSelector((state: { filters: FiltersState }) => state.filters.showButtons);
    const favourites = useSelector(selectFavourites);
    const currentPath = location.pathname;
@@ -44,24 +49,27 @@ const MovieGallery: React.FC = () => {
    }
 
    useEffect(() => {
+      if (showButtons) return;
+
       if (location.pathname === '/' ) {
-         dispatch(fetchMoviesAsync(page));
+         if (showButtons) {
+            dispatch(fetchMoviesByFilterAsync({ filters }));
+         } else if (search) {
+
+         }
+         if (movies.length < 10) {
+            dispatch(fetchMoviesAsync(page));
+         }
       } else if (location.pathname === '/trends') {
          dispatch(fetchHighRatedMoviesAsync({ page, minRating: MIN_RATING }))
       }
-   }, [dispatch, location.pathname, page]);
+   }, [dispatch, filters, location.pathname, page, showButtons]);
 
    useEffect(() =>  {
       if (selectedButtons === '') {
          dispatch(clearFilters());
       }
    });
-
-   useEffect(() => {
-      if (showButtons) {
-         dispatch(fetchMoviesByFilterAsync({ filters }));
-      }
-   }, [filters, dispatch, showButtons]);
 
    if (loading && movies.length === 0) {
       return <p>Загрузка...</p>;
@@ -75,9 +83,8 @@ const MovieGallery: React.FC = () => {
       </>
    }
 
-   const handleBtnRemove = (btn: string) => {
-      dispatch(clearFilterByValue(btn));
-      dispatch(fetchMoviesByFilterAsync({ filters }));
+   const handleBtnRemove = async (btn: string) => {
+      await dispatch(clearFilterAndFetchMovies(btn)).unwrap();
    };
 
    if (error) return <p>{error}</p>;

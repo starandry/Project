@@ -96,6 +96,8 @@ export const fetchMoviesByFilter = async (filters: FilterOptions): Promise<Movie
         }
         return 0; // , если `sortBy` не указан
     });
+
+
 };
 
 export const fetchHighRatedMovies = async (page: number, minRating: number): Promise<Movie[]> => {

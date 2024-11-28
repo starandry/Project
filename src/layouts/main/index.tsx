@@ -7,7 +7,7 @@ import {Header} from "../../components/containers/Header";
 import {Sidebar} from "../../components/containers/Sidebar";
 import styles from './main.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { incrementPage, loadMoreMoviesAsync, fetchMoviesBySearchAsync } from '../../stores/slices/moviesSlice.ts';
+import { incrementPage, loadMoreMoviesAsync, fetchMoviesBySearchAsync, setSearchTrue, setSearchFalse } from '../../stores/slices/moviesSlice.ts';
 import {AppDispatch, RootState} from '../../stores/store';
 import {useLocation} from "react-router-dom";
 
@@ -24,7 +24,7 @@ const debounce = (func: (...args: never[]) => void, delay: number) => {
 const Main: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const location = useLocation();
-    const { page } = useSelector((state: RootState) => state.movies);
+    const { page, search } = useSelector((state: RootState) => state.movies);
     const currentPath = location.pathname;
     const isDark = useSelector((state: RootState) => state.theme.isDark);
     const [searchTerm, setSearchTerm] = useState("");
@@ -42,11 +42,23 @@ const Main: React.FC = () => {
         btnClas = `${styles.showMoreButton}`;
     }
 
+    if (search) btnClas = `${styles.showMoreButton} ${styles.btnNone}`;
+
     if (isDark) {
         btnClas += ` ${styles.btnDark}`;
     } else {
         btnClas += ` ${styles.btnLigth}`;
     }
+
+    const handleSearchChange = () => {
+        /*setSearchTerm(value);
+        debouncedSearch();
+        if (value.length > 0) {
+            dispatch(setSearchTrue());
+        } else {
+            dispatch(setSearchFalse());
+        }*/
+    };
 
     const fetchMovies = useCallback(() => {
         dispatch(fetchMoviesBySearchAsync({ query: searchTerm, page: 1 })); // Фильтруем фильмы
@@ -55,19 +67,23 @@ const Main: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const debouncedSearch = useCallback(debounce(() => {
         fetchMovies();
-    }, 300), [fetchMovies]);
+    }, 700), [fetchMovies]);
 
-    const handleSearchChange = (value: string) => {
-        console.log("Введенное значение:", value);
+    const handleSearchInput = (value: string) => {
         setSearchTerm(value);
         debouncedSearch();
+        if (value.length > 0) {
+            dispatch(setSearchTrue());
+        } else {
+            dispatch(setSearchFalse());
+        }
     };
 
     return (
         <Background>
             <Header>
                 <Logo/>
-                <SearchInput placeholder="Search" onChange={handleSearchChange} />
+                <SearchInput placeholder="Search" onChange={handleSearchChange} onInput={handleSearchInput}/>
                 <UserProfile circleColor='#7B61FF'/>
             </Header>
             <Sidebar/>

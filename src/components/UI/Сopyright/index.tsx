@@ -13,6 +13,8 @@ const Copyright: React.FC<CopyrightProps> = ({ className }) => {
 
     if (currentPath === '/settings') {
         compCopyright = styles.settCopyright;
+    } else if (currentPath.startsWith('/movie/')) {
+        compCopyright = styles.copyrightMovie;
     } else {
         compCopyright = styles.copyright;
     }

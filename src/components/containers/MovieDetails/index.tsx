@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMovieDetailsAsync, clearMovieDetails, fetchRecommendedMoviesAsync } from '../../../stores/slices/moviesSlice.ts';
 import { RootState, AppDispatch  } from '../../../stores/store.ts';
@@ -21,18 +21,20 @@ const MovieDetails: React.FC = () => {
     const loading = useSelector((state: RootState) => state.movies.loading);
     const error = useSelector((state: RootState) => state.movies.error);
     const isDark = useSelector((state: RootState) => state.theme.isDark);
-    let titleMovie, plotMovie, recMovie, descMpvie;
+    let titleMovie, plotMovie, recMovie, descMpvie, panel;
 
     if (isDark) {
         titleMovie = styles.title;
         plotMovie = styles.plot;
         recMovie = styles.movieRecommend;
         descMpvie = styles.desc;
+        panel = styles.iconPanel;
     } else {
         titleMovie = `${styles.title} ${styles.titleLight}`;
         plotMovie = `${styles.plot} ${styles.plotLight}`;
         descMpvie = `${styles.desc} ${styles.descLight}`;
         recMovie = `${styles.movieRecommend} ${styles.recLight}`;
+        panel = `${styles.iconPanel} ${styles.iconPanelLight}`;
     }
 
     const handleFavouriteClick = () => {
@@ -87,14 +89,14 @@ const MovieDetails: React.FC = () => {
                         <img src={movieDetails.Poster !== 'N/A' ? movieDetails.Poster : 'https://via.placeholder.com/300x450'}
                              alt={movieDetails.Title}
                              className={styles.poster}/>
-                        <Wrapper className={styles.iconPanel}>
-                        <span className={styles.wrapFavourite} onClick={handleFavouriteClick}>
-                            <FavouriteIcon isActive={isFavourite}/>
-                        </span>
-                            <Spacer className={styles.divider}/>
-                            <span className={styles.wrapShare} onClick={handleShareClick}>
-                            <ShareIcon/>
-                        </span>
+                        <Wrapper className={panel}>
+                            <span className={styles.wrapFavourite} onClick={handleFavouriteClick}>
+                                <FavouriteIcon isActive={isFavourite}/>
+                            </span>
+                                <Spacer className={styles.divider}/>
+                                <span className={styles.wrapShare} onClick={handleShareClick}>
+                                <ShareIcon/>
+                            </span>
                         </Wrapper>
                     </Wrapper>
                     <Wrapper className={styles.movieHeader}>
