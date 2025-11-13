@@ -3,12 +3,9 @@
 
 .wrapper {
   @include rowing(center, center);
-  @include sizes(140px, 140px);
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  border-radius: $spacing-16;
-  background-color: $color-white;
 }
 
 .thumbnail {
@@ -18,6 +15,9 @@
 
 .uploadArea {
   @include rowing(center, center);
+  padding: $spacing-28;
+  border-radius: $spacing-20;
+  background-color: $color-pink;
 }
 
 .tooltip {
