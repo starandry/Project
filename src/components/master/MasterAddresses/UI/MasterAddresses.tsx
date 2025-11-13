@@ -20,14 +20,7 @@ export const MasterAddresses: React.FC<MasterAddressesProps> = ({
 
     return (
         <div className={styles.addressCard}>
-            <div className={styles.header}>
-                <h2 className={styles.title}>Адреса и районы проведения услуг</h2>
-                {!isEditing && (
-                    <Button onClick={onEdit} classNames={{ buttonClass: 'editButton' }}>
-                        <SvgIcon Icon={Edit} />
-                    </Button>
-                )}
-            </div>
+            <h2 className={styles.title}>Адреса и районы проведения услуг</h2>
 
             {isEditing ? (
                 <MasterAdressesForm
@@ -51,7 +44,15 @@ export const MasterAddresses: React.FC<MasterAddressesProps> = ({
                                 <li key={index} className={styles.addressItem}>
                                     {hasAddress && (
                                         <>
-                                            <h3 className={styles.addressLabel}>Адрес</h3>
+                                            <div className={styles.addressLabelWrapper}>
+                                                <h3 className={styles.addressLabel}>Адрес</h3>
+                                                <Button
+                                                    onClick={onEdit}
+                                                    classNames={{ buttonClass: 'editButton' }}
+                                                >
+                                                    <SvgIcon Icon={Edit} />
+                                                </Button>
+                                            </div>
                                             <div className={styles.addressRow}>
                                                 <SvgIcon Icon={Home} />
                                                 <p className={styles.addressText}>{item.address}</p>
@@ -60,7 +61,17 @@ export const MasterAddresses: React.FC<MasterAddressesProps> = ({
                                     )}
                                     {hasRegion && (
                                         <>
-                                            <h3 className={styles.regionLabel}>Выезд к клиенту</h3>
+                                            <div className={styles.regionLabelWrapper}>
+                                                <h3 className={styles.regionLabel}>
+                                                    Выезд к клиенту
+                                                </h3>
+                                                <Button
+                                                    onClick={onEdit}
+                                                    classNames={{ buttonClass: 'editButton' }}
+                                                >
+                                                    <SvgIcon Icon={Edit} />
+                                                </Button>
+                                            </div>
                                             <div className={styles.addressRow}>
                                                 <SvgIcon Icon={Car} />
                                                 <p className={styles.regionText}>{item.region}</p>

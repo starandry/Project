@@ -41,7 +41,6 @@ const MasterArea: React.FC<MasterAreaProps> = () => {
                                     <MasterEducationContainer />
                                     <MasterExperienceContainer index={0} />
                                     <Diplomas />
-                                    <MasterExperienceContainer index={1} />
                                     <MasterAddressesContainer />
                                     <MasterServicesContainer />
                                     <MasterPortfolio />

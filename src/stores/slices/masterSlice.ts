@@ -71,7 +71,7 @@ const defaultExperience: ExperienceItem[][] = [
 
 export const defaultAddressState: AddressState[] = [
     {
-        address: 'Ул. Независимости, 56',
+        address: 'Введите адрес проведения услуги',
         region: 'Центральный район',
     },
 ];
