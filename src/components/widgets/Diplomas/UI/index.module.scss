@@ -12,11 +12,40 @@
   padding-bottom: $spacing-12;
 }
 
+.title {
+  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4);
+}
+
 .grid {
-  @include rowing(space-between);
+  @include rowing(space-between, center);
   padding: $spacing-12 $spacing-6;
 }
 
-.title {
-  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4);
+.diplomaInfo {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-black3, $spacing-28);
+  flex: 0 1 570px;
+  min-width: 0;
+}
+
+.descDiplomas {
+  @include fonts(null, $font-weight-300, $font-size-16);
+}
+
+.diplomasYearBlock {
+  @include rowing(null, null, $spacing-6, column);
+  flex: 0 1 150px;
+  min-width: 0;
+}
+
+.labelDiplomas {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-15, $color-gray5, $spacing-20);
+}
+
+.years {
+  @include rowing();
+}
+
+.year {
+  @include fonts(Manrope-Semibold, $font-weight-600, $font-size-17, $color-gray4);
+  @include sizes(50%);
 }
