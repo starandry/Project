@@ -1,5 +1,5 @@
 import React from 'react';
-import Edit from '@/assets/icons/Edit.svg?react';
+import BadgeChip from '@/assets/icons/BadgeChip.svg?react';
 import Check from '@/assets/icons/Check.svg?react';
 import { SvgIcon, Button, MasterExperienceForm } from '@/components';
 import styles from './index.module.scss';
@@ -21,7 +21,7 @@ export const MasterExperience: React.FC<MasterExperienceProps> = ({
                 <h2 className={styles.title}>Опыт</h2>
                 {!isEditing && (
                     <Button onClick={onEdit} classNames={{ buttonClass: 'editButton' }}>
-                        <SvgIcon Icon={Edit} />
+                        <SvgIcon Icon={BadgeChip} />
                     </Button>
                 )}
             </div>
@@ -43,8 +43,9 @@ export const MasterExperience: React.FC<MasterExperienceProps> = ({
                             <p className={styles.text}>{item.title}</p>
                             <div className={styles.experienceYearBlock}>
                                 <span className={styles.label}>период работы</span>
-                                <p className={styles.year}>
-                                    {item.yearStart} — {item.yearEnd}
+                                <p className={styles.years}>
+                                    <span className={styles.year}>{item.yearStart}</span>
+                                    <span className={styles.year}>{item.yearEnd}</span>
                                 </p>
                             </div>
                         </li>

@@ -205,7 +205,11 @@ const RegisterMaster: React.FC = () => {
         <div>
             <div className={styles.centred}>
                 <div className={styles.leftSide}>
-                    <Picture src={'/images/master-reg.png'} alt={'маникюр мастера'} className="manicureProcess" />
+                    <Picture
+                        src={'/images/master-reg.png'}
+                        alt={'маникюр мастера'}
+                        className="manicureProcess"
+                    />
                     <div className={styles.leftSIdeText}>
                         <h3 className={styles.leftSideTitle}>Профиль мастеров</h3>
                         <p className={styles.leftSideDesc}>

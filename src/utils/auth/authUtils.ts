@@ -113,4 +113,3 @@ const confirmEmailByKey = async (key: string) => {
 
     window.location.href = redirectUrl;
 };
-

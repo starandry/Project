@@ -48,16 +48,16 @@ export type UserState = UserProfile & {
 const defaultEducation: EducationItem[] = [
     {
         title: 'Введите данные вашего образования',
-        year: '2024',
+        year: 'месяц ГГГГ',
     },
 ];
 
 const defaultExperience: ExperienceItem[][] = [
     [
         {
-            title: 'Пэрис нэйл, курс «Комбинированный + аппаратный маникюр. Уровень 1»',
-            yearStart: '2023',
-            yearEnd: '2024',
+            title: 'Заполните опыт работы',
+            yearStart: 'ГГГГ',
+            yearEnd: 'ГГГГ',
         },
     ],
     [

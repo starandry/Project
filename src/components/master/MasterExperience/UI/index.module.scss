@@ -2,19 +2,18 @@
 @use '../../../../styles/mixins' as *;
 
 .experienceCard {
-  padding: $spacing-16 $spacing-24 $spacing-0;
+  padding: $spacing-16 $spacing-24;
   border-radius: $spacing-12;
   background-color: $color-white;
 }
 
 .header {
-  @include rowing(null, center);
-  padding-bottom: $spacing-20;
+  @include rowing(space-between, center);
+  padding-bottom: $spacing-12;
 }
 
 .experienceItem {
-  @include rowing(null, center);
-  padding-bottom: $spacing-16;
+  @include rowing(space-between, center);
 }
 
 .title {
@@ -23,20 +22,25 @@
 
 .text {
   @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-24);
-  @include sizes(68%);
-  padding-left: 5%;
+  flex: 0 1 660px;
+  min-width: 0;
 }
 
 .experienceYearBlock {
-  @include sizes(120px);
-  margin-left: auto;
+  @include rowing(null, null, $spacing-6, column);
+  flex: 0 1 232px;
+  min-width: 0;
 }
 
 .label {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-17, $color-gray5);
+  @include fonts($manroupe-font, $font-weight-400, $font-size-15, $color-gray5, $spacing-20);
+}
+
+.years {
+  @include rowing();
 }
 
 .year {
   @include fonts(Manrope-Semibold, $font-weight-600, $font-size-17, $color-gray4);
-  padding-top: $spacing-10;
+  @include sizes(50%);
 }
