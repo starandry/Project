@@ -7,6 +7,7 @@ export type ServiceItem = {
 export type MasterServicesProps = {
     services: ServiceItem[];
     isEditing: boolean;
+    onEdit: () => void;
     onChange: (index: number, field: keyof ServiceItem, value: string) => void;
     onAdd: () => void;
     onRemove: (index: number) => void;

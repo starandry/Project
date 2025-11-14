@@ -1,13 +1,14 @@
 import React from 'react';
-/*import Edit from '@/assets/icons/Edit.svg?react';*/
+import Edit from '@/assets/icons/Edit.svg?react';
 import Check from '@/assets/icons/Check.svg?react';
-import { SvgIcon, MasterServicesForm } from '@/components';
+import { SvgIcon, Button, MasterServicesForm } from '@/components';
 import styles from './index.module.scss';
 import { MasterServicesProps } from '../model/masterServicesTypes';
 
 export const MasterServices: React.FC<MasterServicesProps> = ({
     services,
     isEditing,
+    onEdit,
     onChange,
     onAdd,
     onRemove,
@@ -17,9 +18,6 @@ export const MasterServices: React.FC<MasterServicesProps> = ({
     return (
         <div className={styles.servicesCard}>
             <h2 className={styles.title}>Услуги и цены</h2>
-                {/*<Button onClick={onEdit} classNames={{ buttonClass: 'editButton' }}>
-                    <SvgIcon Icon={Edit} />
-                </Button>*/}
             {isEditing ? (
                 <MasterServicesForm
                     services={services}
@@ -34,6 +32,12 @@ export const MasterServices: React.FC<MasterServicesProps> = ({
                     {services.map((item, index) => (
                         <li key={index} className={styles.servicesItem}>
                             <div className={styles.itemContent}>
+                                <Button
+                                    onClick={onEdit}
+                                    classNames={{ buttonClass: 'editButton masterPrice' }}
+                                >
+                                    <SvgIcon Icon={Edit} />
+                                </Button>
                                 <SvgIcon Icon={Check} className="check" />
                                 <div className={styles.serviceInfo}>
                                     <h3 className={styles.serviceTitle}>Услуга</h3>

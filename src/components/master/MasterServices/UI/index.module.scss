@@ -19,8 +19,9 @@
 }
 
 .itemContent {
-  @include rowing(null, center);
-  min-width: 70%;
+  @include rowing(space-between, center);
+  @include sizes(100%);
+  position: relative;
 }
 
 .serviceTitle {
@@ -43,13 +44,14 @@
 }
 
 .labelPrice {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-17, $color-gray5);
+  @include fonts($manroupe-font, $font-weight-400, $font-size-15, $color-gray5, $spacing-20);
 }
 
 .servicePriceBlock {
-  margin-left: auto;
+  flex: 0 1 120px;
+  min-width: 0;
 }
 
 .servicePrice {
-  @include fonts(Manrope-Semibold, $font-weight-600, $font-size-17, $color-gray4);
+  @include fonts(Manrope-Semibold, $font-weight-600, $font-size-17, $color-gray4, $spacing-22);
 }
