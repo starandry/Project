@@ -78,7 +78,7 @@ export const defaultAddressState: AddressState[] = [
 
 const defaultServices: ServiceItem[] = [
     {
-        title: 'Дизайн',
+        title: 'тип услуги',
         description: 'описание услуги',
         price: '100',
     },
