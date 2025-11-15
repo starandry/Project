@@ -38,3 +38,10 @@
   border-radius: $spacing-12;
   background-color: $color-purple3;
 }
+
+.linkFooterNav {
+  @include rowing(null, center);
+  @include fonts($roboto-font, $font-weight-400, $font-size-17, $color-purple3, $spacing-22);
+  padding: $spacing-0;
+  gap: $spacing-16;
+}

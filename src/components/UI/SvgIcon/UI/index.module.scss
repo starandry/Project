@@ -41,7 +41,7 @@
 
 .logoFooter {
   @include sizes($spacing-100, $spacing-50);
-  margin: $spacing-36 $spacing-0;
+  margin: $spacing-36 $spacing-0 $spacing-16;
   color: $color-purple3;
 }
 

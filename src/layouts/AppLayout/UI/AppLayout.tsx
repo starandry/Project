@@ -6,6 +6,8 @@ import LogoFooter from '@/assets/icons/LogoFooter.svg?react';
 import LoginIcon from '@/assets/icons/LoginRounded.svg?react';
 import LogoutIcon from '@/assets/icons/LogoutIcon.svg?react';
 import MasterSign from '@/assets/icons/MasterSign.svg?react';
+import ClientSign from '@/assets/icons/ClientSign.svg?react';
+import MainPage from '@/assets/icons/MainPage.svg?react';
 import AssignmentIcon from '@/assets/icons/AssignmentIndRounded.svg?react';
 import styles from './index.module.scss';
 import type { AppLayoutProps } from '@/layouts/AppLayout/index.model.ts';
@@ -24,7 +26,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, showAuthButtons }) => {
                             <div className={styles.navbarMenu}>
                                 <Menu />
                             </div>
-                            <p className={styles.btnWrapp}>
+                            <nav className={styles.btnWrapp}>
                                 {(showAuthButtons && (
                                     <>
                                         <LinkButton to="#" className="linkButton-login">
@@ -51,7 +53,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, showAuthButtons }) => {
                                         </LinkButton>
                                     </>
                                 )}
-                            </p>
+                            </nav>
                         </div>
                     </div>
                 </div>
@@ -64,13 +66,24 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, showAuthButtons }) => {
                     <div className="container">
                         <div className={styles.wrappFooter}>
                             <SvgIcon Icon={LogoFooter} className="logoFooter" />
-
+                            <nav className={styles.footerNavigation}>
+                                <LinkButton to="#" className="linkFooterNav">
+                                    <SvgIcon Icon={MainPage} />
+                                    Главная страница
+                                </LinkButton>
+                                <LinkButton to="#" className="linkFooterNav">
+                                    <SvgIcon Icon={ClientSign} />
+                                    Вход для клиента
+                                </LinkButton>
+                                <LinkButton to="#" className="linkFooterNav">
+                                    <SvgIcon Icon={MasterSign} />
+                                    Вход для мастера
+                                </LinkButton>
+                            </nav>
                             <div className={styles.wrappFooterNav}>
                                 <FooterNav />
                             </div>
-
                             <hr className={styles.footerSeparator} />
-
                             <div className={styles.basement}>
                                 <FooterLegal companyName="LOGO" years="2011–2024" />
                                 <CountrySelector />

@@ -43,3 +43,9 @@
 .basement {
   @include rowing(space-between);
 }
+
+.footerNavigation {
+  @include rowing();
+  gap: $spacing-48;
+  padding-bottom: $spacing-24;
+}
