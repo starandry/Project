@@ -1,5 +1,5 @@
 import React from 'react';
-import Upload from '@/assets/icons/Upload.svg?react';
+import Placeholder from '@/assets/icons/PlaceholderPortfolio.svg?react';
 import Edit from '@/assets/icons/Edit.svg?react';
 import { SvgIcon, Picture, Button, ServiceCardForm } from '@/components';
 import styles from './index.module.scss';
@@ -59,7 +59,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
                         }}
                         style={{ cursor: 'pointer' }}
                     >
-                        <SvgIcon Icon={Upload} />
+                        <SvgIcon Icon={Placeholder} />
                     </div>
                 )}
             </div>
@@ -67,17 +67,10 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
             {!uploadMode && (
                 <div className={styles.infoBlock}>
                     <h3 className={styles.title}>{formData.name || '—'}</h3>
-                    <p className={styles.text}>
-                        <strong>Покрытие:</strong> {formData.coating || '—'}
-                    </p>
-                    <p className={styles.text}>
-                        <strong>Дизайн:</strong> {formData.design || '—'}
-                    </p>
-                    <p className={styles.text}>
-                        <strong>Адрес:</strong> {formData.address || '—'}
-                    </p>
-                    <p className={styles.label}>Стоимость</p>
-                    <p className={styles.price}>{formData.price || '—'}</p>
+                    <div className={styles.wrapDescPortf}>
+                        <p className={styles.text}>{formData.desc || '—'}</p>
+                        <p className={styles.text2}>{formData.text || '—'}</p>
+                    </div>
                 </div>
             )}
 

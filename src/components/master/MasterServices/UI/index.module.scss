@@ -48,6 +48,7 @@
 }
 
 .servicePriceBlock {
+  @include rowing(null, null, $spacing-6, column);
   flex: 0 1 120px;
   min-width: 0;
 }

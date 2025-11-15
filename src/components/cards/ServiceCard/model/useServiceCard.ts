@@ -6,9 +6,9 @@ export const useServiceCard = () => {
     const [hovered, setHovered] = useState(false);
 
     const [formData, setFormData] = useState<ServiceData>({
-        name: 'Комбинированный маникюр',
-        coating: 'гель лак',
-        design: 'однотонное, френч',
+        name: 'Название работы',
+        desc: 'Описание работы:',
+        text: 'здесь будет описание вашей работы.',
         address: 'ул. Жудро, 61',
         price: '40 руб.',
         image: '',

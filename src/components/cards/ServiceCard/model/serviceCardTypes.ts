@@ -1,7 +1,7 @@
 export type ServiceData = {
     name: string;
-    coating: string;
-    design: string;
+    desc: string;
+    text: string;
     address: string;
     price: string;
     image: string;

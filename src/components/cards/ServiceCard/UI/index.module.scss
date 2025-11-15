@@ -14,7 +14,9 @@
 
 .wrappIcon {
   @include rowing(center, center);
-  @include sizes(384px, 384px);
+  @include sizes(304px, 304px);
+  border-radius: $spacing-12;
+  background-color: $color-purple3;
 }
 
 .infoBlock {
@@ -22,6 +24,7 @@
 }
 
 .title {
+  @include fonts($manroupe-font, $font-weight-600, $font-size-18, $color-gray4, $spacing-26);
   padding-bottom: $spacing-8;
 }
 
@@ -29,13 +32,13 @@
   padding-bottom: $spacing-46;
 }
 
-.title,
-.price {
-  @include fonts($manroupe-font, $font-weight-600, $font-size-18, $color-gray4);
+.text2 {
+  flex: 0 1 180px;
 }
 
-.text {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-15, $color-gray4);
+.text,
+.text2 {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-15, $color-gray4, $spacing-20);
   padding-bottom: $spacing-4;
 }
 
@@ -47,4 +50,11 @@
 .imgSection {
   @include sizes(null, 384px);
   position: relative;
+  padding: $spacing-40;
+}
+
+.wrapDescPortf {
+  @include rowing();
+  @include sizes(100%);
+  max-width: 336px;
 }

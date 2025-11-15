@@ -1,6 +1,15 @@
 @use '../../../../styles/variables' as *;
 @use '../../../../styles/mixins' as *;
 
+.portfolio {
+  max-width: 1100px;
+  padding: $spacing-12 $spacing-24;
+}
+
+.headerPortfolioWrappp {
+  @include rowing(space-between, center);
+}
+
 .title {
   @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4);
 }

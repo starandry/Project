@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 export type ServiceFormData = {
     name: string;
-    coating: string;
-    design: string;
+    desc: string;
+    text: string;
     address: string;
     price: string;
     image: string;
@@ -13,8 +13,8 @@ export const useServiceCardForm = (initialData?: ServiceFormData) => {
     const [data, setData] = useState<ServiceFormData>(
         initialData || {
             name: '',
-            coating: '',
-            design: '',
+            desc: '',
+            text: '',
             address: '',
             price: '',
             image: '',
@@ -39,8 +39,8 @@ export const useServiceCardForm = (initialData?: ServiceFormData) => {
         setData(
             initialData || {
                 name: '',
-                coating: '',
-                design: '',
+                desc: '',
+                text: '',
                 address: '',
                 price: '',
                 image: '',
