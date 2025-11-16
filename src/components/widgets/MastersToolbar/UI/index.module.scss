@@ -3,6 +3,7 @@
 
 .wrapToolbar {
   @include rowing(space-between);
+  padding-bottom: $spacing-12;
 }
 
 .wrapBtnsToolbar {

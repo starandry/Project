@@ -2,7 +2,6 @@ import React from 'react';
 import { Dropdown, Button, SvgIcon } from '@/components';
 import { useSearchForm } from '../model/useSearchForm';
 import { streets, specialties } from '@/data/masters';
-import Magnifier from '@/assets/icons/Magnifier.svg?react';
 import tagClose from '@/assets/icons/tagClose.svg?react';
 import GrayArrowDown from '@/assets/icons/GrayArrowDown.svg?react';
 import styles from './index.module.scss';
@@ -76,11 +75,6 @@ const SearchForm: React.FC = () => {
                     }}
                     icon={<SvgIcon Icon={GrayArrowDown} className="searchFormIcon" />}
                 />
-
-                <Button type="submit" classNames={{ buttonClass: 'searchBtn' }}>
-                    <span>Найти</span>
-                    <SvgIcon Icon={Magnifier} className="magnifier" />
-                </Button>
             </div>
 
             <div className={styles.selectedFilters}>

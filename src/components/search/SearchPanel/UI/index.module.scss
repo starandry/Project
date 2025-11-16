@@ -2,16 +2,37 @@
 @use '../../../../styles/mixins' as *;
 
 .searchPanel {
+  @include rowing(null, center, null, column);
   @include sizes(100%);
   position: absolute;
-  bottom: $spacing-90;
+  bottom: -100px;
   z-index: 1;
-  padding: $spacing-30 $spacing-50;
-  border-radius: $spacing-20;
+  padding: $spacing-24 $spacing-0 $spacing-36;
+  border-radius: $spacing-24 $spacing-24 $spacing-0 $spacing-0;
   background-color: $color-pink;
 }
 
 .searchTitle {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-30, $color-purple3);
-  padding-bottom: $spacing-20;
+  @include fonts($manroupe-font, $font-weight-500, $font-size-30, $color-purple3, $spacing-39);
+  padding-bottom: $spacing-24;
+}
+
+.searchBody {
+  @include sizes(100%);
+  max-width: 1440px;
+}
+
+.searchHint {
+  @include fonts($manroupe-font, $font-weight-500, $font-size-20, $color-purple3, $spacing-26);
+  padding: $spacing-0 $spacing-0 $spacing-8 $spacing-30;
+}
+
+.searchPanelBlock {
+  padding: $spacing-20 $spacing-30;
+  border-radius: $spacing-24;
+  background-color: $color-purple3;
+}
+
+.searchPanelBar {
+  @include rowing(space-between, null, $spacing-24);
 }

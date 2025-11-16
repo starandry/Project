@@ -2,13 +2,14 @@
 @use '../../../../styles/mixins' as *;
 
 .banner {
-  @include rowing(space-evenly, center, null, column);
+  @include rowing(null, null, null, column);
   @include sizes(null, 100%);
 }
 
 .title {
-  @include fonts($playfair-font, $font-weight-800, $font-size-90);
-  padding-top: 5%;
+  @include fonts($playfair-font, $font-weight-800, $font-size-90, null, $spacing-100);
+  text-align: center;
+  padding-bottom: $spacing-48;
   background: linear-gradient(90deg, $color-purple 0%, $color-pink 0.01%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -19,15 +20,15 @@
 .subtitle {
   @include fonts($manroupe-font, $font-weight-500, $font-size-42, $color-white, 1.3);
   text-align: center;
+  margin: $spacing-0 auto;
   max-width: 1200px;
-  padding: 1% 0 4%;
+}
+
+.descBlock {
+  @include rowing(end, center, $spacing-32, column);
+  flex-grow: 1;
 }
 
 .description {
-  @include fonts($manroupe-font, $font-weight-200, $font-size-42, $color-pink3);
-  padding-top: 5%;
-}
-
-.bannerActions {
-  padding-bottom: 10%;
+  @include fonts($manroupe-font, $font-weight-500, $font-size-42, $color-pink3, $spacing-46);
 }

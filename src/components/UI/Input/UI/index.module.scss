@@ -1,2 +1,10 @@
 @use '../../../../styles/variables' as *;
 @use '../../../../styles/mixins' as *;
+
+.searchMaster {
+  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray2, $spacing-24);
+  flex-grow: 1;
+  padding: $spacing-12 $spacing-8;
+  border: unset;
+  border-radius: $spacing-12;
+}

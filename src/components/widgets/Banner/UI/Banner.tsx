@@ -22,26 +22,28 @@ export const Banner: React.FC<BannerProps> = ({
         <div className={styles.banner}>
             <h1 className={styles.title}>{title}</h1>
             <p className={styles.subtitle}>{subtitle}</p>
-            <p className={styles.description}>{description}</p>
-            <div className={styles.bannerActions}>
-                <Button
-                    classNames={{
-                        buttonClass:
-                            activeUserType === 'master' ? 'activeButton' : 'inactiveButton',
-                    }}
-                    onClick={() => onUserTypeChange('master')}
-                >
-                    <span>Мастерам</span>
-                </Button>
-                <Button
-                    classNames={{
-                        buttonClass:
-                            activeUserType === 'client' ? 'activeButton' : 'inactiveButton',
-                    }}
-                    onClick={() => onUserTypeChange('client')}
-                >
-                    <span>Клиентам</span>
-                </Button>
+            <div className={styles.descBlock}>
+                <p className={styles.description}>{description}</p>
+                <div className={styles.bannerActions}>
+                    <Button
+                        classNames={{
+                            buttonClass:
+                                activeUserType === 'master' ? 'activeButton' : 'inactiveButton',
+                        }}
+                        onClick={() => onUserTypeChange('master')}
+                    >
+                        <span>Мастерам</span>
+                    </Button>
+                    <Button
+                        classNames={{
+                            buttonClass:
+                                activeUserType === 'client' ? 'activeButton' : 'inactiveButton',
+                        }}
+                        onClick={() => onUserTypeChange('client')}
+                    >
+                        <span>Клиентам</span>
+                    </Button>
+                </div>
             </div>
         </div>
     );
