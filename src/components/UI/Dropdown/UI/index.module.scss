@@ -3,14 +3,13 @@
 
 .dropMenuWrap {
   position: relative;
-  padding-top: $spacing-11;
-  padding-right: $spacing-35;
 }
 
 .dropMenuBtn {
   @include rowing(null, center);
   @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-purple);
   gap: $spacing-25;
+  padding: unset;
   background: none;
   border: none;
   cursor: pointer;
@@ -42,23 +41,17 @@
 
 .searchWrap {
   display: inline-block;
-  padding: $spacing-0 $spacing-0 $spacing-0 $spacing-25;
-  border-right: 2px solid $color-gray2;
+  padding-right: $spacing-32;
+  border-right: 1.5px solid $color-purple3;
 }
 
 .searchPanelBtn {
-  @include fonts($roboto-font, $font-weight-500, $font-size-20, $color-gray2);
-  gap: $spacing-5;
-  min-width: 150px;
-  padding-right: $spacing-25;
+  @include fonts($manroupe-font, $font-weight-500, $font-size-20, $color-purple3, $spacing-26);
+  gap: $spacing-24;
 
   > span {
-    padding-right: $spacing-20;
+    line-height: $spacing-32;
   }
-}
-
-.lastItemWrap {
-  padding: $spacing-5 $spacing-0 $spacing-5 $spacing-20;
 }
 
 .sortBtn {

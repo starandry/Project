@@ -1,9 +1,19 @@
 @use '../../../../styles/variables' as *;
 @use '../../../../styles/mixins' as *;
 
+.wrapperSearchForm {
+  padding: $spacing-8 $spacing-30;
+  border-radius: $spacing-24;
+  background-color: $color-white;
+}
+
+.searchFormLabel {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-20, $color-purple3, $spacing-36);
+}
+
 .searchForm {
   @include rowing(space-between, center);
-  padding: $spacing-10 $spacing-0 $spacing-10;
-  border-radius: $spacing-16;
-  background-color: $color-white;
+  padding: $spacing-16 $spacing-24;
+  border-radius: 24px;
+  border: $spacing-1 solid $color-purple3;
 }

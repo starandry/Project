@@ -28,6 +28,7 @@
 }
 
 .searchPanelBlock {
+  @include rowing(null, null, $spacing-16, column);
   padding: $spacing-20 $spacing-30;
   border-radius: $spacing-24;
   background-color: $color-purple3;
@@ -35,11 +36,11 @@
 
 .searchPanelBar {
   @include rowing(space-between, null, $spacing-24);
-  padding-bottom: $spacing-16;
 }
 
 .searchFilterBody {
-  @include rowing(null,null, $spacing-24);
+  @include rowing(null, null, $spacing-24);
+  padding: $spacing-6 $spacing-8;
 }
 
 .searchFilterSign {

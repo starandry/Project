@@ -7,6 +7,8 @@ export type ServiceFormData = {
     address: string;
     price: string;
     image: string;
+    coating?: string;
+    design?: string;
 };
 
 export const useServiceCardForm = (initialData?: ServiceFormData) => {

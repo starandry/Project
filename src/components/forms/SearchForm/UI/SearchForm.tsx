@@ -3,7 +3,7 @@ import { Dropdown, Button, SvgIcon } from '@/components';
 import { useSearchForm } from '../model/useSearchForm';
 import { streets, specialties } from '@/data/masters';
 import tagClose from '@/assets/icons/tagClose.svg?react';
-import GrayArrowDown from '@/assets/icons/GrayArrowDown.svg?react';
+import PurpleArrowUp from '@/assets/icons/PurpleArrowUp.svg?react';
 import styles from './index.module.scss';
 
 const SearchForm: React.FC = () => {
@@ -20,10 +20,11 @@ const SearchForm: React.FC = () => {
     } = useSearchForm();
 
     return (
-        <form onSubmit={handleSearch}>
+        <form onSubmit={handleSearch} className={styles.wrapperSearchForm}>
+            <span className={styles.searchFormLabel}>Выберите</span>
             <div className={styles.searchForm}>
                 <Dropdown
-                    buttonLabel="Выбрать район"
+                    buttonLabel="Район"
                     items={streets}
                     selectedLabel={district}
                     onItemClick={setDistrictValue}
@@ -31,11 +32,11 @@ const SearchForm: React.FC = () => {
                         wrapper: 'searchWrap',
                         button: 'searchPanelBtn',
                     }}
-                    icon={<SvgIcon Icon={GrayArrowDown} className="searchFormIcon" />}
+                    icon={<SvgIcon Icon={PurpleArrowUp} className="searchFormIcon" />}
                 />
 
                 <Dropdown
-                    buttonLabel="Выбрать услугу"
+                    buttonLabel="Услугу"
                     items={specialties}
                     selectedLabel={specialty}
                     onItemClick={setSpecialtyValue}
@@ -43,37 +44,27 @@ const SearchForm: React.FC = () => {
                         wrapper: 'searchWrap',
                         button: 'searchPanelBtn',
                     }}
-                    icon={<SvgIcon Icon={GrayArrowDown} className="searchFormIcon" />}
+                    icon={<SvgIcon Icon={PurpleArrowUp} className="searchFormIcon" />}
                 />
 
                 <Dropdown
-                    buttonLabel="Какой-то фильтр"
+                    buttonLabel="Дату"
                     items={['Пункт 1', 'Пункт 2', 'Пункт 3']}
                     classNames={{
                         wrapper: 'searchWrap',
                         button: 'searchPanelBtn',
                     }}
-                    icon={<SvgIcon Icon={GrayArrowDown} className="searchFormIcon" />}
+                    icon={<SvgIcon Icon={PurpleArrowUp} className="searchFormIcon" />}
                 />
 
                 <Dropdown
-                    buttonLabel="Выбрать дату"
+                    buttonLabel="Стоимость"
                     items={['Пункт 1', 'Пункт 2', 'Пункт 3']}
                     classNames={{
                         wrapper: 'searchWrap',
                         button: 'searchPanelBtn',
                     }}
-                    icon={<SvgIcon Icon={GrayArrowDown} className="searchFormIcon" />}
-                />
-
-                <Dropdown
-                    buttonLabel="Цена"
-                    items={['Пункт 1', 'Пункт 2', 'Пункт 3']}
-                    classNames={{
-                        wrapper: 'lastItemWrap',
-                        button: 'searchPanelBtn',
-                    }}
-                    icon={<SvgIcon Icon={GrayArrowDown} className="searchFormIcon" />}
+                    icon={<SvgIcon Icon={PurpleArrowUp} className="searchFormIcon" />}
                 />
             </div>
 

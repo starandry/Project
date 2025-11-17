@@ -5,7 +5,7 @@ import type { SearchPanelProps } from '@/components/search/SearchPanel/index.mod
 import styles from './index.module.scss';
 
 const SearchPanel: React.FC<SearchPanelProps> = ({ title }) => {
-    const [isVisible/*, setIsVisible*/] = useState(false);
+    const [isVisible /*, setIsVisible*/] = useState(true);
 
     return (
         <section className={styles.searchPanel}>
@@ -27,13 +27,10 @@ const SearchPanel: React.FC<SearchPanelProps> = ({ title }) => {
                     </label>
                     <label className={styles.searchFilterBody}>
                         <span className={styles.searchFilterSign}>Расширенный фильтр</span>
-                        <Input
-                            type="radio"
-                            onChange={() => {}}
-                        />
+                        <Input type="radio" onChange={() => {}} className="filterMaster" />
                     </label>
+                    {isVisible && <SearchForm />}
                 </div>
-                {isVisible && <SearchForm />}
             </div>
         </section>
     );
