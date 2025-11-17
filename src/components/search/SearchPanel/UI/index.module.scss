@@ -35,4 +35,13 @@
 
 .searchPanelBar {
   @include rowing(space-between, null, $spacing-24);
+  padding-bottom: $spacing-16;
+}
+
+.searchFilterBody {
+  @include rowing(null,null, $spacing-24);
+}
+
+.searchFilterSign {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-20, $color-white, $spacing-24);
 }

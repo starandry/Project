@@ -35,10 +35,6 @@
   color: $color-black3;
 }
 
-.magnifier {
-  @include sizes($spacing-16, $spacing-16);
-}
-
 .logoFooter {
   @include sizes($spacing-100, $spacing-50);
   margin: $spacing-36 $spacing-0 $spacing-16;

@@ -21,11 +21,10 @@
 
 .searchBtn {
   @include rowing(null, center);
-  @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-white);
-  margin-right: $spacing-25;
-  padding: $spacing-10 $spacing-25;
+  @include fonts($manroupe-font, $font-weight-500, $font-size-20, $color-purple3, $spacing-26);
+  padding: $spacing-12 $spacing-30;
   border-radius: $spacing-10;
-  background-color: $color-purple3;
+  background-color: $color-white;
 
   > span {
     padding-right: $spacing-10;

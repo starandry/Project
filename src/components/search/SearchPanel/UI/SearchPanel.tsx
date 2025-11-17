@@ -13,7 +13,7 @@ const SearchPanel: React.FC<SearchPanelProps> = ({ title }) => {
             <div className={styles.searchBody}>
                 <p className={styles.searchHint}>воспользуйтесь строкой поиска</p>
                 <div className={styles.searchPanelBlock}>
-                    <div className={styles.searchPanelBar}>
+                    <label className={styles.searchPanelBar}>
                         <Input
                             type="search"
                             onChange={() => {}}
@@ -22,9 +22,16 @@ const SearchPanel: React.FC<SearchPanelProps> = ({ title }) => {
                         />
                         <Button type="submit" classNames={{ buttonClass: 'searchBtn' }}>
                             <span>Найти</span>
-                            <SvgIcon Icon={Magnifier} className="magnifier" />
+                            <SvgIcon Icon={Magnifier} />
                         </Button>
-                    </div>
+                    </label>
+                    <label className={styles.searchFilterBody}>
+                        <span className={styles.searchFilterSign}>Расширенный фильтр</span>
+                        <Input
+                            type="radio"
+                            onChange={() => {}}
+                        />
+                    </label>
                 </div>
                 {isVisible && <SearchForm />}
             </div>
