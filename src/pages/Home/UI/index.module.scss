@@ -3,7 +3,6 @@
 
 .hero {
   @include sizes(100%, 815px);
-  position: relative;
   padding: 90px 0 160px;
   background: {
     image: url('/images/manicure-process.png');
@@ -11,9 +10,4 @@
     position: center;
     repeat: no-repeat;
   }
-}
-
-.wrappToolbar {
-  @include rowing(end, null, null, column);
-  @include sizes(null, 280px);
 }

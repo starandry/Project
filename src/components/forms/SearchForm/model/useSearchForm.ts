@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { setDistrict, setSpecialty, setSearchTriggered } from '@/stores/slices/filtersSlice';
 import { RootState } from '@/stores/store';
-import type { UseSearchFormReturn } from './searchFormTypes';
+import { UseSearchForm } from '@/components/search/SearchPanel/model/searchPanelTypes.ts';
 
-export const useSearchForm = (): UseSearchFormReturn => {
+export const useSearchForm = (): UseSearchForm => {
     const dispatch = useDispatch();
     const { district, specialty } = useSelector((state: RootState) => state.filters);
 

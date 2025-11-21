@@ -4,9 +4,7 @@
 .searchPanel {
   @include rowing(null, center, null, column);
   @include sizes(100%);
-  position: absolute;
-  bottom: -100px;
-  z-index: 1;
+  margin-top: -75px;
   padding: $spacing-24 $spacing-0 $spacing-36;
   border-radius: $spacing-24 $spacing-24 $spacing-0 $spacing-0;
   background-color: $color-pink;
@@ -29,7 +27,7 @@
 
 .searchPanelBlock {
   @include rowing(null, null, $spacing-16, column);
-  padding: $spacing-20 $spacing-30;
+  padding: $spacing-30;
   border-radius: $spacing-24;
   background-color: $color-purple3;
 }

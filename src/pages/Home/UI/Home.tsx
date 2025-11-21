@@ -20,14 +20,11 @@ const Home: React.FC<HomeProps> = () => {
                     <div className="container _h-100">
                         <BannerContainer />
                     </div>
-                    <SearchPanel title="Найди своего мастера ногтевого сервиса максимально быстро и удобно." />
                 </div>
-
+                <SearchPanel title="Найди своего мастера ногтевого сервиса максимально быстро и удобно." />
                 <div className="bg-white">
                     <div className="container">
-                        <div className={styles.wrappToolbar}>
-                            <MastersToolbar />
-                        </div>
+                        <MastersToolbar />
                     </div>
                     <div className="container">
                         <MasterList />

@@ -1,23 +1,13 @@
 import React from 'react';
-import { Dropdown, Button, SvgIcon } from '@/components';
-import { useSearchForm } from '../model/useSearchForm';
+import { Dropdown, SvgIcon } from '@/components';
 import { streets, specialties } from '@/data/masters';
-import tagClose from '@/assets/icons/tagClose.svg?react';
 import PurpleArrowUp from '@/assets/icons/PurpleArrowUp.svg?react';
 import styles from './index.module.scss';
+import { useSearchForm } from '@/components/forms/SearchForm/model/useSearchForm.ts';
 
 const SearchForm: React.FC = () => {
-    const {
-        district,
-        specialty,
-        showClearButton,
-        handleSearch,
-        handleRemoveDistrict,
-        handleRemoveSpecialty,
-        handleClearAllFilters,
-        setDistrictValue,
-        setSpecialtyValue,
-    } = useSearchForm();
+    const { district, specialty, handleSearch, setDistrictValue, setSpecialtyValue } =
+        useSearchForm();
 
     return (
         <form onSubmit={handleSearch} className={styles.wrapperSearchForm}>
@@ -66,40 +56,6 @@ const SearchForm: React.FC = () => {
                     }}
                     icon={<SvgIcon Icon={PurpleArrowUp} className="searchFormIcon" />}
                 />
-            </div>
-
-            <div className={styles.selectedFilters}>
-                {district && (
-                    <Button
-                        type="button"
-                        classNames={{ buttonClass: 'filterTag' }}
-                        onClick={handleRemoveDistrict}
-                    >
-                        {district}
-                        <SvgIcon Icon={tagClose} className="tagClose" />
-                    </Button>
-                )}
-
-                {specialty && (
-                    <Button
-                        type="button"
-                        classNames={{ buttonClass: 'filterTag' }}
-                        onClick={handleRemoveSpecialty}
-                    >
-                        {specialty}
-                        <SvgIcon Icon={tagClose} className="tagClose" />
-                    </Button>
-                )}
-
-                {showClearButton && (
-                    <Button
-                        type="button"
-                        classNames={{ buttonClass: 'clearFiltersBtn' }}
-                        onClick={handleClearAllFilters}
-                    >
-                        Очистить фильтр
-                    </Button>
-                )}
             </div>
         </form>
     );
