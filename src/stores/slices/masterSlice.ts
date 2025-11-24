@@ -1,13 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
-    ABOUT_STORAGE_KEY,
     EDUCATION_STORAGE_KEY,
     EXPERIENCE_STORAGE_KEY,
     PROFILE_STORAGE_KEY,
     ADDRESS_STORAGE_KEY,
     SERVICES_STORAGE_KEY,
 } from '@/constants/storageKeys';
-import { defaultAboutText } from '@/constants/defaultTexts';
 
 export type EducationItem = {
     title: string;
@@ -38,7 +36,6 @@ export type UserProfile = {
 };
 
 export type UserState = UserProfile & {
-    about: string;
     education: EducationItem[];
     experience: ExperienceItem[][];
     addressData: AddressState[];
@@ -83,8 +80,6 @@ const defaultServices: ServiceItem[] = [
         price: '100',
     },
 ];
-
-const getInitialAbout = (): string => localStorage.getItem(ABOUT_STORAGE_KEY) || defaultAboutText;
 
 const getInitialEducation = (): EducationItem[] => {
     const stored = localStorage.getItem(EDUCATION_STORAGE_KEY);
@@ -206,7 +201,6 @@ const initialState: UserState = {
     name: parsedUser.name || 'Маргарита Чернышова',
     email: parsedUser.email || 'margarita.chernushova@gmail.com',
     phone: parsedUser.phone || '89-990-078',
-    about: getInitialAbout(),
     education: getInitialEducation(),
     experience: getInitialExperience(),
     addressData: getInitialAddress(),
@@ -225,11 +219,6 @@ const masterSlice = createSlice({
             state.phone = phone;
 
             localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify({ name, email, phone }));
-        },
-
-        updateAbout(state, action: PayloadAction<string>) {
-            state.about = action.payload;
-            localStorage.setItem(ABOUT_STORAGE_KEY, action.payload);
         },
 
         updateEducation(state, action: PayloadAction<EducationItem[]>) {
@@ -254,13 +243,7 @@ const masterSlice = createSlice({
     },
 });
 
-export const {
-    updateProfile,
-    updateAbout,
-    updateEducation,
-    updateExperience,
-    updateAddress,
-    updateServices,
-} = masterSlice.actions;
+export const { updateProfile, updateEducation, updateExperience, updateAddress, updateServices } =
+    masterSlice.actions;
 
 export default masterSlice.reducer;
