@@ -181,3 +181,19 @@
   top: -6px;
   right: 0;
 }
+
+.submitButton {
+  @include fonts($manroupe-font, $font-weight-500, $font-size-16, $color-white, $spacing-20);
+  padding: $spacing-12 $spacing-20;
+  border: $spacing-1 solid $color-purple3;
+  border-radius: $spacing-12;
+  background-color: $color-purple3;
+}
+
+.cancelButton {
+  @include fonts($manroupe-font, $font-weight-500, $font-size-16, $color-purple3, $spacing-20);
+  padding: $spacing-12 $spacing-20;
+  border: $spacing-1 solid $color-purple3;
+  border-radius: $spacing-12;
+  background-color: $color-white;
+}

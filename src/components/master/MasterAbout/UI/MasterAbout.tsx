@@ -11,13 +11,14 @@ export const MasterAbout: React.FC = () => {
         <div className={styles.aboutCard}>
             <div className={styles.header}>
                 <h2 className={styles.title}>О себе</h2>
-                <Button classNames={{ buttonClass: 'editButton' }}  onClick={() => setIsEditing(true)}>
+                <Button
+                    classNames={{ buttonClass: 'editButton' }}
+                    onClick={() => setIsEditing(true)}
+                >
                     <SvgIcon Icon={Edit} />
                 </Button>
             </div>
-            {!isEditing && (
-                <p className={styles.text}>{defaultAboutText}</p>
-            )}
+            {!isEditing && <p className={styles.text}>{defaultAboutText}</p>}
             {isEditing && (
                 <MasterAboutForm onCancel={() => setIsEditing(false)} onSaved={() => {}} />
             )}

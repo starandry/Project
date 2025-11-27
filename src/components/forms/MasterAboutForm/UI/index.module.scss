@@ -1,0 +1,13 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.masterAboutTextarea {
+  @include rowing(null, nulll, null, column);
+  @include sizes(100%, 50px);
+  margin-bottom: $spacing-12;
+}
+
+.formActions {
+  @include rowing(end, null, $spacing-12);
+  @include sizes(100%);
+}
