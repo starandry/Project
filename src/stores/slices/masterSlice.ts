@@ -1,16 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
-    EDUCATION_STORAGE_KEY,
     EXPERIENCE_STORAGE_KEY,
     PROFILE_STORAGE_KEY,
     ADDRESS_STORAGE_KEY,
     SERVICES_STORAGE_KEY,
 } from '@/constants/storageKeys';
-
-export type EducationItem = {
-    title: string;
-    year: string;
-};
 
 export type ExperienceItem = {
     title: string;
@@ -36,18 +30,10 @@ export type UserProfile = {
 };
 
 export type UserState = UserProfile & {
-    education: EducationItem[];
     experience: ExperienceItem[][];
     addressData: AddressState[];
     services: ServiceItem[];
 };
-
-const defaultEducation: EducationItem[] = [
-    {
-        title: 'Введите данные вашего образования',
-        year: 'месяц ГГГГ',
-    },
-];
 
 const defaultExperience: ExperienceItem[][] = [
     [
@@ -80,11 +66,6 @@ const defaultServices: ServiceItem[] = [
         price: '100',
     },
 ];
-
-const getInitialEducation = (): EducationItem[] => {
-    const stored = localStorage.getItem(EDUCATION_STORAGE_KEY);
-    return stored ? JSON.parse(stored) : defaultEducation;
-};
 
 const getInitialExperience = (): ExperienceItem[][] => {
     const stored = localStorage.getItem(EXPERIENCE_STORAGE_KEY);
@@ -201,7 +182,6 @@ const initialState: UserState = {
     name: parsedUser.name || 'Маргарита Чернышова',
     email: parsedUser.email || 'margarita.chernushova@gmail.com',
     phone: parsedUser.phone || '89-990-078',
-    education: getInitialEducation(),
     experience: getInitialExperience(),
     addressData: getInitialAddress(),
     services: getInitialServices(),
@@ -221,11 +201,6 @@ const masterSlice = createSlice({
             localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify({ name, email, phone }));
         },
 
-        updateEducation(state, action: PayloadAction<EducationItem[]>) {
-            state.education = action.payload;
-            localStorage.setItem(EDUCATION_STORAGE_KEY, JSON.stringify(action.payload));
-        },
-
         updateExperience(state, action: PayloadAction<ExperienceItem[][]>) {
             state.experience = action.payload;
             localStorage.setItem(EXPERIENCE_STORAGE_KEY, JSON.stringify(action.payload));
@@ -243,7 +218,7 @@ const masterSlice = createSlice({
     },
 });
 
-export const { updateProfile, updateEducation, updateExperience, updateAddress, updateServices } =
+export const { updateProfile, updateExperience, updateAddress, updateServices } =
     masterSlice.actions;
 
 export default masterSlice.reducer;

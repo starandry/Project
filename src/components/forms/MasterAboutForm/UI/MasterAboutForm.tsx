@@ -32,10 +32,7 @@ const MasterAboutForm: React.FC<MasterAboutFormProps> = ({ onCancel, onSaved }) 
                 >
                     Отменить
                 </Button>
-                <Button
-                    classNames={{ buttonClass: 'submitButton ' }}
-                    type="submit"
-                >
+                <Button classNames={{ buttonClass: 'submitButton ' }} type="submit">
                     Сохранить
                 </Button>
             </div>
@@ -44,4 +41,3 @@ const MasterAboutForm: React.FC<MasterAboutFormProps> = ({ onCancel, onSaved }) 
 };
 
 export { MasterAboutForm };
-

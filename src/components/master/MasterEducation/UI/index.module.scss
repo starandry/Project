@@ -22,35 +22,3 @@
 .title {
   @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4);
 }
-
-.educationText {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-24);
-  flex: 0 1 660px;
-  min-width: 0;
-}
-
-.educationItem {
-  @include rowing(space-between, center);
-}
-
-.educationYearBlock {
-  @include rowing(null, null, $spacing-6, column);
-  flex: 0 1 232px;
-  min-width: 0;
-}
-.educationMonth {
-  @include rowing();
-}
-
-.label {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-15, $color-gray5, $spacing-20);
-}
-
-.wrappYearEducation {
-  @include rowing();
-}
-
-.year {
-  @include fonts(Manrope-Semibold, $font-weight-600, $font-size-17, $color-gray4);
-  @include sizes(50%);
-}
