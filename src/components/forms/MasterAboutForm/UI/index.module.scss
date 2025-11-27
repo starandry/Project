@@ -7,6 +7,10 @@
   margin-bottom: $spacing-12;
 }
 
+.masterAboutError {
+  @include fonts($roboto-flex-font, $font-weight-400, $font-size-14, $color-red, $spacing-20);
+}
+
 .formActions {
   @include rowing(end, null, $spacing-12);
   @include sizes(100%);
