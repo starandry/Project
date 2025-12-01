@@ -36,3 +36,9 @@
     transform: translate(-50%, -50%) scale(1);
   }
 }
+
+.institutionInput {
+  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4, $spacing-24);
+  padding: $spacing-12 $spacing-6;
+  border: unset;
+}
