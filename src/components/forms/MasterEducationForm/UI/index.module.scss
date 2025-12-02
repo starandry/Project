@@ -30,13 +30,26 @@
   @include rowing(null, null, $spacing-16, column);
 }
 
-.institutionGroup {
+.institutionGroup,
+.specialtyGroup,
+.startDateGroup{
   @include rowing(nuul, null, $spacing-12, column);
   padding: $spacing-16 $spacing-24;
   border-radius: $spacing-18;
   background-color: $color-white;
 }
 
-.institutionLabel {
+.institutionLabel,
+.specialtyLabel,
+.dateGroupLabel {
   @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-35);
+}
+
+.dateGroupRow {
+  padding: $spacing-0 $spacing-32;
+}
+
+.yearSelect {
+  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray8, $spacing-16);
+  padding: $spacing-11 $spacing-0;
 }

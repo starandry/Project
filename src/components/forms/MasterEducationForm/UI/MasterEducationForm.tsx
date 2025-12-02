@@ -1,6 +1,27 @@
 import React from 'react';
+import ArrowDropDown from '@/assets/icons/ArrowDropDown.svg?react';
 import styles from './index.module.scss';
-import { Input } from '@/components';
+import { Input, SvgIcon } from '@/components';
+
+const YEARS = (() => {
+    const currentYear = new Date().getFullYear();
+    return Array.from({ length: 60 }, (_, i) => String(currentYear - i));
+})();
+
+const MONTHS = [
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь',
+];
 
 const MasterEducationForm: React.FC = () => {
     return (
@@ -20,17 +41,52 @@ const MasterEducationForm: React.FC = () => {
                             onChange={() => {}}
                         />
                     </div>
-                    <div className={styles.institutionGroup}>
-                        <label className={styles.institutionLabel}>
-                            Название учебного заведения
+                    <div className={styles.specialtyGroup}>
+                        <label className={styles.specialtyLabel}>
+                            Специальность
                         </label>
 
                         <Input
                             type='text'
-                            placeholder='Введите название учебного заведения'
-                            className='institutionInput'
+                            placeholder='Введите название специальности'
+                            className='specialtyInput'
                             onChange={() => {}}
                         />
+                    </div>
+                    <div className={styles.startDateGroup}>
+                        <span className={styles.dateGroupLabel}>Дата начала обучения</span>
+                        <div className={styles.dateGroupRow}>
+                            <select
+                                className={styles.yearSelect}
+                                defaultValue=''
+                                onChange={() => {}}
+                            >
+                                <option value='' disabled>
+                                    Год
+                                </option>
+                                {YEARS.map((year) => (
+                                    <option key={year} value={year}>
+                                        {year}
+                                    </option>
+                                ))}
+                            </select>
+                            <SvgIcon Icon={ArrowDropDown} />
+
+                            <select
+                                className={styles.monthSelect}
+                                defaultValue=''
+                                onChange={() => {}}
+                            >
+                                <option value='' disabled>
+                                    Месяц
+                                </option>
+                                {MONTHS.map((month) => (
+                                    <option key={month} value={month}>
+                                        {month}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
                 </div>
             </form>
