@@ -46,10 +46,31 @@
 }
 
 .dateGroupRow {
+  @include rowing(space-between);
   padding: $spacing-0 $spacing-32;
 }
 
+.yearSelectContainer {
+  @include sizes(100%);
+  max-width: 450px;
+  padding-left: $spacing-16;
+  border-radius: $spacing-12;
+  border: 1.5px solid $color-purple3;
+}
+
+.selectYearWrapper {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
 .yearSelect {
-  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray8, $spacing-16);
-  padding: $spacing-11 $spacing-0;
+  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray8, $spacing-20);
+  @include sizes($spacing-70);
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  padding: $spacing-11 $spacing-8 $spacing-11 $spacing-0;
+  border: none;
+  background-color: unset;
 }

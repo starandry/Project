@@ -56,22 +56,25 @@ const MasterEducationForm: React.FC = () => {
                     <div className={styles.startDateGroup}>
                         <span className={styles.dateGroupLabel}>Дата начала обучения</span>
                         <div className={styles.dateGroupRow}>
-                            <select
-                                className={styles.yearSelect}
-                                defaultValue=''
-                                onChange={() => {}}
-                            >
-                                <option value='' disabled>
-                                    Год
-                                </option>
-                                {YEARS.map((year) => (
-                                    <option key={year} value={year}>
-                                        {year}
-                                    </option>
-                                ))}
-                            </select>
-                            <SvgIcon Icon={ArrowDropDown} />
-
+                            <div className={styles.yearSelectContainer}>
+                                <div className={styles.selectYearWrapper}>
+                                    <select
+                                        className={styles.yearSelect}
+                                        defaultValue=''
+                                        onChange={() => {}}
+                                    >
+                                        <option value='' disabled>
+                                            Год
+                                        </option>
+                                        {YEARS.map((year) => (
+                                            <option key={year} value={year}>
+                                                {year}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    <SvgIcon Icon={ArrowDropDown} className="ArrowDropDown"/>
+                                </div>
+                            </div>
                             <select
                                 className={styles.monthSelect}
                                 defaultValue=''

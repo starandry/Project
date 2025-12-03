@@ -131,3 +131,9 @@
 .heartPromoClient {
   @include sizes(230px, 240px);
 }
+
+.ArrowDropDown {
+  position: absolute;
+  top: calc(50% - $spacing-3);
+  right: $spacing-0;
+}
