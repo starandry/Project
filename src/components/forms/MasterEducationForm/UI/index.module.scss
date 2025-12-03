@@ -21,6 +21,10 @@
   background-color: $color-pink;
 }
 
+.formTitle {
+  @include rowing(space-between);
+}
+
 .educationFormTitle {
   @include fonts($manroupe-font, $font-weight-400, $font-size-20, $color-gray4, $spacing-35);
   padding-bottom: $spacing-60;
@@ -28,4 +32,12 @@
 
 .educationFieldWrapper {
   @include rowing(null, null, $spacing-16, column);
+}
+
+.formFooter {
+  @include rowing(end);
+}
+
+.formActions {
+  @include rowing(null, null, $spacing-10);
 }

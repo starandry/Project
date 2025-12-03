@@ -1,12 +1,16 @@
 import React from 'react';
+import BadgeChip from '@/assets/icons/BadgeChip.svg?react';
 import styles from './index.module.scss';
-import { LabeledInputField, DateSelectField } from '@/components';
+import { LabeledInputField, DateSelectField, Button, SvgIcon } from '@/components';
 
 const MasterEducationForm: React.FC = () => {
     return (
         <div className={styles.educationOverlay}>
             <form className={styles.educationForm}>
-                <h2 className={styles.educationFormTitle}>Редактировать поле Образование</h2>
+                <div className={styles.formTitle}>
+                    <h2 className={styles.educationFormTitle}>Редактировать поле Образование</h2>
+                    <SvgIcon Icon={BadgeChip} />
+                </div>
                 <div className={styles.educationFieldWrapper}>
                     <LabeledInputField
                         label="Название учебного заведения"
@@ -28,6 +32,12 @@ const MasterEducationForm: React.FC = () => {
                         onMonthChange={() => {}}
                         label="Дата окончания обучения"
                     />
+                    <div className={styles.formFooter}>
+                        <div className={styles.formActions}>
+                            <Button classNames={{ buttonClass: 'cancelButton' }}>Отменить</Button>
+                            <Button classNames={{ buttonClass: 'submitButton' }} type='submit'>Сохранить</Button>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
