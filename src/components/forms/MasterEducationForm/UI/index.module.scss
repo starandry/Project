@@ -30,8 +30,6 @@
   @include rowing(null, null, $spacing-16, column);
 }
 
-.institutionGroup,
-.specialtyGroup,
 .startDateGroup{
   @include rowing(nuul, null, $spacing-12, column);
   padding: $spacing-16 $spacing-24;
@@ -39,8 +37,6 @@
   background-color: $color-white;
 }
 
-.institutionLabel,
-.specialtyLabel,
 .dateGroupLabel {
   @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-35);
 }
@@ -50,7 +46,7 @@
   padding: $spacing-0 $spacing-32;
 }
 
-.yearSelectContainer {
+.yearSelectContainer, .monthSelectContainer {
   @include sizes(100%);
   max-width: 450px;
   padding-left: $spacing-16;
@@ -58,13 +54,13 @@
   border: 1.5px solid $color-purple3;
 }
 
-.selectYearWrapper {
+.selectYearWrapper, .selectMonthWrapper {
   display: inline-flex;
   align-items: center;
   position: relative;
 }
 
-.yearSelect {
+.yearSelect, .monthSelect {
   @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray8, $spacing-20);
   @include sizes($spacing-70);
   appearance: none;
@@ -73,4 +69,8 @@
   padding: $spacing-11 $spacing-8 $spacing-11 $spacing-0;
   border: none;
   background-color: unset;
+}
+
+.monthSelect {
+  @include sizes(120px);
 }

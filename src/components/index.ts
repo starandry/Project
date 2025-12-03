@@ -30,6 +30,7 @@ export * from './master/MasterAddresses';
 export * from './forms/MasterAdressesForm';
 export * from './master/MasterServices';
 export * from './forms/MasterServicesForm';
+export * from './forms/LabeledInputField';
 export * from './widgets/Diplomas';
 export * from './cards/ServiceCardForm';
 export * from './cards/ServiceCard';
