@@ -10,16 +10,14 @@ type LabeledInputFieldProps = {
 };
 
 const LabeledInputField: React.FC<LabeledInputFieldProps> = ({
-                                                                 label,
-                                                                 placeholder,
-                                                                 type,
-                                                                 onChange,
-                                                             }) => {
+    label,
+    placeholder,
+    type,
+    onChange,
+}) => {
     return (
         <div className={styles.fieldWrapper}>
-            <label className={styles.fieldLabel}>
-                {label}
-            </label>
+            <label className={styles.fieldLabel}>{label}</label>
 
             <Input
                 type={type}

@@ -37,7 +37,8 @@
   }
 }
 
-.formInput, .specialtyInput {
+.formInput,
+.specialtyInput {
   @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4, $spacing-24);
   padding: $spacing-12 $spacing-6;
   border: unset;
