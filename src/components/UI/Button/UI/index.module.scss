@@ -197,3 +197,9 @@
   border-radius: $spacing-12;
   background-color: $color-white;
 }
+
+.closeFormBtn {
+  @include rowing(start, null, null, column);
+  padding: $spacing-0;
+  background-color: transparent;
+}

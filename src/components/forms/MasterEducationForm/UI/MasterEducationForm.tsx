@@ -2,11 +2,15 @@ import React from 'react';
 import { LabeledInputField, DateSelectField, FormFooter, FormTitle } from '@/components';
 import styles from './index.module.scss';
 
-const MasterEducationForm: React.FC = () => {
+type MasterEducationFormProps = {
+    onClose: () => void;
+}
+
+const MasterEducationForm: React.FC<MasterEducationFormProps> = ({ onClose }) => {
     return (
         <div className={styles.educationOverlay}>
             <form className={styles.educationForm}>
-                <FormTitle title="Редактировать поле Образование" />
+                <FormTitle title="Редактировать поле Образование" onClose={onClose}/>
                 <div className={styles.educationFieldWrapper}>
                     <LabeledInputField
                         label="Название учебного заведения"
@@ -29,7 +33,7 @@ const MasterEducationForm: React.FC = () => {
                         label="Дата окончания обучения"
                     />
                     <FormFooter
-                        onCancel={() => {}}
+                        onCancel={onClose}
                         onSubmit={() => {}}
                     />
                 </div>
