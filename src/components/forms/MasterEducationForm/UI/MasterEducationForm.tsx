@@ -1,16 +1,12 @@
 import React from 'react';
-import BadgeChip from '@/assets/icons/BadgeChip.svg?react';
-import { LabeledInputField, DateSelectField, SvgIcon, FormFooter } from '@/components';
+import { LabeledInputField, DateSelectField, FormFooter, FormTitle } from '@/components';
 import styles from './index.module.scss';
 
 const MasterEducationForm: React.FC = () => {
     return (
         <div className={styles.educationOverlay}>
             <form className={styles.educationForm}>
-                <div className={styles.formTitle}>
-                    <h2 className={styles.educationFormTitle}>Редактировать поле Образование</h2>
-                    <SvgIcon Icon={BadgeChip} />
-                </div>
+                <FormTitle title="Редактировать поле Образование" />
                 <div className={styles.educationFieldWrapper}>
                     <LabeledInputField
                         label="Название учебного заведения"

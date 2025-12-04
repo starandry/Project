@@ -33,6 +33,7 @@ export * from './forms/MasterServicesForm';
 export * from './forms/LabeledInputField';
 export * from './forms/DateSelectField';
 export * from './forms/FormFooter';
+export * from './forms/FormTitle';
 export * from './widgets/Diplomas';
 export * from './cards/ServiceCardForm';
 export * from './cards/ServiceCard';
