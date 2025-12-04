@@ -33,11 +33,3 @@
 .educationFieldWrapper {
   @include rowing(null, null, $spacing-16, column);
 }
-
-.formFooter {
-  @include rowing(end);
-}
-
-.formActions {
-  @include rowing(null, null, $spacing-10);
-}

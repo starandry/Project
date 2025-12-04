@@ -1,7 +1,7 @@
 import React from 'react';
 import BadgeChip from '@/assets/icons/BadgeChip.svg?react';
+import { LabeledInputField, DateSelectField, SvgIcon, FormFooter } from '@/components';
 import styles from './index.module.scss';
-import { LabeledInputField, DateSelectField, Button, SvgIcon } from '@/components';
 
 const MasterEducationForm: React.FC = () => {
     return (
@@ -32,12 +32,10 @@ const MasterEducationForm: React.FC = () => {
                         onMonthChange={() => {}}
                         label="Дата окончания обучения"
                     />
-                    <div className={styles.formFooter}>
-                        <div className={styles.formActions}>
-                            <Button classNames={{ buttonClass: 'cancelButton' }}>Отменить</Button>
-                            <Button classNames={{ buttonClass: 'submitButton' }} type='submit'>Сохранить</Button>
-                        </div>
-                    </div>
+                    <FormFooter
+                        onCancel={() => {}}
+                        onSubmit={() => {}}
+                    />
                 </div>
             </form>
         </div>
