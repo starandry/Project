@@ -11,12 +11,12 @@ type FormFooterProps = {
 };
 
 const FormFooter: React.FC<FormFooterProps> = ({
-                                                   onCancel,
-                                                   onSubmit,
-                                                   cancelText = 'Отменить',
-                                                   submitText = 'Сохранить',
-                                                   className,
-                                               }) => {
+    onCancel,
+    onSubmit,
+    cancelText = 'Отменить',
+    submitText = 'Сохранить',
+    className,
+}) => {
     return (
         <div className={`${styles.formFooter} ${className || ''}`}>
             <div className={styles.formActions}>

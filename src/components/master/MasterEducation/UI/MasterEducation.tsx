@@ -22,12 +22,16 @@ export const MasterEducation: React.FC = () => {
             <div className={styles.educationItem}>
                 <SvgIcon Icon={Check} className="check" />
                 <p className={styles.text}>Введите данные вашего образования</p>
+                <div className={styles.educationYearBlock}>
+                    <span className={styles.label}>период обучения</span>
+                    <p className={styles.years}>
+                        <span className={styles.year}>ГГГГ</span>
+                        <span className={styles.year}>ГГГГ</span>
+                    </p>
+                </div>
             </div>
 
-            {isFormShown && (
-                <MasterEducationForm onClose={() => setIsFormShown(false)} />
-            )}
+            {isFormShown && <MasterEducationForm onClose={() => setIsFormShown(false)} />}
         </div>
     );
 };
-

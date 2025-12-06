@@ -1,16 +1,21 @@
-import React from 'react';
-import BadgeChip from '@/assets/icons/BadgeChip.svg?react';
+import React, { useState } from 'react';
+import BadgePlus from '@/assets/icons/BadgePlus.svg?react';
 import Check from '@/assets/icons/Check.svg?react';
 import { SvgIcon, Button, MasterExperienceForm } from '@/components';
 import styles from './index.module.scss';
 
 export const MasterExperience: React.FC = () => {
+    const [isFormShown, setIsFormShown] = useState(false);
+
     return (
         <div className={styles.experienceCard}>
             <div className={styles.header}>
                 <h2 className={styles.title}>Опыт</h2>
-                <Button classNames={{ buttonClass: 'editButton' }}>
-                    <SvgIcon Icon={BadgeChip} />
+                <Button
+                    classNames={{ buttonClass: 'editButton' }}
+                    onClick={() => setIsFormShown(true)}
+                >
+                    <SvgIcon Icon={BadgePlus} />
                 </Button>
             </div>
             <div className={styles.experienceItem}>
@@ -24,7 +29,7 @@ export const MasterExperience: React.FC = () => {
                     </p>
                 </div>
             </div>
-            <MasterExperienceForm />
+            {isFormShown && <MasterExperienceForm onClose={() => setIsFormShown(false)} />}
         </div>
     );
 };

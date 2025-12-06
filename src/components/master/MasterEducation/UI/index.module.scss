@@ -28,7 +28,7 @@
 }
 
 .text {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-24);
+  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-27);
   flex: 0 1 660px;
   min-width: 0;
 }

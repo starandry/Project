@@ -9,7 +9,7 @@ type FormTitleProps = {
     onClose?: () => void;
 };
 
-const FormTitle: React.FC<FormTitleProps> = ({ title, className, onClose  }) => {
+const FormTitle: React.FC<FormTitleProps> = ({ title, className, onClose }) => {
     return (
         <div className={`${styles.formTitle} ${className || ''}`}>
             <h2 className={styles.formTitleText}>{title}</h2>

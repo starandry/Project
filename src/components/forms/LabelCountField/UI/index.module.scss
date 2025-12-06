@@ -1,0 +1,22 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.fieldWrapper {
+  @include rowing(nuul, null, $spacing-12, column);
+  padding: $spacing-16 $spacing-24;
+  border-radius: $spacing-18;
+  background-color: $color-white;
+}
+
+.fieldLabel {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-35);
+}
+
+.duties {
+  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4, $spacing-24);
+  border: none;
+}
+
+.counter {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray2, $spacing-20);
+}
