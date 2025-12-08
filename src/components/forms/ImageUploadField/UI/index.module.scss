@@ -1,0 +1,17 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.wrapperImgUpload {
+  @include rowing(null, null, $spacing-12, column);
+  padding: $spacing-16 $spacing-24;
+  border-radius: $spacing-18;
+  background-color: $color-white;
+}
+
+.fieldLabel {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-35);
+}
+
+.uploadField {
+  @include rowing(center);
+}

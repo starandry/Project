@@ -1,15 +1,22 @@
-import React from 'react';
-import { ImageUploaderContainer, SvgIcon } from '@/components';
+import React, { useState } from 'react';
+import { Button, ImageUploaderContainer, MasterDiplomasForm, SvgIcon } from '@/components';
 import Edit from '@/assets/icons/Edit.svg?react';
 import Check from '@/assets/icons/Check.svg?react';
 import styles from './index.module.scss';
 
 const Diplomas: React.FC = () => {
+    const [isFormShown, setIsFormShown] = useState(false);
+
     return (
         <section className={styles.diplomasWrapper}>
             <div className={styles.titleRowDiplomas}>
                 <h2 className={styles.title}>Сертификаты и дипломы</h2>
-                <SvgIcon Icon={Edit} />
+                <Button
+                    classNames={{ buttonClass: 'editButton' }}
+                    onClick={() => setIsFormShown(true)}
+                >
+                    <SvgIcon Icon={Edit} />
+                </Button>
             </div>
             <ul>
                 <li className={styles.grid}>
@@ -30,6 +37,7 @@ const Diplomas: React.FC = () => {
                     </div>
                 </li>
             </ul>
+            {isFormShown && <MasterDiplomasForm onClose={() => setIsFormShown(false)} />}
         </section>
     );
 };
