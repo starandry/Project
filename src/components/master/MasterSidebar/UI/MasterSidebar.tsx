@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SvgIcon } from '@/components';
-import { useAppSelector } from '@/hooks/reduxHooks';
 import type { MasterSidebarProps } from '@/components/master/MasterSidebar';
 import styles from './index.module.scss';
 
@@ -13,17 +12,15 @@ import NotificationIcon from '@/assets/icons/Notification.svg?react';
 import SettingsIcon from '@/assets/icons/Settings.svg?react';
 
 const MasterSidebar: React.FC<MasterSidebarProps> = ({ avatarUrl }) => {
-    const userName = useAppSelector((state) => state.master.name);
-
     return (
         <aside className={styles.masterSidebar}>
             <div className={styles.masterInfoBox}>
                 {avatarUrl ? (
-                    <img src={avatarUrl} alt={`${userName} avatar`} />
+                    <img src={avatarUrl} alt={'test avatar'} />
                 ) : (
                     <div className={styles.wrapperImg} />
                 )}
-                <p className={styles.userName}>{userName}</p>
+                <p className={styles.userName}>Маргарита Чернышова</p>
             </div>
 
             <nav>
