@@ -1,4 +1,3 @@
 const PROFILE_STORAGE_KEY = 'userProfile';
-const SERVICES_STORAGE_KEY = 'services';
 
-export { PROFILE_STORAGE_KEY, SERVICES_STORAGE_KEY };
+export { PROFILE_STORAGE_KEY };
