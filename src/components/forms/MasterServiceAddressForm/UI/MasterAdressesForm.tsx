@@ -2,11 +2,11 @@ import React from 'react';
 import styles from './index.module.scss';
 import { FormFooter, FormTitle, LabeledInputField } from '@/components';
 
-type MasterServiceAddressForm = {
+type MasterServiceAddressFormProps = {
     onClose: () => void;
 };
 
-const MasterServiceAddressForm: React.FC<MasterServiceAddressForm> = ({ onClose }) => {
+const MasterServiceAddressForm: React.FC<MasterServiceAddressFormProps> = ({ onClose }) => {
     return (
         <div className={styles.addressOverlay}>
             <form className={styles.addressForm}>

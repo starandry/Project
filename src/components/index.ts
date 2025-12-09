@@ -28,6 +28,7 @@ export * from './master/MasterExperience';
 export * from './forms/MasterExperienceForm';
 export * from './master/MasterAddresses';
 export * from './forms/MasterServiceAddressForm';
+export * from './forms/MasterVisitAddressForm';
 export * from './master/MasterServices';
 export * from './forms/MasterServicesForm';
 export * from './forms/LabeledInputField';
