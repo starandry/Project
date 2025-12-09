@@ -1,14 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {
-    PROFILE_STORAGE_KEY,
-    ADDRESS_STORAGE_KEY,
-    SERVICES_STORAGE_KEY,
-} from '@/constants/storageKeys';
-
-export type AddressState = {
-    address: string;
-    region: string;
-};
+import { PROFILE_STORAGE_KEY, SERVICES_STORAGE_KEY } from '@/constants/storageKeys';
 
 export type ServiceItem = {
     title: string;
@@ -23,16 +14,8 @@ export type UserProfile = {
 };
 
 export type UserState = UserProfile & {
-    addressData: AddressState[];
     services: ServiceItem[];
 };
-
-export const defaultAddressState: AddressState[] = [
-    {
-        address: 'Введите адрес проведения услуги',
-        region: 'Центральный район',
-    },
-];
 
 const defaultServices: ServiceItem[] = [
     {
@@ -41,39 +24,6 @@ const defaultServices: ServiceItem[] = [
         price: '100',
     },
 ];
-
-const getInitialAddress = (): AddressState[] => {
-    const stored = localStorage.getItem(ADDRESS_STORAGE_KEY);
-
-    if (!stored) {
-        localStorage.setItem(ADDRESS_STORAGE_KEY, JSON.stringify(defaultAddressState));
-        return defaultAddressState;
-    }
-
-    try {
-        const parsed = JSON.parse(stored);
-        if (
-            Array.isArray(parsed) &&
-            parsed.every(
-                (item) =>
-                    typeof item === 'object' &&
-                    item !== null &&
-                    'address' in item &&
-                    'region' in item
-            )
-        ) {
-            return parsed.map((item) => ({
-                address: item.address ?? '',
-                region: item.region ?? '',
-            }));
-        }
-
-        return [];
-    } catch (error) {
-        console.error('Invalid address JSON in localStorage:', error);
-        return [];
-    }
-};
 
 const getInitialServices = (): ServiceItem[] => {
     const stored = localStorage.getItem(SERVICES_STORAGE_KEY);
@@ -115,7 +65,6 @@ const initialState: UserState = {
     name: parsedUser.name || 'Маргарита Чернышова',
     email: parsedUser.email || 'margarita.chernushova@gmail.com',
     phone: parsedUser.phone || '89-990-078',
-    addressData: getInitialAddress(),
     services: getInitialServices(),
 };
 
@@ -133,11 +82,6 @@ const masterSlice = createSlice({
             localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify({ name, email, phone }));
         },
 
-        updateAddress(state, action: PayloadAction<AddressState[]>) {
-            state.addressData = action.payload;
-            localStorage.setItem(ADDRESS_STORAGE_KEY, JSON.stringify(action.payload));
-        },
-
         updateServices(state, action: PayloadAction<ServiceItem[]>) {
             state.services = action.payload;
             localStorage.setItem(SERVICES_STORAGE_KEY, JSON.stringify(action.payload));
@@ -145,6 +89,6 @@ const masterSlice = createSlice({
     },
 });
 
-export const { updateProfile, updateAddress, updateServices } = masterSlice.actions;
+export const { updateProfile, updateServices } = masterSlice.actions;
 
 export default masterSlice.reducer;
