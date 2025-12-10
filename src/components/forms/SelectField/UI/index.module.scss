@@ -1,0 +1,13 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.selectFieldWrapper {
+  @include rowing(nuul, null, $spacing-16, column);
+  border-radius: $spacing-20;
+  background-color: $color-white;
+}
+
+.selectFieldLabel {
+  padding: $spacing-16 $spacing-24;
+  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-35);
+}

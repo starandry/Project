@@ -27,6 +27,8 @@ export * from './forms/MasterEducationForm';
 export * from './master/MasterExperience';
 export * from './forms/MasterExperienceForm';
 export * from './master/MasterAddresses';
+export * from './forms/SelectField';
+export * from './forms/SelectInput';
 export * from './forms/MasterServiceAddressForm';
 export * from './forms/MasterVisitAddressForm';
 export * from './master/MasterServices';

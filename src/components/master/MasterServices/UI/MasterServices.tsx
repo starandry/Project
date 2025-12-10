@@ -1,21 +1,26 @@
-import React from 'react';
-import Edit from '@/assets/icons/Edit.svg?react';
+import React, { useState } from 'react';
+import BadgePlus from '@/assets/icons/BadgePlus.svg?react';
 import Check from '@/assets/icons/Check.svg?react';
-import { SvgIcon, Button } from '@/components';
+import { SvgIcon, Button, MasterServicesForm } from '@/components';
 import styles from './index.module.scss';
 
 export const MasterServices: React.FC = () => {
+    const [isServicesShown, setServicesShown] = useState(false);
+
     return (
         <div className={styles.servicesCard}>
-            <h2 className={styles.title}>Услуги и цены</h2>
+            <div className={styles.headerContainer}>
+                <h2 className={styles.title}>Услуги и цены</h2>
+                <Button
+                    classNames={{ buttonClass: 'editButton' }}
+                    onClick={() => setServicesShown(true)}
+                >
+                    <SvgIcon Icon={BadgePlus} />
+                </Button>
+            </div>
             <ul className={styles.servicesList}>
                 <li className={styles.servicesItem}>
                     <div className={styles.itemContent}>
-                        <Button
-                            classNames={{ buttonClass: 'editButton masterPrice' }}
-                        >
-                            <SvgIcon Icon={Edit} />
-                        </Button>
                         <SvgIcon Icon={Check} className="check" />
                         <div className={styles.serviceInfo}>
                             <h3 className={styles.serviceTitle}>Услуга</h3>
@@ -37,6 +42,9 @@ export const MasterServices: React.FC = () => {
                     </div>
                 </li>
             </ul>
+            {isServicesShown && (
+                <MasterServicesForm onClose={() => setServicesShown(false)} />
+            )}
         </div>
     );
 };
