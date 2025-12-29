@@ -34,7 +34,25 @@ const selectStyles: StylesConfig<Option, false> = {
 
     placeholder: (base) => ({
         ...base,
-        fontFamily: "Manroupe, sans-serif",
+        fontFamily: "Manrope, sans-serif",
+        fontSize: 20,
+        fontWeight: 600,
+        color: "#1D1B20",
+        lineHeight: "24px",
+    }),
+
+    singleValue: (base) => ({
+        ...base,
+        fontFamily: "Manrope, sans-serif",
+        fontSize: 20,
+        fontWeight: 600,
+        color: "#1D1B20",
+        lineHeight: "24px",
+    }),
+
+    input: (base) => ({
+        ...base,
+        fontFamily: "Manrope, sans-serif",
         fontSize: 20,
         fontWeight: 600,
         color: "#1D1B20",
@@ -59,7 +77,6 @@ const selectStyles: StylesConfig<Option, false> = {
     }),
 };
 
-// стрелка оставляем как у тебя
 const DropdownIndicator = <
     O extends Option,
     IsMulti extends boolean,
@@ -107,7 +124,7 @@ const SelectInput: React.FC<SelectInputProps> = ({
                     DropdownIndicator,
                     IndicatorSeparator: () => null,
                 }}
-                styles={selectStyles}   // ⬅ ВАЖНО: подключили стили
+                styles={selectStyles}
             />
         </div>
     );
