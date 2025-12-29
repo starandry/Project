@@ -22,5 +22,18 @@
 }
 
 .servicesWrapper {
+  @include rowing(null, end, $spacing-16, column);
+}
+
+.serviceBlock {
   @include rowing(null, null, $spacing-16, column);
+  @include sizes(100%);
+  background-color: $color-white;
+  border-radius: $spacing-20;
+  padding: $spacing-12 $spacing-0;
+}
+
+.serviceDetailsBlock {
+  @include rowing(null, null, $spacing-12, column);
+  @include sizes(100%);
 }

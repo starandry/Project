@@ -1,29 +1,36 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './index.module.scss';
 import { SelectInput } from '@/components';
-
-type selectFieldProps = {
-    label: string;
-};
 
 type Option = {
     label: string;
     value: string;
 };
 
-const serviceOptions: Option[] = [
-    { label: "Маникюр", value: "manicure" },
-    { label: "Педикюр", value: "pedicure" },
-    { label: "Массаж рук", value: "hand_massage" }
-];
+type SelectFieldProps = {
+    label: string;
+    options: Option[];
+    value?: Option | null;
+    onChange?: (option: Option | null) => void;
+    placeholder?: string;
+};
 
-const SelectField: React.FC<selectFieldProps> = ({ label }) => {
-    const [service, setService] = useState<Option | null>(null);
-
+const SelectField: React.FC<SelectFieldProps> = ({
+    label,
+    options,
+    value,
+    onChange,
+    placeholder,
+}) => {
     return (
         <div className={styles.selectFieldWrapper}>
             <label className={styles.selectFieldLabel}>{label}</label>
-            <SelectInput value={service}  onChange={setService}  options={serviceOptions} />
+            <SelectInput
+                value={value}
+                onChange={onChange || (() => {})}
+                options={options}
+                placeholder={placeholder}
+            />
         </div>
     );
 };

@@ -8,6 +8,8 @@ type LabeledInputFieldProps = {
     placeholder?: string;
     type?: string;
     value?: string;
+    hint?: string;
+    maxLength?: number;
 };
 
 const LabeledInputField: React.FC<LabeledInputFieldProps> = ({
@@ -16,7 +18,11 @@ const LabeledInputField: React.FC<LabeledInputFieldProps> = ({
     type,
     onChange,
     value,
+    hint,
+    maxLength,
 }) => {
+    const currentLength = value?.length || 0;
+
     return (
         <div className={styles.fieldWrapper}>
             <label className={styles.fieldLabel}>{label}</label>
@@ -27,7 +33,19 @@ const LabeledInputField: React.FC<LabeledInputFieldProps> = ({
                 placeholder={placeholder}
                 className="formInput"
                 value={value}
+                maxLength={maxLength}
             />
+
+            {(hint || maxLength) && (
+                <div className={styles.fieldHintRow}>
+                    {hint && <span className={styles.fieldHint}>{hint}</span>}
+                    {maxLength && (
+                        <span className={styles.fieldCounter}>
+                            {currentLength}/{maxLength}
+                        </span>
+                    )}
+                </div>
+            )}
         </div>
     );
 };

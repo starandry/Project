@@ -2,7 +2,7 @@
 @use '../../../../styles/mixins' as *;
 
 .fieldWrapper {
-  @include rowing(nuul, null, $spacing-12, column);
+  @include rowing(null, null, $spacing-12, column);
   padding: $spacing-16 $spacing-24;
   border-radius: $spacing-18;
   background-color: $color-white;
@@ -10,4 +10,18 @@
 
 .fieldLabel {
   @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-35);
+}
+
+.fieldHintRow {
+  @include rowing(space-between, center);
+  @include sizes(100%);
+}
+
+.fieldHint {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray2, $spacing-20);
+}
+
+.fieldCounter {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray2, $spacing-20);
+  margin-left: auto;
 }
