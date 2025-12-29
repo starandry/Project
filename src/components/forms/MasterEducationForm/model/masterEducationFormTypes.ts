@@ -1,4 +1,8 @@
-export type EducationItem = {
-    title: string;
-    year: string;
+export type EducationFormData = {
+    institutionName: string;
+    specialty: string;
+    startYear: string;
+    startMonth: string;
+    endYear: string;
+    endMonth: string;
 };

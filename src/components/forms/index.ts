@@ -8,6 +8,7 @@ export * from './MasterAboutForm';
 export * from './MasterDiplomasForm';
 export * from './MasterEditForm';
 export * from './MasterEducationForm';
+export * from './MasterEducationForm/index.model';
 export * from './MasterExperienceForm';
 export * from './MasterServiceAddressForm';
 export * from './MasterServicesForm';

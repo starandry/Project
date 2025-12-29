@@ -1,22 +1,48 @@
-import { useState } from 'react';
-import type { EducationItem } from '@/components';
+import { useState, useCallback } from 'react';
+import type { EducationFormData } from '@/components';
+import { initialEducationFormData } from '@/components';
 
-export const useMasterEducationForm = (initialEducation: EducationItem[]) => {
-    const [education, setEducation] = useState<EducationItem[]>(initialEducation);
+export const useMasterEducationForm = (initialData?: Partial<EducationFormData>) => {
+    const [formData, setFormData] = useState<EducationFormData>({
+        ...initialEducationFormData,
+        ...initialData,
+    });
 
-    const handleChange = (index: number, field: keyof EducationItem, value: string) => {
-        setEducation((prev) =>
-            prev.map((item, i) => (i === index ? { ...item, [field]: value } : item))
+    const handleInputChange = useCallback(
+        (field: keyof EducationFormData) => (e: React.ChangeEvent<HTMLInputElement>) => {
+            setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+        },
+        []
+    );
+
+    const handleSelectChange = useCallback(
+        (field: keyof EducationFormData) => (e: React.ChangeEvent<HTMLSelectElement>) => {
+            setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+        },
+        []
+    );
+
+    const resetForm = useCallback(() => {
+        setFormData({ ...initialEducationFormData, ...initialData });
+    }, [initialData]);
+
+    const isFormValid = useCallback(() => {
+        return (
+            formData.institutionName.trim() !== '' &&
+            formData.specialty.trim() !== '' &&
+            formData.startYear !== '' &&
+            formData.startMonth !== '' &&
+            formData.endYear !== '' &&
+            formData.endMonth !== ''
         );
-    };
+    }, [formData]);
 
-    const handleAdd = () => {
-        setEducation((prev) => [...prev, { title: '', year: '' }]);
+    return {
+        formData,
+        setFormData,
+        handleInputChange,
+        handleSelectChange,
+        resetForm,
+        isFormValid,
     };
-
-    const handleRemove = (index: number) => {
-        setEducation((prev) => prev.filter((_, i) => i !== index));
-    };
-
-    return { education, setEducation, handleChange, handleAdd, handleRemove };
 };

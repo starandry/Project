@@ -27,12 +27,16 @@ type DateSelectFieldProps = {
     onYearChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
     onMonthChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
     label?: string;
+    yearValue?: string;
+    monthValue?: string;
 };
 
 const DateSelectField: React.FC<DateSelectFieldProps> = ({
     onYearChange,
     onMonthChange,
     label,
+    yearValue = '',
+    monthValue = '',
 }) => {
     return (
         <div className={styles.dateSelectGroup}>
@@ -43,7 +47,7 @@ const DateSelectField: React.FC<DateSelectFieldProps> = ({
                     <div className={styles.selectYearWrapper}>
                         <select
                             className={styles.yearSelect}
-                            defaultValue=""
+                            value={yearValue}
                             onChange={onYearChange}
                         >
                             <option value="" disabled>
@@ -63,7 +67,7 @@ const DateSelectField: React.FC<DateSelectFieldProps> = ({
                     <div className={styles.selectMonthWrapper}>
                         <select
                             className={styles.monthSelect}
-                            defaultValue=""
+                            value={monthValue}
                             onChange={onMonthChange}
                         >
                             <option value="" disabled>

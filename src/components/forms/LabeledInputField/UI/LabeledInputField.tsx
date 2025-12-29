@@ -7,6 +7,7 @@ type LabeledInputFieldProps = {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder?: string;
     type?: string;
+    value?: string;
 };
 
 const LabeledInputField: React.FC<LabeledInputFieldProps> = ({
@@ -14,6 +15,7 @@ const LabeledInputField: React.FC<LabeledInputFieldProps> = ({
     placeholder,
     type,
     onChange,
+    value,
 }) => {
     return (
         <div className={styles.fieldWrapper}>
@@ -24,6 +26,7 @@ const LabeledInputField: React.FC<LabeledInputFieldProps> = ({
                 onChange={onChange}
                 placeholder={placeholder}
                 className="formInput"
+                value={value}
             />
         </div>
     );
