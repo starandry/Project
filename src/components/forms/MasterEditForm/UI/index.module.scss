@@ -7,14 +7,12 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
   background: rgba(0, 0, 0, 0.45);
   z-index: 999;
 }
 
 .masterEditForm {
-  @include sizes(1150px);
+  @include sizes(1147px);
   z-index: 1000;
   padding: $spacing-16 $spacing-24;
   border-radius: $spacing-12;
@@ -22,7 +20,7 @@
 }
 
 .formContent {
-  @include rowing(null, null, $spacing-12, column);
+  @include rowing(null, null, $spacing-16, column);
 }
 
 .errorText {
@@ -49,8 +47,10 @@
 
 .uploadArea {
   @include rowing(center, center);
-  @include sizes(100%, 120px);
-  border-radius: $spacing-12;
+  @include sizes(fit-content);
+  margin: $spacing-0 auto;
+  padding: 40px;
+  border-radius: $spacing-20;
   background-color: $color-pink;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -62,12 +62,11 @@
 
 .uploadIcon {
   @include rowing(center, center);
-  @include sizes(80px, 80px);
-  border-radius: $spacing-12;
-  background-color: $color-pink2;
+  @include sizes(60px, 60px);
+  padding: $spacing-8;
 
   svg {
-    @include sizes(24px, 24px);
+    @include sizes(100%, 100%);
     color: $color-purple;
   }
 }

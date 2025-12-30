@@ -15,6 +15,7 @@
   @include sizes(1150px);
   z-index: 1000;
   padding: $spacing-16 $spacing-24;
+  border-radius: $spacing-12;
   background-color: $color-pink;
 }
 
