@@ -13,10 +13,9 @@
 }
 
 .experienceForm {
-  @include sizes(1150px);
+  @include sizes(1150px, null, $spacing-12);
   z-index: 1000;
   padding: $spacing-16 $spacing-24;
-  border-radius: $spacing-12;
   background-color: $color-pink;
 }
 

@@ -2,7 +2,7 @@
 @use '../../../../styles/mixins' as *;
 
 .masterAboutTextarea {
-  @include rowing(null, nulll, null, column);
+  @include rowing(null, null, null, column);
   @include sizes(100%, 50px);
   margin-bottom: $spacing-12;
 }

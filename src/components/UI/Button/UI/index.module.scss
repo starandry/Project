@@ -2,8 +2,8 @@
 @use '../../../../styles/mixins' as *;
 
 .btn {
+  @include sizes(null, null, $spacing-12);
   padding: $spacing-15 $spacing-90;
-  border-radius: $spacing-12;
   border: none;
 }
 
@@ -22,8 +22,8 @@
 .searchBtn {
   @include rowing(null, center);
   @include fonts($manroupe-font, $font-weight-500, $font-size-20, $color-purple3, $spacing-26);
+  @include sizes(null, null, $spacing-10);
   padding: $spacing-12 $spacing-30;
-  border-radius: $spacing-10;
   background-color: $color-white;
 
   > span {
@@ -33,32 +33,32 @@
 
 .listBtn {
   @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-white);
+  @include sizes(null, null, $spacing-10);
   padding: $spacing-10 $spacing-25;
-  border-radius: $spacing-10;
   background-color: $color-purple3;
 }
 
 .mapBtn {
   @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-burgundy);
+  @include sizes(null, null, $spacing-10);
   padding: $spacing-10 $spacing-25;
   border: 1px solid $color-purple4;
-  border-radius: $spacing-10;
   background-color: $color-white;
 }
 
 .listBtnInactive {
   @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-burgundy);
+  @include sizes(null, null, $spacing-10);
   padding: $spacing-10 $spacing-25;
   border: 1px solid $color-purple4;
-  border-radius: $spacing-10;
   background-color: $color-white;
 }
 
 .mapBtnInactive {
   @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-burgundy);
+  @include sizes(null, null, $spacing-10);
   padding: $spacing-10 $spacing-25;
   border: 1px solid $color-purple4;
-  border-radius: $spacing-10;
   background-color: $color-white;
 }
 
@@ -73,33 +73,33 @@
 
 .bookBtn {
   @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-white);
+  @include sizes(null, null, $spacing-10);
   padding: $spacing-12 $spacing-65;
   margin-left: auto;
-  border-radius: $spacing-10;
   background-color: $color-purple3;
 }
 
 .mastersMoreBtn {
   @include fonts($manroupe-font, $font-weight-400, $font-size-20, $color-white);
+  @include sizes(null, null, $spacing-10);
   padding: $spacing-20 $spacing-30;
   margin: $spacing-24 $spacing-0 $spacing-12;
-  border-radius: $spacing-10;
   background-color: $color-purple3;
 }
 
 .discountBtn {
   @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-white);
+  @include sizes(null, null, $spacing-10);
   padding: $spacing-12 $spacing-20;
-  border-radius: $spacing-10;
   background-color: $color-purple3;
 }
 
 .joinServBtn {
   @include fonts($manroupe-font, $font-weight-600, $font-size-24, $color-white);
+  @include sizes(null, null, $spacing-10);
   align-self: self-start;
   padding: $spacing-24 $spacing-36;
   margin: $spacing-12 $spacing-0 $spacing-12;
-  border-radius: $spacing-10;
   background-color: $color-purple3;
 }
 
@@ -121,32 +121,32 @@
 
 .editButtonUploader {
   @include fonts($manroupe-font, $font-weight-400, $font-size-10, $color-gray4);
+  @include sizes(null, null, $spacing-8);
   position: absolute;
   top: 65%;
   padding: $spacing-8 $spacing-8;
-  border-radius: $spacing-8;
   background-color: $color-white;
 }
 
 .actionIcon {
+  @include sizes(null, null, $spacing-8);
   position: absolute;
   top: 40%;
   left: 40%;
   padding: $spacing-8;
   border: none;
-  border-radius: $spacing-8;
   opacity: 0.7;
   background-color: $color-white;
 }
 
 .textButton {
   @include fonts($manroupe-font, $font-weight-400, $font-size-10, $color-gray4);
+  @include sizes(null, null, $spacing-8);
   position: absolute;
   top: 20%;
   left: 36%;
   padding: $spacing-8 $spacing-8;
   border: none;
-  border-radius: $spacing-8;
   background-color: $color-white;
 }
 
@@ -198,17 +198,17 @@
 
 .submitButton {
   @include fonts($manroupe-font, $font-weight-500, $font-size-16, $color-white, $spacing-20);
+  @include sizes(null, null, $spacing-12);
   padding: $spacing-12 $spacing-20;
   border: $spacing-1 solid $color-purple3;
-  border-radius: $spacing-12;
   background-color: $color-purple3;
 }
 
 .cancelButton {
   @include fonts($manroupe-font, $font-weight-500, $font-size-16, $color-purple3, $spacing-20);
+  @include sizes(null, null, $spacing-12);
   padding: $spacing-12 $spacing-20;
   border: $spacing-1 solid $color-purple3;
-  border-radius: $spacing-12;
   background-color: $color-white;
 }
 

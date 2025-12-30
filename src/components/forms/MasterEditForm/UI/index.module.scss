@@ -12,10 +12,9 @@
 }
 
 .masterEditForm {
-  @include sizes(1147px);
+  @include sizes(1147px, null, $spacing-12);
   z-index: 1000;
   padding: $spacing-16 $spacing-24;
-  border-radius: $spacing-12;
   background-color: $color-pink;
 }
 
@@ -31,9 +30,8 @@
 
 .photoSection {
   @include rowing(null, null, $spacing-12, column);
-  @include sizes(100%);
+  @include sizes(100%, null, $spacing-18);
   padding: $spacing-16 $spacing-24;
-  border-radius: $spacing-18;
   background-color: $color-white;
 }
 
@@ -47,10 +45,9 @@
 
 .uploadArea {
   @include rowing(center, center);
-  @include sizes(fit-content);
+  @include sizes(fit-content, null, $spacing-20);
   margin: $spacing-0 auto;
-  padding: 40px;
-  border-radius: $spacing-20;
+  padding: $spacing-40;
   background-color: $color-pink;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -82,8 +79,7 @@
 }
 
 .photoPreview {
-  @include sizes(150px, 150px);
-  border-radius: $spacing-12;
+  @include sizes(150px, 150px, $spacing-12);
   object-fit: cover;
 }
 

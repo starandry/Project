@@ -16,10 +16,9 @@
 }
 
 .wrappShedule {
-  @include sizes(100%);
+  @include sizes(100%, null, $spacing-12);
   max-width: 560px;
   padding: $spacing-16 $spacing-24;
-  border-radius: $spacing-12;
   background-color: $color-white;
 }
 
@@ -28,7 +27,7 @@
 }
 
 .headShedule {
-  justify-content: space-between;
+  @include rowing(space-between);
 
   > .btnCalendar {
     @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-black);
@@ -82,7 +81,7 @@
 }
 
 .slotRow {
-  align-items: center;
+  @include rowing(null, center);
 }
 
 .iconCol {

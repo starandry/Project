@@ -1,6 +1,8 @@
 @use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
 
 .sliderWrap {
+  @include sizes(100%);
   max-width: 1100px;
 
   :global(.swiper) {

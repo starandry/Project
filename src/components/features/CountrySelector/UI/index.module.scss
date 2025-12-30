@@ -8,8 +8,7 @@
 }
 
 .currentCountry {
-  @include rowing(null, center);
-  gap: $spacing-8;
+  @include rowing(null, center, $spacing-8);
   cursor: pointer;
 }
 
@@ -30,9 +29,8 @@
 }
 
 .dropdownItem {
-  @include rowing(null, center);
-  padding: 8px 10px;
-  gap: $spacing-8;
+  @include rowing(null, center, $spacing-8);
+  padding: $spacing-8 $spacing-10;
   cursor: pointer;
 
   &:hover {

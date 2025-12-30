@@ -19,8 +19,7 @@
 }
 
 .wrapperImg {
-  @include sizes($spacing-40, $spacing-40);
-  border-radius: 50%;
+  @include sizes($spacing-40, $spacing-40, 50%);
   background-color: $color-gray3;
 }
 

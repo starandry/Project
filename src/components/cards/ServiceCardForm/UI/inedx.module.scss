@@ -1,13 +1,12 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
 .form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  @include rowing(null, null, $spacing-10, column);
   max-width: 360px;
 }
 
 .buttonGroup {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-  margin-top: 12px;
+  @include rowing(flex-end, null, $spacing-8);
+  margin-top: $spacing-12;
 }

@@ -2,8 +2,7 @@
 @use '../../../../styles/mixins' as *;
 
 .nav {
-  @include rowing(center, center);
-  gap: $spacing-35;
+  @include rowing(center, center, $spacing-35);
 }
 
 .navLink {

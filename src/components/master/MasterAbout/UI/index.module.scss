@@ -2,9 +2,9 @@
 @use '../../../../styles/mixins' as *;
 
 .aboutCard {
+  @include sizes(null, null, $spacing-12);
   padding: $spacing-16 $spacing-24;
   background-color: $color-white;
-  border-radius: $spacing-12;
 }
 
 .header {

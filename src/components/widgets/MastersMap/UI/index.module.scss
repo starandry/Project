@@ -24,6 +24,21 @@
     :global(.leaflet-control-attribution) {
         display: none;
     }
+
+    :global(.leaflet-popup-content-wrapper) {
+        padding: 0;
+        border-radius: $spacing-18;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    :global(.leaflet-popup-content) {
+        margin: 0;
+        width: auto !important;
+    }
+
+    :global(.leaflet-popup-tip) {
+        background: $color-white;
+    }
 }
 
 .customMarker {
@@ -35,18 +50,133 @@
     }
 }
 
-.popup {
-    text-align: center;
+.masterCard {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-16;
+    padding: $spacing-24;
+    background: $color-white;
+    border-radius: $spacing-18;
+    width: 650px;
+}
 
-    strong {
-        display: block;
-        color: $color-purple;
-        margin-bottom: $spacing-4;
+.masterCardTop {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-12;
+}
+
+.masterPhoto {
+    width: 150px;
+    height: 164px;
+    border-radius: $spacing-12;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.masterInfo {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-8;
+    flex: 1;
+}
+
+.masterHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.masterName {
+    font-family: $manroupe-font;
+    font-weight: $font-weight-600;
+    font-size: $font-size-24;
+    color: $color-black;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.favoriteBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 24px;
+        height: 24px;
+        color: $color-gray2;
+        transition: color 0.2s ease;
     }
 
-    p {
-        margin: 0;
-        font-size: $font-size-14;
-        color: $color-gray5;
+    &:hover svg {
+        color: $color-purple;
+    }
+}
+
+.masterSpecialty,
+.masterAddress {
+    font-family: $manroupe-font;
+    font-weight: $font-weight-400;
+    font-size: $font-size-14;
+    color: $color-purple4;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.masterCardBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.masterStats {
+    display: flex;
+    align-items: center;
+    gap: $spacing-20;
+}
+
+.masterRating,
+.masterReviews {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+    font-family: $manroupe-font;
+    font-weight: $font-weight-400;
+    font-size: $font-size-14;
+    color: $color-gray2;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.masterRating svg {
+    color: $color-orange;
+}
+
+.masterReviews svg {
+    color: $color-gray2;
+}
+
+.bookButton {
+    font-family: $manroupe-font;
+    font-weight: $font-weight-500;
+    font-size: $font-size-16;
+    color: $color-white;
+    background-color: $color-purple3;
+    border: none;
+    border-radius: $spacing-12;
+    padding: $spacing-12 $spacing-20;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    min-width: 160px;
+
+    &:hover {
+        background-color: $color-purple;
     }
 }

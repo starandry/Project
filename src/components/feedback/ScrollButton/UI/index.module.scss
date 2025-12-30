@@ -1,13 +1,15 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
 .scrollBtn {
+  @include fonts(null, null, $font-size-16, $color-white);
   position: fixed;
   top: 10%;
   right: 10%;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: $spacing-10 $spacing-20;
   border: none;
   border-radius: 9999px;
   background-color: #1976d2;
-  color: #fff;
   cursor: pointer;
   transition: opacity 0.3s ease;
   z-index: 1000;

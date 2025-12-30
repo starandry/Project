@@ -3,7 +3,7 @@
 
 .discountCard {
   @include rowing(space-between, flex-end, null, column);
-  @include sizes(410px, 260px);
+  @include sizes(410px, 260px, $spacing-20);
   padding: $spacing-40 $spacing-20 $spacing-20;
   background: {
     image:
@@ -17,7 +17,6 @@
     repeat: no-repeat, no-repeat;
     color: $color-white;
   }
-  border-radius: $spacing-20;
 }
 
 .discountHeader {

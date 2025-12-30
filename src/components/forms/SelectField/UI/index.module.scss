@@ -2,8 +2,8 @@
 @use '../../../../styles/mixins' as *;
 
 .selectFieldWrapper {
-  @include rowing(nuul, null, $spacing-16, column);
-  border-radius: $spacing-20;
+  @include rowing(null, null, $spacing-16, column);
+  @include sizes(null, null, $spacing-20);
   background-color: $color-white;
 }
 

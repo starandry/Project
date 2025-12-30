@@ -2,8 +2,8 @@
 @use '../../../../styles/mixins' as *;
 
 .wrapperSearchForm {
+  @include sizes(null, null, $spacing-24);
   padding: $spacing-8 $spacing-30;
-  border-radius: $spacing-24;
   background-color: $color-white;
 }
 
@@ -13,8 +13,8 @@
 
 .searchForm {
   @include rowing(space-between, center);
+  @include sizes(null, null, $spacing-24);
   margin: $spacing-8 $spacing-0 $spacing-16;
   padding: $spacing-16 $spacing-24;
-  border-radius: 24px;
   border: $spacing-1 solid $color-purple3;
 }

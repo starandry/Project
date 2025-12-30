@@ -2,9 +2,8 @@
 @use '../../../../styles/mixins' as *;
 
 .wrappCards {
-  @include rowing();
+  @include rowing(null, null, $spacing-25);
   flex-wrap: wrap;
-  gap: $spacing-25;
   padding: $spacing-40 $spacing-57;
   border-radius: $spacing-24;
   background-color: $color-pink;
@@ -15,8 +14,7 @@
 }
 
 .paginationWrap {
-  @include rowing(center);
-  gap: $spacing-24;
+  @include rowing(center, null, $spacing-24);
   padding: $spacing-24 $spacing-0;
 }
 

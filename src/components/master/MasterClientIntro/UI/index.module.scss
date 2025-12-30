@@ -2,9 +2,8 @@
 @use '../../../../styles/mixins' as *;
 
 .promoContent {
-  @include rowing(null, null, null, column);
+  @include rowing(null, null, $spacing-49, column);
   @include sizes(848px);
-  gap: $spacing-49;
   margin: $spacing-0 $spacing-30;
 }
 

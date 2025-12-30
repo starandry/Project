@@ -2,6 +2,7 @@
 @use '../../../../styles/mixins' as *;
 
 .portfolio {
+  @include sizes(100%);
   max-width: 1100px;
   padding: $spacing-12 $spacing-24;
 }

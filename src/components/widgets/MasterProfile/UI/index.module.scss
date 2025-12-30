@@ -16,8 +16,8 @@
 }
 
 .avatarWrapper {
+  @include sizes(null, null, $spacing-20);
   padding: $spacing-40;
-  border-radius: $spacing-20;
   background: $color-pink;
 }
 

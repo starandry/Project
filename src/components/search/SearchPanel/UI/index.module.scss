@@ -27,8 +27,8 @@
 
 .searchPanelBlock {
   @include rowing(null, null, $spacing-16, column);
+  @include sizes(null, null, $spacing-24);
   padding: $spacing-30;
-  border-radius: $spacing-24;
   background-color: $color-purple3;
 }
 

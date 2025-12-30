@@ -17,8 +17,7 @@
 }
 
 .btnWrapp {
-  @include rowing(space-between, center);
-  gap: $spacing-16;
+  @include rowing(space-between, center, $spacing-16);
 }
 
 .masterCapture {
@@ -45,7 +44,6 @@
 }
 
 .footerNavigation {
-  @include rowing();
-  gap: $spacing-48;
+  @include rowing(null, null, $spacing-48);
   padding-bottom: $spacing-24;
 }

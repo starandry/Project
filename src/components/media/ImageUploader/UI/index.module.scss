@@ -3,11 +3,10 @@
 
 .wrapper {
   @include rowing(center, center);
-  @include sizes($spacing-100, $spacing-80);
+  @include sizes($spacing-100, $spacing-80, $spacing-20);
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  border-radius: $spacing-20;
   background-color: $color-pink;
 }
 
@@ -19,7 +18,7 @@
 
 .uploadArea {
   @include rowing(center, center);
+  @include sizes(null, null, $spacing-20);
   padding: $spacing-28;
-  border-radius: $spacing-20;
   background-color: $color-pink;
 }

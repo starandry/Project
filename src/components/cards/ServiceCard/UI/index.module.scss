@@ -2,9 +2,9 @@
 @use '../../../../styles/mixins' as *;
 
 .wrapServCard {
+  @include sizes(null, null, $spacing-24);
   display: inline-block;
   background-color: $color-white;
-  border-radius: $spacing-24;
 }
 
 .wrappPicture {
@@ -14,8 +14,7 @@
 
 .wrappIcon {
   @include rowing(center, center);
-  @include sizes(304px, 304px);
-  border-radius: $spacing-12;
+  @include sizes(304px, 304px, $spacing-12);
   background-color: $color-purple3;
 }
 

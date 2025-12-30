@@ -12,18 +12,16 @@
 }
 
 .modalContent {
-    @include sizes(1147px);
+    @include sizes(1147px, null, $spacing-12);
     z-index: 1002;
     padding: $spacing-16 $spacing-24;
-    border-radius: $spacing-12;
     background-color: $color-pink;
 }
 
 .photoContainer {
     @include rowing(center, center, $spacing-12, column);
-    @include sizes(100%);
+    @include sizes(100%, null, $spacing-18);
     padding: $spacing-16 $spacing-24;
-    border-radius: $spacing-18;
     background-color: $color-white;
     margin-bottom: $spacing-16;
 }
@@ -66,15 +64,13 @@
 }
 
 .photoPreview {
-    @include sizes(270px, 270px);
-    border-radius: $spacing-20;
+    @include sizes(270px, 270px, $spacing-20);
     object-fit: cover;
 }
 
 .noPhoto {
     @include rowing(center, center);
-    @include sizes(270px, 270px);
-    border-radius: $spacing-20;
+    @include sizes(270px, 270px, $spacing-20);
     background-color: $color-pink;
     @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-20);
 }

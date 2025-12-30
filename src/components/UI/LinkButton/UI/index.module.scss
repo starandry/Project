@@ -3,21 +3,19 @@
 
 .linkButton {
   @include fonts($manroupe-font, $font-weight-400, $font-size-16, null, $spacing-20);
+  @include sizes(null, null, $spacing-12);
   padding: $spacing-12 $spacing-30;
-  border-radius: $spacing-12;
 }
 
 .linkButton-login {
-  @include rowing(center, center);
-  gap: $spacing-8;
+  @include rowing(center, center, $spacing-8);
   border: 1px solid $color-purple3;
   color: $color-purple3;
   background-color: $color-white;
 }
 
 .linkButton-reg {
-  @include rowing(center, center);
-  gap: $spacing-8;
+  @include rowing(center, center, $spacing-8);
   border: 1px solid $color-purple3;
   color: $color-white;
   background-color: $color-purple3;
@@ -33,15 +31,14 @@
 
 .linkMasterClientPromo {
   @include fonts($manroupe-font, $font-weight-600, $font-size-24, $color-white, $spacing-20);
+  @include sizes(null, null, $spacing-12);
   text-align: center;
   padding: $spacing-24 $spacing-0;
-  border-radius: $spacing-12;
   background-color: $color-purple3;
 }
 
 .linkFooterNav {
-  @include rowing(null, center);
+  @include rowing(null, center, $spacing-16);
   @include fonts($roboto-font, $font-weight-400, $font-size-17, $color-purple3, $spacing-22);
   padding: $spacing-0;
-  gap: $spacing-16;
 }

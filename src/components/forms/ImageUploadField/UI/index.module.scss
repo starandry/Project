@@ -3,8 +3,8 @@
 
 .wrapperImgUpload {
   @include rowing(null, null, $spacing-12, column);
+  @include sizes(null, null, $spacing-18);
   padding: $spacing-16 $spacing-24;
-  border-radius: $spacing-18;
   background-color: $color-white;
 }
 

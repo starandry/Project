@@ -9,8 +9,8 @@
 }
 
 .educationCard {
+  @include sizes(null, null, $spacing-12);
   padding: $spacing-16 $spacing-24;
-  border-radius: $spacing-12;
   background-color: $color-white;
 }
 

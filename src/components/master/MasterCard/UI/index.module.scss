@@ -3,10 +3,9 @@
 
 .card {
   @include rowing();
-  @include sizes(100%);
+  @include sizes(100%, null, $spacing-24);
   max-width: 650px;
   padding: $spacing-24;
-  border-radius: $spacing-24;
   background-color: $color-white;
 }
 

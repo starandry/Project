@@ -6,9 +6,8 @@
 }
 
 .dropMenuBtn {
-  @include rowing(null, center);
+  @include rowing(null, center, $spacing-25);
   @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-purple);
-  gap: $spacing-25;
   padding: unset;
   background: none;
   border: none;
@@ -46,8 +45,8 @@
 }
 
 .searchPanelBtn {
+  @include rowing(null, null, $spacing-24);
   @include fonts($manroupe-font, $font-weight-500, $font-size-20, $color-purple3, $spacing-26);
-  gap: $spacing-24;
 
   > span {
     line-height: $spacing-32;
