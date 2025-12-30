@@ -1,23 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './index.module.scss';
 
 type LabeledInputFieldProps = {
     label: string;
     onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
     placeholder?: string;
+    maxLength?: number;
 };
 
-const LabelCountField: React.FC<LabeledInputFieldProps> = ({ label, placeholder, onChange }) => {
+const LabelCountField: React.FC<LabeledInputFieldProps> = ({
+    label,
+    placeholder,
+    onChange,
+    maxLength = 1000,
+}) => {
+    const [charCount, setCharCount] = useState(0);
+
+    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setCharCount(e.target.value.length);
+        onChange(e);
+    };
+
     return (
         <div className={styles.fieldWrapper}>
             <label className={styles.fieldLabel}>{label}</label>
             <textarea
                 className={styles.duties}
                 placeholder={placeholder}
-                onChange={onChange}
+                onChange={handleChange}
+                maxLength={maxLength}
                 rows={2}
             />
-            <span className={styles.counter}>10/1000</span>
+            <span className={styles.counter}>{charCount}/{maxLength}</span>
         </div>
     );
 };
