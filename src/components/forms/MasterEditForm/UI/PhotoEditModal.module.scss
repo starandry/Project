@@ -1,0 +1,83 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.modalOverlay {
+    @include rowing(center, center);
+    @include sizes(100vw, 100vh);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1001;
+}
+
+.modalContent {
+    @include sizes(600px);
+    z-index: 1002;
+    padding: $spacing-16 $spacing-24;
+    border-radius: $spacing-12;
+    background-color: $color-pink;
+}
+
+.photoContainer {
+    @include rowing(center, center, $spacing-16, column);
+    @include sizes(100%);
+    padding: $spacing-24;
+    border-radius: $spacing-18;
+    background-color: $color-white;
+    margin-bottom: $spacing-16;
+}
+
+.hiddenInput {
+    display: none;
+}
+
+.actionsRow {
+    @include rowing(space-between, center);
+    @include sizes(100%);
+}
+
+.actionButton {
+    @include rowing(center, center, $spacing-8, column);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-8;
+
+    svg {
+        @include sizes(24px, 24px);
+        color: $color-purple;
+    }
+
+    span {
+        @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-gray4, $spacing-20);
+    }
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.photoWrapper {
+    @include rowing(center, center);
+    @include sizes(200px, 200px);
+    margin: $spacing-16 0;
+}
+
+.photoPreview {
+    @include sizes(200px, 200px);
+    border-radius: $spacing-12;
+    object-fit: cover;
+}
+
+.noPhoto {
+    @include rowing(center, center);
+    @include sizes(200px, 200px);
+    border-radius: $spacing-12;
+    background-color: $color-pink;
+    @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-20);
+}
+
+.photoHint {
+    @include fonts($roboto-flex-font, $font-weight-400, $font-size-14, $color-purple, $spacing-20);
+}

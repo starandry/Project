@@ -1,0 +1,93 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.editOverlay {
+  @include rowing(center, center);
+  @include sizes(100vw, 100vh);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 999;
+}
+
+.masterEditForm {
+  @include sizes(1150px);
+  z-index: 1000;
+  padding: $spacing-16 $spacing-24;
+  border-radius: $spacing-12;
+  background-color: $color-pink;
+}
+
+.formContent {
+  @include rowing(null, null, $spacing-12, column);
+}
+
+.errorText {
+  @include fonts($roboto-flex-font, $font-weight-400, $font-size-14, $color-red, $spacing-20);
+  padding-left: $spacing-24;
+  margin-top: -$spacing-8;
+}
+
+.photoSection {
+  @include rowing(null, null, $spacing-12, column);
+  @include sizes(100%);
+  padding: $spacing-16 $spacing-24;
+  border-radius: $spacing-18;
+  background-color: $color-white;
+}
+
+.photoLabel {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-35);
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.uploadArea {
+  @include rowing(center, center);
+  @include sizes(100%, 120px);
+  border-radius: $spacing-12;
+  background-color: $color-pink;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $color-pink2;
+  }
+}
+
+.uploadIcon {
+  @include rowing(center, center);
+  @include sizes(80px, 80px);
+  border-radius: $spacing-12;
+  background-color: $color-pink2;
+
+  svg {
+    @include sizes(24px, 24px);
+    color: $color-purple;
+  }
+}
+
+.photoPreviewWrapper {
+  @include rowing(center, center, $spacing-16, column);
+  @include sizes(100%);
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.photoPreview {
+  @include sizes(150px, 150px);
+  border-radius: $spacing-12;
+  object-fit: cover;
+}
+
+.photoHint {
+  @include fonts($roboto-flex-font, $font-weight-400, $font-size-14, $color-purple, $spacing-20);
+}

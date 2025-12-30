@@ -1,40 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, SvgIcon, MasterEditForm } from '@/components';
 import Avatar from '@/assets/icons/Avatar.svg?react';
 import Edit from '@/assets/icons/Edit.svg?react';
 import styles from './index.module.scss';
 
 export const MasterProfileCard: React.FC = () => {
-    const temp =  false;
+    const [isEditing, setIsEditing] = useState(false);
+    const temp = false;
+
+    const handleEditClick = () => {
+        setIsEditing(true);
+    };
+
+    const handleCancel = () => {
+        setIsEditing(false);
+    };
+
+    const handleSaved = () => {
+        setIsEditing(false);
+    };
 
     return (
-        <div className={styles.masterProfileCard}>
-            <div className={styles.cardHeader}>
-                {temp ? (
-                    <img alt="Фото мастера" className={styles.profilePhoto} />
-                ) : (
-                    <div className={styles.avatarWrapper}>
-                        <SvgIcon Icon={Avatar} />
+        <>
+            <div className={styles.masterProfileCard}>
+                <div className={styles.cardHeader}>
+                    {temp ? (
+                        <img alt="Фото мастера" className={styles.profilePhoto} />
+                    ) : (
+                        <div className={styles.avatarWrapper}>
+                            <SvgIcon Icon={Avatar} />
+                        </div>
+                    )}
+                    <h2 className={styles.title}>Мой профиль</h2>
+                    <Button classNames={{ buttonClass: 'editButton' }} onClick={handleEditClick}>
+                        <SvgIcon Icon={Edit} />
+                    </Button>
+                </div>
+
+                <div className={styles.infoGroup}>
+                    <div className={styles.infoItem}>
+                        <p className={styles.masterName}>Маргарита Чернышова</p>
                     </div>
-                )}
-                <h2 className={styles.title}>Мой профиль</h2>
-                <Button classNames={{ buttonClass: 'editButton' }}>
-                    <SvgIcon Icon={Edit} />
-                </Button>
+                    <div className={styles.infoItem}>
+                        <p className={styles.masterEmail}>margarita.chernushova@gmail.com</p>
+                    </div>
+                    <div className={styles.infoItem}>
+                        <p className={styles.masterPhone}>89-99--078</p>
+                    </div>
+                </div>
             </div>
 
-            <div className={styles.infoGroup}>
-                <div className={styles.infoItem}>
-                    <p className={styles.masterName}>Маргарита Чернышова</p>
-                </div>
-                <div className={styles.infoItem}>
-                    <p className={styles.masterEmail}>margarita.chernushova@gmail.com</p>
-                </div>
-                <div className={styles.infoItem}>
-                    <p className={styles.masterPhone}>89-99--078</p>
-                </div>
-            </div>
-            <MasterEditForm />
-        </div>
+            {isEditing && <MasterEditForm onCancel={handleCancel} onSaved={handleSaved} />}
+        </>
     );
 };
