@@ -34,6 +34,10 @@
     :global(.leaflet-popup-content) {
         margin: 0;
         width: auto !important;
+
+        h3, p {
+            margin: 0;
+        }
     }
 
     :global(.leaflet-popup-tip) {
@@ -74,17 +78,24 @@
     flex-shrink: 0;
 }
 
-.masterInfo {
+.masterInfoWrapper {
     display: flex;
-    flex-direction: column;
-    gap: $spacing-8;
+    align-items: flex-start;
+    gap: $spacing-12;
     flex: 1;
 }
 
-.masterHeader {
+.masterInfo {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: $spacing-21;
+    flex: 1;
+}
+
+.masterDetails {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-8;
 }
 
 .masterName {
@@ -124,7 +135,8 @@
     font-size: $font-size-14;
     color: $color-purple4;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.37;
+    letter-spacing: -0.02em;
 }
 
 .masterCardBottom {
@@ -147,6 +159,7 @@
     font-weight: $font-weight-400;
     font-size: $font-size-14;
     color: $color-gray2;
+    letter-spacing: -0.02em;
 
     svg {
         width: 24px;
@@ -163,6 +176,7 @@
     font-weight: $font-weight-400;
     font-size: $font-size-14;
     color: $color-gray2;
+    letter-spacing: -0.02em;
 
     svg {
         width: 24px;

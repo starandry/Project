@@ -17,8 +17,10 @@ const MasterCard: React.FC<MasterCardProps> = (props) => {
                     <div className={styles.infoNextWrapper}>
                         <div className={styles.info}>
                             <h2 className={styles.name}>{name}</h2>
-                            <p className={styles.specialty}>{specialty}</p>
-                            <p className={styles.address}>{address}</p>
+                            <div className={styles.infoDetails}>
+                                <p className={styles.specialty}>{specialty}</p>
+                                <p className={styles.address}>{address}</p>
+                            </div>
                         </div>
                         <SvgIcon Icon={HeartOutline} className="heartOutIcon" />
                     </div>

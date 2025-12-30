@@ -131,19 +131,21 @@ const MastersMap: React.FC<MastersMapProps> = ({ markers = defaultMarkers, onBoo
                                                 className={styles.masterPhoto}
                                             />
                                         )}
-                                        <div className={styles.masterInfo}>
-                                            <div className={styles.masterHeader}>
+                                        <div className={styles.masterInfoWrapper}>
+                                            <div className={styles.masterInfo}>
                                                 <h3 className={styles.masterName}>{marker.name}</h3>
-                                                <button className={styles.favoriteBtn} type="button">
-                                                    <HeartIcon />
-                                                </button>
+                                                <div className={styles.masterDetails}>
+                                                    {marker.specialty && (
+                                                        <p className={styles.masterSpecialty}>{marker.specialty}</p>
+                                                    )}
+                                                    {marker.address && (
+                                                        <p className={styles.masterAddress}>{marker.address}</p>
+                                                    )}
+                                                </div>
                                             </div>
-                                            {marker.specialty && (
-                                                <p className={styles.masterSpecialty}>{marker.specialty}</p>
-                                            )}
-                                            {marker.address && (
-                                                <p className={styles.masterAddress}>{marker.address}</p>
-                                            )}
+                                            <button className={styles.favoriteBtn} type="button">
+                                                <HeartIcon />
+                                            </button>
                                         </div>
                                     </div>
                                     <div className={styles.masterCardBottom}>

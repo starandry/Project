@@ -25,15 +25,21 @@
 }
 
 .info {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-21;
   flex: 1;
 }
 
 .name {
   @include fonts($manroupe-font, $font-weight-600, $font-size-32, $color-black);
+  line-height: 1.125;
 }
 
-.specialty {
-  padding: $spacing-20 $spacing-0 $spacing-10;
+.infoDetails {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-8;
 }
 
 .specialty,
@@ -53,6 +59,7 @@
   align-items: center;
   gap: $spacing-4;
   @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-gray2);
+  letter-spacing: -0.02em;
 }
 
 .reviewsBlock {

@@ -72,10 +72,9 @@
 }
 
 .bookBtn {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-white);
-  @include sizes(null, null, $spacing-10);
-  padding: $spacing-12 $spacing-65;
-  margin-left: auto;
+  @include fonts($manroupe-font, $font-weight-500, $font-size-16, $color-white);
+  @include sizes(222px, null, $spacing-12);
+  padding: $spacing-12 $spacing-20;
   background-color: $color-purple3;
 }
 
