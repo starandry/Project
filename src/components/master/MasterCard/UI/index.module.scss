@@ -2,15 +2,30 @@
 @use '../../../../styles/mixins' as *;
 
 .card {
-  @include rowing();
-  @include sizes(100%, null, $spacing-24);
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+  width: 100%;
   max-width: 650px;
   padding: $spacing-24;
   background-color: $color-white;
+  border-radius: $spacing-18;
+}
+
+.cardTop {
+  display: flex;
+  gap: $spacing-12;
+}
+
+.cardBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .info {
-  padding-left: $spacing-12;
+  flex: 1;
 }
 
 .name {
@@ -26,24 +41,30 @@
   @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-purple4);
 }
 
-.evalMaster {
-  padding-right: $spacing-12;
+.masterStats {
+  display: flex;
+  align-items: center;
+  gap: $spacing-20;
 }
 
-.footer {
-  @include rowing();
+.ratingBlock,
+.reviewsBlock {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+  @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-gray2);
 }
 
-.masterInfo {
-  @include rowing(space-between, center);
-  @include sizes(null, $spacing-40);
+.reviewsBlock {
+  gap: $spacing-8;
 }
 
 .infoWrapper {
-  @include rowing(space-between, null, null, column);
-  @include sizes(100%);
+  flex: 1;
 }
 
 .infoNextWrapper {
-  @include rowing(space-between);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }

@@ -90,10 +90,10 @@
 .masterName {
     font-family: $manroupe-font;
     font-weight: $font-weight-600;
-    font-size: $font-size-24;
+    font-size: $font-size-32;
     color: $color-black;
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.125;
 }
 
 .favoriteBtn {
@@ -106,8 +106,8 @@
     justify-content: center;
 
     svg {
-        width: 24px;
-        height: 24px;
+        width: 30px;
+        height: 30px;
         color: $color-gray2;
         transition: color 0.2s ease;
     }
@@ -139,8 +139,7 @@
     gap: $spacing-20;
 }
 
-.masterRating,
-.masterReviews {
+.masterRating {
     display: flex;
     align-items: center;
     gap: $spacing-4;
@@ -150,17 +149,26 @@
     color: $color-gray2;
 
     svg {
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 24px;
+        stroke: $color-orange;
     }
 }
 
-.masterRating svg {
-    color: $color-orange;
-}
-
-.masterReviews svg {
+.masterReviews {
+    display: flex;
+    align-items: center;
+    gap: $spacing-8;
+    font-family: $manroupe-font;
+    font-weight: $font-weight-400;
+    font-size: $font-size-14;
     color: $color-gray2;
+
+    svg {
+        width: 24px;
+        height: 24px;
+        stroke: $color-gray2;
+    }
 }
 
 .bookButton {
@@ -174,7 +182,7 @@
     padding: $spacing-12 $spacing-20;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    min-width: 160px;
+    width: 222px;
 
     &:hover {
         background-color: $color-purple;

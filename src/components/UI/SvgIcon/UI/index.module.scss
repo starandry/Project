@@ -15,13 +15,13 @@
 }
 
 .starOutIcon {
-  @include sizes($spacing-20, $spacing-19);
+  @include sizes($spacing-24, $spacing-24);
   color: $color-orange;
 }
 
 .messageIcon {
-  @include sizes($spacing-20, $spacing-20);
-  color: $color-purple3;
+  @include sizes($spacing-24, $spacing-24);
+  color: $color-gray2;
 }
 
 .check {
