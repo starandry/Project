@@ -26,21 +26,12 @@ export const MasterProfileCard: React.FC = () => {
             <div className={styles.infoGroup}>
                 <div className={styles.infoItem}>
                     <p className={styles.masterName}>Маргарита Чернышова</p>
-                    <Button  classNames={{ buttonClass: 'editButton' }}>
-                        <SvgIcon Icon={Edit} />
-                    </Button>
                 </div>
                 <div className={styles.infoItem}>
                     <p className={styles.masterEmail}>margarita.chernushova@gmail.com</p>
-                    <Button classNames={{ buttonClass: 'editButton' }}>
-                        <SvgIcon Icon={Edit} />
-                    </Button>
                 </div>
                 <div className={styles.infoItem}>
                     <p className={styles.masterPhone}>89-99--078</p>
-                    <Button classNames={{ buttonClass: 'editButton' }}>
-                        <SvgIcon Icon={Edit} />
-                    </Button>
                 </div>
             </div>
             <MasterEditForm />

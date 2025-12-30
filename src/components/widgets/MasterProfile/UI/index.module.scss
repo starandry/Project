@@ -27,6 +27,7 @@
 
 .infoItem {
   @include rowing(space-between, center);
+  @include sizes(null, $spacing-40);
 }
 
 .title,
