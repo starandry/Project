@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { FormTitle, FormFooter, SvgIcon } from '@/components';
-import Edit from '@/assets/icons/Edit.svg?react';
+import EditMasterProfile from '@/assets/icons/EditMasterProfile.svg?react';
 import Delete from '@/assets/icons/Delete.svg?react';
 import styles from './PhotoEditModal.module.scss';
 
@@ -74,7 +74,7 @@ export const PhotoEditModal: React.FC<PhotoEditModalProps> = ({
                             className={styles.actionButton}
                             onClick={handleEditClick}
                         >
-                            <SvgIcon Icon={Edit} />
+                            <SvgIcon Icon={EditMasterProfile} className="editMasterProfile" />
                             <span>редактировать</span>
                         </button>
 
@@ -100,9 +100,7 @@ export const PhotoEditModal: React.FC<PhotoEditModalProps> = ({
                         )}
                     </div>
 
-                    <p className={styles.photoHint}>
-                        Допустимо использовать файлы не более 500KB
-                    </p>
+                    <p className={styles.photoHint}>Допустимо использовать файлы не более 500KB</p>
                 </div>
 
                 <FormFooter

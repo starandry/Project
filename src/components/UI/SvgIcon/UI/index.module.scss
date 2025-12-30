@@ -113,6 +113,10 @@
   right: $spacing-38;
 }
 
+.editMasterProfile {
+  @include sizes($spacing-40, $spacing-40);
+}
+
 .heartTop1,
 .heartTop2,
 .heartTop3 {

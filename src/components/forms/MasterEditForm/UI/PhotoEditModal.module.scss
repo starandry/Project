@@ -12,7 +12,7 @@
 }
 
 .modalContent {
-    @include sizes(600px);
+    @include sizes(1147px);
     z-index: 1002;
     padding: $spacing-16 $spacing-24;
     border-radius: $spacing-12;
@@ -20,9 +20,9 @@
 }
 
 .photoContainer {
-    @include rowing(center, center, $spacing-16, column);
+    @include rowing(center, center, $spacing-12, column);
     @include sizes(100%);
-    padding: $spacing-24;
+    padding: $spacing-16 $spacing-24;
     border-radius: $spacing-18;
     background-color: $color-white;
     margin-bottom: $spacing-16;
@@ -38,7 +38,8 @@
 }
 
 .actionButton {
-    @include rowing(center, center, $spacing-8, column);
+    @include rowing(center, center, $spacing-2, column);
+    @include sizes(102px);
     background: none;
     border: none;
     cursor: pointer;
@@ -50,7 +51,8 @@
     }
 
     span {
-        @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-gray4, $spacing-20);
+        @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-purple, $spacing-35);
+        text-align: center;
     }
 
     &:hover {
@@ -60,24 +62,23 @@
 
 .photoWrapper {
     @include rowing(center, center);
-    @include sizes(200px, 200px);
-    margin: $spacing-16 0;
+    @include sizes(270px, 270px);
 }
 
 .photoPreview {
-    @include sizes(200px, 200px);
-    border-radius: $spacing-12;
+    @include sizes(270px, 270px);
+    border-radius: $spacing-20;
     object-fit: cover;
 }
 
 .noPhoto {
     @include rowing(center, center);
-    @include sizes(200px, 200px);
-    border-radius: $spacing-12;
+    @include sizes(270px, 270px);
+    border-radius: $spacing-20;
     background-color: $color-pink;
     @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-20);
 }
 
 .photoHint {
-    @include fonts($roboto-flex-font, $font-weight-400, $font-size-14, $color-purple, $spacing-20);
+    @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-red, $spacing-20);
 }
