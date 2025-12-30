@@ -46,9 +46,29 @@
   background-color: $color-white;
 }
 
+.listBtnInactive {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-burgundy);
+  padding: $spacing-10 $spacing-25;
+  border: 1px solid $color-purple4;
+  border-radius: $spacing-10;
+  background-color: $color-white;
+}
+
+.mapBtnInactive {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-burgundy);
+  padding: $spacing-10 $spacing-25;
+  border: 1px solid $color-purple4;
+  border-radius: $spacing-10;
+  background-color: $color-white;
+}
+
 .listBtn,
-.mapBtn {
+.mapBtn,
+.listBtnInactive,
+.mapBtnInactive {
   margin-left: $spacing-55;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .bookBtn {

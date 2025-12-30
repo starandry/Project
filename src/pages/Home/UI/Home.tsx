@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     SearchPanel,
     MastersToolbar,
     MasterList,
+    MastersMap,
     Slider,
     JoinSection,
     HelpSection,
     BannerContainer,
 } from '@/components';
+import type { ViewMode } from '@/components';
 import { Main, AppLayout } from '@/layouts';
 import styles from './index.module.scss';
 import type { HomeProps } from '@/pages/Home/index.model.ts';
 
 const Home: React.FC<HomeProps> = () => {
+    const [viewMode, setViewMode] = useState<ViewMode>('list');
+
     return (
         <AppLayout showAuthButtons={true}>
             <Main>
@@ -24,10 +28,10 @@ const Home: React.FC<HomeProps> = () => {
                 <SearchPanel title="Найди своего мастера ногтевого сервиса максимально быстро и удобно." />
                 <div className="bg-white">
                     <div className="container">
-                        <MastersToolbar />
+                        <MastersToolbar viewMode={viewMode} onViewModeChange={setViewMode} />
                     </div>
                     <div className="container">
-                        <MasterList />
+                        {viewMode === 'list' ? <MasterList /> : <MastersMap />}
                     </div>
                 </div>
 

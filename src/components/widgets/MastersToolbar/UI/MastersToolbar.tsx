@@ -4,7 +4,11 @@ import type { MastersToolbarProps } from '@/components';
 import PlusIcon from '@/assets/icons/PlusIcon.svg?react';
 import styles from './index.module.scss';
 
-const MastersToolbar: React.FC<MastersToolbarProps> = ({ onSortSelect }) => {
+const MastersToolbar: React.FC<MastersToolbarProps> = ({
+    onSortSelect,
+    viewMode = 'list',
+    onViewModeChange,
+}) => {
     const handleSelect = (label: string) => {
         if (onSortSelect) {
             onSortSelect(label);
@@ -13,14 +17,26 @@ const MastersToolbar: React.FC<MastersToolbarProps> = ({ onSortSelect }) => {
         }
     };
 
+    const handleViewModeChange = (mode: 'list' | 'map') => {
+        if (onViewModeChange) {
+            onViewModeChange(mode);
+        }
+    };
+
     return (
         <div className={styles.wrapToolbar}>
             <div className={styles.wrapBtnsToolbar}>
-                <Button classNames={{ buttonClass: 'listBtn' }}>
-                    <span>Списком</span>
+                <Button
+                    classNames={{ buttonClass: viewMode === 'list' ? 'listBtn' : 'mapBtn' }}
+                    onClick={() => handleViewModeChange('list')}
+                >
+                    <span>списком</span>
                 </Button>
-                <Button classNames={{ buttonClass: 'mapBtn' }}>
-                    <span>На карте</span>
+                <Button
+                    classNames={{ buttonClass: viewMode === 'map' ? 'listBtn' : 'mapBtn' }}
+                    onClick={() => handleViewModeChange('map')}
+                >
+                    <span>на карте</span>
                 </Button>
             </div>
 
