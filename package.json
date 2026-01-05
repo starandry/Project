@@ -52,5 +52,10 @@
         "vite": "^7.1.9",
         "vite-plugin-svg-icons": "^2.0.1",
         "vite-plugin-svgr": "^4.3.0"
-    }
+    },
+    "description": "Проект построен на **React + TypeScript** с использованием **Redux Toolkit** и **React Router v6**.   Основная точка входа — `main.tsx`, в котором подключаются все провайдеры и инициализируется приложение.   Компоненты структурированы по слоям (`layouts`, `pages`, `components`, `stores`, `hooks`, `utils` и т.д.) для удобства поддержки.",
+    "main": "eslint.config.js",
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }

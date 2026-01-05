@@ -7,7 +7,7 @@ import { MasterClientIntro } from '@/components/master/MasterClientIntro';
 
 const ClientPromoSection = () => {
     return (
-        <section className="wrapperSection">
+        <section className={styles.section}>
             <div className={styles.promoCircle}>
                 <SvgIcon Icon={HeartBenefits} className="heartPromoClient" />
                 <p className={styles.textPromoClient}>
