@@ -2,32 +2,24 @@
 @use '../../../../styles/mixins' as *;
 
 .card {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-4;
-  width: 100%;
+  @include rowing(null, null, $spacing-4, column);
+  @include sizes(100%, null, $spacing-18);
   max-width: 650px;
   padding: $spacing-24;
   background-color: $color-white;
-  border-radius: $spacing-18;
 }
 
 .cardTop {
-  display: flex;
-  gap: $spacing-12;
+  @include rowing(null, null, $spacing-12);
 }
 
 .cardBottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+  @include rowing(space-between, center);
+  @include sizes(100%);
 }
 
 .info {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-21;
+  @include rowing(null, null, $spacing-21, column);
   flex: 1;
 }
 
@@ -37,9 +29,7 @@
 }
 
 .infoDetails {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-8;
+  @include rowing(null, null, $spacing-8, column);
 }
 
 .specialty,
@@ -48,16 +38,12 @@
 }
 
 .masterStats {
-  display: flex;
-  align-items: center;
-  gap: $spacing-20;
+  @include rowing(null, center, $spacing-20);
 }
 
 .ratingBlock,
 .reviewsBlock {
-  display: flex;
-  align-items: center;
-  gap: $spacing-4;
+  @include rowing(null, center, $spacing-4);
   @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-gray2);
   letter-spacing: -0.02em;
 }
@@ -71,7 +57,5 @@
 }
 
 .infoNextWrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  @include rowing(space-between, flex-start);
 }

@@ -7,8 +7,7 @@
 }
 
 .masterProfileSection {
-  @include rowing();
-  gap: $spacing-20;
+  @include rowing(null, null, $spacing-20);
   padding-top: $spacing-10;
 }
 

@@ -1,4 +1,5 @@
 @use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
 
 .mapContainer {
     position: relative;
@@ -55,19 +56,14 @@
 }
 
 .masterCard {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-16;
+    @include rowing(null, null, $spacing-16, column);
+    @include sizes(650px, null, $spacing-18);
     padding: $spacing-24;
     background: $color-white;
-    border-radius: $spacing-18;
-    width: 650px;
 }
 
 .masterCardTop {
-    display: flex;
-    align-items: flex-start;
-    gap: $spacing-12;
+    @include rowing(null, flex-start, $spacing-12);
 }
 
 .masterPhoto {
@@ -79,42 +75,31 @@
 }
 
 .masterInfoWrapper {
-    display: flex;
-    align-items: flex-start;
-    gap: $spacing-12;
+    @include rowing(null, flex-start, $spacing-12);
     flex: 1;
 }
 
 .masterInfo {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-21;
+    @include rowing(null, null, $spacing-21, column);
     flex: 1;
 }
 
 .masterDetails {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-8;
+    @include rowing(null, null, $spacing-8, column);
 }
 
 .masterName {
-    font-family: $manroupe-font;
-    font-weight: $font-weight-600;
-    font-size: $font-size-32;
-    color: $color-black;
+    @include fonts($manroupe-font, $font-weight-600, $font-size-32, $color-black);
     margin: 0;
     line-height: 1.125;
 }
 
 .favoriteBtn {
+    @include rowing(center, center);
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
     svg {
         width: 30px;
@@ -130,35 +115,23 @@
 
 .masterSpecialty,
 .masterAddress {
-    font-family: $manroupe-font;
-    font-weight: $font-weight-400;
-    font-size: $font-size-14;
-    color: $color-purple4;
+    @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-purple4);
     margin: 0;
     line-height: 1.37;
     letter-spacing: -0.02em;
 }
 
 .masterCardBottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include rowing(space-between, center);
 }
 
 .masterStats {
-    display: flex;
-    align-items: center;
-    gap: $spacing-20;
+    @include rowing(null, center, $spacing-20);
 }
 
 .masterRating {
-    display: flex;
-    align-items: center;
-    gap: $spacing-4;
-    font-family: $manroupe-font;
-    font-weight: $font-weight-400;
-    font-size: $font-size-14;
-    color: $color-gray2;
+    @include rowing(null, center, $spacing-4);
+    @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-gray2);
     letter-spacing: -0.02em;
 
     svg {
@@ -169,13 +142,8 @@
 }
 
 .masterReviews {
-    display: flex;
-    align-items: center;
-    gap: $spacing-8;
-    font-family: $manroupe-font;
-    font-weight: $font-weight-400;
-    font-size: $font-size-14;
-    color: $color-gray2;
+    @include rowing(null, center, $spacing-8);
+    @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-gray2);
     letter-spacing: -0.02em;
 
     svg {
@@ -186,17 +154,13 @@
 }
 
 .bookButton {
-    font-family: $manroupe-font;
-    font-weight: $font-weight-500;
-    font-size: $font-size-16;
-    color: $color-white;
+    @include fonts($manroupe-font, $font-weight-500, $font-size-16, $color-white);
+    @include sizes(222px, null, $spacing-12);
     background-color: $color-purple3;
     border: none;
-    border-radius: $spacing-12;
     padding: $spacing-12 $spacing-20;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    width: 222px;
 
     &:hover {
         background-color: $color-purple;
