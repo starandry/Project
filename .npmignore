@@ -1,0 +1,24 @@
+# Source (only dist/ needed)
+src/
+public/
+index.html
+
+# Config files
+eslint.config.js
+vite.config.ts
+tsconfig*.json
+.prettierrc.yaml
+declarations.d.ts
+
+# Development
+.husky/
+.idea/
+
+# Environment
+.env
+
+# Logs
+*.log
+
+# Lock file
+package-lock.json

@@ -1,45 +1,26 @@
-# --- Logs ---
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# Dependencies
+node_modules/
 
-# --- Environment files ---
+# Build output
+dist/
+
+# Environment
 .env
 .env.local
 .env.*.local
 
-# --- Dependency directories ---
-node_modules/
-dist/
-dist-ssr/
-.vite/
+# Logs
+*.log
+npm-debug.log*
+
+# TypeScript cache
 *.tsbuildinfo
-**/*.tsbuildinfo
 
-# --- Editor / IDE settings ---
+# IDE
 .idea/
-.vscode/*
-!.vscode/extensions.json
 
-# --- OS / System files ---
+# OS
 .DS_Store
-Thumbs.db
 
-# --- Misc build / project files ---
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# --- Husky (Git hooks) cache ---
+# Husky cache
 .husky/_/
-
-# --- Test / Coverage ---
-coverage/
-*.lcov
-/.claude/
