@@ -2,7 +2,7 @@ import React, { RefObject } from 'react';
 import styles from './index.module.scss';
 import { SvgIcon } from '@/components';
 import PurpleArrowDown from '@/assets/icons/PurpleArrowDown.svg?react';
-import { Country } from '../model/countryTypes';
+import type { Country } from '@/hooks/ui';
 
 type Props = {
     wrapperRef: RefObject<HTMLDivElement>;
