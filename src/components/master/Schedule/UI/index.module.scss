@@ -17,116 +17,177 @@
 
 .wrappShedule {
   @include sizes(100%, null, $spacing-12);
-  max-width: 560px;
+  max-width: 519px;
   padding: $spacing-16 $spacing-24;
-  background-color: $color-white;
+  background-color: #fff;
+  border-radius: 18px;
 }
 
 .title {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-18, $color-black);
+  @include fonts($manroupe-font, $font-weight-500, $font-size-18, #000);
+  opacity: 0.87;
+  margin: 0;
 }
 
 .headShedule {
   @include rowing(space-between);
+  margin-bottom: $spacing-16;
+  align-items: center;
 
   > .btnCalendar {
-    @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-black);
+    @include fonts($manroupe-font, $font-weight-400, $font-size-16, #000);
+    opacity: 0.87;
+    padding: 0;
+    height: auto;
   }
 }
 
-.btnDay {
-  @include sizes(null, $spacing-73);
-  display: block;
-  border: none;
-  background-color: $color-pink;
+.weekDaysRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
-.weekDaysRow > .wrappBtnDay > .btnDay {
-  &:hover {
-    background-color: $color-pink2;
-  }
+.wrappBtnPrev,
+.wrappBtnNext {
+  flex-shrink: 0;
 }
 
 .btnPrev,
 .btnNext {
-  @include sizes($spacing-20);
+  @include sizes(24px, 24px);
+  min-width: 24px;
+  padding: 0;
   border: none;
-}
+  background-color: rgba(255, 251, 251, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
 
-.wrappBtnPrev > .btnPrev {
-  @include sizes($spacing-20);
-  margin-right: $spacing-15;
-}
-
-.wrappBtnNext > .btnNext {
-  @include sizes($spacing-20);
-  margin-left: $spacing-15;
-}
-
-.dayLabel {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-black3);
-}
-
-.dayNumber {
-  @include fonts(Manrope-Bold, $font-weight-700, $font-size-16, $color-black3);
-}
-
-.selected {
-  background-color: $color-purple3;
-
-  > .dayLabel,
-  > .dayNumber {
-    color: $color-white;
+  &:hover {
+    background-color: rgba(255, 251, 251, 0.9);
   }
 }
 
-.slotRow {
-  @include rowing(null, center);
+.wrappBtnDay {
+  flex: 1;
+  min-width: 0;
 }
 
-.iconCol {
-  padding-top: $spacing-10;
+.btnDay {
+  @include sizes(100%, 73px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: none;
+  background-color: #fff2f1;
+  border-radius: 8px;
+  padding: 8px;
+
+  &:hover {
+    background-color: #ffeeed;
+  }
 }
 
-.statusCol {
-  padding-left: $spacing-20;
+.dayLabel {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-14, #1d1b20);
+  line-height: 1;
+}
+
+.dayNumber {
+  @include fonts(Manrope-Bold, $font-weight-700, $font-size-16, #1d1b20);
+  line-height: 1;
+}
+
+.selected {
+  background-color: #7f207b;
+
+  .dayLabel,
+  .dayNumber {
+    color: #fff2f1;
+  }
+
+  &:hover {
+    background-color: #6a1b66;
+  }
 }
 
 .card {
   border: none;
+  border-radius: 8px;
+  margin-bottom: $spacing-12;
 
-  > div {
-    padding-bottom: $spacing-20;
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
 .cardFree {
-  background-color: $color-pink;
+  background-color: #fff2f1;
 }
 
 .cardBusy {
-  background-color: $color-purple3;
+  background-color: #7f207b;
+}
+
+.slotRow {
+  @include rowing(null, center);
+  gap: $spacing-16;
+  padding: $spacing-16;
+}
+
+.iconCol {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 53.5px;
+  height: 53.5px;
+  background-color: #fff2f1;
+  border-radius: 5px;
+}
+
+.cardBusy .iconCol {
+  background-color: #7f207b;
+}
+
+.statusCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
 }
 
 .status {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-20, $color-purple3);
+  @include fonts($manroupe-font, $font-weight-400, $font-size-20, #7f207b);
+  line-height: 1.2;
 }
 
 .address {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-gray2);
-  padding-top: $spacing-4;
+  @include fonts($manroupe-font, $font-weight-400, $font-size-14, #1d1b20);
+  line-height: 1.4;
+  opacity: 0.6;
+}
+
+.timeCol {
+  flex-shrink: 0;
 }
 
 .time {
-  @include fonts(Manrope-Regular, $font-weight-400, $font-size-18, $color-purple3);
+  @include fonts(Manrope-Regular, $font-weight-400, $font-size-18, #7f207b);
+  line-height: 1.2;
 }
 
 .statusBusy,
 .addressBusy,
 .timeBusy {
-  color: $color-white;
+  color: #fff;
 }
 
 .lastCard {
-  box-shadow: $spacing-0 $spacing-3 $spacing-0 $spacing-0 $color-purple3;
+  box-shadow: 0 3px 0 0 #7f207b;
 }

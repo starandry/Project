@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Col, Row, Space, Typography } from 'antd';
+import { Button, Typography } from 'antd';
 import { SvgIcon } from '@/components';
 import { cn } from '@/utils/UI/cn.ts';
 import styles from './index.module.scss';
@@ -7,9 +7,10 @@ import PrevCalendar from '@/assets/icons/PrevCalendar.svg?react';
 import NextCalendar from '@/assets/icons/NextCalendar.svg?react';
 import FreeIcon from '@/assets/icons/FreeIcon.svg?react';
 import BusyIcon from '@/assets/icons/BusyIcon.svg?react';
+import { CalendarPicker } from './CalendarPicker';
 import type { ScheduleProps } from '../model/scheduleTypes';
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 const weekDays = [
     { label: 'ПН', offset: 1 },
@@ -25,63 +26,68 @@ export const Schedule: React.FC<ScheduleProps> = ({
     selectedDate,
     startOfWeek,
     schedule,
+    isCalendarOpen,
     onDateChange,
     onWeekChange,
+    onOpenCalendar,
+    onCloseCalendar,
+    onDateSelect,
 }) => {
     return (
         <div className={styles.wrappShedule}>
-            <Row className={styles.headShedule} justify="space-between">
+            <div className={styles.headShedule}>
                 <Title level={3} className={styles.title}>
                     Мой график
                 </Title>
-                <Button type="link" className={styles.btnCalendar}>
+                <Button type="link" className={styles.btnCalendar} onClick={onOpenCalendar}>
                     Смотреть Календарь
                 </Button>
-            </Row>
+            </div>
 
-            <Row align="middle" justify="space-between" style={{ marginBottom: 16 }}>
-                <Col className={styles.wrappBtnPrev}>
+            <div className={styles.weekDaysRow}>
+                <div className={styles.wrappBtnPrev}>
                     <Button
                         icon={<SvgIcon Icon={PrevCalendar} />}
                         onClick={() => onWeekChange('prev')}
                         className={styles.btnPrev}
                     />
-                </Col>
-                <Col flex="auto">
-                    <Row gutter={8} justify="center" className={styles.weekDaysRow}>
-                        {weekDays.map(({ label, offset }) => {
-                            const day = startOfWeek.clone().add(offset, 'days');
-                            const isSelected = day.isSame(selectedDate, 'day');
+                </div>
 
-                            return (
-                                <Col className={styles.wrappBtnDay} key={offset} flex="1">
-                                    <Button
-                                        block
-                                        type="default"
-                                        className={`${styles.btnDay} ${isSelected ? styles.selected : ''}`}
-                                        onClick={() => onDateChange(day)}
-                                    >
-                                        <div className={styles.dayLabel}>{label}</div>
-                                        <strong className={styles.dayNumber}>{day.date()}</strong>
-                                    </Button>
-                                </Col>
-                            );
-                        })}
-                    </Row>
-                </Col>
-                <Col className={styles.wrappBtnNext}>
+                {weekDays.map(({ label, offset }) => {
+                    const day = startOfWeek.clone().add(offset, 'days');
+                    const isSelected = day.isSame(selectedDate, 'day');
+
+                    return (
+                        <div className={styles.wrappBtnDay} key={offset}>
+                            <button
+                                type="button"
+                                className={cn(
+                                    styles,
+                                    'btnDay',
+                                    isSelected ? 'selected' : undefined
+                                )}
+                                onClick={() => onDateChange(day)}
+                            >
+                                <div className={styles.dayLabel}>{label}</div>
+                                <div className={styles.dayNumber}>{day.date()}</div>
+                            </button>
+                        </div>
+                    );
+                })}
+
+                <div className={styles.wrappBtnNext}>
                     <Button
                         icon={<SvgIcon Icon={NextCalendar} />}
                         onClick={() => onWeekChange('next')}
                         className={styles.btnNext}
                     />
-                </Col>
-            </Row>
+                </div>
+            </div>
 
-            <Space direction="vertical" style={{ width: '100%' }} size="middle">
+            <div style={{ marginTop: 16 }}>
                 {schedule.length > 0 ? (
                     schedule.map((slot, index) => (
-                        <Card
+                        <div
                             key={index}
                             className={cn(
                                 styles,
@@ -90,14 +96,14 @@ export const Schedule: React.FC<ScheduleProps> = ({
                                 index === schedule.length - 1 ? 'lastCard' : undefined
                             )}
                         >
-                            <Row className={styles.slotRow}>
-                                <Col className={styles.iconCol}>
+                            <div className={styles.slotRow}>
+                                <div className={styles.iconCol}>
                                     <SvgIcon
                                         Icon={slot.status === 'Свободно' ? FreeIcon : BusyIcon}
                                     />
-                                </Col>
-                                <Col flex="auto" className={styles.statusCol}>
-                                    <Text
+                                </div>
+                                <div className={styles.statusCol}>
+                                    <div
                                         className={cn(
                                             styles,
                                             'status',
@@ -105,7 +111,7 @@ export const Schedule: React.FC<ScheduleProps> = ({
                                         )}
                                     >
                                         {slot.status}
-                                    </Text>
+                                    </div>
                                     <div
                                         className={cn(
                                             styles,
@@ -115,9 +121,9 @@ export const Schedule: React.FC<ScheduleProps> = ({
                                     >
                                         Адрес: адрес салона или клиента
                                     </div>
-                                </Col>
-                                <Col className={styles.timeCol}>
-                                    <Text
+                                </div>
+                                <div className={styles.timeCol}>
+                                    <div
                                         className={cn(
                                             styles,
                                             'time',
@@ -125,15 +131,22 @@ export const Schedule: React.FC<ScheduleProps> = ({
                                         )}
                                     >
                                         {slot.time}
-                                    </Text>
-                                </Col>
-                            </Row>
-                        </Card>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     ))
                 ) : (
-                    <Text>Нет слотов на выбранную дату.</Text>
+                    <div>Нет слотов на выбранную дату.</div>
                 )}
-            </Space>
+            </div>
+
+            <CalendarPicker
+                isOpen={isCalendarOpen}
+                selectedDate={selectedDate}
+                onClose={onCloseCalendar}
+                onDateSelect={onDateSelect}
+            />
         </div>
     );
 };
