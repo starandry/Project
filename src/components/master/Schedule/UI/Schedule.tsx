@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, Typography } from 'antd';
 import { SvgIcon } from '@/components';
 import { cn } from '@/utils/UI/cn.ts';
@@ -9,18 +8,9 @@ import FreeIcon from '@/assets/icons/FreeIcon.svg?react';
 import BusyIcon from '@/assets/icons/BusyIcon.svg?react';
 import { CalendarPicker } from './CalendarPicker';
 import type { ScheduleProps } from '../model/scheduleTypes';
+import { WEEK_DAYS } from '../model/constants';
 
 const { Title } = Typography;
-
-const weekDays = [
-    { label: 'ПН', offset: 1 },
-    { label: 'ВТ', offset: 2 },
-    { label: 'СР', offset: 3 },
-    { label: 'ЧТ', offset: 4 },
-    { label: 'ПТ', offset: 5 },
-    { label: 'СБ', offset: 6 },
-    { label: 'ВС', offset: 0 },
-];
 
 export const Schedule: React.FC<ScheduleProps> = ({
     selectedDate,
@@ -53,7 +43,7 @@ export const Schedule: React.FC<ScheduleProps> = ({
                     />
                 </div>
 
-                {weekDays.map(({ label, offset }) => {
+                {WEEK_DAYS.map(({ label, offset }) => {
                     const day = startOfWeek.clone().add(offset, 'days');
                     const isSelected = day.isSame(selectedDate, 'day');
 
@@ -84,60 +74,45 @@ export const Schedule: React.FC<ScheduleProps> = ({
                 </div>
             </div>
 
-            <div style={{ marginTop: 16 }}>
+            <div className={styles.scheduleList}>
                 {schedule.length > 0 ? (
-                    schedule.map((slot, index) => (
-                        <div
-                            key={index}
-                            className={cn(
-                                styles,
-                                'card',
-                                slot.status === 'Занято' ? 'cardBusy' : 'cardFree',
-                                index === schedule.length - 1 ? 'lastCard' : undefined
-                            )}
-                        >
-                            <div className={styles.slotRow}>
-                                <div className={styles.iconCol}>
-                                    <SvgIcon
-                                        Icon={slot.status === 'Свободно' ? FreeIcon : BusyIcon}
-                                    />
-                                </div>
-                                <div className={styles.statusCol}>
-                                    <div
-                                        className={cn(
-                                            styles,
-                                            'status',
-                                            slot.status === 'Занято' ? 'statusBusy' : undefined
-                                        )}
-                                    >
-                                        {slot.status}
+                    schedule.map((slot, index) => {
+                        const isBusy = slot.status === 'Занято';
+                        const isLast = index === schedule.length - 1;
+
+                        return (
+                            <div
+                                key={index}
+                                className={cn(
+                                    styles,
+                                    'card',
+                                    isBusy ? 'cardBusy' : 'cardFree',
+                                    isLast ? 'lastCard' : undefined
+                                )}
+                            >
+                                <div className={styles.slotRow}>
+                                    <div className={styles.iconCol}>
+                                        <SvgIcon Icon={isBusy ? BusyIcon : FreeIcon} />
                                     </div>
-                                    <div
-                                        className={cn(
-                                            styles,
-                                            'address',
-                                            slot.status === 'Занято' ? 'addressBusy' : undefined
-                                        )}
-                                    >
-                                        Адрес: адрес салона или клиента
+                                    <div className={styles.statusCol}>
+                                        <div className={cn(styles, 'status', isBusy ? 'statusBusy' : undefined)}>
+                                            {slot.status}
+                                        </div>
+                                        <div className={cn(styles, 'address', isBusy ? 'addressBusy' : undefined)}>
+                                            Адрес: адрес салона или клиента
+                                        </div>
                                     </div>
-                                </div>
-                                <div className={styles.timeCol}>
-                                    <div
-                                        className={cn(
-                                            styles,
-                                            'time',
-                                            slot.status === 'Занято' ? 'timeBusy' : undefined
-                                        )}
-                                    >
-                                        {slot.time}
+                                    <div className={styles.timeCol}>
+                                        <div className={cn(styles, 'time', isBusy ? 'timeBusy' : undefined)}>
+                                            {slot.time}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ))
+                        );
+                    })
                 ) : (
-                    <div>Нет слотов на выбранную дату.</div>
+                    <div className={styles.emptyState}>Нет слотов на выбранную дату.</div>
                 )}
             </div>
 

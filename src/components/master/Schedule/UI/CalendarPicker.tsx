@@ -1,31 +1,21 @@
-import React, { useState, useMemo } from 'react';
 import { Button } from 'antd';
-import moment, { Moment } from 'moment';
 import { SvgIcon } from '@/components';
 import { cn } from '@/utils/UI/cn.ts';
 import styles from './calendar.module.scss';
 import PrevCalendar from '@/assets/icons/PrevCalendar.svg?react';
 import NextCalendar from '@/assets/icons/NextCalendar.svg?react';
+import ChevronDown from '@/assets/icons/ChevronDown.svg?react';
+import Close from '@/assets/icons/CloseIcon.svg?react';
 import type { CalendarPickerProps } from '../model/calendarTypes';
+import { MONTHS, WEEK_DAYS_SHORT } from '../model/constants';
+import { useCalendar } from '../model/useCalendar';
 
-const months = [
-    'Январь',
-    'Февраль',
-    'Март',
-    'Апрель',
-    'Май',
-    'Июнь',
-    'Июль',
-    'Август',
-    'Сентябрь',
-    'Октябрь',
-    'Ноябрь',
-    'Декабрь',
-];
-
-const weekDaysShort = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
-
-type ViewMode = 'days' | 'months' | 'years';
+const NavigationButtons = ({ onPrev, onNext }: { onPrev: () => void; onNext: () => void }) => (
+    <div className={styles.navigationWrapper}>
+        <Button icon={<SvgIcon Icon={PrevCalendar} />} onClick={onPrev} className={styles.btnNav} />
+        <Button icon={<SvgIcon Icon={NextCalendar} />} onClick={onNext} className={styles.btnNav} />
+    </div>
+);
 
 export const CalendarPicker: React.FC<CalendarPickerProps> = ({
     isOpen,
@@ -33,256 +23,72 @@ export const CalendarPicker: React.FC<CalendarPickerProps> = ({
     onClose,
     onDateSelect,
 }) => {
-    const [viewMode, setViewMode] = useState<ViewMode>('days');
-    const [currentMonth, setCurrentMonth] = useState(selectedDate.month());
-    const [currentYear, setCurrentYear] = useState(selectedDate.year());
-    const [baseYear, setBaseYear] = useState(() => {
-        const year = selectedDate.year();
-        return Math.floor(year / 9) * 9;
-    });
-
-    const years = useMemo(() => {
-        const result = [];
-        for (let i = 0; i < 9; i++) {
-            result.push(baseYear + i);
-        }
-        return result;
-    }, [baseYear]);
-
-    const calendarDays = useMemo(() => {
-        const startOfMonth = moment().year(currentYear).month(currentMonth).startOf('month');
-        const endOfMonth = moment().year(currentYear).month(currentMonth).endOf('month');
-
-        const startDay = startOfMonth.day();
-        const daysInMonth = endOfMonth.date();
-
-        const days: (Moment | null)[] = [];
-
-        // Добавляем пустые ячейки для дней предыдущего месяца
-        const firstDayOffset = startDay === 0 ? 6 : startDay - 1;
-        for (let i = 0; i < firstDayOffset; i++) {
-            days.push(null);
-        }
-
-        // Добавляем дни текущего месяца
-        for (let i = 1; i <= daysInMonth; i++) {
-            days.push(moment().year(currentYear).month(currentMonth).date(i));
-        }
-
-        // Добавляем пустые ячейки в конце, чтобы всегда было 42 ячейки (6 рядов)
-        while (days.length < 42) {
-            days.push(null);
-        }
-
-        return days;
-    }, [currentMonth, currentYear]);
+    const {
+        viewMode,
+        currentMonth,
+        currentYear,
+        baseYear,
+        years,
+        calendarDays,
+        handleDaySelect,
+        handleMonthSelect,
+        handleYearSelect,
+        handlePrevNavigation,
+        handleNextNavigation,
+        handleMonthYearClick,
+        handleYearClick,
+        handleYearsBack,
+        isSelectedDay,
+        isToday,
+        isSelectedMonth,
+        isSelectedYear,
+    } = useCalendar({ selectedDate, onClose, onDateSelect });
 
     if (!isOpen) return null;
-
-    const handleDaySelect = (day: Moment) => {
-        onDateSelect(day);
-        onClose();
-    };
-
-    const handleMonthSelect = (monthIndex: number) => {
-        setCurrentMonth(monthIndex);
-        setViewMode('days');
-    };
-
-    const handleYearSelect = (year: number) => {
-        setCurrentYear(year);
-        setViewMode('months');
-    };
-
-    const handlePrevNavigation = () => {
-        if (viewMode === 'days') {
-            if (currentMonth === 0) {
-                setCurrentMonth(11);
-                setCurrentYear((prev) => prev - 1);
-            } else {
-                setCurrentMonth((prev) => prev - 1);
-            }
-        } else if (viewMode === 'months') {
-            setCurrentYear((prev) => prev - 1);
-        } else {
-            setBaseYear((prev) => prev - 9);
-        }
-    };
-
-    const handleNextNavigation = () => {
-        if (viewMode === 'days') {
-            if (currentMonth === 11) {
-                setCurrentMonth(0);
-                setCurrentYear((prev) => prev + 1);
-            } else {
-                setCurrentMonth((prev) => prev + 1);
-            }
-        } else if (viewMode === 'months') {
-            setCurrentYear((prev) => prev + 1);
-        } else {
-            setBaseYear((prev) => prev + 9);
-        }
-    };
-
-    const handleMonthYearClick = () => {
-        setViewMode('months');
-    };
-
-    const handleYearClick = () => {
-        setViewMode('years');
-        setBaseYear(Math.floor(currentYear / 9) * 9);
-    };
-
-    const isSelectedDay = (day: Moment | null) => {
-        if (!day) return false;
-        return day.isSame(selectedDate, 'day');
-    };
-
-    const isToday = (day: Moment | null) => {
-        if (!day) return false;
-        return day.isSame(moment(), 'day');
-    };
-
-    const isSelectedMonth = (monthIndex: number) => {
-        return monthIndex === currentMonth;
-    };
-
-    const isSelectedYear = (year: number) => {
-        return year === currentYear;
-    };
 
     return (
         <>
             <div className={styles.overlay} onClick={onClose} />
             <div className={styles.calendarWrapper}>
                 <div className={styles.calendarHeader}>
-                    {viewMode === 'days' ? (
-                        <>
-                            <div className={styles.headerLeft}>
-                                <button
-                                    type="button"
-                                    className={styles.monthYearTitle}
-                                    onClick={handleMonthYearClick}
-                                >
-                                    {months[currentMonth]} {currentYear}
-                                </button>
-                                <button
-                                    type="button"
-                                    className={styles.closeButton}
-                                    onClick={onClose}
-                                    aria-label="Закрыть"
-                                >
-                                    <svg
-                                        width="20"
-                                        height="20"
-                                        viewBox="0 0 20 20"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M6 6L14 14M14 6L6 14"
-                                            stroke="currentColor"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                        />
-                                    </svg>
-                                </button>
-                            </div>
-                            <div className={styles.navigationWrapper}>
-                                <Button
-                                    icon={<SvgIcon Icon={PrevCalendar} />}
-                                    onClick={handlePrevNavigation}
-                                    className={styles.btnNav}
-                                />
-                                <Button
-                                    icon={<SvgIcon Icon={NextCalendar} />}
-                                    onClick={handleNextNavigation}
-                                    className={styles.btnNav}
-                                />
-                            </div>
-                        </>
-                    ) : viewMode === 'months' ? (
-                        <>
+                    {viewMode === 'days' && (
+                        <div className={styles.headerLeft}>
                             <button
                                 type="button"
-                                className={styles.yearDropdown}
-                                onClick={handleYearClick}
+                                className={styles.monthYearTitle}
+                                onClick={handleMonthYearClick}
                             >
-                                {currentYear}
-                                <svg
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 16 16"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M4 6L8 10L12 6"
-                                        stroke="#7f207b"
-                                        strokeWidth="1.5"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </svg>
+                                {MONTHS[currentMonth]} {currentYear}
                             </button>
-                            <div className={styles.navigationWrapper}>
-                                <Button
-                                    icon={<SvgIcon Icon={PrevCalendar} />}
-                                    onClick={handlePrevNavigation}
-                                    className={styles.btnNav}
-                                />
-                                <Button
-                                    icon={<SvgIcon Icon={NextCalendar} />}
-                                    onClick={handleNextNavigation}
-                                    className={styles.btnNav}
-                                />
-                            </div>
-                        </>
-                    ) : (
-                        <>
                             <button
                                 type="button"
-                                className={styles.yearDropdown}
-                                onClick={() => setViewMode('months')}
+                                className={styles.closeButton}
+                                onClick={onClose}
+                                aria-label="Закрыть"
                             >
-                                {baseYear} - {baseYear + 8}
-                                <svg
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 16 16"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M4 6L8 10L12 6"
-                                        stroke="#7f207b"
-                                        strokeWidth="1.5"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </svg>
+                                <SvgIcon Icon={Close} />
                             </button>
-                            <div className={styles.navigationWrapper}>
-                                <Button
-                                    icon={<SvgIcon Icon={PrevCalendar} />}
-                                    onClick={handlePrevNavigation}
-                                    className={styles.btnNav}
-                                />
-                                <Button
-                                    icon={<SvgIcon Icon={NextCalendar} />}
-                                    onClick={handleNextNavigation}
-                                    className={styles.btnNav}
-                                />
-                            </div>
-                        </>
+                        </div>
                     )}
+                    {viewMode === 'months' && (
+                        <button type="button" className={styles.yearDropdown} onClick={handleYearClick}>
+                            {currentYear}
+                            <SvgIcon Icon={ChevronDown} />
+                        </button>
+                    )}
+                    {viewMode === 'years' && (
+                        <button type="button" className={styles.yearDropdown} onClick={handleYearsBack}>
+                            {baseYear} - {baseYear + 8}
+                            <SvgIcon Icon={ChevronDown} />
+                        </button>
+                    )}
+                    <NavigationButtons onPrev={handlePrevNavigation} onNext={handleNextNavigation} />
                 </div>
 
                 {viewMode === 'days' ? (
                     <>
                         <div className={styles.weekDaysRow}>
-                            {weekDaysShort.map((day) => (
+                            {WEEK_DAYS_SHORT.map((day) => (
                                 <div key={day} className={styles.weekDay}>
                                     {day}
                                 </div>
@@ -311,7 +117,7 @@ export const CalendarPicker: React.FC<CalendarPickerProps> = ({
                     </>
                 ) : viewMode === 'months' ? (
                     <div className={styles.monthsGrid}>
-                        {months.map((month, index) => (
+                        {MONTHS.map((month, index) => (
                             <button
                                 key={month}
                                 type="button"
