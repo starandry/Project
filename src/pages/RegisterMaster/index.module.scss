@@ -23,13 +23,12 @@
 
 // Фиолетовый кружок
 .leftSIdeText {
-  @include rowing(null, null, null, column);
+  @include rowing(flex-start, null, null, column);
   @include sizes(567px, 567px);
   position: absolute;
   bottom: -140px;
   left: -41px;
   border-radius: 50%;
-  justify-content: flex-start;
   padding-top: 145px;
   padding-left: 114px;
   padding-right: $spacing-40;
@@ -356,9 +355,7 @@
   }
 
   .loginLinks {
-    flex-direction: column;
-    gap: $spacing-4;
-    align-items: center;
+    @include rowing(center, center, $spacing-4, column);
   }
 
   .noAccount {
@@ -385,9 +382,7 @@
   }
 
   .checkboxLabel {
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-    gap: $spacing-12;
+    @include rowing(flex-end, center, $spacing-12, row-reverse);
     padding: $spacing-0;
   }
 
