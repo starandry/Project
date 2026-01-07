@@ -1,9 +1,9 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .modalOverlay {
-    @include rowing(center, center);
-    @include sizes(100vw, 100vh);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
@@ -12,18 +12,24 @@
 }
 
 .modalContent {
-    @include sizes(1147px, null, $spacing-12);
+    width: 1147px;
+    border-radius: 12px;
     z-index: 1002;
-    padding: $spacing-16 $spacing-24;
-    background-color: $color-pink;
+    padding: 16px 24px;
+    background-color: #fff2f1;
 }
 
 .photoContainer {
-    @include rowing(center, center, $spacing-12, column);
-    @include sizes(100%, null, $spacing-18);
-    padding: $spacing-16 $spacing-24;
-    background-color: $color-white;
-    margin-bottom: $spacing-16;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 18px;
+    padding: 16px 24px;
+    background-color: #fff;
+    margin-bottom: 16px;
 }
 
 .hiddenInput {
@@ -31,25 +37,36 @@
 }
 
 .actionsRow {
-    @include rowing(space-between, center);
-    @include sizes(100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .actionButton {
-    @include rowing(center, center, $spacing-2, column);
-    @include sizes(102px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    flex-direction: column;
+    width: 102px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: $spacing-8;
+    padding: 8px;
 
     svg {
-        @include sizes(24px, 24px);
-        color: $color-purple;
+        width: 24px;
+        height: 24px;
+        color: #aa01a2;
     }
 
     span {
-        @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-purple, $spacing-35);
+        font-family: Manroupe, sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        color: #aa01a2;
+        line-height: 35px;
         text-align: center;
     }
 
@@ -59,22 +76,39 @@
 }
 
 .photoWrapper {
-    @include rowing(center, center);
-    @include sizes(270px, 270px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 270px;
+    height: 270px;
 }
 
 .photoPreview {
-    @include sizes(270px, 270px, $spacing-20);
+    width: 270px;
+    height: 270px;
+    border-radius: 20px;
     object-fit: cover;
 }
 
 .noPhoto {
-    @include rowing(center, center);
-    @include sizes(270px, 270px, $spacing-20);
-    background-color: $color-pink;
-    @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-20);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 270px;
+    height: 270px;
+    border-radius: 20px;
+    font-family: Manroupe, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #333333;
+    line-height: 20px;
+    background-color: #fff2f1;
 }
 
 .photoHint {
-    @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-red, $spacing-20);
+    font-family: Manroupe, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #ee443f;
+    line-height: 20px;
 }

@@ -1,16 +1,18 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .portfolio {
-  @include sizes(100%);
+  width: 100%;
   max-width: 1100px;
-  padding: $spacing-12 $spacing-24;
+  padding: 12px 24px;
 }
 
 .headerPortfolioWrappp {
-  @include rowing(space-between, center);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .title {
-  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4);
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #333333;
 }

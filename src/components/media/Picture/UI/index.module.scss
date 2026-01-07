@@ -1,12 +1,9 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .picture {
-  @include sizes(100%);
+  width: 100%;
   max-height: 384px;
-  border-radius: $spacing-24 $spacing-24 $spacing-0 $spacing-0;
+  border-radius: 24px 24px 0 0;
 }
 
 .manicureProcess {
-  @include sizes(100%);
+  width: 100%;
 }

@@ -1,17 +1,22 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .masterAboutTextarea {
-  @include rowing(null, null, null, column);
-  @include sizes(100%, 50px);
-  margin-bottom: $spacing-12;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 12px;
 }
 
 .masterAboutError {
-  @include fonts($roboto-flex-font, $font-weight-400, $font-size-14, $color-red, $spacing-20);
+  font-family: Roboto Flex, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ee443f;
+  line-height: 20px;
 }
 
 .formActions {
-  @include rowing(end, null, $spacing-12);
-  @include sizes(100%);
+  display: flex;
+  justify-content: end;
+  gap: 12px;
+  width: 100%;
 }

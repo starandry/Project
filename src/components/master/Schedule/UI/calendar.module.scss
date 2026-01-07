@@ -1,6 +1,3 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .overlay {
   position: fixed;
   top: 0;
@@ -12,15 +9,15 @@
 }
 
 .calendarWrapper {
+  width: 480px;
+  border-radius: 20px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 480px;
   min-height: 520px;
   background-color: #fff;
-  border-radius: 20px;
-  padding: $spacing-24 $spacing-32;
+  padding: 24px 32px;
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
@@ -29,20 +26,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: $spacing-24;
+  margin-bottom: 24px;
 }
 
 .headerLeft {
   display: flex;
   align-items: center;
-  gap: $spacing-12;
+  gap: 12px;
 }
 
 .monthYearTitle {
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #1d1b20;
   background: none;
   border: none;
   cursor: pointer;
-  @include fonts($manroupe-font, $font-weight-600, $font-size-20, #1d1b20);
   padding: 0;
   transition: opacity 0.2s;
 
@@ -52,16 +52,16 @@
 }
 
 .closeButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 32px;
   height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: none;
   border: none;
   cursor: pointer;
-  color: #1d1b20;
   padding: 0;
+  color: #1d1b20;
   transition: opacity 0.2s;
 
   &:hover {
@@ -78,10 +78,13 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: #1d1b20;
   background: none;
   border: none;
   cursor: pointer;
-  @include fonts($manroupe-font, $font-weight-600, $font-size-22, #1d1b20);
   padding: 0;
   transition: opacity 0.2s;
 
@@ -97,19 +100,20 @@
 
 .navigationWrapper {
   display: flex;
-  gap: $spacing-8;
+  gap: 8px;
 }
 
 .btnNav {
-  @include sizes(40px, 40px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
   min-width: 40px;
   padding: 0;
   border: none;
   background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
   transition: background-color 0.2s;
 
   &:hover {
@@ -117,54 +121,60 @@
   }
 
   svg {
-    color: #7f207b;
     width: 24px;
     height: 24px;
+    color: #7f207b;
   }
 }
 
 .weekDaysRow {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: $spacing-8;
-  margin-bottom: $spacing-16;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .weekDay {
   display: flex;
-  align-items: center;
   justify-content: center;
-  @include fonts($manroupe-font, $font-weight-600, $font-size-14, #9e9e9e);
+  align-items: center;
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #808080;
+  padding: 12px 0;
   text-transform: uppercase;
-  padding: $spacing-12 0;
 }
 
 .daysGrid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  gap: $spacing-6;
+  gap: 6px;
   min-height: 300px;
 }
 
 .dayCell {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   min-height: 44px;
 }
 
 .dayButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 44px;
   height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 50%;
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #1d1b20;
   background-color: transparent;
   border: none;
-  border-radius: 50%;
   cursor: pointer;
-  @include fonts($manroupe-font, $font-weight-400, $font-size-16, #1d1b20);
   transition: all 0.2s;
 
   &:hover {
@@ -183,7 +193,7 @@
 
 .dayButtonToday {
   position: relative;
-  font-weight: $font-weight-600;
+  font-weight: 600;
 
   &::after {
     content: '';
@@ -205,20 +215,23 @@
 .monthsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: $spacing-16;
+  gap: 16px;
   min-height: 300px;
 }
 
 .monthButton {
-  height: 56px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  height: 56px;
+  border-radius: 28px;
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #333333;
   background-color: transparent;
   border: none;
-  border-radius: 28px;
   cursor: pointer;
-  @include fonts($manroupe-font, $font-weight-400, $font-size-16, #6b6b6b);
   transition: all 0.2s;
 
   &:hover {
@@ -238,20 +251,23 @@
 .yearsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: $spacing-20;
+  gap: 20px;
   min-height: 300px;
 }
 
 .yearButton {
-  height: 64px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  height: 64px;
+  border-radius: 32px;
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #808080;
   background-color: transparent;
   border: none;
-  border-radius: 32px;
   cursor: pointer;
-  @include fonts($manroupe-font, $font-weight-400, $font-size-18, #9e9e9e);
   transition: all 0.2s;
 
   &:hover {

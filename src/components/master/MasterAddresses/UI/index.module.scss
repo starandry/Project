@@ -1,39 +1,49 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .addressCard {
-  @include sizes(null, null, $spacing-12);
-  padding: $spacing-16 $spacing-24;
-  background-color: $color-white;
+  border-radius: 12px;
+  padding: 16px 24px;
+  background-color: #fff;
 }
 
 .addressLabelWrapper,
 .regionLabelWrapper {
-  @include rowing(space-between, center);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .title {
-  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4, $spacing-36);
-  padding-bottom: $spacing-12;
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #333333;
+  line-height: 36px;
+  padding-bottom: 12px;
 }
 
 .addressItem {
-  @include rowing(null, null, $spacing-12, column);
-  padding: $spacing-0 $spacing-16;
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  padding: 0 16px;
 }
 
 .addressRow {
-  @include rowing(null, center);
+  display: flex;
+  align-items: center;
 }
 
 .addressText,
 .regionText {
-  padding-left: $spacing-55;
+  padding-left: 55px;
 }
 
 .addressLabel,
 .addressText,
 .regionLabel,
 .regionText {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-18, $color-gray4, $spacing-28);
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #333333;
+  line-height: 28px;
 }

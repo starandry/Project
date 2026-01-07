@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './index.module.scss';
 import type { ScrollButtonProps } from '@/components/feedback/ScrollButton/index.model.ts';
-import { useScrollButton } from '../model/useScrollButton';
+import { useScrollButton } from '@/hooks/media';
 
 export const ScrollButton: React.FC<ScrollButtonProps> = ({
     threshold = 50,

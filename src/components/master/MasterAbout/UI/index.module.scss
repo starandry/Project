@@ -1,21 +1,27 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .aboutCard {
-  @include sizes(null, null, $spacing-12);
-  padding: $spacing-16 $spacing-24;
-  background-color: $color-white;
+  border-radius: 12px;
+  padding: 16px 24px;
+  background-color: #fff;
 }
 
 .header {
-  @include rowing(space-between, center);
-  padding-bottom: $spacing-12;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
 }
 
 .title {
-  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4);
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #333333;
 }
 
 .text {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-24);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #333333;
+  line-height: 24px;
 }

@@ -1,21 +1,21 @@
-@use './../../../styles/variables' as *;
-@use './../../../styles/mixins' as *;
-
 .footerNav {
-  @include rowing();
+  display: flex;
 }
 
 .wrappClients,
 .wrappMasters,
 .wrappAbout {
-  @include sizes(100%);
+  width: 100%;
   max-width: 25%;
 }
 
 .titleFooterNav {
-  @include fonts($roboto-font, $font-weight-600, $font-size-17, $color-purple3);
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: #7f207b;
 }
 
 .wrappItemFooter {
-  padding-top: $spacing-15;
+  padding-top: 15px;
 }

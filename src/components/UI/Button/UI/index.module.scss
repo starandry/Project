@@ -1,110 +1,145 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .btn {
-  @include sizes(null, null, $spacing-12);
-  padding: $spacing-15 $spacing-90;
+  border-radius: 12px;
+  padding: 15px 90px;
   border: none;
 }
 
 .activeButton {
-  @include fonts($manroupe-font, $font-weight-300, $font-size-36, $color-black);
-  margin: $spacing-0 $spacing-75;
-  background-color: $color-white;
+  font-family: Manroupe, sans-serif;
+  font-weight: 300;
+  font-size: 36px;
+  color: #000;
+  margin: 0 75px;
+  background-color: #fff;
 }
 
 .inactiveButton {
-  @include fonts($manroupe-font, $font-weight-300, $font-size-36, $color-white);
-  margin: $spacing-0 $spacing-75;
-  background-color: $color-purple3;
+  font-family: Manroupe, sans-serif;
+  font-weight: 300;
+  font-size: 36px;
+  color: #fff;
+  margin: 0 75px;
+  background-color: #7f207b;
 }
 
+
+
 .searchBtn {
-  @include rowing(null, center);
-  @include fonts($manroupe-font, $font-weight-500, $font-size-20, $color-purple3, $spacing-26);
-  @include sizes(null, null, $spacing-10);
-  padding: $spacing-12 $spacing-30;
-  background-color: $color-white;
+  display: flex;
+  align-items: center;
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #7f207b;
+  line-height: 26px;
+  border-radius: 10px;
+  padding: 12px 30px;
+  background-color: #fff;
 
   > span {
-    padding-right: $spacing-10;
+    padding-right: 10px;
   }
 }
 
 .listBtn {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-white);
-  @include sizes(null, null, $spacing-10);
-  padding: $spacing-10 $spacing-25;
-  background-color: $color-purple3;
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 25px;
+  background-color: #7f207b;
 }
 
 .mapBtn {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-burgundy);
-  @include sizes(null, null, $spacing-10);
-  padding: $spacing-10 $spacing-25;
-  border: 1px solid $color-purple4;
-  background-color: $color-white;
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #422a3c;
+  border-radius: 10px;
+  padding: 10px 25px;
+  border: 1px solid #8f3574;
+  background-color: #fff;
 }
 
 .listBtnInactive {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-burgundy);
-  @include sizes(null, null, $spacing-10);
-  padding: $spacing-10 $spacing-25;
-  border: 1px solid $color-purple4;
-  background-color: $color-white;
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #422a3c;
+  border-radius: 10px;
+  padding: 10px 25px;
+  border: 1px solid #8f3574;
+  background-color: #fff;
 }
 
 .mapBtnInactive {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-burgundy);
-  @include sizes(null, null, $spacing-10);
-  padding: $spacing-10 $spacing-25;
-  border: 1px solid $color-purple4;
-  background-color: $color-white;
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #422a3c;
+  border-radius: 10px;
+  padding: 10px 25px;
+  border: 1px solid #8f3574;
+  background-color: #fff;
 }
 
 .listBtn,
 .mapBtn,
 .listBtnInactive,
 .mapBtnInactive {
-  margin-left: $spacing-55;
+  margin-left: 55px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .bookBtn {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-16, $color-white);
-  @include sizes(222px, null, $spacing-12);
-  padding: $spacing-12 $spacing-20;
-  background-color: $color-purple3;
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+  width: 222px;
+  border-radius: 12px;
+  padding: 12px 20px;
+  background-color: #7f207b;
 }
 
 .mastersMoreBtn {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-20, $color-white);
-  @include sizes(null, null, $spacing-10);
-  padding: $spacing-20 $spacing-30;
-  margin: $spacing-24 $spacing-0 $spacing-12;
-  background-color: $color-purple3;
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 10px;
+  padding: 20px 30px;
+  margin: 24px 0 12px;
+  background-color: #7f207b;
 }
 
 .discountBtn {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-white);
-  @include sizes(null, null, $spacing-10);
-  padding: $spacing-12 $spacing-20;
-  background-color: $color-purple3;
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #fff;
+  border-radius: 10px;
+  padding: 12px 20px;
+  background-color: #7f207b;
 }
 
 .joinServBtn {
-  @include fonts($manroupe-font, $font-weight-600, $font-size-24, $color-white);
-  @include sizes(null, null, $spacing-10);
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #fff;
+  border-radius: 10px;
   align-self: self-start;
-  padding: $spacing-24 $spacing-36;
-  margin: $spacing-12 $spacing-0 $spacing-12;
-  background-color: $color-purple3;
+  padding: 24px 36px;
+  margin: 12px 0 12px;
+  background-color: #7f207b;
 }
 
 .editButton {
-  @include sizes(null, $spacing-40);
-  padding: $spacing-0;
+  height: 40px;
+  padding: 0;
   border: none;
   background-color: transparent;
 }
@@ -112,107 +147,145 @@
 .iconButton {
   position: absolute;
   top: 14%;
-  padding: $spacing-8;
+  padding: 8px;
   border: none;
   opacity: 0.7;
-  background-color: $color-white;
+  background-color: #fff;
 }
 
 .editButtonUploader {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-10, $color-gray4);
-  @include sizes(null, null, $spacing-8);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  color: #333333;
+  border-radius: 8px;
   position: absolute;
   top: 65%;
-  padding: $spacing-8 $spacing-8;
-  background-color: $color-white;
+  padding: 8px 8px;
+  background-color: #fff;
 }
 
 .actionIcon {
-  @include sizes(null, null, $spacing-8);
+  border-radius: 8px;
   position: absolute;
   top: 40%;
   left: 40%;
-  padding: $spacing-8;
+  padding: 8px;
   border: none;
   opacity: 0.7;
-  background-color: $color-white;
+  background-color: #fff;
 }
 
 .textButton {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-10, $color-gray4);
-  @include sizes(null, null, $spacing-8);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  color: #333333;
+  border-radius: 8px;
   position: absolute;
   top: 20%;
   left: 36%;
-  padding: $spacing-8 $spacing-8;
+  padding: 8px 8px;
   border: none;
-  background-color: $color-white;
+  background-color: #fff;
 }
 
 .activePageBtn {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-20, $color-white2);
-  background-color: $color-purple3;
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #fffbfb;
+  background-color: #7f207b;
 }
 
 .pageBtn {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-20, $color-purple3);
-  background-color: $color-white;
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #7f207b;
+  background-color: #fff;
 }
 
 .activePageBtn,
 .pageBtn {
-  @include rowing(center, center);
-  @include sizes($spacing-30, $spacing-30);
-  padding: $spacing-0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  border: $spacing-1 $color-purple3 solid;
+  padding: 0;
+  border: 1px solid #7f207b;
 }
 
 .showMoreMasters {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-20, $color-white2);
-  margin-bottom: $spacing-24;
-  padding: $spacing-20 $spacing-30;
-  background-color: $color-purple3;
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #fffbfb;
+  margin-bottom: 24px;
+  padding: 20px 30px;
+  background-color: #7f207b;
 }
 
 .filterTag {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-16, $color-white);
-  padding: $spacing-12 $spacing-20;
-  margin: $spacing-25 $spacing-50 $spacing-0 $spacing-0;
-  background-color: $color-purple3;
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+  padding: 12px 20px;
+  margin: 25px 50px 0 0;
+  background-color: #7f207b;
 }
 
 .clearFiltersBtn {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-20, $color-gray2);
-  padding: $spacing-0;
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #7d7979;
+  padding: 0;
   background-color: transparent;
 }
 
 .registerButton {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-24, $color-white, $spacing-20);
-  @include sizes(100%);
-  padding: $spacing-16 $spacing-26;
-  background-color: $color-purple3;
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: #fff;
+  line-height: 20px;
+  width: 100%;
+  padding: 16px 26px;
+  background-color: #7f207b;
 }
 
 .submitButton {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-16, $color-white, $spacing-20);
-  @include sizes(null, null, $spacing-12);
-  padding: $spacing-12 $spacing-20;
-  border: $spacing-1 solid $color-purple3;
-  background-color: $color-purple3;
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+  line-height: 20px;
+  border-radius: 12px;
+  padding: 12px 20px;
+  border: 1px solid #7f207b;
+  background-color: #7f207b;
 }
 
 .cancelButton {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-16, $color-purple3, $spacing-20);
-  @include sizes(null, null, $spacing-12);
-  padding: $spacing-12 $spacing-20;
-  border: $spacing-1 solid $color-purple3;
-  background-color: $color-white;
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #7f207b;
+  line-height: 20px;
+  border-radius: 12px;
+  padding: 12px 20px;
+  border: 1px solid #7f207b;
+  background-color: #fff;
 }
 
 .closeFormBtn {
-  @include rowing(start, null, null, column);
-  padding: $spacing-0;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  padding: 0;
   background-color: transparent;
 }

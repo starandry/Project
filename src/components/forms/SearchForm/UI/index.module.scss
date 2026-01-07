@@ -1,20 +1,23 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .wrapperSearchForm {
-  @include sizes(null, null, $spacing-24);
-  padding: $spacing-8 $spacing-30;
-  background-color: $color-white;
+  border-radius: 24px;
+  padding: 8px 30px;
+  background-color: #fff;
 }
 
 .searchFormLabel {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-20, $color-purple3, $spacing-36);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #7f207b;
+  line-height: 36px;
 }
 
 .searchForm {
-  @include rowing(space-between, center);
-  @include sizes(null, null, $spacing-24);
-  margin: $spacing-8 $spacing-0 $spacing-16;
-  padding: $spacing-16 $spacing-24;
-  border: $spacing-1 solid $color-purple3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 24px;
+  margin: 8px 0 16px;
+  padding: 16px 24px;
+  border: 1px solid #7f207b;
 }

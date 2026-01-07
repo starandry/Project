@@ -1,6 +1,3 @@
-@use './../../../styles/variables' as *;
-@use './../../../styles/mixins' as *;
-
 .wrapper {
   position: fixed;
   z-index: 100;
@@ -8,42 +5,52 @@
 }
 
 .headerWrapp {
-  @include rowing(space-between, center);
-  min-height: $spacing-70;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 70px;
 }
 
 .navbarMenu {
-  @include rowing();
+  display: flex;
 }
 
 .btnWrapp {
-  @include rowing(space-between, center, $spacing-16);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
 }
 
 .masterCapture {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-20, $color-purple);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #aa01a2;
 }
 
 .wrappFooter {
-  margin: $spacing-0 $spacing-100;
-  padding-bottom: $spacing-50;
+  margin: 0 100px;
+  padding-bottom: 50px;
 }
 
 .wrappFooterNav {
-  padding-bottom: $spacing-60;
+  padding-bottom: 60px;
 }
 
 .footerSeparator {
-  @include sizes(null, $spacing-2);
+  height: 2px;
   border: none;
-  background-color: $color-purple3;
+  background-color: #7f207b;
 }
 
 .basement {
-  @include rowing(space-between);
+  display: flex;
+  justify-content: space-between;
 }
 
 .footerNavigation {
-  @include rowing(null, null, $spacing-48);
-  padding-bottom: $spacing-24;
+  display: flex;
+  gap: 48px;
+  padding-bottom: 24px;
 }

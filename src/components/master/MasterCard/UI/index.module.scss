@@ -1,55 +1,75 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .card {
-  @include rowing(null, null, $spacing-4, column);
-  @include sizes(100%, null, $spacing-18);
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 18px;
   max-width: 650px;
-  padding: $spacing-24;
-  background-color: $color-white;
+  padding: 24px;
+  background-color: #fff;
 }
 
 .cardTop {
-  @include rowing(null, null, $spacing-12);
+  display: flex;
+  gap: 12px;
 }
 
 .cardBottom {
-  @include rowing(space-between, center);
-  @include sizes(100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .info {
-  @include rowing(null, null, $spacing-21, column);
+  display: flex;
+  gap: 21px;
+  flex-direction: column;
   flex: 1;
 }
 
 .name {
-  @include fonts($manroupe-font, $font-weight-600, $font-size-32, $color-black);
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  color: #000;
   line-height: 1.125;
 }
 
 .infoDetails {
-  @include rowing(null, null, $spacing-8, column);
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
 }
 
 .specialty,
 .address {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-purple4);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #8f3574;
 }
 
 .masterStats {
-  @include rowing(null, center, $spacing-20);
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .ratingBlock,
 .reviewsBlock {
-  @include rowing(null, center, $spacing-4);
-  @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-gray2);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #7d7979;
   letter-spacing: -0.02em;
 }
 
 .reviewsBlock {
-  gap: $spacing-8;
+  gap: 8px;
 }
 
 .infoWrapper {
@@ -57,5 +77,7 @@
 }
 
 .infoNextWrapper {
-  @include rowing(space-between, flex-start);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }

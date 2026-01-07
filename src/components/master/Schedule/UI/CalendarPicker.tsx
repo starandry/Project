@@ -8,7 +8,7 @@ import ChevronDown from '@/assets/icons/ChevronDown.svg?react';
 import Close from '@/assets/icons/CloseIcon.svg?react';
 import type { CalendarPickerProps } from '../model/calendarTypes';
 import { MONTHS, WEEK_DAYS_SHORT } from '../model/constants';
-import { useCalendar } from '../model/useCalendar';
+import { useCalendar } from '@/hooks/data';
 
 const NavigationButtons = ({ onPrev, onNext }: { onPrev: () => void; onNext: () => void }) => (
     <div className={styles.navigationWrapper}>

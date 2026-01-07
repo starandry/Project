@@ -1,6 +1,6 @@
 import React from 'react';
 import { DropdownUI } from '../DropdownUI.tsx';
-import { useDropdownContainer } from '../../model/useDropdownContainer.ts';
+import { useDropdownContainer } from '@/hooks/ui';
 import type { DropdownProps } from '@/components/UI/Dropdown/index.model.ts';
 
 export const Dropdown: React.FC<DropdownProps> = ({

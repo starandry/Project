@@ -1,6 +1,3 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 @font-face {
   font-family: 'Manrope-Regular';
   src: url('../../../../assets/fonts/Manrope-Regular.ttf') format('truetype');
@@ -16,26 +13,33 @@
 }
 
 .wrappShedule {
-  @include sizes(100%, null, $spacing-12);
+  width: 100%;
+  border-radius: 12px;
   max-width: 519px;
-  padding: $spacing-16 $spacing-24;
+  padding: 16px 24px;
   background-color: #fff;
-  border-radius: 18px;
 }
 
 .title {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-18, #000);
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #000;
   opacity: 0.87;
   margin: 0;
 }
 
 .headShedule {
-  @include rowing(space-between);
-  margin-bottom: $spacing-16;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
   align-items: center;
 
   > .btnCalendar {
-    @include fonts($manroupe-font, $font-weight-400, $font-size-16, #000);
+    font-family: Manroupe, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000;
     opacity: 0.87;
     padding: 0;
     height: auto;
@@ -44,8 +48,8 @@
 
 .weekDaysRow {
   display: flex;
-  gap: 8px;
   align-items: center;
+  gap: 8px;
 }
 
 .wrappBtnPrev,
@@ -55,15 +59,16 @@
 
 .btnPrev,
 .btnNext {
-  @include sizes(24px, 24px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
   min-width: 24px;
   padding: 0;
   border: none;
   background-color: rgba(255, 251, 251, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
 
   &:hover {
     background-color: rgba(255, 251, 251, 0.9);
@@ -76,29 +81,36 @@
 }
 
 .btnDay {
-  @include sizes(100%, 73px);
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: 4px;
+  flex-direction: column;
+  width: 100%;
+  height: 73px;
+  border-radius: 8px;
   border: none;
   background-color: #fff2f1;
-  border-radius: 8px;
   padding: 8px;
 
   &:hover {
-    background-color: #ffeeed;
+    background-color: #fff2f1;
   }
 }
 
 .dayLabel {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-14, #1d1b20);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #1d1b20;
   line-height: 1;
 }
 
 .dayNumber {
-  @include fonts(Manrope-Bold, $font-weight-700, $font-size-16, #1d1b20);
+  font-family: Manrope-Bold, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1d1b20;
   line-height: 1;
 }
 
@@ -116,20 +128,23 @@
 }
 
 .scheduleList {
-  margin-top: $spacing-16;
+  margin-top: 16px;
 }
 
 .emptyState {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-16, #1d1b20);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #1d1b20;
   opacity: 0.6;
   text-align: center;
-  padding: $spacing-24 0;
+  padding: 24px 0;
 }
 
 .card {
-  border: none;
   border-radius: 8px;
-  margin-bottom: $spacing-12;
+  border: none;
+  margin-bottom: 12px;
 
   &:last-child {
     margin-bottom: 0;
@@ -145,20 +160,21 @@
 }
 
 .slotRow {
-  @include rowing(null, center);
-  gap: $spacing-16;
-  padding: $spacing-16;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
 }
 
 .iconCol {
-  flex-shrink: 0;
   display: flex;
-  align-items: center;
   justify-content: center;
-  width: 53.5px;
-  height: 53.5px;
-  background-color: #fff2f1;
+  align-items: center;
+  width: 54px;
+  height: 54px;
   border-radius: 5px;
+  flex-shrink: 0;
+  background-color: #fff2f1;
 }
 
 .cardBusy .iconCol {
@@ -166,20 +182,26 @@
 }
 
 .statusCol {
-  flex: 1;
   display: flex;
-  flex-direction: column;
   gap: 4px;
+  flex-direction: column;
+  flex: 1;
   min-width: 0;
 }
 
 .status {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-20, #7f207b);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #7f207b;
   line-height: 1.2;
 }
 
 .address {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-14, #1d1b20);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #1d1b20;
   line-height: 1.4;
   opacity: 0.6;
 }
@@ -189,7 +211,10 @@
 }
 
 .time {
-  @include fonts(Manrope-Regular, $font-weight-400, $font-size-18, #7f207b);
+  font-family: Manrope-Regular, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #7f207b;
   line-height: 1.2;
 }
 

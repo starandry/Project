@@ -1,32 +1,37 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .searchMaster {
-  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray2, $spacing-24);
-  @include sizes(null, null, $spacing-12);
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #7d7979;
+  line-height: 24px;
+  border-radius: 12px;
   flex-grow: 1;
-  padding: $spacing-12 $spacing-8;
+  padding: 12px 8px;
   border: unset;
 }
 
 .filterMaster {
-  @include sizes($spacing-24, $spacing-24, 50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
   appearance: none;
   -webkit-appearance: none;
   position: relative;
-  margin: $spacing-0;
-  border: 1.5px solid $color-purple3;
-  background: $color-white;
+  margin: 0;
+  border: 2px solid #7f207b;
+  background: #fff;
   cursor: pointer;
 
   &::after {
-    @include sizes($spacing-12, $spacing-12, 50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
     position: absolute;
     content: '';
     top: 50%;
     left: 50%;
-    background: $color-purple3;
-    transform: translate(-50%, -50%) scale(0); // спрятан
+    background: #7f207b;
+    transform: translate(-50%, -50%) scale(0);
     transition: 0.2s ease;
   }
 
@@ -37,7 +42,11 @@
 
 .formInput,
 .specialtyInput {
-  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4, $spacing-24);
-  padding: $spacing-12 $spacing-6;
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #333333;
+  line-height: 24px;
+  padding: 12px 6px;
   border: unset;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDropdown } from '@/hooks/useDropdown';
+import { useDropdown } from '@/hooks/ui';
 import type { Country } from './countryTypes';
 
 export const useCountrySelector = () => {

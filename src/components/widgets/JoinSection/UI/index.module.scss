@@ -1,27 +1,34 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .joinSection {
-  @include rowing(space-between, center);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   min-height: 500px;
 }
 
 .content {
-  @include rowing(null, null, null, column);
-  padding: $spacing-0 $spacing-30;
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
 }
 
 .title {
-  @include fonts($playfair-font, $font-weight-700, $font-size-40, $color-purple4);
-  padding-bottom: $spacing-36;
+  font-family: Playfair, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: #8f3574;
+  padding-bottom: 36px;
 }
 
 .subtext {
-  padding-top: $spacing-40;
-  padding-bottom: $spacing-15;
+  padding-top: 40px;
+  padding-bottom: 15px;
 }
 
 .text,
 .subtext {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-24, $color-black2, 1.3);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: #191919;
+  line-height: 1.3;
 }

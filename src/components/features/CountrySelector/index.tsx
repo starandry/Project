@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCountrySelector } from './model/useCountrySelector';
+import { useCountrySelector } from '@/hooks/ui';
 import { CountryUI } from './UI/CountryUI';
 
 const CountrySelector: React.FC = () => {

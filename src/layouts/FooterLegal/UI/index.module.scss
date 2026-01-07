@@ -1,28 +1,36 @@
-@use './../../../styles/variables' as *;
-@use './../../../styles/mixins' as *;
-
 .footerLegal {
-  @include sizes(100%);
+  width: 100%;
   max-width: 70%;
 }
 
 .wrapAge {
-  @include rowing();
-  padding-top: $spacing-8;
+  display: flex;
+  padding-top: 8px;
 }
 
 .footerLegalText {
-  @include fonts($roboto-font, $font-weight-400, $font-size-15, $color-purple3, 1.2);
-  @include sizes(100%);
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #7f207b;
+  line-height: 1.2;
+  width: 100%;
   max-width: 75%;
-  padding-left: $spacing-16;
+  padding-left: 16px;
 }
 
 .footerCopyright {
-  @include fonts($roboto-font, $font-weight-400, $font-size-17, $color-purple3);
-  padding: $spacing-25 $spacing-0;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  color: #7f207b;
+  padding: 25px 0;
 }
 
 .footerLegalInfo {
-  @include fonts($roboto-font, $font-weight-400, $font-size-15, $color-purple3, 1.2);
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #7f207b;
+  line-height: 1.2;
 }

@@ -1,11 +1,9 @@
-@use '../../../../styles/mixins' as *;
-@use '../../../../styles/variables' as *;
-
 .wrapToolbar {
-  @include rowing(space-between);
-  padding: $spacing-24 $spacing-0;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 0;
 }
 
 .wrapBtnsToolbar {
-  @include rowing();
+  display: flex;
 }

@@ -1,23 +1,25 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .selectWrapper {
-  @include rowing(null, center);
-  @include sizes(119px);
+  align-items: center;
+  width: 119px;
   position: relative;
   display: inline-flex;
 }
 
 .customSelect {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-purple3, $spacing-22);
-  @include sizes(100%, null, $spacing-12);
-  padding: $spacing-12 $spacing-28 $spacing-12 $spacing-10;
-  background-color: $color-white;
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #7f207b;
+  line-height: 22px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 12px 28px 12px 10px;
+  background-color: #fff;
   cursor: pointer;
-  border: $spacing-1 solid transparent;
+  border: 1px solid transparent;
   appearance: none;
   -webkit-appearance: none;
   background-image: none;
   background-repeat: no-repeat;
-  background-position: right $spacing-8 center;
+  background-position: right 8px center;
 }

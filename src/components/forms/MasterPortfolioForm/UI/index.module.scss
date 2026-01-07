@@ -1,9 +1,9 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .portfolioOverlay {
-  @include rowing(center,center);
-  @include sizes(100vw, 100vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
@@ -12,15 +12,19 @@
 }
 
 .portfolioForm {
-  @include sizes(1150px, null, $spacing-12);
+  width: 1150px;
+  border-radius: 12px;
   z-index: 1000;
-  padding: $spacing-16 $spacing-24;
-  background-color: $color-pink;
+  padding: 16px 24px;
+  background-color: #fff2f1;
 }
 
 .portfolioWrapper {
-  @include rowing(null, end, $spacing-16, column);
-  @include sizes(100%);
+  display: flex;
+  align-items: end;
+  gap: 16px;
+  flex-direction: column;
+  width: 100%;
 
   > *:not(:last-child) {
     width: 100%;

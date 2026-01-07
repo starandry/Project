@@ -1,62 +1,89 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .servicesCard {
-  @include sizes(null, null, $spacing-12);
-  padding: $spacing-16 $spacing-24;
-  background-color: $color-white;
+  border-radius: 12px;
+  padding: 16px 24px;
+  background-color: #fff;
 }
 
 .headerContainer {
-  @include rowing(space-between);
+  display: flex;
+  justify-content: space-between;
 }
 
 .title {
-  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4, $spacing-35);
-  padding-bottom: $spacing-12;
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #333333;
+  line-height: 35px;
+  padding-bottom: 12px;
 }
 
 .servicesItem {
-  @include rowing(null, center);
-  padding: $spacing-6 $spacing-0;
-  border-bottom: $spacing-1 solid $color-gray4;
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #333333;
 }
 
 .itemContent {
-  @include rowing(space-between, center);
-  @include sizes(100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   position: relative;
 }
 
 .serviceTitle {
-  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4, $spacing-35);
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #333333;
+  line-height: 35px;
 }
 
 .serviceText {
-  @include fonts($manroupe-font, $font-weight-600, $font-size-18, $color-gray4, $spacing-35);
-  padding: $spacing-8 $spacing-0;
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #333333;
+  line-height: 35px;
+  padding: 8px 0;
 }
 
 .serviceDesc {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-gray4, $spacing-28);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #333333;
+  line-height: 28px;
 }
 
 .serviceInfo {
   flex: 0 1 570px;
   min-width: 0;
-  padding-left: $spacing-24;
+  padding-left: 24px;
 }
 
 .labelPrice {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-15, $color-gray5, $spacing-20);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #808080;
+  line-height: 20px;
 }
 
 .servicePriceBlock {
-  @include rowing(null, null, $spacing-6, column);
+  display: flex;
+  gap: 6px;
+  flex-direction: column;
   flex: 0 1 120px;
   min-width: 0;
 }
 
 .servicePrice {
-  @include fonts(Manrope-Semibold, $font-weight-600, $font-size-17, $color-gray4, $spacing-22);
+  font-family: Manrope-Semibold, sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: #333333;
+  line-height: 22px;
 }

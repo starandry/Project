@@ -1,6 +1,6 @@
 import React from 'react';
 import { ImageUploader } from './UI/ImageUploader';
-import { useImageUploader } from './model/useImageUploader';
+import { useImageUploader } from '@/hooks/media';
 
 const ImageUploaderContainer: React.FC = () => {
     const {

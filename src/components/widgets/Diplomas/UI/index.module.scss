@@ -1,51 +1,69 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .diplomasWrapper {
-  @include sizes(null, null, $spacing-18);
-  padding: $spacing-16 $spacing-24;
-  background-color: $color-white;
+  border-radius: 18px;
+  padding: 16px 24px;
+  background-color: #fff;
 }
 
 .titleRowDiplomas {
-  @include rowing(space-between, center);
-  padding-bottom: $spacing-12;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
 }
 
 .title {
-  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4);
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #333333;
 }
 
 .grid {
-  @include rowing(space-between, center);
-  padding: $spacing-12 $spacing-6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 6px;
 }
 
 .diplomaInfo {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-black3, $spacing-28);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #1d1b20;
+  line-height: 28px;
   flex: 0 1 570px;
   min-width: 0;
 }
 
 .descDiplomas {
-  @include fonts(null, $font-weight-300, $font-size-16);
+  font-weight: 300;
+  font-size: 16px;
 }
 
 .diplomasYearBlock {
-  @include rowing(null, null, $spacing-6, column);
+  display: flex;
+  gap: 6px;
+  flex-direction: column;
   flex: 0 1 150px;
   min-width: 0;
 }
 
 .labelDiplomas {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-15, $color-gray5, $spacing-20);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #808080;
+  line-height: 20px;
 }
 
 .years {
-  @include rowing();
+  display: flex;
 }
 
 .year {
-  @include fonts(Manrope-Semibold, $font-weight-600, $font-size-17, $color-gray4);
-  @include sizes(50%);
+  font-family: Manrope-Semibold, sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: #333333;
+  width: 50%;
 }

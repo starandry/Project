@@ -1,23 +1,25 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .wrappCards {
-  @include rowing(null, null, $spacing-25);
+  display: flex;
+  gap: 25px;
   flex-wrap: wrap;
-  padding: $spacing-40 $spacing-57;
-  border-radius: $spacing-24;
-  background-color: $color-pink;
+  padding: 40px 57px;
+  border-radius: 24px;
+  background-color: #fff2f1;
 }
 
 .mastersMoreWrap {
-  @include rowing(center);
+  display: flex;
+  justify-content: center;
 }
 
 .paginationWrap {
-  @include rowing(center, null, $spacing-24);
-  padding: $spacing-24 $spacing-0;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px 0;
 }
 
 .showMoreWrap {
-  @include rowing(center);
+  display: flex;
+  justify-content: center;
 }

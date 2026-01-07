@@ -1,41 +1,50 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .masterProfileCard {
-  @include sizes(100%);
+  width: 100%;
   max-width: 514px;
   align-self: flex-start;
-  padding: $spacing-16 $spacing-24;
-  border-radius: $spacing-12;
-  background-color: $color-white;
+  padding: 16px 24px;
+  border-radius: 12px;
+  background-color: #fff;
 }
 
 .cardHeader {
-  @include rowing(space-between, center);
-  padding-bottom: $spacing-12;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
 }
 
 .avatarWrapper {
-  @include sizes(null, null, $spacing-20);
-  padding: $spacing-40;
-  background: $color-pink;
+  border-radius: 20px;
+  padding: 40px;
+  background: #fff2f1;
 }
 
 .infoGroup {
-  @include rowing(null, null, $spacing-56, column);
+  display: flex;
+  gap: 56px;
+  flex-direction: column;
 }
 
 .infoItem {
-  @include rowing(space-between, center);
-  @include sizes(null, $spacing-40);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
 }
 
 .title,
 .masterName {
-  @include fonts($manroupe-font, $font-weight-700, $font-size-20, null, $spacing-20);
+  font-family: Manroupe, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
 }
 
 .masterEmail,
 .masterPhone {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-17, $color-gray2);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  color: #7d7979;
 }

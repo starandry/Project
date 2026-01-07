@@ -1,46 +1,62 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .searchPanel {
-  @include rowing(null, center, null, column);
-  @include sizes(100%);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
   margin-top: -75px;
-  padding: $spacing-24 $spacing-0 $spacing-36;
-  border-radius: $spacing-24 $spacing-24 $spacing-0 $spacing-0;
-  background-color: $color-pink;
+  padding: 24px 0 36px;
+  border-radius: 24px 24px 0 0;
+  background-color: #fff2f1;
 }
 
 .searchTitle {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-30, $color-purple3, $spacing-39);
-  padding-bottom: $spacing-24;
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  color: #7f207b;
+  line-height: 39px;
+  padding-bottom: 24px;
 }
 
 .searchBody {
-  @include sizes(100%);
+  width: 100%;
   max-width: 1440px;
 }
 
 .searchHint {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-20, $color-purple3, $spacing-26);
-  padding: $spacing-0 $spacing-0 $spacing-8 $spacing-30;
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #7f207b;
+  line-height: 26px;
+  padding: 0 0 8px 30px;
 }
 
 .searchPanelBlock {
-  @include rowing(null, null, $spacing-16, column);
-  @include sizes(null, null, $spacing-24);
-  padding: $spacing-30;
-  background-color: $color-purple3;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  border-radius: 24px;
+  padding: 30px;
+  background-color: #7f207b;
 }
 
 .searchPanelBar {
-  @include rowing(space-between, null, $spacing-24);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
 }
 
 .searchFilterBody {
-  @include rowing(null, null, $spacing-24);
-  padding: $spacing-6 $spacing-8;
+  display: flex;
+  gap: 24px;
+  padding: 6px 8px;
 }
 
 .searchFilterSign {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-20, $color-white, $spacing-24);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #fff;
+  line-height: 24px;
 }

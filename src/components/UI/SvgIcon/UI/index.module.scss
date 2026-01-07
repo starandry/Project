@@ -1,12 +1,10 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .iconSupport {
-  margin-right: $spacing-12;
+  margin-right: 12px;
 }
 
 .editUpload {
-  @include sizes($spacing-40, $spacing-40);
+  width: 40px;
+  height: 40px;
   opacity: 0.7;
 }
 
@@ -15,57 +13,67 @@
 }
 
 .starOutIcon {
-  @include sizes($spacing-24, $spacing-24);
-  color: $color-orange;
+  width: 24px;
+  height: 24px;
+  color: #ffb800;
 }
 
 .messageIcon {
-  @include sizes($spacing-24, $spacing-24);
-  color: $color-gray2;
+  width: 24px;
+  height: 24px;
+  color: #7d7979;
 }
 
 .check {
-  @include sizes($spacing-48, $spacing-30);
-  stroke: $color-purple3;
+  width: 48px;
+  height: 30px;
+  stroke: #7f207b;
   color: transparent;
 }
 
 .heartOutIcon {
-  @include sizes($spacing-30, $spacing-31);
-  color: $color-black3;
+  width: 30px;
+  height: 31px;
+  color: #1d1b20;
 }
 
 .logoFooter {
-  @include sizes($spacing-100, $spacing-50);
-  margin: $spacing-36 $spacing-0 $spacing-16;
-  color: $color-purple3;
+  width: 100px;
+  height: 50px;
+  margin: 36px 0 16px;
+  color: #7f207b;
 }
 
 .ageIcon {
-  @include sizes($spacing-35, $spacing-35);
-  color: $color-purple3;
+  width: 35px;
+  height: 35px;
+  color: #7f207b;
 }
 
 .selectCountry {
-  @include sizes($spacing-16, $spacing-16);
-  stroke: $color-purple3;
+  width: 16px;
+  height: 16px;
+  stroke: #7f207b;
   color: transparent;
 }
 
 .dropDownMenu {
-  @include sizes($spacing-16, $spacing-16);
-  stroke: $color-purple;
+  width: 16px;
+  height: 16px;
+  stroke: #aa01a2;
   color: transparent;
 }
 
 .searchFormIcon {
-  @include sizes($spacing-16, $spacing-16);
-  stroke: $color-gray2;
-  color: $color-black;
+  width: 16px;
+  height: 16px;
+  stroke: #7d7979;
+  color: #000;
 }
 
 .toolbarIcon {
-  @include sizes($spacing-16, $spacing-16);
+  width: 16px;
+  height: 16px;
 }
 
 .passwordErr > path:first-of-type,
@@ -75,14 +83,15 @@
 
 .passwordValid > path:first-of-type,
 .passwordConfirmValid > path:first-of-type {
-  stroke: #2ecc71;
+  stroke: #81cf92;
 }
 
 .selectRole {
-  @include sizes($spacing-24, $spacing-24);
+  width: 24px;
+  height: 24px;
   position: absolute;
   right: 8px;
-  color: $color-purple3;
+  color: #7f207b;
   pointer-events: none;
 }
 
@@ -99,22 +108,23 @@
 }
 
 .heartBottom1 {
-  bottom: $spacing-40;
-  right: $spacing-66;
+  bottom: 40px;
+  right: 66px;
 }
 
 .heartBottom2 {
-  bottom: $spacing-40;
-  right: $spacing-48;
+  bottom: 40px;
+  right: 48px;
 }
 
 .heartBottom3 {
-  bottom: $spacing-40;
-  right: $spacing-38;
+  bottom: 40px;
+  right: 38px;
 }
 
 .editMasterProfile {
-  @include sizes($spacing-40, $spacing-40);
+  width: 40px;
+  height: 40px;
 }
 
 .heartTop1,
@@ -133,11 +143,12 @@
 }
 
 .heartPromoClient {
-  @include sizes(230px, 240px);
+  width: 230px;
+  height: 240px;
 }
 
 .ArrowDropDown {
   position: absolute;
-  top: calc(50% - $spacing-3);
-  right: $spacing-0;
+  top: calc(50% - 3px);
+  right: 0;
 }

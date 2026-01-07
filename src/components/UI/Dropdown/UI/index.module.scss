@@ -1,13 +1,15 @@
-@use '../../../../styles/mixins' as *;
-@use '../../../../styles/variables' as *;
-
 .dropMenuWrap {
   position: relative;
 }
 
 .dropMenuBtn {
-  @include rowing(null, center, $spacing-25);
-  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-purple);
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #aa01a2;
   padding: unset;
   background: none;
   border: none;
@@ -15,52 +17,58 @@
 }
 
 .dropMenuList {
-  position: absolute;
-  top: $spacing-40;
-  left: $spacing-0;
-  background: $color-white;
-  border: $spacing-1 solid $color-gray;
-  border-radius: $spacing-4;
-  box-shadow: $spacing-0 $spacing-4 $spacing-8 rgba(0, 0, 0, 0.1);
   width: 150px;
-  z-index: $z-index-1;
+  border-radius: 4px;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
 .dropMenuItem {
-  padding: $spacing-10 $spacing-16;
+  padding: 10px 16px;
   cursor: pointer;
-  color: $color-purple2;
+  color: #c2188b;
   background: transparent;
   transition: background 0.2s;
 
   &:hover {
-    background: $color-pink2;
+    background: #fde2ee;
   }
 }
 
 .searchWrap {
   display: inline-block;
-  padding-right: $spacing-32;
-  border-right: 1.5px solid $color-purple3;
+  padding-right: 32px;
+  border-right: 2px solid #7f207b;
 }
 
 .searchPanelBtn {
-  @include rowing(null, null, $spacing-24);
-  @include fonts($manroupe-font, $font-weight-500, $font-size-20, $color-purple3, $spacing-26);
+  display: flex;
+  gap: 24px;
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #7f207b;
+  line-height: 26px;
 
   > span {
-    line-height: $spacing-32;
+    line-height: 32px;
   }
 }
 
 .sortBtn {
-  @include fonts(null, null, $font-size-20, $color-purple3);
+  font-size: 20px;
+  color: #7f207b;
 
   > svg {
-    margin-bottom: $spacing-2;
+    margin-bottom: 2px;
   }
 }
 
 .toolbarWrapp {
-  margin-right: $spacing-55;
+  margin-right: 55px;
 }

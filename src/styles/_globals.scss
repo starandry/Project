@@ -1,24 +1,22 @@
-@use '../styles/variables' as *;
-@use '../styles/mixins' as *;
-
 .container {
   max-width: 1440px;
   margin: 0 auto;
 }
 
 .bg-light-pink {
-  background-color: $color-pink;
+  background-color: #fff2f1;
 }
 
 .bg-white {
-  background-color: $color-white;
+  background-color: #fff;
 }
 
 .bg-purple {
-  background-color: $color-purple3;
+  background-color: #7f207b;
 }
 
 .wrapperSection {
-  @include rowing(space-between);
-  padding: $spacing-40 $spacing-0;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 0;
 }

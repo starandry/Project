@@ -1,24 +1,28 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .wrapper {
-  @include rowing(center, center);
-  @include sizes($spacing-100, $spacing-80, $spacing-20);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 80px;
+  border-radius: 20px;
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  background-color: $color-pink;
+  background-color: #fff2f1;
 }
 
 .thumbnail {
-  @include sizes(100%, 100%);
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: inherit;
 }
 
 .uploadArea {
-  @include rowing(center, center);
-  @include sizes(null, null, $spacing-20);
-  padding: $spacing-28;
-  background-color: $color-pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  padding: 28px;
+  background-color: #fff2f1;
 }

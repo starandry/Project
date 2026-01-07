@@ -1,11 +1,11 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .supportEmail {
-  @include fonts($roboto-font, $font-weight-600, $font-size-17, $color-purple3);
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: #7f207b;
 }
 
 .viberLink,
 .whatsAppLink {
-  margin: $spacing-0 $spacing-27;
+  margin: 0 27px;
 }

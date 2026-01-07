@@ -1,17 +1,23 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .wrappHelpSection {
-  @include rowing(center, center, null, column);
-  padding: $spacing-50 $spacing-0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px 0;
 }
 
 .titleHelp {
-  @include fonts($roboto-font, $font-weight-600, $font-size-40, $color-white);
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  color: #fff;
 }
 
 .subtitleHelp {
-  @include fonts($roboto-font, $font-weight-400, $font-size-22, $color-white);
-  padding: $spacing-16 $spacing-0;
-  letter-spacing: 0.8px;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #fff;
+  padding: 16px 0;
+  letter-spacing: 1px;
 }

@@ -1,23 +1,29 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .section {
-    @include rowing(space-between);
-    padding: $spacing-40 $spacing-0;
-    padding-top: $spacing-70 + $spacing-40;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 0;
+    padding-top: 110px;
 }
 
 .promoCircle {
-  @include rowing(center, center);
-  @include sizes(396px, 387px, 200px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 396px;
+  height: 387px;
+  border-radius: 200px;
   position: relative;
-  border: $spacing-3 solid $color-gray2;
-  background-color: $color-white;
+  border: 3px solid #7d7979;
+  background-color: #fff;
 }
 
 .textPromoClient {
-  @include fonts($manroupe-font, $font-weight-700, $font-size-22, $color-black3, $spacing-28);
-  @include sizes(90%);
+  font-family: Manroupe, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #1d1b20;
+  line-height: 28px;
+  width: 90%;
   position: absolute;
   text-align: center;
 }

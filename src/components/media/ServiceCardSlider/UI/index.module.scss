@@ -1,12 +1,9 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .sliderWrap {
-  @include sizes(100%);
+  width: 100%;
   max-width: 1100px;
 
   :global(.swiper) {
-    padding-top: $spacing-12;
+    padding-top: 12px;
   }
 
   :global(.swiper-slide) {

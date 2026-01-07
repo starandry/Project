@@ -1,11 +1,13 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .formTitle {
-  @include rowing(space-between);
+  display: flex;
+  justify-content: space-between;
 }
 
 .formTitleText {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-20, $color-gray4, $spacing-35);
-  padding-bottom: $spacing-60;
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #333333;
+  line-height: 35px;
+  padding-bottom: 60px;
 }

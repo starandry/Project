@@ -1,25 +1,26 @@
-@use './../../../styles/variables' as *;
-@use './../../../styles/mixins' as *;
-
 .mainPanel {
-  @include rowing(space-between);
-  padding: $spacing-16 $spacing-24 $spacing-24;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px 24px;
 }
 
 .masterProfileSection {
-  @include rowing(null, null, $spacing-20);
-  padding-top: $spacing-10;
+  display: flex;
+  gap: 20px;
+  padding-top: 10px;
 }
 
 .wrappMainPanel {
   flex-grow: 1;
-  margin-top: $spacing-70;
-  background-color: $color-pink;
+  margin-top: 70px;
+  background-color: #fff2f1;
 }
 
 .wrappAboutCard {
-  @include rowing(null, null, $spacing-24, column);
-  margin: $spacing-0 $spacing-24;
-  border-radius: $spacing-12;
-  background-color: $color-pink;
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  border-radius: 12px;
+  margin: 0 24px;
+  background-color: #fff2f1;
 }

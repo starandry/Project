@@ -1,16 +1,17 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .banner {
-  @include rowing(null, null, null, column);
-  @include sizes(null, 100%);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .title {
-  @include fonts($playfair-font, $font-weight-800, $font-size-90, null, $spacing-100);
+  font-family: Playfair, sans-serif;
+  font-weight: 800;
+  font-size: 90px;
+  line-height: 100px;
   text-align: center;
-  padding-bottom: $spacing-48;
-  background: linear-gradient(90deg, $color-purple 0%, $color-pink 0.01%);
+  padding-bottom: 48px;
+  background: linear-gradient(90deg, #aa01a2 0%, #fff2f1 0.01%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -18,17 +19,29 @@
 }
 
 .subtitle {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-42, $color-white, 1.3);
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 42px;
+  color: #fff;
+  line-height: 1.3;
   text-align: center;
-  margin: $spacing-0 auto;
+  margin: 0 auto;
   max-width: 1200px;
 }
 
 .descBlock {
-  @include rowing(end, center, $spacing-32, column);
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 32px;
+  flex-direction: column;
   flex-grow: 1;
 }
 
 .description {
-  @include fonts($manroupe-font, $font-weight-500, $font-size-42, $color-pink3, $spacing-46);
+  font-family: Manroupe, sans-serif;
+  font-weight: 500;
+  font-size: 42px;
+  color: #f8e4f7;
+  line-height: 46px;
 }

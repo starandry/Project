@@ -1,17 +1,21 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .wrapperImgUpload {
-  @include rowing(null, null, $spacing-12, column);
-  @include sizes(null, null, $spacing-18);
-  padding: $spacing-16 $spacing-24;
-  background-color: $color-white;
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  border-radius: 18px;
+  padding: 16px 24px;
+  background-color: #fff;
 }
 
 .fieldLabel {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-35);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #333333;
+  line-height: 35px;
 }
 
 .uploadField {
-  @include rowing(center);
+  display: flex;
+  justify-content: center;
 }

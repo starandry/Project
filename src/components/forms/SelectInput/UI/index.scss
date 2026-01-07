@@ -1,37 +1,38 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .css-b62m3t-container {
   > .selectInput__control {
-    padding: $spacing-4 $spacing-0 $spacing-4 $spacing-16;
+    padding: 4px 0 4px 16px;
     border: none;
   }
 
   > .selectInput__menu {
-    margin: $spacing-0;
-    padding: $spacing-8 $spacing-0;
-    border-radius: $spacing-8;
+    margin: 0;
+    padding: 8px 0;
+    border-radius: 8px;
     box-shadow:
-            $spacing-0 $spacing-1 $spacing-2 rgba(0, 0, 0, 0.30),
-            $spacing-0 $spacing-2 $spacing-6 $spacing-2 rgba(0, 0, 0, 0.15);
-    background-color: $color-pink;
+            0 1px 2px rgba(0, 0, 0, 0.30),
+            0 2px 6px 2px rgba(0, 0, 0, 0.15);
+    background-color: #fff2f1;
   }
 }
 
 .selectInput__menu > .selectInput__menu-list {
-  padding: $spacing-0;
+  padding: 0;
 }
 
 .selectInput__menu-list > .selectInput__option {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-purple3, $spacing-24);
-  padding: $spacing-16 $spacing-12;
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #7f207b;
+  line-height: 24px;
+  padding: 16px 12px;
   letter-spacing: .5px;
 }
 
 .selectInput__indicators > .selectInput__indicator {
-  padding: $spacing-0;
+  padding: 0;
 }
 
 .selectInput__control > .selectInput__value-container {
-  padding: $spacing-0;
+  padding: 0;
 }

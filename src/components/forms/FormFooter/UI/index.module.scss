@@ -1,10 +1,9 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .formFooter {
-  @include rowing(end);
+  display: flex;
+  justify-content: end;
 }
 
 .formActions {
-  @include rowing(null, null, $spacing-10);
+  display: flex;
+  gap: 10px;
 }

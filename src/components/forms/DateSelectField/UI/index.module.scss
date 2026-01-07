@@ -1,29 +1,33 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .dateSelectGroup {
-  @include rowing(null, null, $spacing-12, column);
-  @include sizes(null, null, $spacing-18);
-  padding: $spacing-16 $spacing-24;
-  background-color: $color-white;
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  border-radius: 18px;
+  padding: 16px 24px;
+  background-color: #fff;
 }
 
 .dateSelectLabel {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-35);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #333333;
+  line-height: 35px;
 }
 
 .dateSelectRow {
-  @include rowing(space-between);
-  padding: $spacing-0 $spacing-32;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 32px;
 }
 
 .yearSelectContainer,
 .monthSelectContainer {
-  @include sizes(100%);
+  width: 100%;
   max-width: 450px;
-  padding-left: $spacing-16;
-  border-radius: $spacing-12;
-  border: 1.5px solid $color-purple3;
+  padding-left: 16px;
+  border-radius: 12px;
+  border: 2px solid #7f207b;
 }
 
 .selectYearWrapper,
@@ -35,16 +39,20 @@
 
 .yearSelect,
 .monthSelect {
-  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray8, $spacing-20);
-  @include sizes($spacing-70);
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #272727;
+  line-height: 20px;
+  width: 70px;
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
-  padding: $spacing-11 $spacing-8 $spacing-11 $spacing-0;
+  padding: 11px 8px 11px 0;
   border: none;
   background-color: unset;
 }
 
 .monthSelect {
-  @include sizes(120px);
+  width: 120px;
 }

@@ -1,9 +1,9 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .editOverlay {
-  @include rowing(center, center);
-  @include sizes(100vw, 100vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
@@ -12,31 +12,45 @@
 }
 
 .masterEditForm {
-  @include sizes(1147px, null, $spacing-12);
+  width: 1147px;
+  border-radius: 12px;
   z-index: 1000;
-  padding: $spacing-16 $spacing-24;
-  background-color: $color-pink;
+  padding: 16px 24px;
+  background-color: #fff2f1;
 }
 
 .formContent {
-  @include rowing(null, null, $spacing-16, column);
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
 }
 
 .errorText {
-  @include fonts($roboto-flex-font, $font-weight-400, $font-size-14, $color-red, $spacing-20);
-  padding-left: $spacing-24;
-  margin-top: -$spacing-8;
+  font-family: Roboto Flex, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ee443f;
+  line-height: 20px;
+  padding-left: 24px;
+  margin-top: -8px;
 }
 
 .photoSection {
-  @include rowing(null, null, $spacing-12, column);
-  @include sizes(100%, null, $spacing-18);
-  padding: $spacing-16 $spacing-24;
-  background-color: $color-white;
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 18px;
+  padding: 16px 24px;
+  background-color: #fff;
 }
 
 .photoLabel {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-35);
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #333333;
+  line-height: 35px;
 }
 
 .hiddenInput {
@@ -44,33 +58,44 @@
 }
 
 .uploadArea {
-  @include rowing(center, center);
-  @include sizes(fit-content, null, $spacing-20);
-  margin: $spacing-0 auto;
-  padding: $spacing-40;
-  background-color: $color-pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  border-radius: 20px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #fff2f1;
   cursor: pointer;
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: $color-pink2;
+    background-color: #fde2ee;
   }
 }
 
 .uploadIcon {
-  @include rowing(center, center);
-  @include sizes(60px, 60px);
-  padding: $spacing-8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  padding: 8px;
 
   svg {
-    @include sizes(100%, 100%);
-    color: $color-purple;
+    width: 100%;
+    height: 100%;
+    color: #aa01a2;
   }
 }
 
 .photoPreviewWrapper {
-  @include rowing(center, center, $spacing-16, column);
-  @include sizes(100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-direction: column;
+  width: 100%;
   cursor: pointer;
 
   &:hover {
@@ -79,10 +104,16 @@
 }
 
 .photoPreview {
-  @include sizes(150px, 150px, $spacing-12);
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
   object-fit: cover;
 }
 
 .photoHint {
-  @include fonts($roboto-flex-font, $font-weight-400, $font-size-14, $color-purple, $spacing-20);
+  font-family: Roboto Flex, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #aa01a2;
+  line-height: 20px;
 }

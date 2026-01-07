@@ -1,10 +1,7 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .wrapServCard {
-  @include sizes(null, null, $spacing-24);
+  border-radius: 24px;
   display: inline-block;
-  background-color: $color-white;
+  background-color: #fff;
 }
 
 .wrappPicture {
@@ -13,22 +10,30 @@
 }
 
 .wrappIcon {
-  @include rowing(center, center);
-  @include sizes(304px, 304px, $spacing-12);
-  background-color: $color-purple3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 304px;
+  height: 304px;
+  border-radius: 12px;
+  background-color: #7f207b;
 }
 
 .infoBlock {
-  padding: $spacing-12 $spacing-24;
+  padding: 12px 24px;
 }
 
 .title {
-  @include fonts($manroupe-font, $font-weight-600, $font-size-18, $color-gray4, $spacing-26);
-  padding-bottom: $spacing-8;
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #333333;
+  line-height: 26px;
+  padding-bottom: 8px;
 }
 
 .price {
-  padding-bottom: $spacing-46;
+  padding-bottom: 46px;
 }
 
 .text2 {
@@ -37,23 +42,30 @@
 
 .text,
 .text2 {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-15, $color-gray4, $spacing-20);
-  padding-bottom: $spacing-4;
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #333333;
+  line-height: 20px;
+  padding-bottom: 4px;
 }
 
 .label {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-15, $color-gray5);
-  padding: $spacing-4 $spacing-0 $spacing-6;
+  font-family: Manroupe, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #808080;
+  padding: 4px 0 6px;
 }
 
 .imgSection {
-  @include sizes(null, 384px);
+  height: 384px;
   position: relative;
-  padding: $spacing-40;
+  padding: 40px;
 }
 
 .wrapDescPortf {
-  @include rowing();
-  @include sizes(100%);
+  display: flex;
+  width: 100%;
   max-width: 336px;
 }

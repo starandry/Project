@@ -1,8 +1,6 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
-
 .section {
-    @include rowing(space-between);
-    padding: $spacing-40 $spacing-0;
-    padding-top: $spacing-70 + $spacing-40;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 0;
+    padding-top: 110px;
 }

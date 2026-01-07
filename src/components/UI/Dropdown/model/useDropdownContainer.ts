@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDropdown } from '@/hooks/useDropdown';
+import { useDropdown } from '@/hooks/ui';
 import type { DropdownProps } from '@/components/UI/Dropdown/index.model.ts';
 
 export const useDropdownContainer = ({
