@@ -8,7 +8,7 @@ export const MasterServices: React.FC = () => {
     const [isServicesShown, setServicesShown] = useState(false);
 
     return (
-        <div className={styles.servicesCard}>
+        <div className="card">
             <div className={styles.headerContainer}>
                 <h2 className={styles.title}>Услуги и цены</h2>
                 <Button

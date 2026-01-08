@@ -1,22 +1,6 @@
-.diplomasWrapper {
-  border-radius: 18px;
-  padding: 16px 24px;
-  background-color: #fff;
-}
-
-.titleRowDiplomas {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 12px;
-}
-
-.title {
-  font-family: Manroupe, sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  color: #333333;
-}
+// .diplomasWrapper replaced with .card-18 utility class
+// .titleRowDiplomas replaced with .card-header utility class
+// .title replaced with .card-title utility class
 
 .grid {
   display: flex;
@@ -26,8 +10,6 @@
 }
 
 .diplomaInfo {
-  font-family: Manroupe, sans-serif;
-  font-weight: 400;
   font-size: 18px;
   color: #1d1b20;
   line-height: 28px;
@@ -49,8 +31,6 @@
 }
 
 .labelDiplomas {
-  font-family: Manroupe, sans-serif;
-  font-weight: 400;
   font-size: 15px;
   color: #808080;
   line-height: 20px;

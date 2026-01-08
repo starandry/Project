@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './index.module.scss';
 import { FormFooter, FormTitle, LabeledInputField } from '@/components';
 
 type MasterServiceAddressFormProps = {
@@ -8,9 +7,9 @@ type MasterServiceAddressFormProps = {
 
 const MasterServiceAddressForm: React.FC<MasterServiceAddressFormProps> = ({ onClose }) => {
     return (
-        <div className={styles.addressOverlay}>
-            <form className={styles.addressForm}>
-                <div className={styles.addressWrapper}>
+        <div className="modal-overlay">
+            <form className="form-container">
+                <div className="flex-col-16">
                     <FormTitle title="Редактировать адрес проведения услуг" onClose={onClose} />
                     <LabeledInputField
                         label="Адрес проведения работ"

@@ -36,8 +36,8 @@ const MasterPortfolioForm: React.FC<MasterPortfolioFormProps> = ({
     };
 
     return (
-        <div className={styles.portfolioOverlay}>
-            <form className={styles.portfolioForm} onSubmit={handleFormSubmit}>
+        <div className="modal-overlay">
+            <form className="form-container" onSubmit={handleFormSubmit}>
                 <FormTitle title="Загрузите ваше портфолио" onClose={onClose} />
 
                 <div className={styles.portfolioWrapper}>

@@ -67,8 +67,8 @@ const MasterServicesForm: React.FC<MasterServicesFormProps> = ({
     };
 
     return (
-        <div className={styles.servicesOverlay}>
-            <form className={styles.servicesForm} onSubmit={handleFormSubmit}>
+        <div className="modal-overlay">
+            <form className="form-container" onSubmit={handleFormSubmit}>
                 <FormTitle title="Редактировать поле Услуги и цены" onClose={onClose} />
 
                 <div className={styles.servicesWrapper}>

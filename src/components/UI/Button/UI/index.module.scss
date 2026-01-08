@@ -5,7 +5,6 @@
 }
 
 .activeButton {
-  font-family: Manroupe, sans-serif;
   font-weight: 300;
   font-size: 36px;
   color: #000;
@@ -14,7 +13,6 @@
 }
 
 .inactiveButton {
-  font-family: Manroupe, sans-serif;
   font-weight: 300;
   font-size: 36px;
   color: #fff;
@@ -27,7 +25,6 @@
 .searchBtn {
   display: flex;
   align-items: center;
-  font-family: Manroupe, sans-serif;
   font-weight: 500;
   font-size: 20px;
   color: #7f207b;
@@ -42,8 +39,6 @@
 }
 
 .listBtn {
-  font-family: Manroupe, sans-serif;
-  font-weight: 400;
   font-size: 18px;
   color: #fff;
   border-radius: 10px;
@@ -51,31 +46,9 @@
   background-color: #7f207b;
 }
 
-.mapBtn {
-  font-family: Manroupe, sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  color: #422a3c;
-  border-radius: 10px;
-  padding: 10px 25px;
-  border: 1px solid #8f3574;
-  background-color: #fff;
-}
-
-.listBtnInactive {
-  font-family: Manroupe, sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  color: #422a3c;
-  border-radius: 10px;
-  padding: 10px 25px;
-  border: 1px solid #8f3574;
-  background-color: #fff;
-}
-
+.mapBtn,
+.listBtnInactive,
 .mapBtnInactive {
-  font-family: Manroupe, sans-serif;
-  font-weight: 400;
   font-size: 18px;
   color: #422a3c;
   border-radius: 10px;
@@ -94,7 +67,6 @@
 }
 
 .bookBtn {
-  font-family: Manroupe, sans-serif;
   font-weight: 500;
   font-size: 16px;
   color: #fff;
@@ -105,8 +77,6 @@
 }
 
 .mastersMoreBtn {
-  font-family: Manroupe, sans-serif;
-  font-weight: 400;
   font-size: 20px;
   color: #fff;
   border-radius: 10px;
@@ -116,8 +86,6 @@
 }
 
 .discountBtn {
-  font-family: Manroupe, sans-serif;
-  font-weight: 400;
   font-size: 14px;
   color: #fff;
   border-radius: 10px;
@@ -126,7 +94,6 @@
 }
 
 .joinServBtn {
-  font-family: Manroupe, sans-serif;
   font-weight: 600;
   font-size: 24px;
   color: #fff;
@@ -154,8 +121,6 @@
 }
 
 .editButtonUploader {
-  font-family: Manroupe, sans-serif;
-  font-weight: 400;
   font-size: 10px;
   color: #333333;
   border-radius: 8px;
@@ -177,8 +142,6 @@
 }
 
 .textButton {
-  font-family: Manroupe, sans-serif;
-  font-weight: 400;
   font-size: 10px;
   color: #333333;
   border-radius: 8px;
@@ -191,7 +154,6 @@
 }
 
 .activePageBtn {
-  font-family: Manroupe, sans-serif;
   font-weight: 500;
   font-size: 20px;
   color: #fffbfb;
@@ -199,7 +161,6 @@
 }
 
 .pageBtn {
-  font-family: Manroupe, sans-serif;
   font-weight: 500;
   font-size: 20px;
   color: #7f207b;
@@ -219,7 +180,6 @@
 }
 
 .showMoreMasters {
-  font-family: Manroupe, sans-serif;
   font-weight: 500;
   font-size: 20px;
   color: #fffbfb;
@@ -229,7 +189,6 @@
 }
 
 .filterTag {
-  font-family: Manroupe, sans-serif;
   font-weight: 500;
   font-size: 16px;
   color: #fff;
@@ -239,7 +198,6 @@
 }
 
 .clearFiltersBtn {
-  font-family: Manroupe, sans-serif;
   font-weight: 500;
   font-size: 20px;
   color: #7d7979;
@@ -248,7 +206,6 @@
 }
 
 .registerButton {
-  font-family: Manroupe, sans-serif;
   font-weight: 500;
   font-size: 24px;
   color: #fff;
@@ -259,7 +216,6 @@
 }
 
 .submitButton {
-  font-family: Manroupe, sans-serif;
   font-weight: 500;
   font-size: 16px;
   color: #fff;
@@ -271,7 +227,6 @@
 }
 
 .cancelButton {
-  font-family: Manroupe, sans-serif;
   font-weight: 500;
   font-size: 16px;
   color: #7f207b;

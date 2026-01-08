@@ -58,11 +58,11 @@ export const MasterEditForm: React.FC<MasterEditFormProps> = ({ onCancel, onSave
     };
 
     return (
-        <div className={styles.editOverlay} onClick={handleOverlayClick}>
-            <form className={styles.masterEditForm} onSubmit={handleSubmit}>
+        <div className="modal-overlay" onClick={handleOverlayClick}>
+            <form className="form-container" onSubmit={handleSubmit}>
                 <FormTitle title="Заполните информацию Мой профиль" onClose={handleCancel} />
 
-                <div className={styles.formContent}>
+                <div className="flex-col-16">
                     <LabeledInputField
                         label="Имя"
                         placeholder="Введите ваше Имя"

@@ -8,9 +8,9 @@ export const MasterExperience: React.FC = () => {
     const [isFormShown, setIsFormShown] = useState(false);
 
     return (
-        <div className={styles.experienceCard}>
-            <div className={styles.header}>
-                <h2 className={styles.title}>Опыт</h2>
+        <div className="card">
+            <div className="card-header">
+                <h2 className="card-title">Опыт</h2>
                 <Button
                     classNames={{ buttonClass: 'editButton' }}
                     onClick={() => setIsFormShown(true)}
@@ -18,7 +18,7 @@ export const MasterExperience: React.FC = () => {
                     <SvgIcon Icon={BadgePlus} />
                 </Button>
             </div>
-            <div className={styles.experienceItem}>
+            <div className="flex-between">
                 <SvgIcon Icon={Check} className="check" />
                 <p className={styles.text}>Заполните опыт работы</p>
                 <div className={styles.experienceYearBlock}>

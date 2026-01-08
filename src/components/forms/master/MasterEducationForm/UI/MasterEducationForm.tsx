@@ -2,7 +2,6 @@ import React from 'react';
 import { LabeledInputField, DateSelectField, FormFooter, FormTitle } from '@/components';
 import { useMasterEducationForm } from '@/components';
 import type { EducationFormData } from '@/components';
-import styles from './index.module.scss';
 
 type MasterEducationFormProps = {
     onClose: () => void;
@@ -28,10 +27,10 @@ const MasterEducationForm: React.FC<MasterEducationFormProps> = ({
     };
 
     return (
-        <div className={styles.educationOverlay}>
-            <form className={styles.educationForm} onSubmit={handleFormSubmit}>
+        <div className="modal-overlay">
+            <form className="form-container" onSubmit={handleFormSubmit}>
                 <FormTitle title="Редактировать поле Образование" onClose={onClose} />
-                <div className={styles.educationFieldWrapper}>
+                <div className="flex-col-16">
                     <LabeledInputField
                         label="Название учебного заведения"
                         placeholder="Введите название учебного заведения"

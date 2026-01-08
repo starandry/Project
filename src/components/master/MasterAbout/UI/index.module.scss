@@ -1,26 +1,7 @@
-.aboutCard {
-  border-radius: 12px;
-  padding: 16px 24px;
-  background-color: #fff;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 12px;
-}
-
-.title {
-  font-family: Manroupe, sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  color: #333333;
-}
+// .header replaced with .card-header utility class
+// .title replaced with .card-title utility class
 
 .text {
-  font-family: Manroupe, sans-serif;
-  font-weight: 400;
   font-size: 16px;
   color: #333333;
   line-height: 24px;

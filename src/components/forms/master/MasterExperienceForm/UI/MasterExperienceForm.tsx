@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './index.module.scss';
 import {
     FormTitle,
     LabeledInputField,
@@ -14,10 +13,10 @@ type MasterExperienceFormProps = {
 
 const MasterExperienceForm: React.FC<MasterExperienceFormProps> = ({ onClose }) => {
     return (
-        <div className={styles.experienceOverlay}>
-            <form className={styles.experienceForm}>
+        <div className="modal-overlay">
+            <form className="form-container">
                 <FormTitle title="Редактировать поле   Опыт работы" onClose={onClose} />
-                <div className={styles.experienceFieldWrapper}>
+                <div className="flex-col-16">
                     <LabeledInputField
                         label="Название компании"
                         placeholder="Введите название компании"

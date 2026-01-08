@@ -2,17 +2,9 @@
   width: 100%;
   max-width: 514px;
   align-self: flex-start;
-  padding: 16px 24px;
-  border-radius: 12px;
-  background-color: #fff;
 }
 
-.cardHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 12px;
-}
+// .cardHeader replaced with .card-header utility class
 
 .avatarWrapper {
   border-radius: 20px;
@@ -26,6 +18,7 @@
   flex-direction: column;
 }
 
+// .infoItem: .flex-between + custom height
 .infoItem {
   display: flex;
   justify-content: space-between;
@@ -35,7 +28,6 @@
 
 .title,
 .masterName {
-  font-family: Manroupe, sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 20px;
@@ -43,8 +35,6 @@
 
 .masterEmail,
 .masterPhone {
-  font-family: Manroupe, sans-serif;
-  font-weight: 400;
   font-size: 17px;
   color: #7d7979;
 }

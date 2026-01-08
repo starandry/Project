@@ -1,33 +1,7 @@
-.editOverlay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 999;
-}
-
-.masterEditForm {
-  width: 1147px;
-  border-radius: 12px;
-  z-index: 1000;
-  padding: 16px 24px;
-  background-color: #fff2f1;
-}
-
-.formContent {
-  display: flex;
-  gap: 16px;
-  flex-direction: column;
-}
+// .formContent replaced with .flex-col-16 utility class
 
 .errorText {
   font-family: Roboto Flex, sans-serif;
-  font-weight: 400;
   font-size: 14px;
   color: #ee443f;
   line-height: 20px;
@@ -35,6 +9,7 @@
   margin-top: -8px;
 }
 
+// .photoSection: .flex-col-12 + .card-18 combined with custom width
 .photoSection {
   display: flex;
   gap: 12px;
@@ -46,8 +21,6 @@
 }
 
 .photoLabel {
-  font-family: Manroupe, sans-serif;
-  font-weight: 400;
   font-size: 16px;
   color: #333333;
   line-height: 35px;
@@ -57,6 +30,7 @@
   display: none;
 }
 
+// .uploadArea: .flex-center + custom styles
 .uploadArea {
   display: flex;
   justify-content: center;
@@ -74,6 +48,7 @@
   }
 }
 
+// .uploadIcon: .flex-center + custom size
 .uploadIcon {
   display: flex;
   justify-content: center;
@@ -89,6 +64,7 @@
   }
 }
 
+// .photoPreviewWrapper: .flex-col-16 + .flex-center combined
 .photoPreviewWrapper {
   display: flex;
   justify-content: center;
@@ -112,7 +88,6 @@
 
 .photoHint {
   font-family: Roboto Flex, sans-serif;
-  font-weight: 400;
   font-size: 14px;
   color: #aa01a2;
   line-height: 20px;

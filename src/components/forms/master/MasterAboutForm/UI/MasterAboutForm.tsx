@@ -24,7 +24,7 @@ const MasterAboutForm: React.FC<MasterAboutFormProps> = ({ onCancel, onSaved }) 
 
             {error && <p className={styles.masterAboutError}>{error}</p>}
 
-            <div className={styles.formActions}>
+            <div className="flex-end">
                 <Button
                     classNames={{ buttonClass: 'cancelButton ' }}
                     onClick={onCancel}

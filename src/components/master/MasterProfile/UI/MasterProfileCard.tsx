@@ -22,8 +22,8 @@ export const MasterProfileCard: React.FC = () => {
 
     return (
         <>
-            <div className={styles.masterProfileCard}>
-                <div className={styles.cardHeader}>
+            <div className={`card ${styles.masterProfileCard}`}>
+                <div className="card-header">
                     {temp ? (
                         <img alt="Фото мастера" className={styles.profilePhoto} />
                     ) : (
@@ -31,7 +31,7 @@ export const MasterProfileCard: React.FC = () => {
                             <SvgIcon Icon={Avatar} />
                         </div>
                     )}
-                    <h2 className={styles.title}>Мой профиль</h2>
+                    <h2 className="card-title">Мой профиль</h2>
                     <Button classNames={{ buttonClass: 'editButton' }} onClick={handleEditClick}>
                         <SvgIcon Icon={Edit} />
                     </Button>

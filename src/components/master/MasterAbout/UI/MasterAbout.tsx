@@ -8,9 +8,9 @@ export const MasterAbout: React.FC = () => {
     const [isEditing, setIsEditing] = React.useState(false);
 
     return (
-        <div className={styles.aboutCard}>
-            <div className={styles.header}>
-                <h2 className={styles.title}>О себе</h2>
+        <div className="card">
+            <div className="card-header">
+                <h2 className="card-title">О себе</h2>
                 <Button
                     classNames={{ buttonClass: 'editButton' }}
                     onClick={() => setIsEditing(true)}

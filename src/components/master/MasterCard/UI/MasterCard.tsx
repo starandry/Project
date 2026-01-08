@@ -17,7 +17,7 @@ const MasterCard: React.FC<MasterCardProps> = (props) => {
                     <div className={styles.infoNextWrapper}>
                         <div className={styles.info}>
                             <h2 className={styles.name}>{name}</h2>
-                            <div className={styles.infoDetails}>
+                            <div className="flex-col-8">
                                 <p className={styles.specialty}>{specialty}</p>
                                 <p className={styles.address}>{address}</p>
                             </div>

@@ -8,9 +8,9 @@ export const MasterEducation: React.FC = () => {
     const [isFormShown, setIsFormShown] = useState(false);
 
     return (
-        <div className={styles.educationCard}>
-            <div className={styles.header}>
-                <h2 className={styles.title}>Образование</h2>
+        <div className="card">
+            <div className="card-header">
+                <h2 className="card-title">Образование</h2>
                 <Button
                     classNames={{ buttonClass: 'editButton' }}
                     onClick={() => setIsFormShown(true)}
@@ -19,7 +19,7 @@ export const MasterEducation: React.FC = () => {
                 </Button>
             </div>
 
-            <div className={styles.educationItem}>
+            <div className="flex-between">
                 <SvgIcon Icon={Check} className="check" />
                 <p className={styles.text}>Введите данные вашего образования</p>
                 <div className={styles.educationYearBlock}>

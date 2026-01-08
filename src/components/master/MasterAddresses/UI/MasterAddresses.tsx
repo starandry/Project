@@ -10,7 +10,7 @@ export const MasterAddresses: React.FC = () => {
     const [isVisitAddressShown, setVisitAddressShown] = useState(false);
 
     return (
-        <div className={styles.addressCard}>
+        <div className="card">
             <h2 className={styles.title}>Адреса и районы проведения услуг</h2>
             <div className={styles.addressItem}>
                 <ul>

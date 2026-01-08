@@ -1,3 +1,4 @@
+// .mainPanel: .flex-between + custom padding
 .mainPanel {
   display: flex;
   justify-content: space-between;
@@ -16,6 +17,7 @@
   background-color: #fff2f1;
 }
 
+// .wrappAboutCard: .flex-col-24 + custom styles
 .wrappAboutCard {
   display: flex;
   gap: 24px;

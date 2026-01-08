@@ -8,15 +8,9 @@
 
 .masterAboutError {
   font-family: Roboto Flex, sans-serif;
-  font-weight: 400;
   font-size: 14px;
   color: #ee443f;
   line-height: 20px;
 }
 
-.formActions {
-  display: flex;
-  justify-content: end;
-  gap: 12px;
-  width: 100%;
-}
+// .formActions replaced with .flex-end utility class

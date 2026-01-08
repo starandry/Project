@@ -1,24 +1,4 @@
-.servicesOverlay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 999;
-}
-
-.servicesForm {
-  width: 1150px;
-  border-radius: 12px;
-  z-index: 1000;
-  padding: 16px 24px;
-  background-color: #fff2f1;
-}
-
+// .servicesWrapper: .flex-col-16 + custom align-items
 .servicesWrapper {
   display: flex;
   align-items: end;
@@ -26,6 +6,7 @@
   flex-direction: column;
 }
 
+// .serviceBlock: .flex-col-16 + custom styles
 .serviceBlock {
   display: flex;
   gap: 16px;
@@ -36,6 +17,7 @@
   padding: 12px 0;
 }
 
+// .serviceDetailsBlock: .flex-col-12 + custom width
 .serviceDetailsBlock {
   display: flex;
   gap: 12px;

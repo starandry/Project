@@ -1,16 +1,11 @@
-.servicesCard {
-  border-radius: 12px;
-  padding: 16px 24px;
-  background-color: #fff;
-}
-
+// .headerContainer: similar to .flex-between but no align-items
 .headerContainer {
   display: flex;
   justify-content: space-between;
 }
 
+// .title: similar to .card-title but with extra line-height and padding
 .title {
-  font-family: Manroupe, sans-serif;
   font-weight: 600;
   font-size: 20px;
   color: #333333;
@@ -25,6 +20,7 @@
   border-bottom: 1px solid #333333;
 }
 
+// .itemContent: .flex-between + custom width and position
 .itemContent {
   display: flex;
   justify-content: space-between;
@@ -34,7 +30,6 @@
 }
 
 .serviceTitle {
-  font-family: Manroupe, sans-serif;
   font-weight: 600;
   font-size: 20px;
   color: #333333;
@@ -42,7 +37,6 @@
 }
 
 .serviceText {
-  font-family: Manroupe, sans-serif;
   font-weight: 600;
   font-size: 18px;
   color: #333333;
@@ -51,8 +45,6 @@
 }
 
 .serviceDesc {
-  font-family: Manroupe, sans-serif;
-  font-weight: 400;
   font-size: 18px;
   color: #333333;
   line-height: 28px;
@@ -65,8 +57,6 @@
 }
 
 .labelPrice {
-  font-family: Manroupe, sans-serif;
-  font-weight: 400;
   font-size: 15px;
   color: #808080;
   line-height: 20px;

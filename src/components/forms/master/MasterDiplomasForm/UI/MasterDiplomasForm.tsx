@@ -6,7 +6,6 @@ import {
     ImageUploadField,
     FormFooter,
 } from '@/components';
-import styles from './index.module.scss';
 
 type MasterDiplomasFormProps = {
     onClose: () => void;
@@ -14,10 +13,10 @@ type MasterDiplomasFormProps = {
 
 const MasterDiplomasForm: React.FC<MasterDiplomasFormProps> = ({ onClose }) => {
     return (
-        <div className={styles.diplomasOverlay}>
-            <div className={styles.diplomasForm}>
+        <div className="modal-overlay">
+            <div className="form-container">
                 <FormTitle title="Загрузите ваши сертификаты " onClose={onClose} />
-                <div className={styles.diplomasFieldWrapper}>
+                <div className="flex-col-16">
                     <LabeledInputField
                         label="Название Сертификата"
                         placeholder="Введите название Сертификата"

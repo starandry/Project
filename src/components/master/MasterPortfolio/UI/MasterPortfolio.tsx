@@ -22,8 +22,8 @@ const MasterPortfolio: React.FC = () => {
     return (
         <>
             <section className={styles.portfolio}>
-                <div className={styles.headerPortfolioWrappp}>
-                    <h2 className={styles.title}>Портфолио</h2>
+                <div className="flex-between">
+                    <h2 className="card-title">Портфолио</h2>
                     <Button classNames={{ buttonClass: 'editButton' }} onClick={handleOpenForm}>
                         <SvgIcon Icon={Edit} />
                     </Button>

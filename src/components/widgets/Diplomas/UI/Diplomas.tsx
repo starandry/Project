@@ -8,9 +8,9 @@ const Diplomas: React.FC = () => {
     const [isFormShown, setIsFormShown] = useState(false);
 
     return (
-        <section className={styles.diplomasWrapper}>
-            <div className={styles.titleRowDiplomas}>
-                <h2 className={styles.title}>Сертификаты и дипломы</h2>
+        <section className="card-18">
+            <div className="card-header">
+                <h2 className="card-title">Сертификаты и дипломы</h2>
                 <Button
                     classNames={{ buttonClass: 'editButton' }}
                     onClick={() => setIsFormShown(true)}

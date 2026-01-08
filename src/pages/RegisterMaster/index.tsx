@@ -225,7 +225,7 @@ const RegisterMaster: React.FC = () => {
                         <div className={styles.wrappRoleSelect}>
                             <RoleSelect />
                         </div>
-                        <div className={styles.loginLinks}>
+                        <div className="flex-center">
                             <span className={styles.noAccount}>Уже есть Личный Профиль?</span>
                             <LinkButton to="/login" className="linkEnter">
                                 Войти
