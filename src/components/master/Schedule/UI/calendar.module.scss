@@ -33,22 +33,31 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  flex: 1;
 }
 
-.monthYearTitle {
+.monthYearWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.monthTitle {
   font-family: Manroupe, sans-serif;
   font-weight: 600;
   font-size: 20px;
   color: #1d1b20;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: opacity 0.2s;
+  min-width: 100px;
+  white-space: nowrap;
+}
 
-  &:hover {
-    opacity: 0.7;
-  }
+.yearTitle {
+  font-family: Manroupe, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #1d1b20;
+  min-width: 50px;
+  white-space: nowrap;
 }
 
 .closeButton {
@@ -87,6 +96,7 @@
   cursor: pointer;
   padding: 0;
   transition: opacity 0.2s;
+  min-width: 180px;
 
   &:hover {
     opacity: 0.7;
