@@ -233,7 +233,7 @@ const RegisterMaster: React.FC = () => {
                         </div>
 
                         <form onSubmit={handleSubmit} className={styles.form}>
-                            <div className={styles.formGroup}>
+                            <div className={`${styles.formGroup} flex-col-8`}>
                                 <label htmlFor="username" className={styles.formLabel}>
                                     Логин
                                 </label>
@@ -257,7 +257,7 @@ const RegisterMaster: React.FC = () => {
                                 )}
                             </div>
 
-                            <div className={styles.formGroup}>
+                            <div className={`${styles.formGroup} flex-col-8`}>
                                 <label htmlFor="email" className={styles.formLabel}>
                                     Email
                                 </label>
@@ -281,7 +281,7 @@ const RegisterMaster: React.FC = () => {
                                 )}
                             </div>
 
-                            <div className={styles.formGroup}>
+                            <div className={`${styles.formGroup} flex-col-8`}>
                                 <label htmlFor="password" className={styles.formLabel}>
                                     Пароль
                                 </label>
@@ -314,7 +314,7 @@ const RegisterMaster: React.FC = () => {
                                 )}
                             </div>
 
-                            <div className={styles.formGroup}>
+                            <div className={`${styles.formGroup} flex-col-8`}>
                                 <label htmlFor="passwordConfirmation" className={styles.formLabel}>
                                     Пароль
                                 </label>

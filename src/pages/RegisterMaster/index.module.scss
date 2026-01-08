@@ -77,8 +77,6 @@
   padding-bottom: 18px;
 }
 
-// .loginLinks replaced with .flex-center utility class
-
 .noAccount {
   font-weight: 300;
   font-size: 14px;
@@ -92,11 +90,7 @@
   margin: 16px 0 24px;
 }
 
-// .formGroup: .flex-col-8 + custom padding
 .formGroup {
-  display: flex;
-  gap: 8px;
-  flex-direction: column;
   padding-top: 8px;
 }
 
