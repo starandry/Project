@@ -6,7 +6,7 @@ import PrevCalendar from '@/assets/icons/PrevCalendar.svg?react';
 import NextCalendar from '@/assets/icons/NextCalendar.svg?react';
 import FreeIcon from '@/assets/icons/FreeIcon.svg?react';
 import BusyIcon from '@/assets/icons/BusyIcon.svg?react';
-import { CalendarPicker } from './CalendarPicker';
+import { CalendarPicker } from '@/components';
 import type { ScheduleProps } from '../model/scheduleTypes';
 import { WEEK_DAYS } from '../model/constants';
 

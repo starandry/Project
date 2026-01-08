@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo } from 'react';
 import moment, { Moment } from 'moment';
-import type { ScheduleSlot } from './scheduleTypes';
+import type { ScheduleSlot } from '@/components/UI/Calendar/model/scheduleTypes';
 
 const mockSchedule: Record<string, ScheduleSlot[]> = {
     '2025-05-07': [

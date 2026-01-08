@@ -1,5 +1,5 @@
 import styles from './calendar.module.scss';
-import type { CalendarPickerProps } from '../model/calendarTypes';
+import type { CalendarPickerProps } from '@/components';
 import { useCalendar } from '@/hooks/data';
 import { CalendarHeader } from './CalendarHeader';
 import { DaysView } from './DaysView';
