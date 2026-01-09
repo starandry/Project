@@ -1,12 +1,12 @@
 import { useState, useMemo, useCallback } from 'react';
-import moment, { Moment } from 'moment';
+import dayjs, { Dayjs } from 'dayjs';
 
 export type ViewMode = 'days' | 'months' | 'years';
 
 interface UseCalendarProps {
-    selectedDate: Moment;
+    selectedDate: Dayjs;
     onClose: () => void;
-    onDateSelect: (date: Moment) => void;
+    onDateSelect: (date: Dayjs) => void;
 }
 
 export const useCalendar = ({ selectedDate, onClose, onDateSelect }: UseCalendarProps) => {
@@ -27,13 +27,13 @@ export const useCalendar = ({ selectedDate, onClose, onDateSelect }: UseCalendar
     }, [baseYear]);
 
     const calendarDays = useMemo(() => {
-        const startOfMonth = moment().year(currentYear).month(currentMonth).startOf('month');
-        const endOfMonth = moment().year(currentYear).month(currentMonth).endOf('month');
+        const startOfMonth = dayjs().year(currentYear).month(currentMonth).startOf('month');
+        const endOfMonth = dayjs().year(currentYear).month(currentMonth).endOf('month');
 
         const startDay = startOfMonth.day();
         const daysInMonth = endOfMonth.date();
 
-        const days: (Moment | null)[] = [];
+        const days: (Dayjs | null)[] = [];
 
         // Добавляем пустые ячейки для дней предыдущего месяца
         const firstDayOffset = startDay === 0 ? 6 : startDay - 1;
@@ -43,7 +43,7 @@ export const useCalendar = ({ selectedDate, onClose, onDateSelect }: UseCalendar
 
         // Добавляем дни текущего месяца
         for (let i = 1; i <= daysInMonth; i++) {
-            days.push(moment().year(currentYear).month(currentMonth).date(i));
+            days.push(dayjs().year(currentYear).month(currentMonth).date(i));
         }
 
         // Добавляем пустые ячейки в конце, чтобы всегда было 42 ячейки (6 рядов)
@@ -55,7 +55,7 @@ export const useCalendar = ({ selectedDate, onClose, onDateSelect }: UseCalendar
     }, [currentMonth, currentYear]);
 
     const handleDaySelect = useCallback(
-        (day: Moment) => {
+        (day: Dayjs) => {
             onDateSelect(day);
             onClose();
         },
@@ -116,16 +116,16 @@ export const useCalendar = ({ selectedDate, onClose, onDateSelect }: UseCalendar
     }, []);
 
     const isSelectedDay = useCallback(
-        (day: Moment | null) => {
+        (day: Dayjs | null) => {
             if (!day) return false;
             return day.isSame(selectedDate, 'day');
         },
         [selectedDate]
     );
 
-    const isToday = useCallback((day: Moment | null) => {
+    const isToday = useCallback((day: Dayjs | null) => {
         if (!day) return false;
-        return day.isSame(moment(), 'day');
+        return day.isSame(dayjs(), 'day');
     }, []);
 
     const isSelectedMonth = useCallback(

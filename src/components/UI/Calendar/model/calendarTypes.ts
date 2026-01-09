@@ -1,8 +1,8 @@
-import type { Moment } from 'moment';
+import type { Dayjs } from 'dayjs';
 
 export type CalendarPickerProps = {
     isOpen: boolean;
-    selectedDate: Moment;
+    selectedDate: Dayjs;
     onClose: () => void;
-    onDateSelect: (date: Moment) => void;
+    onDateSelect: (date: Dayjs) => void;
 };

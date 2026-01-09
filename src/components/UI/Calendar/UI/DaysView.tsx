@@ -1,13 +1,13 @@
-import type { Moment } from 'moment';
+import type { Dayjs } from 'dayjs';
 import { cn } from '@/utils/UI/cn.ts';
 import { WEEK_DAYS_SHORT } from '../model/constants';
 import styles from './calendar.module.scss';
 
 interface DaysViewProps {
-    calendarDays: (Moment | null)[];
-    onDaySelect: (day: Moment) => void;
-    isSelectedDay: (day: Moment) => boolean;
-    isToday: (day: Moment) => boolean;
+    calendarDays: (Dayjs | null)[];
+    onDaySelect: (day: Dayjs) => void;
+    isSelectedDay: (day: Dayjs) => boolean;
+    isToday: (day: Dayjs) => boolean;
 }
 
 export const DaysView: React.FC<DaysViewProps> = ({

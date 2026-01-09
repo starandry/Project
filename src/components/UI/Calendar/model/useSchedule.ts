@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from 'react';
-import moment, { Moment } from 'moment';
+import dayjs, { Dayjs } from 'dayjs';
 import type { ScheduleSlot } from './scheduleTypes';
 
 const mockSchedule: Record<string, ScheduleSlot[]> = {
@@ -11,17 +11,17 @@ const mockSchedule: Record<string, ScheduleSlot[]> = {
 };
 
 export const useSchedule = () => {
-    const [selectedDate, setSelectedDate] = useState<Moment>(moment());
+    const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs());
     const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
-    const startOfWeek = useMemo(() => selectedDate.clone().startOf('week'), [selectedDate]);
+    const startOfWeek = useMemo(() => selectedDate.startOf('week'), [selectedDate]);
     const schedule = useMemo(
         () => mockSchedule[selectedDate.format('YYYY-MM-DD')] || [],
         [selectedDate]
     );
 
     const handleWeekChange = useCallback((direction: 'prev' | 'next') => {
-        setSelectedDate((prev) => prev.clone().add(direction === 'next' ? 7 : -7, 'days'));
+        setSelectedDate((prev) => prev.add(direction === 'next' ? 7 : -7, 'day'));
     }, []);
 
     const handleOpenCalendar = useCallback(() => setIsCalendarOpen(true), []);
