@@ -12,10 +12,10 @@ export const MasterAddresses: React.FC = () => {
     return (
         <div className="card">
             <h2 className={styles.title}>Адреса и районы проведения услуг</h2>
-            <div className={styles.addressItem}>
+            <div className={`flex-col-12 ${styles.addressItem}`}>
                 <ul>
                     <li>
-                        <div className={styles.addressLabelWrapper}>
+                        <div className="flex-between">
                             <h3 className={styles.addressLabel}>Адрес</h3>
                             <Button
                                 classNames={{ buttonClass: 'editButton' }}
@@ -33,7 +33,7 @@ export const MasterAddresses: React.FC = () => {
 
                 <ul>
                     <li>
-                        <div className={styles.regionLabelWrapper}>
+                        <div className="flex-between">
                             <h3 className={styles.regionLabel}>Выезд к клиенту</h3>
                             <Button
                                 classNames={{ buttonClass: 'editButton' }}

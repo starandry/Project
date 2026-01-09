@@ -14,15 +14,15 @@ interface MasterCardProps {
 
 export const MasterCard: React.FC<MasterCardProps> = ({ marker, onBookClick }) => {
     return (
-        <div className={styles.masterCard}>
-            <div className={styles.masterCardTop}>
+        <div className={`flex-col-16 ${styles.masterCard}`}>
+            <div className={`flex ${styles.masterCardTop}`}>
                 {marker.photo && (
                     <img src={marker.photo} alt={marker.name} className={styles.masterPhoto} />
                 )}
-                <div className={styles.masterInfoWrapper}>
-                    <div className={styles.masterInfo}>
+                <div className={`flex ${styles.masterInfoWrapper}`}>
+                    <div className={`flex-col ${styles.masterInfo}`}>
                         <h3 className={styles.masterName}>{marker.name}</h3>
-                        <div className={styles.masterDetails}>
+                        <div className={`flex-col-8 ${styles.masterDetails}`}>
                             {marker.specialty && (
                                 <p className={styles.masterSpecialty}>{marker.specialty}</p>
                             )}
@@ -31,21 +31,21 @@ export const MasterCard: React.FC<MasterCardProps> = ({ marker, onBookClick }) =
                             )}
                         </div>
                     </div>
-                    <button className={styles.favoriteBtn} type="button">
+                    <button className={`flex-center ${styles.favoriteBtn}`} type="button">
                         <SvgIcon Icon={HeartOutline} className="heartOutIcon" />
                     </button>
                 </div>
             </div>
-            <div className={styles.masterCardBottom}>
-                <div className={styles.masterStats}>
+            <div className={`flex-between ${styles.masterCardBottom}`}>
+                <div className={`flex ${styles.masterStats}`}>
                     {marker.rating !== undefined && (
-                        <div className={styles.masterRating}>
+                        <div className={`flex ${styles.masterRating}`}>
                             <SvgIcon Icon={StarOutline} className="starOutIcon" />
                             <span>{marker.rating.toFixed(1)}</span>
                         </div>
                     )}
                     {marker.reviewsCount !== undefined && (
-                        <div className={styles.masterReviews}>
+                        <div className={`flex ${styles.masterReviews}`}>
                             <SvgIcon Icon={Message} className="messageIcon" />
                             <span>
                                 {marker.reviewsCount} {getReviewsText(marker.reviewsCount)}

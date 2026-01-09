@@ -9,10 +9,8 @@
   position: relative;
 }
 
+// Replaced base flex styles with .flex-center utility
 .wrappIcon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 304px;
   height: 304px;
   border-radius: 12px;
@@ -59,8 +57,8 @@
   padding: 40px;
 }
 
+// Replaced base flex with .flex utility
 .wrapDescPortf {
-  display: flex;
   width: 100%;
   max-width: 336px;
 }

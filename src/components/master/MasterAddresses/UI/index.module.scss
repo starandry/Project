@@ -1,9 +1,4 @@
-.addressLabelWrapper,
-.regionLabelWrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+// Replaced: .addressLabelWrapper, .regionLabelWrapper → .flex-between utility
 
 .title {
   font-weight: 600;
@@ -13,11 +8,8 @@
   padding-bottom: 12px;
 }
 
-// .addressItem: flex-col-12 + custom padding
+// Replaced base flex styles with .flex-col-12 utility
 .addressItem {
-  display: flex;
-  gap: 12px;
-  flex-direction: column;
   padding: 0 16px;
 }
 

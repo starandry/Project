@@ -16,8 +16,8 @@ const MasterClientIntro: React.FC<MasterClientIntroProps> = ({
     textDomen,
 }) => {
     return (
-        <div className={styles.promoContent}>
-            <h2 className={styles.title}>{title}</h2>
+        <div className={`flex-col ${styles.promoContent}`}>
+            <h2 className={`flex ${styles.title}`}>{title}</h2>
             {desc}
             <LinkButton to={textDomen} className="linkMasterClientPromo">
                 {textLink}

@@ -19,7 +19,7 @@ const Diplomas: React.FC = () => {
                 </Button>
             </div>
             <ul>
-                <li className={styles.grid}>
+                <li className={`flex-between ${styles.grid}`}>
                     <SvgIcon Icon={Check} className="check" />
                     <ImageUploaderContainer />
                     <div className={styles.diplomaInfo}>

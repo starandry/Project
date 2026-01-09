@@ -1,13 +1,11 @@
+// Replaced base flex styles with .flex-col utility
 .form {
-  display: flex;
   gap: 10px;
-  flex-direction: column;
   max-width: 360px;
 }
 
+// Replaced base flex styles with .flex-end utility
 .buttonGroup {
-  display: flex;
-  justify-content: flex-end;
   gap: 8px;
   margin-top: 12px;
 }

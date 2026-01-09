@@ -55,8 +55,8 @@ export const PhotoEditModal: React.FC<PhotoEditModalProps> = ({
     };
 
     return (
-        <div className={styles.modalOverlay} onClick={handleOverlayClick}>
-            <div className={styles.modalContent}>
+        <div className="modal-overlay" onClick={handleOverlayClick}>
+            <div className="form-container">
                 <FormTitle title="Фото профайла" onClose={onClose} />
 
                 <div className={styles.photoContainer}>
@@ -68,7 +68,7 @@ export const PhotoEditModal: React.FC<PhotoEditModalProps> = ({
                         className={styles.hiddenInput}
                     />
 
-                    <div className={styles.actionsRow}>
+                    <div className="flex-between">
                         <button
                             type="button"
                             className={styles.actionButton}
@@ -88,7 +88,7 @@ export const PhotoEditModal: React.FC<PhotoEditModalProps> = ({
                         </button>
                     </div>
 
-                    <div className={styles.photoWrapper}>
+                    <div className="flex-center">
                         {previewUrl ? (
                             <img
                                 src={previewUrl}

@@ -1,6 +1,5 @@
+// Replaced with .flex-col utility
 .banner {
-  display: flex;
-  flex-direction: column;
   height: 100%;
 }
 
@@ -28,12 +27,11 @@
   max-width: 1200px;
 }
 
+// Replaced base flex with .flex-col utility
 .descBlock {
-  display: flex;
   justify-content: end;
   align-items: center;
   gap: 32px;
-  flex-direction: column;
   flex-grow: 1;
 }
 

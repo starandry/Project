@@ -38,13 +38,13 @@ export const MasterProfileCard: React.FC = () => {
                 </div>
 
                 <div className={styles.infoGroup}>
-                    <div className={styles.infoItem}>
+                    <div className={`flex-between ${styles.infoItem}`}>
                         <p className={styles.masterName}>Маргарита Чернышова</p>
                     </div>
-                    <div className={styles.infoItem}>
+                    <div className={`flex-between ${styles.infoItem}`}>
                         <p className={styles.masterEmail}>margarita.chernushova@gmail.com</p>
                     </div>
-                    <div className={styles.infoItem}>
+                    <div className={`flex-between ${styles.infoItem}`}>
                         <p className={styles.masterPhone}>89-99--078</p>
                     </div>
                 </div>

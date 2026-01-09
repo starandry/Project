@@ -1,7 +1,5 @@
+// Replaced base flex styles with .flex-between utility
 .grid {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 12px 6px;
 }
 

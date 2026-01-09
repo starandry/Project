@@ -16,7 +16,7 @@ const MasterBenefits = () => {
         <section className={styles.benefits}>
             <div className={styles.grid}>
                 {benefitsData.map((text, index) => (
-                    <article key={index} className={styles.card}>
+                    <article key={index} className={`flex-center ${styles.card}`}>
                         <SvgIcon Icon={HeartBenefits} className={styles.icon} />
                         <p className={styles.text}>{text}</p>
                     </article>

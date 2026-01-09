@@ -19,7 +19,7 @@ const ServiceCardForm: React.FC<Props> = ({
     onCancel,
 }) => {
     return (
-        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+        <form className={`flex-col ${styles.form}`} onSubmit={(e) => e.preventDefault()}>
             <Input type="file" accept="image/*" onChange={onImageUpload} />
 
             <Input
@@ -58,7 +58,7 @@ const ServiceCardForm: React.FC<Props> = ({
                 onChange={onChange}
             />
 
-            <div className={styles.buttonGroup}>
+            <div className={`flex-end ${styles.buttonGroup}`}>
                 <Button type="button" onClick={onSubmit}>
                     Сохранить
                 </Button>

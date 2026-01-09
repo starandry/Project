@@ -1,7 +1,5 @@
-// .mainPanel: .flex-between + custom padding
+// Replaced base flex styles with .flex-between utility
 .mainPanel {
-  display: flex;
-  justify-content: space-between;
   padding: 16px 24px 24px;
 }
 
@@ -17,11 +15,8 @@
   background-color: #fff2f1;
 }
 
-// .wrappAboutCard: .flex-col-24 + custom styles
+// Replaced base flex styles with .flex-col-24 utility
 .wrappAboutCard {
-  display: flex;
-  gap: 24px;
-  flex-direction: column;
   border-radius: 12px;
   margin: 0 24px;
   background-color: #fff2f1;

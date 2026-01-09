@@ -20,7 +20,7 @@ export const MasterServices: React.FC = () => {
             </div>
             <ul className={styles.servicesList}>
                 <li className={styles.servicesItem}>
-                    <div className={styles.itemContent}>
+                    <div className={`flex-between ${styles.itemContent}`}>
                         <SvgIcon Icon={Check} className="check" />
                         <div className={styles.serviceInfo}>
                             <h3 className={styles.serviceTitle}>Услуга</h3>

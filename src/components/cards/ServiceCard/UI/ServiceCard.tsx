@@ -52,7 +52,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
                     </div>
                 ) : (
                     <div
-                        className={styles.wrappIcon}
+                        className={`flex-center ${styles.wrappIcon}`}
                         onClick={() => {
                             setUploadMode(true);
                             setTempData(formData);
@@ -67,7 +67,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
             {!uploadMode && (
                 <div className={styles.infoBlock}>
                     <h3 className={styles.title}>{formData.name || '—'}</h3>
-                    <div className={styles.wrapDescPortf}>
+                    <div className={`flex ${styles.wrapDescPortf}`}>
                         <p className={styles.text}>{formData.desc || '—'}</p>
                         <p className={styles.text2}>{formData.text || '—'}</p>
                     </div>

@@ -1,9 +1,19 @@
 @use './variables' as *;
 
 // Flex utilities
+.flex {
+  display: flex;
+}
+
 .flex-col {
   display: flex;
   flex-direction: column;
+}
+
+.flex-col-6 {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .flex-col-8 {

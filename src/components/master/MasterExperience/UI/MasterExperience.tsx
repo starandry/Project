@@ -21,9 +21,9 @@ export const MasterExperience: React.FC = () => {
             <div className="flex-between">
                 <SvgIcon Icon={Check} className="check" />
                 <p className={styles.text}>Заполните опыт работы</p>
-                <div className={styles.experienceYearBlock}>
+                <div className={`flex-col-6 ${styles.experienceYearBlock}`}>
                     <span className={styles.label}>период работы</span>
-                    <p className={styles.years}>
+                    <p className={`flex ${styles.years}`}>
                         <span className={styles.year}>ГГГГ</span>
                         <span className={styles.year}>ГГГГ</span>
                     </p>

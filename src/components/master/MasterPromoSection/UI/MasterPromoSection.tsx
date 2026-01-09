@@ -5,7 +5,7 @@ import styles from './index.module.scss';
 
 const MasterPromoSection = () => {
     return (
-        <section className={styles.section}>
+        <section className={`flex-between ${styles.section}`}>
             <Picture src={'/images/masterPromo.png'} alt={'мастер'} />
             <MasterClientIntro {...masterIntroContent} />
         </section>

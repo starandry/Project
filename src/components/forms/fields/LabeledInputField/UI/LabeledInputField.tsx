@@ -24,7 +24,7 @@ const LabeledInputField: React.FC<LabeledInputFieldProps> = ({
     const currentLength = value?.length || 0;
 
     return (
-        <div className={styles.fieldWrapper}>
+        <div className={`flex-col-12 card-18 ${styles.fieldWrapper}`}>
             <label className={styles.fieldLabel}>{label}</label>
 
             <Input
@@ -37,7 +37,7 @@ const LabeledInputField: React.FC<LabeledInputFieldProps> = ({
             />
 
             {(hint || maxLength) && (
-                <div className={styles.fieldHintRow}>
+                <div className={`flex-between ${styles.fieldHintRow}`}>
                     {hint && <span className={styles.fieldHint}>{hint}</span>}
                     {maxLength && (
                         <span className={styles.fieldCounter}>

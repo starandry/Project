@@ -20,11 +20,8 @@
   border-bottom: 1px solid #333333;
 }
 
-// .itemContent: .flex-between + custom width and position
+// Replaced base flex styles with .flex-between utility
 .itemContent {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
   position: relative;
 }

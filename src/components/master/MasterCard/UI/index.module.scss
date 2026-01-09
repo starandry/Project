@@ -1,13 +1,10 @@
-// .card: similar to .card-18 but with extra styles (gap: 4px, max-width)
+// Replaced card background/padding/radius with .card-18 utility
 .card {
   display: flex;
   gap: 4px;
   flex-direction: column;
   width: 100%;
-  border-radius: 18px;
   max-width: 650px;
-  padding: 24px;
-  background-color: #fff;
 }
 
 .cardTop {
@@ -15,11 +12,8 @@
   gap: 12px;
 }
 
-// .cardBottom: .flex-between + custom width
+// Replaced base flex styles with .flex-between utility
 .cardBottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
 }
 

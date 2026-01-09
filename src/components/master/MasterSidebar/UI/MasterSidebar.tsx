@@ -14,7 +14,7 @@ import SettingsIcon from '@/assets/icons/Settings.svg?react';
 const MasterSidebar: React.FC<MasterSidebarProps> = ({ avatarUrl }) => {
     return (
         <aside className={styles.masterSidebar}>
-            <div className={styles.masterInfoBox}>
+            <div className={`flex-between ${styles.masterInfoBox}`}>
                 {avatarUrl ? (
                     <img src={avatarUrl} alt={'test avatar'} />
                 ) : (

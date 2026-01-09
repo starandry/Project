@@ -1,13 +1,12 @@
+// Replaced with .flex-col utility
 .promoContent {
-  display: flex;
   gap: 49px;
-  flex-direction: column;
   width: 848px;
   margin: 0 30px;
 }
 
+// Replaced with .flex utility
 .title {
-  display: flex;
   align-items: center;
   height: 60px;
   font-family: Playfair, sans-serif;

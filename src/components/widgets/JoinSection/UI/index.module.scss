@@ -1,13 +1,10 @@
+// Replaced with .flex-between utility
 .joinSection {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   min-height: 500px;
 }
 
+// Replaced with .flex-col utility
 .content {
-  display: flex;
-  flex-direction: column;
   padding: 0 30px;
 }
 

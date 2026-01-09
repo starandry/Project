@@ -40,7 +40,7 @@ const MasterPortfolioForm: React.FC<MasterPortfolioFormProps> = ({
             <form className="form-container" onSubmit={handleFormSubmit}>
                 <FormTitle title="Загрузите ваше портфолио" onClose={onClose} />
 
-                <div className={styles.portfolioWrapper}>
+                <div className={`flex-col-16 ${styles.portfolioWrapper}`}>
                     <LabeledInputField
                         label="Название работы"
                         placeholder="Введите название работы"

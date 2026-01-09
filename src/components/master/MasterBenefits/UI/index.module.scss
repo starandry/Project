@@ -9,10 +9,8 @@
     height: 461px;
 }
 
+// Replaced with .flex-center utility
 .card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 267px;
     height: 257px;
     border-radius: 200px;

@@ -28,12 +28,12 @@ const MasterArea: React.FC<MasterAreaProps> = () => {
                             <MasterSidebar />
 
                             <div className={styles.wrappMainPanel}>
-                                <div className={styles.mainPanel}>
+                                <div className={`flex-between ${styles.mainPanel}`}>
                                     <MasterProfileContainer />
                                     <ScheduleContainer />
                                 </div>
 
-                                <div className={styles.wrappAboutCard}>
+                                <div className={`flex-col-24 ${styles.wrappAboutCard}`}>
                                     <MasterAboutContainer />
                                     <MasterEducationContainer />
                                     <MasterExperienceContainer />

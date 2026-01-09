@@ -19,10 +19,10 @@ export const Banner: React.FC<BannerProps> = ({
     onUserTypeChange,
 }) => {
     return (
-        <div className={styles.banner}>
+        <div className={`flex-col ${styles.banner}`}>
             <h1 className={styles.title}>{title}</h1>
             <p className={styles.subtitle}>{subtitle}</p>
-            <div className={styles.descBlock}>
+            <div className={`flex-col ${styles.descBlock}`}>
                 <p className={styles.description}>{description}</p>
                 <div className={styles.bannerActions}>
                     <Button

@@ -71,8 +71,8 @@ const MasterServicesForm: React.FC<MasterServicesFormProps> = ({
             <form className="form-container" onSubmit={handleFormSubmit}>
                 <FormTitle title="Редактировать поле Услуги и цены" onClose={onClose} />
 
-                <div className={styles.servicesWrapper}>
-                    <div className={styles.serviceBlock}>
+                <div className={`flex-col-16 ${styles.servicesWrapper}`}>
+                    <div className={`flex-col-16 ${styles.serviceBlock}`}>
                         <SelectField
                             label="Услуга"
                             options={SERVICE_OPTIONS}
@@ -82,7 +82,7 @@ const MasterServicesForm: React.FC<MasterServicesFormProps> = ({
                         />
                     </div>
 
-                    <div className={styles.serviceDetailsBlock}>
+                    <div className="flex-col-12">
                         <SelectField
                             label="Тип услуги"
                             options={SERVICE_TYPE_OPTIONS}

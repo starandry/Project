@@ -1,26 +1,14 @@
-// .servicesWrapper: .flex-col-16 + custom align-items
+// Replaced base flex styles with .flex-col-16 utility
 .servicesWrapper {
-  display: flex;
   align-items: end;
-  gap: 16px;
-  flex-direction: column;
 }
 
-// .serviceBlock: .flex-col-16 + custom styles
+// Replaced base flex styles with .flex-col-16 utility
 .serviceBlock {
-  display: flex;
-  gap: 16px;
-  flex-direction: column;
   width: 100%;
   border-radius: 20px;
   background-color: #fff;
   padding: 12px 0;
 }
 
-// .serviceDetailsBlock: .flex-col-12 + custom width
-.serviceDetailsBlock {
-  display: flex;
-  gap: 12px;
-  flex-direction: column;
-  width: 100%;
-}
+// Replaced with .flex-col-12 utility

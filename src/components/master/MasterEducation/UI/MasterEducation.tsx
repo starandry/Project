@@ -22,9 +22,9 @@ export const MasterEducation: React.FC = () => {
             <div className="flex-between">
                 <SvgIcon Icon={Check} className="check" />
                 <p className={styles.text}>Введите данные вашего образования</p>
-                <div className={styles.educationYearBlock}>
+                <div className={`flex-col-6 ${styles.educationYearBlock}`}>
                     <span className={styles.label}>период обучения</span>
-                    <p className={styles.years}>
+                    <p className={`flex ${styles.years}`}>
                         <span className={styles.year}>ГГГГ</span>
                         <span className={styles.year}>ГГГГ</span>
                     </p>

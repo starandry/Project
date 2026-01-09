@@ -10,7 +10,7 @@ const MasterCard: React.FC<MasterCardProps> = (props) => {
     const { name, rating, reviewsCount, specialty, address, reviewWord } = useMasterCard(props);
 
     return (
-        <div className={styles.card}>
+        <div className={`card-18 ${styles.card}`}>
             <div className={styles.cardTop}>
                 <Picture src={'/images/masterPhoto.png'} alt={'фото мастера'} />
                 <div className={styles.infoWrapper}>
@@ -27,7 +27,7 @@ const MasterCard: React.FC<MasterCardProps> = (props) => {
                 </div>
             </div>
 
-            <div className={styles.cardBottom}>
+            <div className={`flex-between ${styles.cardBottom}`}>
                 <div className={styles.masterStats}>
                     <div className={styles.ratingBlock}>
                         <SvgIcon Icon={StarOutline} className="starOutIcon" />

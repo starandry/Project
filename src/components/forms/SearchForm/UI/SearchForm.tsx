@@ -12,7 +12,7 @@ const SearchForm: React.FC = () => {
     return (
         <form onSubmit={handleSearch} className={styles.wrapperSearchForm}>
             <span className={styles.searchFormLabel}>Выберите</span>
-            <div className={styles.searchForm}>
+            <div className={`flex-between ${styles.searchForm}`}>
                 <Dropdown
                     buttonLabel="Район"
                     items={streets}

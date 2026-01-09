@@ -4,8 +4,8 @@ import styles from './index.module.scss';
 
 const JoinSection: React.FC = () => {
     return (
-        <section className={styles.joinSection}>
-            <div className={styles.content}>
+        <section className={`flex-between ${styles.joinSection}`}>
+            <div className={`flex-col ${styles.content}`}>
                 <h2 className={styles.title}>Бесплатный сервис для поиска клиентов</h2>
                 <p className={styles.text}>
                     Ты мастер ногтевого сервиса или владелец бизнеса? Присоединяйся к нашей единой
