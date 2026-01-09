@@ -22,7 +22,7 @@ export const MasterCard: React.FC<MasterCardProps> = ({ marker, onBookClick }) =
                 <div className={`flex ${styles.masterInfoWrapper}`}>
                     <div className={`flex-col ${styles.masterInfo}`}>
                         <h3 className={styles.masterName}>{marker.name}</h3>
-                        <div className={`flex-col-8 ${styles.masterDetails}`}>
+                        <div className={`flex-col-8`}>
                             {marker.specialty && (
                                 <p className={styles.masterSpecialty}>{marker.specialty}</p>
                             )}

@@ -25,7 +25,7 @@ const MastersToolbar: React.FC<MastersToolbarProps> = ({
 
     return (
         <div className={`flex-between ${styles.wrapToolbar}`}>
-            <div className={`flex ${styles.wrapBtnsToolbar}`}>
+            <div className={`flex`}>
                 <Button
                     classNames={{ buttonClass: viewMode === 'list' ? 'listBtn' : 'mapBtn' }}
                     onClick={() => handleViewModeChange('list')}

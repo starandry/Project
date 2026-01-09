@@ -28,7 +28,7 @@ const Diplomas: React.FC = () => {
                         </p>
                         <p className={styles.descDiplomas}>данные сертификата</p>
                     </div>
-                    <div className={styles.diplomasYearBlock}>
+                    <div className={`flex-col-6 ${styles.diplomasYearBlock}`}>
                         <p className={styles.labelDiplomas}>дата выдачи</p>
                         <p className={styles.years}>
                             <span className={styles.year}>месяц</span>

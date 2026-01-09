@@ -6,7 +6,7 @@ import styles from './inedx.module.scss';
 
 const HelpSection: React.FC = () => {
     return (
-        <div className={`flex-col ${styles.wrappHelpSection}`}>
+        <div className={`flex-col flex-center ${styles.wrappHelpSection}`}>
             <h2 className={styles.titleHelp}>Возникли вопросы?</h2>
             <p className={styles.subtitleHelp}>Свяжитесь с нами в мессенджерах:</p>
             <div className={styles.iconsHelp}>

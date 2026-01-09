@@ -1,4 +1,3 @@
-// Replaced base flex styles with .flex-between utility
 .grid {
   padding: 12px 6px;
 }
@@ -17,9 +16,6 @@
 }
 
 .diplomasYearBlock {
-  display: flex;
-  gap: 6px;
-  flex-direction: column;
   flex: 0 1 150px;
   min-width: 0;
 }

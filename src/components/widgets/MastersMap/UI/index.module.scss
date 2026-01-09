@@ -52,7 +52,6 @@
     }
 }
 
-// Replaced with .flex-col-16 utility
 .masterCard {
     width: 650px;
     border-radius: 18px;
@@ -60,7 +59,6 @@
     background: #fff;
 }
 
-// Replaced with .flex utility
 .masterCardTop {
     align-items: flex-start;
     gap: 12px;
@@ -74,21 +72,15 @@
     flex-shrink: 0;
 }
 
-// Replaced with .flex utility
 .masterInfoWrapper {
     align-items: flex-start;
     gap: 12px;
     flex: 1;
 }
 
-// Replaced with .flex-col utility
 .masterInfo {
     gap: 21px;
     flex: 1;
-}
-
-// Replaced with .flex-col-8 utility
-.masterDetails {
 }
 
 .masterName {
@@ -99,7 +91,6 @@
     line-height: 1.125;
 }
 
-// Replaced with .flex-center utility
 .favoriteBtn {
     background: transparent;
     border: none;
@@ -127,16 +118,13 @@
     letter-spacing: -0.02em;
 }
 
-// Replaced with .flex-between utility
 .masterCardBottom {
 }
 
-// Replaced with .flex utility
 .masterStats {
     gap: 20px;
 }
 
-// Replaced with .flex utility
 .masterRating {
     gap: 4px;
     font-size: 14px;
@@ -150,7 +138,6 @@
     }
 }
 
-// Replaced with .flex utility
 .masterReviews {
     gap: 8px;
     font-size: 14px;
