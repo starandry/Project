@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 import { cn } from '@/utils/UI/cn.ts';
 
 const Main: React.FC<MainProps> = ({ children, className }) => {
-    return <main className={cn(styles, 'main', className)}>{children}</main>;
+    return <main className={cn(styles, className)}>{children}</main>;
 };
 
 export { Main };

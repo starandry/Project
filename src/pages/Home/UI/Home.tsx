@@ -19,7 +19,7 @@ const Home: React.FC<HomeProps> = () => {
 
     return (
         <AppLayout showAuthButtons={true}>
-            <Main>
+            <Main className="main">
                 <div className={styles.hero}>
                     <div className="container _h-100">
                         <BannerContainer />
