@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MastersMapProps } from '../model/mapTypes';
 import {
@@ -11,6 +11,50 @@ import {
 import { getCustomIcon, getCustomActiveIcon } from '../model/mapIcons';
 import { MasterCard } from './MasterCard';
 import styles from './index.module.scss';
+
+const ZoomControls: React.FC = () => {
+    const map = useMap();
+
+    const zoomSmooth = React.useCallback((delta: number, duration: number = 0.3) => {
+        const currentZoom = map.getZoom();
+        map.flyTo(map.getCenter(), currentZoom + delta, {
+            duration,
+        });
+    }, [map]);
+
+    const handleZoomIn = React.useCallback(() => {
+        zoomSmooth(0.4, 0.15);
+    }, [zoomSmooth]);
+
+    const handleZoomOut = React.useCallback(() => {
+        zoomSmooth(-0.4, 0.15);
+    }, [zoomSmooth]);
+
+    const handleWheel = React.useCallback((e: WheelEvent) => {
+        e.preventDefault();
+        const delta = e.deltaY > 0 ? -0.4 : 0.4;
+        zoomSmooth(delta, 0.15);
+    }, [zoomSmooth]);
+
+    React.useEffect(() => {
+        const mapElement = map.getContainer();
+        const wheelHandler = (e: Event) => {
+            handleWheel(e as WheelEvent);
+        };
+        mapElement.addEventListener('wheel', wheelHandler, { passive: false });
+
+        return () => {
+            mapElement.removeEventListener('wheel', wheelHandler);
+        };
+    }, [map, handleWheel]);
+
+    return (
+        <div className={styles.zoomControls}>
+            <button onClick={handleZoomIn} className={styles.zoomBtn}>+</button>
+            <button onClick={handleZoomOut} className={styles.zoomBtn}>−</button>
+        </div>
+    );
+};
 
 const MastersMap: React.FC<MastersMapProps> = ({ markers = defaultMarkers, onBookClick }) => {
     const [activeMarkerId, setActiveMarkerId] = React.useState<number | null>(null);
@@ -31,10 +75,12 @@ const MastersMap: React.FC<MastersMapProps> = ({ markers = defaultMarkers, onBoo
                     center={BELARUS_CENTER}
                     zoom={DEFAULT_ZOOM}
                     className={styles.map}
-                    scrollWheelZoom={true}
+                    scrollWheelZoom={false}
+                    zoomControl={false}
                     attributionControl={false}
                 >
                     <TileLayer url={TILE_LAYER_URL} />
+                    <ZoomControls />
                     {markers.map((marker) => (
                         <Marker
                             key={marker.id}
