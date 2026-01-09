@@ -53,3 +53,9 @@
 .monthSelect {
   width: 120px;
 }
+
+.selectYearWrapper :global(.ArrowDropDown),
+.selectMonthWrapper :global(.ArrowDropDown) {
+  pointer-events: none;
+  margin-left: 4px;
+}

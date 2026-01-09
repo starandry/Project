@@ -6,6 +6,7 @@ type LabeledInputFieldProps = {
     onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
     placeholder?: string;
     maxLength?: number;
+    value?: string;
 };
 
 const LabelCountField: React.FC<LabeledInputFieldProps> = ({
@@ -13,8 +14,9 @@ const LabelCountField: React.FC<LabeledInputFieldProps> = ({
     placeholder,
     onChange,
     maxLength = 1000,
+    value = '',
 }) => {
-    const [charCount, setCharCount] = useState(0);
+    const [charCount, setCharCount] = useState(value.length);
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setCharCount(e.target.value.length);
@@ -27,6 +29,7 @@ const LabelCountField: React.FC<LabeledInputFieldProps> = ({
             <textarea
                 className={styles.duties}
                 placeholder={placeholder}
+                value={value}
                 onChange={handleChange}
                 maxLength={maxLength}
                 rows={2}

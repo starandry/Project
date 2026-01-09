@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import styles from './index.module.scss';
-import { FormTitle, FormFooter, SelectField, LabeledInputField } from '@/components';
+import { FormTitle, FormFooter, SelectField, LabeledInputField, TimeInputField } from '@/components';
 
 type Option = {
     label: string;
@@ -61,6 +61,10 @@ const MasterServicesForm: React.FC<MasterServicesFormProps> = ({
         []
     );
 
+    const handleDurationChange = useCallback((value: string) => {
+        setFormData((prev) => ({ ...prev, duration: value }));
+    }, []);
+
     const handleFormSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         onSubmit?.(formData);
@@ -91,11 +95,11 @@ const MasterServicesForm: React.FC<MasterServicesFormProps> = ({
                             placeholder="Выберите тип услуги"
                         />
 
-                        <LabeledInputField
+                        <TimeInputField
                             label="Длительность"
                             placeholder="ЧЧ:ММ"
                             value={formData.duration}
-                            onChange={handleInputChange('duration')}
+                            onChange={handleDurationChange}
                             hint="введите в формате ЧЧ:ММ"
                         />
 
