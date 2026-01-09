@@ -91,19 +91,37 @@ export const Schedule: React.FC<ScheduleProps> = ({
                                 )}
                             >
                                 <div className={styles.slotRow}>
-                                    <div className={styles.iconCol}>
+                                    <div className={`flex-center ${styles.iconCol}`}>
                                         <SvgIcon Icon={isBusy ? BusyIcon : FreeIcon} />
                                     </div>
                                     <div className={styles.statusCol}>
-                                        <div className={cn(styles, 'status', isBusy ? 'statusBusy' : undefined)}>
+                                        <div
+                                            className={cn(
+                                                styles,
+                                                'status',
+                                                isBusy ? 'statusBusy' : undefined
+                                            )}
+                                        >
                                             {slot.status}
                                         </div>
-                                        <div className={cn(styles, 'address', isBusy ? 'addressBusy' : undefined)}>
+                                        <div
+                                            className={cn(
+                                                styles,
+                                                'address',
+                                                isBusy ? 'addressBusy' : undefined
+                                            )}
+                                        >
                                             Адрес: адрес салона или клиента
                                         </div>
                                     </div>
                                     <div className={styles.timeCol}>
-                                        <div className={cn(styles, 'time', isBusy ? 'timeBusy' : undefined)}>
+                                        <div
+                                            className={cn(
+                                                styles,
+                                                'time',
+                                                isBusy ? 'timeBusy' : undefined
+                                            )}
+                                        >
                                             {slot.time}
                                         </div>
                                     </div>

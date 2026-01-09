@@ -19,14 +19,14 @@ export const DaysView: React.FC<DaysViewProps> = ({
     <>
         <div className={styles.weekDaysRow}>
             {WEEK_DAYS_SHORT.map((day) => (
-                <div key={day} className={styles.weekDay}>
+                <div key={day} className={`flex-center ${styles.weekDay}`}>
                     {day}
                 </div>
             ))}
         </div>
         <div className={styles.daysGrid}>
             {calendarDays.map((day, index) => (
-                <div key={index} className={styles.dayCell}>
+                <div key={index} className={`flex-center ${styles.dayCell}`}>
                     {day && (
                         <button
                             type="button"

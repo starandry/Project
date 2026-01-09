@@ -9,8 +9,16 @@ import { MONTHS } from '../model/constants';
 
 const NavigationButtons = ({ onPrev, onNext }: { onPrev: () => void; onNext: () => void }) => (
     <div className={styles.navigationWrapper}>
-        <Button icon={<SvgIcon Icon={PrevCalendar} />} onClick={onPrev} className={styles.btnNav} />
-        <Button icon={<SvgIcon Icon={NextCalendar} />} onClick={onNext} className={styles.btnNav} />
+        <Button
+            icon={<SvgIcon Icon={PrevCalendar} />}
+            onClick={onPrev}
+            className={`flex-center ${styles.btnNav}`}
+        />
+        <Button
+            icon={<SvgIcon Icon={NextCalendar} />}
+            onClick={onNext}
+            className={`flex-center ${styles.btnNav}`}
+        />
     </div>
 );
 
@@ -37,14 +45,19 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
     onPrev,
     onNext,
 }) => (
-    <div className={styles.calendarHeader}>
+    <div className={`flex-between ${styles.calendarHeader}`}>
         {viewMode === 'days' && (
             <div className={styles.headerLeft}>
                 <div className={styles.monthYearWrapper}>
                     <div className={styles.monthTitle}>{MONTHS[currentMonth]}</div>
                     <div className={styles.yearTitle}>{currentYear}</div>
                 </div>
-                <button type="button" className={styles.closeButton} onClick={onClose} aria-label="Закрыть">
+                <button
+                    type="button"
+                    className={`flex-center ${styles.closeButton}`}
+                    onClick={onClose}
+                    aria-label="Закрыть"
+                >
                     <SvgIcon Icon={Close} />
                 </button>
             </div>

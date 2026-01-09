@@ -14,6 +14,7 @@
 
 .wrappShedule {
   width: 100%;
+  align-self: start;
   border-radius: 12px;
   max-width: 519px;
   padding: 16px 24px;
@@ -160,9 +161,6 @@
 }
 
 .iconCol {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 54px;
   height: 54px;
   border-radius: 5px;
