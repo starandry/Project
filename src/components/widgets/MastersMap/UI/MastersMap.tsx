@@ -5,6 +5,7 @@ import { MastersMapProps } from '../model/mapTypes';
 import {
     BELARUS_CENTER,
     DEFAULT_ZOOM,
+    MAX_ZOOM,
     defaultMarkers,
     TILE_LAYER_URL,
 } from '../model/mapConstants';
@@ -17,7 +18,14 @@ const ZoomControls: React.FC = () => {
 
     const zoomSmooth = React.useCallback((delta: number, duration: number = 0.3) => {
         const currentZoom = map.getZoom();
-        map.flyTo(map.getCenter(), currentZoom + delta, {
+        const newZoom = currentZoom + delta;
+
+        // Ограничиваем зум, чтобы не выходить за пределы
+        if (newZoom > MAX_ZOOM || newZoom < map.getMinZoom()) {
+            return;
+        }
+
+        map.flyTo(map.getCenter(), newZoom, {
             duration,
         });
     }, [map]);
@@ -74,6 +82,7 @@ const MastersMap: React.FC<MastersMapProps> = ({ markers = defaultMarkers, onBoo
                 <MapContainer
                     center={BELARUS_CENTER}
                     zoom={DEFAULT_ZOOM}
+                    maxZoom={MAX_ZOOM}
                     className={styles.map}
                     scrollWheelZoom={false}
                     zoomControl={false}

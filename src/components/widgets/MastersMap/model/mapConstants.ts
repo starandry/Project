@@ -2,6 +2,7 @@ import { MasterMarker } from './mapTypes';
 
 export const BELARUS_CENTER: [number, number] = [53.5, 28.0];
 export const DEFAULT_ZOOM = 7;
+export const MAX_ZOOM = 18;
 
 export const TILE_LAYER_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 
