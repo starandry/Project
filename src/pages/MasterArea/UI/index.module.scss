@@ -1,6 +1,7 @@
-// Replaced base flex styles with .flex-between utility
+@use '@/styles/variables' as *;
+
 .mainPanel {
-  padding: 16px 24px 24px;
+  padding: $gap-lg $gap-xl $gap-xl;
 }
 
 .masterProfileSection {
@@ -12,12 +13,11 @@
 .wrappMainPanel {
   flex-grow: 1;
   margin-top: 70px;
-  background-color: #fff2f1;
+  background-color: $color-bg-form;
 }
 
-// Replaced base flex styles with .flex-col-24 utility
 .wrappAboutCard {
-  border-radius: 12px;
-  margin: 0 24px;
-  background-color: #fff2f1;
+  border-radius: $radius-md;
+  margin: 0 $gap-xl;
+  background-color: $color-bg-form;
 }

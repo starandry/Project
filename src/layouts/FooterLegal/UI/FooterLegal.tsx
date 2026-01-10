@@ -7,7 +7,7 @@ import { SvgIcon } from '@/components';
 const FooterLegal: React.FC<FooterLegalProps> = ({ companyName, years, activityCode = '2.01' }) => {
     return (
         <div className={styles.footerLegal}>
-            <div className={styles.wrapAge}>
+            <div className={`flex ${styles.wrapAge}`}>
                 <SvgIcon Icon={AgeIcon} className="ageIcon" />
                 <p className={styles.footerLegalText}>
                     Информация, опубликованная на данном сайте, предназначена для любой аудитории,

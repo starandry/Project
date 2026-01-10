@@ -1,5 +1,6 @@
+@use '@/styles/variables' as *;
+
 .footerNav {
-  display: flex;
 }
 
 .wrappClients,
@@ -10,9 +11,9 @@
 }
 
 .titleFooterNav {
-  font-weight: 600;
+  font-weight: $font-weight-semibold;
   font-size: 17px;
-  color: #7f207b;
+  color: $color-primary;
 }
 
 .wrappItemFooter {

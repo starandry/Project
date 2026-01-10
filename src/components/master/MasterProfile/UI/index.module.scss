@@ -1,3 +1,5 @@
+@use '@/styles/variables' as *;
+
 .masterProfileCard {
   width: 100%;
   max-width: 514px;
@@ -5,9 +7,9 @@
 }
 
 .avatarWrapper {
-  border-radius: 20px;
+  border-radius: $radius-xl;
   padding: 40px;
-  background: #fff2f1;
+  background: $color-bg-form;
 }
 
 .infoGroup {
@@ -16,20 +18,19 @@
   flex-direction: column;
 }
 
-// Replaced base flex styles with .flex-between utility
 .infoItem {
   height: 40px;
 }
 
 .title,
 .masterName {
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 20px;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-xl;
+  line-height: $line-height-tight;
 }
 
 .masterEmail,
 .masterPhone {
   font-size: 17px;
-  color: #7d7979;
+  color: $color-text-secondary;
 }

@@ -1,14 +1,13 @@
+@use '@/styles/variables' as *;
+
 .wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100px;
   height: 80px;
-  border-radius: 20px;
+  border-radius: $radius-xl;
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  background-color: #fff2f1;
+  background-color: $color-bg-form;
 }
 
 .thumbnail {
@@ -19,10 +18,7 @@
 }
 
 .uploadArea {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20px;
+  border-radius: $radius-xl;
   padding: 28px;
-  background-color: #fff2f1;
+  background-color: $color-bg-form;
 }

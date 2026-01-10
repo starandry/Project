@@ -1,16 +1,15 @@
-// Replaced: .addressLabelWrapper, .regionLabelWrapper → .flex-between utility
+@use '@/styles/variables' as *;
 
 .title {
-  font-weight: 600;
-  font-size: 20px;
-  color: #333333;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-xl;
+  color: $color-text-primary;
   line-height: 36px;
-  padding-bottom: 12px;
+  padding-bottom: $gap-md;
 }
 
-// Replaced base flex styles with .flex-col-12 utility
 .addressItem {
-  padding: 0 16px;
+  padding: 0 $gap-lg;
 }
 
 .addressRow {
@@ -27,8 +26,8 @@
 .addressText,
 .regionLabel,
 .regionText {
-  font-weight: 500;
-  font-size: 18px;
-  color: #333333;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-lg;
+  color: $color-text-primary;
   line-height: 28px;
 }

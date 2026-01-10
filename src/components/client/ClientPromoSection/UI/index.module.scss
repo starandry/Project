@@ -1,24 +1,21 @@
+@use '@/styles/variables' as *;
+
 .section {
-    display: flex;
-    justify-content: space-between;
     padding: 40px 0;
     padding-top: 110px;
 }
 
 .promoCircle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 396px;
   height: 387px;
   border-radius: 200px;
   position: relative;
-  border: 3px solid #7d7979;
-  background-color: #fff;
+  border: 3px solid $color-text-secondary;
+  background-color: $color-bg-card;
 }
 
 .textPromoClient {
-  font-weight: 700;
+  font-weight: $font-weight-bold;
   font-size: 22px;
   color: #1d1b20;
   line-height: 28px;

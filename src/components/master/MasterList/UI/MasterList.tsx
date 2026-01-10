@@ -17,7 +17,7 @@ const MasterList: React.FC = () => {
 
     return (
         <>
-            <div className={styles.wrappCards}>
+            <div className={`flex ${styles.wrappCards}`}>
                 {visibleMasters.map((master) => (
                     <MasterCard
                         key={master.id}
@@ -31,7 +31,7 @@ const MasterList: React.FC = () => {
             </div>
 
             {!hasClickedShowMore && (
-                <div className={styles.mastersMoreWrap}>
+                <div className="flex-center">
                     <Button classNames={{ buttonClass: 'mastersMoreBtn' }} onClick={handleShowMore}>
                         Показать еще мастеров по вашим параметрам
                     </Button>
@@ -39,7 +39,7 @@ const MasterList: React.FC = () => {
             )}
 
             {hasClickedShowMore && (
-                <div className={styles.paginationWrap}>
+                <div className={`flex-center ${styles.paginationWrap}`}>
                     {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                         <Button
                             key={page}
@@ -55,7 +55,7 @@ const MasterList: React.FC = () => {
             )}
 
             {hasClickedShowMore && currentPage < totalPages && (
-                <div className={styles.showMoreWrap}>
+                <div className="flex-center">
                     <Button
                         onClick={() => handlePageChange(currentPage + 1)}
                         classNames={{ buttonClass: 'showMoreMasters' }}

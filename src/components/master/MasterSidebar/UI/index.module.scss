@@ -1,3 +1,5 @@
+@use '@/styles/variables' as *;
+
 .masterSidebar {
   width: 100%;
   position: sticky;
@@ -6,37 +8,34 @@
   max-width: 270px;
   margin-bottom: 14px;
   border-radius: 9px;
-  background-color: #7f207b;
+  background-color: $color-primary;
 }
 
 .masterInfoBox {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 9px 17px;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid $color-bg-card;
 }
 
 .wrapperImg {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: $radius-round;
   background-color: #f3f3f3;
 }
 
 .userName {
-  font-weight: 700;
-  font-size: 16px;
-  color: #fff;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-md;
+  color: $color-bg-card;
 }
 
 .item {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-weight: 500;
-  font-size: 16px;
-  color: #fff;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-md;
+  color: $color-bg-card;
   padding: 18px 17px;
 
   > span {
@@ -45,5 +44,5 @@
 }
 
 .itemOrder {
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid $color-bg-card;
 }

@@ -5,7 +5,7 @@ import { SupportInfo } from '@/layouts';
 
 const FooterNav: React.FC = () => {
     return (
-        <div className={styles.footerNav}>
+        <div className={`flex ${styles.footerNav}`}>
             <div className={styles.wrappClients}>
                 <h4 className={styles.titleFooterNav}>Клиент</h4>
                 <ul>

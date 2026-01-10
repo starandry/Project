@@ -1,3 +1,5 @@
+@use '@/styles/variables' as *;
+
 .supportInfo {
   width: 100%;
   max-width: 25%;
@@ -5,7 +7,7 @@
 
 .itemSupport {
   font-size: 17px;
-  color: #7f207b;
+  color: $color-primary;
   line-height: 1.2;
 }
 

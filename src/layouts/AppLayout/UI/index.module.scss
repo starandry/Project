@@ -1,3 +1,5 @@
+@use '@/styles/variables' as *;
+
 .wrapper {
   position: fixed;
   z-index: 100;
@@ -5,26 +7,19 @@
 }
 
 .headerWrapp {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   min-height: 70px;
 }
 
 .navbarMenu {
-  display: flex;
 }
 
 .btnWrapp {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
+  gap: $gap-lg;
 }
 
 .masterCapture {
-  font-size: 20px;
-  color: #aa01a2;
+  font-size: $font-size-xl;
+  color: $color-primary-hover;
 }
 
 .wrappFooter {
@@ -39,16 +34,13 @@
 .footerSeparator {
   height: 2px;
   border: none;
-  background-color: #7f207b;
+  background-color: $color-primary;
 }
 
 .basement {
-  display: flex;
-  justify-content: space-between;
 }
 
 .footerNavigation {
-  display: flex;
   gap: 48px;
-  padding-bottom: 24px;
+  padding-bottom: $gap-xl;
 }

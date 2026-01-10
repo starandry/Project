@@ -23,12 +23,12 @@ const SearchPanel: React.FC<SearchPanelProps> = ({ title }) => {
     };
 
     return (
-        <section className={styles.searchPanel}>
+        <section className={`flex-col ${styles.searchPanel}`}>
             <h1 className={styles.searchTitle}>{title}</h1>
             <div className={styles.searchBody}>
                 <p className={styles.searchHint}>воспользуйтесь строкой поиска</p>
-                <div className={styles.searchPanelBlock}>
-                    <label className={styles.searchPanelBar}>
+                <div className={`flex-col-16 ${styles.searchPanelBlock}`}>
+                    <label className={`flex-between ${styles.searchPanelBar}`}>
                         <Input
                             type="search"
                             onChange={() => {}}
@@ -40,13 +40,13 @@ const SearchPanel: React.FC<SearchPanelProps> = ({ title }) => {
                             <SvgIcon Icon={Magnifier} />
                         </Button>
                     </label>
-                    <label className={styles.searchFilterBody}>
+                    <label className={`flex ${styles.searchFilterBody}`}>
                         <span className={styles.searchFilterSign}>Расширенный фильтр</span>
                         <Input type="radio" onChange={handleRadioChange} className="filterMaster" />
                     </label>
                     {isVisible && <SearchForm />}
                 </div>
-                <div className={styles.selectedFilters}>
+                <div className={`flex ${styles.selectedFilters}`}>
                     {district && (
                         <Button
                             type="button"

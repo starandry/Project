@@ -1,6 +1,8 @@
+@use '@/styles/variables' as *;
+
 .scrollBtn {
-  font-size: 16px;
-  color: #fff;
+  font-size: $font-size-md;
+  color: $color-bg-card;
   position: fixed;
   top: 10%;
   right: 10%;
@@ -10,5 +12,5 @@
   background-color: #1976d2;
   cursor: pointer;
   transition: opacity 0.3s ease;
-  z-index: 1000;
+  z-index: $z-modal-content;
 }

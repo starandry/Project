@@ -1,18 +1,17 @@
+@use '@/styles/variables' as *;
+
 .nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 35px;
 }
 
 .navLink {
-  font-size: 16px;
-  color: #aa01a2;
+  font-size: $font-size-md;
+  color: $color-primary-hover;
   transition: color 0.3s ease;
 }
 
 .navLink.active {
-  color: #7f207b;
+  color: $color-primary;
   padding-bottom: 10px;
-  border-bottom: 3px solid #7f207b;
+  border-bottom: 3px solid $color-primary;
 }

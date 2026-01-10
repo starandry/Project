@@ -1,25 +1,14 @@
+@use '@/styles/variables' as *;
+
 .wrappCards {
-  display: flex;
   gap: 25px;
   flex-wrap: wrap;
   padding: 40px 57px;
-  border-radius: 24px;
-  background-color: #fff2f1;
-}
-
-.mastersMoreWrap {
-  display: flex;
-  justify-content: center;
+  border-radius: $gap-xl;
+  background-color: $color-bg-form;
 }
 
 .paginationWrap {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  padding: 24px 0;
-}
-
-.showMoreWrap {
-  display: flex;
-  justify-content: center;
+  gap: $gap-xl;
+  padding: $gap-xl 0;
 }

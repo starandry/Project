@@ -22,9 +22,9 @@ export const CountryUI: React.FC<Props> = ({
     selectCountry,
 }) => {
     return (
-        <div className={styles.wrapper} ref={wrapperRef}>
+        <div className={`flex ${styles.wrapper}`} ref={wrapperRef}>
             {current && (
-                <div className={styles.currentCountry} onClick={toggleDropdown}>
+                <div className={`flex ${styles.currentCountry}`} onClick={toggleDropdown}>
                     <img
                         src={`https://flagcdn.com/w40/${current.code}.png`}
                         alt={current.name}
@@ -42,7 +42,7 @@ export const CountryUI: React.FC<Props> = ({
                         <li
                             key={country.code}
                             onClick={() => selectCountry(country.code)}
-                            className={styles.dropdownItem}
+                            className={`flex ${styles.dropdownItem}`}
                         >
                             <img
                                 src={`https://flagcdn.com/w40/${country.code}.png`}

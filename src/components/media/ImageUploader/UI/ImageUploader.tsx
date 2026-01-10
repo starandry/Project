@@ -10,11 +10,11 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
     inputRef,
     onImageUpload,
 }) => (
-    <div className={styles.wrapper} onClick={onTriggerUpload}>
+    <div className={`flex-center ${styles.wrapper}`} onClick={onTriggerUpload}>
         {preview ? (
             <img src={preview} alt="Preview" className={styles.thumbnail} />
         ) : (
-            <div className={styles.uploadArea}>
+            <div className={`flex-center ${styles.uploadArea}`}>
                 <SvgIcon Icon={Upload} />
             </div>
         )}

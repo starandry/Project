@@ -14,7 +14,7 @@ const Menu: React.FC<MenuProps> = ({ items = defaultItems }) => {
     const [activeItem, setActiveItem] = useState(null);
 
     return (
-        <nav className={styles.nav}>
+        <nav className={`flex-center ${styles.nav}`}>
             {items.map((item) => (
                 <Link
                     key={item.label}

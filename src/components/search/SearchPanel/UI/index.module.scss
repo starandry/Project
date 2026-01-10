@@ -1,20 +1,20 @@
+@use '@/styles/variables' as *;
+
 .searchPanel {
-  display: flex;
   align-items: center;
-  flex-direction: column;
   width: 100%;
   margin-top: -75px;
-  padding: 24px 0 36px;
-  border-radius: 24px 24px 0 0;
-  background-color: #fff2f1;
+  padding: $gap-xl 0 36px;
+  border-radius: $gap-xl $gap-xl 0 0;
+  background-color: $color-bg-form;
 }
 
 .searchTitle {
-  font-weight: 500;
+  font-weight: $font-weight-medium;
   font-size: 30px;
-  color: #7f207b;
+  color: $color-primary;
   line-height: 39px;
-  padding-bottom: 24px;
+  padding-bottom: $gap-xl;
 }
 
 .searchBody {
@@ -23,36 +23,36 @@
 }
 
 .searchHint {
-  font-weight: 500;
-  font-size: 20px;
-  color: #7f207b;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-xl;
+  color: $color-primary;
   line-height: 26px;
-  padding: 0 0 8px 30px;
+  padding: 0 0 $gap-sm 30px;
 }
 
 .searchPanelBlock {
-  display: flex;
-  gap: 16px;
-  flex-direction: column;
-  border-radius: 24px;
+  border-radius: $gap-xl;
   padding: 30px;
-  background-color: #7f207b;
+  background-color: $color-primary;
 }
 
 .searchPanelBar {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
+  gap: $gap-xl;
 }
 
 .searchFilterBody {
-  display: flex;
-  gap: 24px;
-  padding: 6px 8px;
+  gap: $gap-xl;
+  padding: 6px $gap-sm;
 }
 
 .searchFilterSign {
-  font-size: 20px;
-  color: #fff;
-  line-height: 24px;
+  font-size: $font-size-xl;
+  color: $color-bg-card;
+  line-height: $line-height-normal;
+}
+
+.selectedFilters {
+  gap: $gap-md;
+  flex-wrap: wrap;
+  padding-top: $gap-lg;
 }

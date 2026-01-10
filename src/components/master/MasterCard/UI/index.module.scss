@@ -1,4 +1,5 @@
-// Replaced card background/padding/radius with .card-18 utility
+@use '@/styles/variables' as *;
+
 .card {
   display: flex;
   gap: 4px;
@@ -9,10 +10,9 @@
 
 .cardTop {
   display: flex;
-  gap: 12px;
+  gap: $gap-md;
 }
 
-// Replaced base flex styles with .flex-between utility
 .cardBottom {
   width: 100%;
 }
@@ -25,16 +25,16 @@
 }
 
 .name {
-  font-weight: 600;
-  font-size: 32px;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-3xl;
   color: #000;
   line-height: 1.125;
 }
 
 .specialty,
 .address {
-  font-size: 14px;
-  color: #8f3574;
+  font-size: $font-size-sm;
+  color: $color-secondary;
 }
 
 .masterStats {
@@ -48,13 +48,13 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 14px;
-  color: #7d7979;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
   letter-spacing: -0.02em;
 }
 
 .reviewsBlock {
-  gap: 8px;
+  gap: $gap-sm;
 }
 
 .infoWrapper {

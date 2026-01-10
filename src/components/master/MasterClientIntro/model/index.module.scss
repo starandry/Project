@@ -1,5 +1,7 @@
+@use '@/styles/variables' as *;
+
 .desc {
-  font-size: 24px;
+  font-size: $font-size-2xl;
   color: #191919;
   line-height: 32px;
 }

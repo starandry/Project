@@ -21,12 +21,12 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, showAuthButtons }) => {
             <Header>
                 <div className={cn(styles, 'bg-light-pink', 'wrapper')}>
                     <div className="container">
-                        <div className={styles.headerWrapp}>
+                        <div className={`flex-between ${styles.headerWrapp}`}>
                             <Logo icon={logoIcon} />
-                            <div className={styles.navbarMenu}>
+                            <div className={`flex ${styles.navbarMenu}`}>
                                 <Menu />
                             </div>
-                            <nav className={styles.btnWrapp}>
+                            <nav className={`flex-between ${styles.btnWrapp}`}>
                                 {(showAuthButtons && (
                                     <>
                                         <LinkButton to="#" className="linkButton-login">
@@ -66,7 +66,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, showAuthButtons }) => {
                     <div className="container">
                         <div className={styles.wrappFooter}>
                             <SvgIcon Icon={LogoFooter} className="logoFooter" />
-                            <nav className={styles.footerNavigation}>
+                            <nav className={`flex ${styles.footerNavigation}`}>
                                 <LinkButton to="#" className="linkFooterNav">
                                     <SvgIcon Icon={MainPage} />
                                     Главная страница
@@ -84,7 +84,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, showAuthButtons }) => {
                                 <FooterNav />
                             </div>
                             <hr className={styles.footerSeparator} />
-                            <div className={styles.basement}>
+                            <div className={`flex-between ${styles.basement}`}>
                                 <FooterLegal companyName="LOGO" years="2011–2024" />
                                 <CountrySelector />
                             </div>
