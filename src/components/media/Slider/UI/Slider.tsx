@@ -5,7 +5,6 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import type { SliderProps } from '@/components/media/Slider/index.model.ts';
 import { DiscountCard } from '@/components';
-import './slider.scss';
 
 const Slider: React.FC<SliderProps> = ({
     slides = [1, 2, 3, 4, 5],
@@ -13,7 +12,7 @@ const Slider: React.FC<SliderProps> = ({
     spaceBetween = 8,
 }) => {
     return (
-        <div className={styles.sliderWrap}>
+        <div>
             <Swiper
                 modules={[Pagination]}
                 pagination={{ clickable: true }}
@@ -26,10 +25,9 @@ const Slider: React.FC<SliderProps> = ({
                     768: { slidesPerView: 2 },
                     1024: { slidesPerView: 3 },
                 }}
-                className={styles.swiper}
             >
                 {slides.map((_, index) => (
-                    <SwiperSlide key={index} className={styles.slide}>
+                    <SwiperSlide key={index}>
                         <DiscountCard percent={discountPercent} />
                     </SwiperSlide>
                 ))}
