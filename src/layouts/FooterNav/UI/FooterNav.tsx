@@ -30,7 +30,7 @@ const FooterNav: React.FC = () => {
                 <h4 className={styles.titleFooterNav}>Мастер </h4>
                 <ul>
                     <li className={styles.wrappItemFooter}>
-                        <LocalLink to={'#'} classNames={{ linkClass: 'itemFooterNav' }}>
+                        <LocalLink to={'/login'} classNames={{ linkClass: 'itemFooterNav' }}>
                             Вход для специалистов
                         </LocalLink>
                     </li>

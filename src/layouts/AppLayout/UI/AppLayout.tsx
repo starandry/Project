@@ -29,7 +29,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, showAuthButtons }) => {
                             <nav className={`flex-between ${styles.btnWrapp}`}>
                                 {(showAuthButtons && (
                                     <>
-                                        <LinkButton to="#" className="linkButton-login">
+                                        <LinkButton to="/login" className="linkButton-login">
                                             Вход
                                             <SvgIcon Icon={LoginIcon} />
                                         </LinkButton>
@@ -71,11 +71,11 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, showAuthButtons }) => {
                                     <SvgIcon Icon={MainPage} />
                                     Главная страница
                                 </LinkButton>
-                                <LinkButton to="#" className="linkFooterNav">
+                                <LinkButton to="/login" className="linkFooterNav">
                                     <SvgIcon Icon={ClientSign} />
                                     Вход для клиента
                                 </LinkButton>
-                                <LinkButton to="#" className="linkFooterNav">
+                                <LinkButton to="/login" className="linkFooterNav">
                                     <SvgIcon Icon={MasterSign} />
                                     Вход для мастера
                                 </LinkButton>

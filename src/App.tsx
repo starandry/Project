@@ -1,4 +1,4 @@
-import { MasterArea, RegisterMaster, MasterPreLogin, ClientPreLogin, Home } from './pages';
+import { MasterArea, RegisterMaster, MasterPreLogin, ClientPreLogin, Home, Login } from './pages';
 import { Routes, Route /*, Navigate*/ } from 'react-router-dom';
 import './app.scss';
 
@@ -8,6 +8,7 @@ function App() {
             <Route path="/" element={<Home />} />
             {/*<Route path="/master" element={<MasterArea />} />*/}
             <Route path="/master-profiles/:id/" element={<MasterArea />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/register/master" element={<RegisterMaster />} />
             <Route path="/masters/pre-login" element={<MasterPreLogin />} />
             <Route path="/clients/pre-login" element={<ClientPreLogin />} />
