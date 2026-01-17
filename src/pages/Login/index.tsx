@@ -5,27 +5,45 @@ import { LoginCredentials } from '@/stores/types/authTypes';
 import { AppDispatch } from '@/stores/store.ts';
 import styles from './index.module.scss';
 import EyeEmpty from '@/assets/icons/EyeEmpty.svg?react';
+import NavArrowDown from '@/assets/icons/NavArrowDown.svg?react';
+import NavArrowUp from '@/assets/icons/NavArrowUp.svg?react';
 import { validateLogin, passwordValidator } from '@/utils';
 import { Button, LinkButton, Picture, SvgIcon } from '@/components';
 import { Input } from '@/components';
+import { useDropdown } from '@/hooks';
 
 interface Errors {
+    role: string;
     login: string;
     password: string;
+    agreeToPersonalData?: string;
 }
 
+type LoginFormState = LoginCredentials & {
+    role: 'master' | 'client' | '';
+};
+
+const roleOptions: Array<{ value: 'master' | 'client'; label: string }> = [
+    { value: 'master', label: 'Мастер' },
+    { value: 'client', label: 'Клиент' },
+];
+
 const Login: React.FC = () => {
-    const [credentials, setCredentials] = useState<LoginCredentials>({
+    const [credentials, setCredentials] = useState<LoginFormState>({
+        role: '',
         login: '',
         password: '',
     });
 
     const [errors, setErrors] = useState<Errors>({
+        role: '',
         login: '',
         password: '',
+        agreeToPersonalData: '',
     });
 
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const [agreeToPersonalData, setAgreeToPersonalData] = useState(false);
     const [loginError, setLoginError] = useState<string | null>(null);
     const [blurredField, setBlurredField] = useState<string | null>(null);
     const [validFields, setValidFields] = useState<string[]>([]);
@@ -34,6 +52,13 @@ const Login: React.FC = () => {
     const [iconClass, setIconClass] = useState({
         password: '',
     });
+
+    const {
+        open: isRoleMenuOpen,
+        toggle: toggleRoleMenu,
+        close: closeRoleMenu,
+        ref: roleMenuRef,
+    } = useDropdown<HTMLDivElement>();
 
     const dispatch: AppDispatch = useDispatch();
 
@@ -53,13 +78,80 @@ const Login: React.FC = () => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
     };
 
+    const setRoleValue = (value: 'master' | 'client') => {
+        setCredentials((prev) => ({ ...prev, role: value }));
+
+        if (value) {
+            setErrors((prev) => ({ ...prev, role: '' }));
+        }
+    };
+
+    const handleRoleSelect = (value: 'master' | 'client') => {
+        setRoleValue(value);
+        closeRoleMenu();
+    };
+
+    const handleRoleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+        if (event.key === 'Escape') {
+            closeRoleMenu();
+            return;
+        }
+
+        if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') {
+            return;
+        }
+
+        event.preventDefault();
+        const direction = event.key === 'ArrowDown' ? 1 : -1;
+        const currentIndex = roleOptions.findIndex((option) => option.value === credentials.role);
+        if (currentIndex === -1) {
+            const fallbackIndex = direction === 1 ? 0 : roleOptions.length - 1;
+            setRoleValue(roleOptions[fallbackIndex].value);
+            return;
+        }
+        const nextIndex = (currentIndex + direction + roleOptions.length) % roleOptions.length;
+        setRoleValue(roleOptions[nextIndex].value);
+    };
+
+    const handleAgreeChange = () => {
+        const newValue = !agreeToPersonalData;
+        setAgreeToPersonalData(newValue);
+
+        if (newValue) {
+            setErrors((prev) => ({ ...prev, agreeToPersonalData: '' }));
+        }
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        setLoginError(errors.login || errors.password);
+        if (!credentials.role) {
+            setErrors((prev) => ({
+                ...prev,
+                role: 'Выберите тип профиля.',
+            }));
+            return;
+        }
+
+        if (!agreeToPersonalData) {
+            setErrors((prev) => ({
+                ...prev,
+                agreeToPersonalData:
+                    'Необходимо подтвердить согласие на обработку персональных данных.',
+            }));
+            return;
+        }
+
+        setLoginError(
+            errors.role || errors.login || errors.password || errors.agreeToPersonalData
+        );
 
         try {
-            await dispatch(login(credentials)).unwrap();
+            const submitCredentials: LoginCredentials = {
+                login: credentials.login,
+                password: credentials.password,
+            };
+            await dispatch(login(submitCredentials)).unwrap();
         } catch (error) {
             if (error instanceof Error) {
                 setLoginError(error.message);
@@ -150,26 +242,102 @@ const Login: React.FC = () => {
                         className="manicureProcess"
                     />
                     <div className={`${styles.leftSIdeText} flex-col`}>
-                        <h3 className={styles.leftSideTitle}>Профиль мастеров</h3>
+                        <h3 className={styles.leftSideTitle}>Маникюр как искусство</h3>
                         <p className={styles.leftSideDesc}>
-                            Войдите в свой профиль специалиста
-                            <br />и управляйте своими услугами. 3 миллиона человек ищут услуги и
-                            специалистов каждый месяц.
+                            Мастер ты или Клиент, наш сайт поможет тебе легко и красиво
+                            предоставить или получить качественную услугу маникюра.
+                        </p>
+                        <p className={styles.leftSideDesc}>
+                            Лучшие мастера и Клиенты у нас на сайте!
                         </p>
                     </div>
                 </div>
                 <div className={`${styles.rightSide} flex-center`}>
                     <div className={`${styles.loginFormContainer} flex-col`}>
-                        <h2 className={styles.loginTitle}>Вход</h2>
+                        <h2 className={styles.loginTitle}>Войти на сайт</h2>
 
                         <div className="flex-center">
-                            <span className={styles.noAccount}>Нет Личного Профиля?</span>
+                            <span className={styles.noAccount}>Ещё нет профиля?</span>
                             <LinkButton to="/register/master" className="linkEnter">
                                 Зарегистрироваться
                             </LinkButton>
                         </div>
 
                         <form onSubmit={handleSubmit} className={styles.form}>
+                            <div className={`${styles.formGroup} flex-col-8`}>
+                                <label htmlFor="role" className={styles.formLabel}>
+                                    Тип профиля
+                                </label>
+                                <div ref={roleMenuRef} className={styles.roleSelectWrapper}>
+                                    <button
+                                        id="role"
+                                        type="button"
+                                        onClick={toggleRoleMenu}
+                                        onKeyDown={handleRoleKeyDown}
+                                        aria-haspopup="listbox"
+                                        aria-expanded={isRoleMenuOpen}
+                                        className={`${styles.roleSelectButton} ${
+                                            errors.role ? styles.roleSelectButtonError : ''
+                                        }`}
+                                    >
+                                        <span
+                                            className={
+                                                credentials.role
+                                                    ? styles.roleSelectValue
+                                                    : styles.roleSelectPlaceholder
+                                            }
+                                        >
+                                            {roleOptions.find(
+                                                (option) => option.value === credentials.role
+                                            )?.label || 'тип профиля'}
+                                        </span>
+                                        <SvgIcon
+                                            Icon={isRoleMenuOpen ? NavArrowUp : NavArrowDown}
+                                            className={styles.roleSelectIcon}
+                                        />
+                                    </button>
+                                    {isRoleMenuOpen && (
+                                        <ul
+                                            className={styles.roleSelectList}
+                                            role="listbox"
+                                            aria-label="Тип профиля"
+                                        >
+                                            {roleOptions.map((option) => {
+                                                const isSelected = credentials.role
+                                                    ? credentials.role === option.value
+                                                    : option.value === 'master';
+                                                return (
+                                                    <li key={option.value}>
+                                                        <button
+                                                            type="button"
+                                                            className={`${styles.roleSelectOption} ${
+                                                                isSelected
+                                                                    ? styles.roleSelectOptionActive
+                                                                    : ''
+                                                            }`}
+                                                            onClick={() =>
+                                                                handleRoleSelect(option.value)
+                                                            }
+                                                            role="option"
+                                                            aria-selected={isSelected}
+                                                        >
+                                                            {option.label}
+                                                        </button>
+                                                    </li>
+                                                );
+                                            })}
+                                        </ul>
+                                    )}
+                                </div>
+                                {errors.role ? (
+                                    <span className={`${styles.errorMessage} ${styles.inputHint}`}>
+                                        {errors.role}
+                                    </span>
+                                ) : (
+                                    <span className={styles.inputHint}>выберите тип профиля</span>
+                                )}
+                            </div>
+
                             <div className={`${styles.formGroup} flex-col-8`}>
                                 <label htmlFor="login" className={styles.formLabel}>
                                     Логин
@@ -227,12 +395,40 @@ const Login: React.FC = () => {
                                 )}
                             </div>
 
+                            <div className={styles.formAgreeGroup}>
+                                <label className={styles.checkboxLabel}>
+                                    <span className={styles.checkboxText}>
+                                        Согласие на обработку персональных данных
+                                    </span>
+                                    <Input
+                                        type="checkbox"
+                                        name="agree"
+                                        checked={agreeToPersonalData}
+                                        onChange={handleAgreeChange}
+                                        className={`${styles.checkboxInput}
+                                        ${errors.agreeToPersonalData ? styles.checkboxError : ''}`}
+                                    />
+                                </label>
+
+                                {errors.agreeToPersonalData && (
+                                    <span className={styles.errorAgree}>
+                                        {errors.agreeToPersonalData}
+                                    </span>
+                                )}
+
+                                <div className={styles.forgotPasswordWrapper}>
+                                    <LinkButton to="/forgot-password" className={styles.forgotPasswordLink}>
+                                        Забыли пароль?
+                                    </LinkButton>
+                                </div>
+                            </div>
+
                             <div className={styles.formBtnGroup}>
                                 {loginError && (
                                     <div className={styles.errorServer}>{loginError}</div>
                                 )}
                                 <Button
-                                    children="Войти"
+                                    children="Продолжить"
                                     type="submit"
                                     classNames={{ buttonClass: 'registerButton' }}
                                 />
