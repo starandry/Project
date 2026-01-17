@@ -1,7 +1,7 @@
 import React from 'react';
 import { LabeledInputField, DateSelectField, FormFooter, FormTitle } from '@/components';
-import { useMasterEducationForm } from '@/components';
-import type { EducationFormData } from '@/components';
+import { useMasterEducationForm } from '../model/useMasterEducationForm';
+import type { EducationFormData } from '../model/masterEducationFormTypes';
 
 type MasterEducationFormProps = {
     onClose: () => void;

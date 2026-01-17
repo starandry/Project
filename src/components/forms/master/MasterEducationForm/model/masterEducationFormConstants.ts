@@ -1,4 +1,4 @@
-import type { EducationFormData } from '@/components';
+import type { EducationFormData } from './masterEducationFormTypes';
 
 export const initialEducationFormData: EducationFormData = {
     institutionName: '',

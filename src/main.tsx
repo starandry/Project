@@ -14,6 +14,3 @@ createRoot(document.getElementById('root')!).render(
         </BrowserRouter>
     </StrictMode>
 );
-{
-    /*basename="/Project/dist"   for BrowserRouter*/
-}

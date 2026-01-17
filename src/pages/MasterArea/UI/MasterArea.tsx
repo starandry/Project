@@ -1,5 +1,4 @@
 import React from 'react';
-/*import { useParams } from 'react-router-dom';*/
 import {
     MasterSidebar,
     MasterProfileContainer,
@@ -17,8 +16,6 @@ import styles from './index.module.scss';
 import type { MasterAreaProps } from '@/pages/MasterArea/index.model.ts';
 
 const MasterArea: React.FC<MasterAreaProps> = () => {
-    // Это вызов, чтобы подписаться на часть состояния (опыт мастера)
-    /*const { id } = useParams();*/ // будет "4", если адрес /master-profiles/4/
     return (
         <AppLayout>
             <Main>

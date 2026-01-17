@@ -6,30 +6,11 @@
 
 ```
 hooks/
-├── core/              - Redux и базовые хуки
-├── form/              - Хуки для управления формами
 ├── ui/                - UI компонент хуки
 ├── media/             - Хуки для работы с медиа
 ├── data/              - Хуки для управления данными
 └── index.ts           - Главный экспорт
 ```
-
-### `/core` - Базовые хуки
-
-- **`reduxHooks`** - Типизированные Redux хуки
-  - `useAppDispatch` - Типизированный dispatch
-  - `useAppSelector` - Типизированный selector
-
-### `/form` - Хуки для управления формами
-
-- **`useFormState`** - Базовый хук для управления состоянием формы с валидацией
-  - Поддерживает: required, minLength, maxLength, pattern, custom validation
-  - Автоматическая обработка ошибок
-
-- **`useServiceForm`** - Специализированный хук для форм сервиса
-  - Поддерживает режим черновика (tempData)
-  - Управление загрузкой изображений
-  - Options: `initialData`, `useDraft`
 
 ### `/ui` - UI компонент хуки
 
@@ -47,11 +28,6 @@ hooks/
   - Использует useDropdown внутренне
 
 ### `/media` - Медиа хуки
-
-- **`useImageUpload`** - Базовый хук для загрузки изображений
-  - Валидация размера и типа файла
-  - Preview с проверкой ошибок
-  - Пользовательские обработчики ошибок
 
 - **`useImageUploader`** - Компонент-специфичный хук
   - Расширенное управление состоянием загрузки
@@ -73,21 +49,16 @@ hooks/
   - Навигация по месяцам/годам
   - Проверка выбранных дат
 
-- **`useEditableList`** - Управление редактируемым списком
-  - Generic тип `<T>`
-  - Add, remove, edit операции
-  - Сохранение изменений
-
 ## Соглашения
 
 ### Импорт
 
 ```typescript
 // Прямой импорт из папки
-import { useFormState, useServiceForm } from '@/hooks/form';
+import { useDropdown, useDropdownContainer } from '@/hooks/ui';
 
 // Или из главного index
-import { useFormState, useServiceForm } from '@/hooks';
+import { useDropdown, useDropdownContainer } from '@/hooks';
 ```
 
 ### Структура возвращаемого объекта

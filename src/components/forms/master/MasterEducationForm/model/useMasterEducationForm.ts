@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
-import type { EducationFormData } from '@/components';
-import { initialEducationFormData } from '@/components';
+import type { EducationFormData } from './masterEducationFormTypes';
+import { initialEducationFormData } from './masterEducationFormConstants';
 
 export const useMasterEducationForm = (initialData?: Partial<EducationFormData>) => {
     const [formData, setFormData] = useState<EducationFormData>({

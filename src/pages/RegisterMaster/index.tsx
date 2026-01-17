@@ -5,16 +5,19 @@ import { RegisterCredentials } from '@/stores/types/authTypes';
 import { AppDispatch } from '@/stores/store.ts';
 import styles from './index.module.scss';
 import EyeEmpty from '@/assets/icons/EyeEmpty.svg?react';
+import NavArrowDown from '@/assets/icons/NavArrowDown.svg?react';
+import NavArrowUp from '@/assets/icons/NavArrowUp.svg?react';
 import {
     validateLogin,
     passwordValidator,
     validatePasswordConfirmation,
     validateEmail,
 } from '@/utils';
-import { Button, LinkButton, Picture, SvgIcon, RoleSelect } from '@/components';
-import { Input } from '@/components';
+import { Button, Input, LinkButton, Picture, SvgIcon } from '@/components';
+import { useDropdown } from '@/hooks';
 
 interface Errors {
+    role: string;
     username: string;
     email: string;
     password1: string;
@@ -22,9 +25,18 @@ interface Errors {
     agreeToPersonalData?: string;
 }
 
+type RegisterFormState = Omit<RegisterCredentials, 'role'> & {
+    role: RegisterCredentials['role'] | '';
+};
+
+const roleOptions: Array<{ value: RegisterCredentials['role']; label: string }> = [
+    { value: 'master', label: 'Мастер' },
+    { value: 'client', label: 'Клиент' },
+];
+
 const RegisterMaster: React.FC = () => {
-    const [credentials, setCredentials] = useState<RegisterCredentials>({
-        role: 'master',
+    const [credentials, setCredentials] = useState<RegisterFormState>({
+        role: '',
         username: '',
         email: '',
         password1: '',
@@ -32,6 +44,7 @@ const RegisterMaster: React.FC = () => {
     });
 
     const [errors, setErrors] = useState<Errors>({
+        role: '',
         username: '',
         email: '',
         password1: '',
@@ -43,7 +56,6 @@ const RegisterMaster: React.FC = () => {
     const [passwordConfirmationVisible, setPasswordConfirmationVisibile] = useState(false);
     const [agreeToPersonalData, setAgreeToPersonalData] = useState(false);
 
-    /*const [isLoading, setIsLoading] = useState(false);*/
     const [loginError, setLoginError] = useState<string | null>(null);
     const [blurredField, setBlurredField] = useState<string | null>(null);
     const [validFields, setValidFields] = useState<string[]>([]);
@@ -53,6 +65,12 @@ const RegisterMaster: React.FC = () => {
         password1: '',
         password2: '',
     });
+    const {
+        open: isRoleMenuOpen,
+        toggle: toggleRoleMenu,
+        close: closeRoleMenu,
+        ref: roleMenuRef,
+    } = useDropdown<HTMLDivElement>();
 
     const dispatch: AppDispatch = useDispatch();
 
@@ -84,6 +102,19 @@ const RegisterMaster: React.FC = () => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
     };
 
+    const setRoleValue = (value: RegisterCredentials['role']) => {
+        setCredentials((prev) => ({ ...prev, role: value }));
+
+        if (value) {
+            setErrors((prev) => ({ ...prev, role: '' }));
+        }
+    };
+
+    const handleRoleSelect = (value: RegisterCredentials['role']) => {
+        setRoleValue(value);
+        closeRoleMenu();
+    };
+
     const handleAgreeChange = () => {
         const newValue = !agreeToPersonalData;
         setAgreeToPersonalData(newValue);
@@ -96,6 +127,14 @@ const RegisterMaster: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
+        if (!credentials.role) {
+            setErrors((prev) => ({
+                ...prev,
+                role: 'Выберите тип профиля.',
+            }));
+            return;
+        }
+
         if (!agreeToPersonalData) {
             setErrors((prev) => ({
                 ...prev,
@@ -106,7 +145,8 @@ const RegisterMaster: React.FC = () => {
         }
 
         setLoginError(
-            errors.email ||
+            errors.role ||
+                errors.email ||
                 errors.username ||
                 errors.password1 ||
                 errors.password2 ||
@@ -114,7 +154,11 @@ const RegisterMaster: React.FC = () => {
         );
 
         try {
-            await dispatch(register(credentials)).unwrap();
+            const submitCredentials: RegisterCredentials = {
+                ...credentials,
+                role: credentials.role,
+            };
+            await dispatch(register(submitCredentials)).unwrap();
         } catch (error) {
             if (error instanceof Error) {
                 setLoginError(error.message);
@@ -142,6 +186,28 @@ const RegisterMaster: React.FC = () => {
         return {
             border: '1.5px solid #ccc',
         };
+    };
+
+    const handleRoleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+        if (event.key === 'Escape') {
+            closeRoleMenu();
+            return;
+        }
+
+        if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') {
+            return;
+        }
+
+        event.preventDefault();
+        const direction = event.key === 'ArrowDown' ? 1 : -1;
+        const currentIndex = roleOptions.findIndex((option) => option.value === credentials.role);
+        if (currentIndex === -1) {
+            const fallbackIndex = direction === 1 ? 0 : roleOptions.length - 1;
+            setRoleValue(roleOptions[fallbackIndex].value);
+            return;
+        }
+        const nextIndex = (currentIndex + direction + roleOptions.length) % roleOptions.length;
+        setRoleValue(roleOptions[nextIndex].value);
     };
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -222,9 +288,6 @@ const RegisterMaster: React.FC = () => {
                 <div className={styles.rightSide}>
                     <div className={styles.loginFormContainer}>
                         <h2 className={styles.loginTitle}>Регистрация</h2>
-                        <div className={styles.wrappRoleSelect}>
-                            <RoleSelect />
-                        </div>
                         <div className="flex-center">
                             <span className={styles.noAccount}>Уже есть Личный Профиль?</span>
                             <LinkButton to="/login" className="linkEnter">
@@ -233,6 +296,82 @@ const RegisterMaster: React.FC = () => {
                         </div>
 
                         <form onSubmit={handleSubmit} className={styles.form}>
+                            <div className={`${styles.formGroup} flex-col-8`}>
+                                <label htmlFor="role" className={styles.formLabel}>
+                                    Тип профиля
+                                </label>
+                                <div ref={roleMenuRef} className={styles.roleSelectWrapper}>
+                                    <button
+                                        id="role"
+                                        type="button"
+                                        onClick={toggleRoleMenu}
+                                        onKeyDown={handleRoleKeyDown}
+                                        aria-haspopup="listbox"
+                                        aria-expanded={isRoleMenuOpen}
+                                        className={`${styles.roleSelectButton} ${
+                                            errors.role ? styles.roleSelectButtonError : ''
+                                        }`}
+                                    >
+                                        <span
+                                            className={
+                                                credentials.role
+                                                    ? styles.roleSelectValue
+                                                    : styles.roleSelectPlaceholder
+                                            }
+                                        >
+                                            {roleOptions.find(
+                                                (option) => option.value === credentials.role
+                                            )?.label || 'тип профиля'}
+                                        </span>
+                                        <SvgIcon
+                                            Icon={isRoleMenuOpen ? NavArrowUp : NavArrowDown}
+                                            className={styles.roleSelectIcon}
+                                        />
+                                    </button>
+                                    {isRoleMenuOpen && (
+                                        <ul
+                                            className={styles.roleSelectList}
+                                            role="listbox"
+                                            aria-label="Тип профиля"
+                                        >
+                                            {roleOptions.map((option) => {
+                                                const isSelected = credentials.role
+                                                    ? credentials.role === option.value
+                                                    : option.value === 'master';
+                                                return (
+                                                    <li key={option.value}>
+                                                        <button
+                                                            type="button"
+                                                            className={`${styles.roleSelectOption} ${
+                                                                isSelected
+                                                                    ? styles.roleSelectOptionActive
+                                                                    : ''
+                                                            }`}
+                                                            onClick={() =>
+                                                                handleRoleSelect(option.value)
+                                                            }
+                                                            role="option"
+                                                            aria-selected={isSelected}
+                                                        >
+                                                            {option.label}
+                                                        </button>
+                                                    </li>
+                                                );
+                                            })}
+                                        </ul>
+                                    )}
+                                </div>
+                                {errors.role ? (
+                                    <span className={`${styles.errorMessage} ${styles.inputHint}`}>
+                                        {errors.role}
+                                    </span>
+                                ) : (
+                                    <span className={styles.inputHint}>
+                                        выберите тип профиля
+                                    </span>
+                                )}
+                            </div>
+
                             <div className={`${styles.formGroup} flex-col-8`}>
                                 <label htmlFor="username" className={styles.formLabel}>
                                     Логин

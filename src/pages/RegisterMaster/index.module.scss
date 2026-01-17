@@ -73,11 +73,6 @@
   padding-bottom: 6px;
 }
 
-.wrappRoleSelect {
-  text-align: center;
-  padding-bottom: 18px;
-}
-
 .noAccount {
   font-weight: $font-weight-light;
   font-size: $font-size-sm;
@@ -93,6 +88,92 @@
 
 .formGroup {
   padding-top: $gap-sm;
+}
+
+.roleSelectWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.roleSelectButton {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 100%;
+  text-align: left;
+  position: relative;
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+  border-radius: $radius-md;
+  padding: $gap-md;
+  padding-right: 48px;
+  border: 1.5px solid #eaeaea;
+  background-color: $color-bg-card;
+  cursor: pointer;
+}
+
+.roleSelectButtonError {
+  border: 2px solid #ee443f;
+}
+
+.roleSelectPlaceholder {
+  color: $color-text-secondary;
+}
+
+.roleSelectValue {
+  color: #1d1b20;
+}
+
+.roleSelectList {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1.5px solid #eaeaea;
+  border-radius: 14px;
+  background-color: $color-bg-card;
+  overflow: hidden;
+}
+
+.roleSelectOption {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  padding: $gap-md;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    background-color: #fffbfb;
+  }
+}
+
+.roleSelectOptionActive {
+  background-color: #fffbfb;
+  color: #1d1b20;
+  font-weight: $font-weight-semibold;
+}
+
+.roleSelectIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  width: 24px;
+  height: 24px;
 }
 
 .formInput {
@@ -405,18 +486,6 @@
     color: $color-primary;
     line-height: 32px;
     padding-bottom: 4px;
-  }
-
-  .wrappRoleSelect {
-    padding-bottom: 12px;
-  }
-
-  .loginLinks {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    flex-direction: column;
   }
 
   .noAccount {
