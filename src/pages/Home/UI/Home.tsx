@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { SearchPanel } from '@/features/search';
 import {
     AppLayout,
     Main,
     MastersToolbar,
     MasterList,
-    MastersMap,
     Slider,
     JoinSection,
     HelpSection,
@@ -14,6 +13,10 @@ import {
 import type { ViewMode } from '@/widgets';
 import styles from './index.module.scss';
 import type { HomeProps } from '@/pages/Home/index.model.ts';
+
+const MastersMap = lazy(() =>
+    import('@/widgets/MastersMap').then((module) => ({ default: module.MastersMap }))
+);
 
 const Home: React.FC<HomeProps> = () => {
     const [viewMode, setViewMode] = useState<ViewMode>('list');
@@ -32,7 +35,13 @@ const Home: React.FC<HomeProps> = () => {
                         <MastersToolbar viewMode={viewMode} onViewModeChange={setViewMode} />
                     </div>
                     <div className="container">
-                        {viewMode === 'list' ? <MasterList /> : <MastersMap />}
+                        {viewMode === 'list' ? (
+                            <MasterList />
+                        ) : (
+                            <Suspense fallback={<div className="flex-center">Загрузка карты...</div>}>
+                                <MastersMap />
+                            </Suspense>
+                        )}
                     </div>
                 </div>
 

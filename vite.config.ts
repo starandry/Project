@@ -21,6 +21,19 @@ export default defineConfig(({ mode }) => {
                 '@': path.resolve(__dirname, './src'),
             },
         },
+        build: {
+            rollupOptions: {
+                output: {
+                    manualChunks: {
+                        react: ['react', 'react-dom', 'react-router-dom'],
+                        redux: ['@reduxjs/toolkit', 'react-redux'],
+                        leaflet: ['leaflet', 'react-leaflet'],
+                        swiper: ['swiper'],
+                        antd: ['antd'],
+                    },
+                },
+            },
+        },
 
         server: {
             port: 8080,
