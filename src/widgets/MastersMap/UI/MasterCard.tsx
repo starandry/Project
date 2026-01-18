@@ -12,7 +12,7 @@ interface MasterCardProps {
     onBookClick: (masterId: number) => void;
 }
 
-export const MasterCard: React.FC<MasterCardProps> = ({ marker, onBookClick }) => {
+const MasterCardComponent: React.FC<MasterCardProps> = ({ marker, onBookClick }) => {
     return (
         <div className={`flex-col-16 ${styles.masterCard}`}>
             <div className={`flex ${styles.masterCardTop}`}>
@@ -64,3 +64,7 @@ export const MasterCard: React.FC<MasterCardProps> = ({ marker, onBookClick }) =
         </div>
     );
 };
+
+const MasterCard = React.memo(MasterCardComponent);
+
+export { MasterCard };

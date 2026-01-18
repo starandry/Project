@@ -6,7 +6,7 @@ import Message from '@/shared/assets/icons/Message.svg?react';
 import HeartOutline from '@/shared/assets/icons/HeartOutline.svg?react';
 import { useMasterCard, MasterCardProps } from '../index.model';
 
-const MasterCard: React.FC<MasterCardProps> = (props) => {
+const MasterCardComponent: React.FC<MasterCardProps> = (props) => {
     const { name, rating, reviewsCount, specialty, address, reviewWord } = useMasterCard(props);
 
     return (
@@ -45,5 +45,7 @@ const MasterCard: React.FC<MasterCardProps> = (props) => {
         </div>
     );
 };
+
+const MasterCard = React.memo(MasterCardComponent);
 
 export { MasterCard };

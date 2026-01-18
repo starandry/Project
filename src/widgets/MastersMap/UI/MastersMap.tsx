@@ -67,14 +67,14 @@ const ZoomControls: React.FC = () => {
 const MastersMap: React.FC<MastersMapProps> = ({ markers = defaultMarkers, onBookClick }) => {
     const [activeMarkerId, setActiveMarkerId] = React.useState<number | null>(null);
 
-    const customIcon = getCustomIcon(styles.customMarker);
-    const customActiveIcon = getCustomActiveIcon(styles.customMarkerActive);
+    const customIcon = React.useMemo(() => getCustomIcon(styles.customMarker), []);
+    const customActiveIcon = React.useMemo(() => getCustomActiveIcon(styles.customMarkerActive), []);
 
-    const handleBookClick = (masterId: number) => {
+    const handleBookClick = React.useCallback((masterId: number) => {
         if (onBookClick) {
             onBookClick(masterId);
         }
-    };
+    }, [onBookClick]);
 
     return (
         <div className={styles.mapContainer}>

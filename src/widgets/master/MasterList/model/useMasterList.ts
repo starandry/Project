@@ -1,7 +1,8 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/providers';
 import { firstNames, lastNames, streets, specialties } from '@/entities/master/model/mastersMock';
+import { getMasterWord } from '@/shared/lib';
 import type { Master } from './masterListTypes';
 
 const getRandom = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];
@@ -34,30 +35,55 @@ export const useMasterList = () => {
     const filteredMasters = useMemo(() => {
         if (!searchTriggered) return mockMasters;
 
-        const matches = mockMasters.filter((master) => {
+        const matches: Master[] = [];
+        const others: Master[] = [];
+
+        for (const master of mockMasters) {
             const matchesDistrict = district ? master.address.includes(district) : true;
             const matchesSpecialty = specialty ? master.specialty === specialty : true;
-            return matchesDistrict && matchesSpecialty;
-        });
+            if (matchesDistrict && matchesSpecialty) {
+                matches.push(master);
+            } else {
+                others.push(master);
+            }
+        }
 
-        const others = mockMasters.filter((master) => !matches.includes(master));
-        return [...matches, ...others];
+        return matches.concat(others);
     }, [mockMasters, district, specialty, searchTriggered]);
 
-    const totalPages = Math.ceil(filteredMasters.length / ITEMS_PER_PAGE);
+    const totalPages = useMemo(
+        () => Math.ceil(filteredMasters.length / ITEMS_PER_PAGE),
+        [filteredMasters.length]
+    );
 
-    const visibleMasters = hasClickedShowMore
-        ? filteredMasters.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
-        : filteredMasters.slice(0, INITIAL_VISIBLE_COUNT);
+    const visibleMasters = useMemo(() => {
+        if (!hasClickedShowMore) {
+            return filteredMasters.slice(0, INITIAL_VISIBLE_COUNT);
+        }
+        const start = (currentPage - 1) * ITEMS_PER_PAGE;
+        return filteredMasters.slice(start, start + ITEMS_PER_PAGE);
+    }, [filteredMasters, hasClickedShowMore, currentPage]);
 
-    const handleShowMore = () => {
+    const pageNumbers = useMemo(
+        () => Array.from({ length: totalPages }, (_, i) => i + 1),
+        [totalPages]
+    );
+
+    const remainingCount = useMemo(
+        () => Math.max(filteredMasters.length - currentPage * ITEMS_PER_PAGE, 0),
+        [filteredMasters.length, currentPage]
+    );
+
+    const remainingWord = useMemo(() => getMasterWord(remainingCount), [remainingCount]);
+
+    const handleShowMore = useCallback(() => {
         setHasClickedShowMore(true);
         setCurrentPage(1);
-    };
+    }, []);
 
-    const handlePageChange = (page: number) => {
+    const handlePageChange = useCallback((page: number) => {
         setCurrentPage(page);
-    };
+    }, []);
 
     return {
         filteredMasters,
@@ -65,6 +91,9 @@ export const useMasterList = () => {
         hasClickedShowMore,
         currentPage,
         totalPages,
+        pageNumbers,
+        remainingCount,
+        remainingWord,
         handleShowMore,
         handlePageChange,
     };
