@@ -7,8 +7,8 @@
 ```
 shared/lib/hooks/            - общие хуки (useDropdown)
 shared/ui/<Component>/model  - UI-специфичные хуки (useDropdownContainer, useImageUploader, useScrollButton, useCalendar, useSchedule)
-features/<slice>/model       - хуки фич (useCountrySelector, useSearchForm, useMaster*Form)
-widgets/<slice>/model        - хуки виджетов (useBanner, useMasterList)
+features/<slice>/model       - хуки фич (useCountrySelector, useMaster*Form)
+widgets/<slice>/model        - хуки виджетов
 entities/<slice>/model       - хуки сущностей (useMasterCard)
 ```
 
@@ -40,7 +40,4 @@ import { useCountrySelector } from '@/features/country-selector/model/useCountry
 - `useMasterEditForm` - `/src/features/master-forms/MasterEditForm/model`
 - `useMasterAboutForm` - `/src/features/master-forms/MasterAboutForm/model`
 - `useMasterEducationForm` - `/src/features/master-forms/MasterEducationForm/model`
-- `useSearchForm` - `/src/features/search/SearchForm/model`
 - `useMasterCard` - `/src/entities/master/MasterCard/model`
-- `useMasterList` - `/src/widgets/master/MasterList/model`
-- `useBanner` - `/src/widgets/Banner/model`

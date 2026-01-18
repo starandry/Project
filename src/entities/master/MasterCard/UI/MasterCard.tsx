@@ -4,6 +4,7 @@ import { Picture, Button, SvgIcon } from '@/shared/ui';
 import StarOutline from '@/shared/assets/icons/StarOutline.svg?react';
 import Message from '@/shared/assets/icons/Message.svg?react';
 import HeartOutline from '@/shared/assets/icons/HeartOutline.svg?react';
+import masterPhoto from '@/shared/assets/images/masterPhoto.png';
 import { useMasterCard, MasterCardProps } from '../index.model';
 
 const MasterCardComponent: React.FC<MasterCardProps> = (props) => {
@@ -12,7 +13,7 @@ const MasterCardComponent: React.FC<MasterCardProps> = (props) => {
     return (
         <div className={`card-18 ${styles.card}`}>
             <div className={styles.cardTop}>
-                <Picture src={'/images/masterPhoto.png'} alt={'фото мастера'} />
+                <Picture src={masterPhoto} alt={'фото мастера'} />
                 <div className={styles.infoWrapper}>
                     <div className={styles.infoNextWrapper}>
                         <div className={styles.info}>

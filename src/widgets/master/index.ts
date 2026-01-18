@@ -4,7 +4,6 @@ export * from './MasterBenefits';
 export * from './MasterClientIntro';
 export * from './MasterEducation';
 export * from './MasterExperience';
-export * from './MasterList';
 export * from './MasterPortfolio';
 export * from './MasterProfile';
 export * from './MasterPromoSection';

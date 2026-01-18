@@ -6,6 +6,7 @@ import styles from './index.module.scss';
 import EyeEmpty from '@/shared/assets/icons/EyeEmpty.svg?react';
 import NavArrowDown from '@/shared/assets/icons/NavArrowDown.svg?react';
 import NavArrowUp from '@/shared/assets/icons/NavArrowUp.svg?react';
+import masterReg from '@/shared/assets/images/master-reg.png';
 import { validateLogin, passwordValidator, useDropdown } from '@/shared/lib';
 import { Button, LinkButton, Picture, SvgIcon, Input } from '@/shared/ui';
 
@@ -233,11 +234,7 @@ const Login: React.FC = () => {
         <div>
             <div className={styles.centred}>
                 <div className={styles.leftSide}>
-                    <Picture
-                        src={'/images/master-reg.png'}
-                        alt={'маникюр мастера'}
-                        className="manicureProcess"
-                    />
+                    <Picture src={masterReg} alt={'маникюр мастера'} className="manicureProcess" />
                     <div className={`${styles.leftSIdeText} flex-col`}>
                         <h3 className={styles.leftSideTitle}>Маникюр как искусство</h3>
                         <p className={styles.leftSideDesc}>
