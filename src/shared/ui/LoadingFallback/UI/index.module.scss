@@ -1,0 +1,45 @@
+@use '@/shared/styles/variables' as *;
+
+.fallback {
+  width: 100%;
+  color: $color-text-primary;
+}
+
+.page {
+  min-height: 60vh;
+  padding: 48px 16px;
+}
+
+.section {
+  min-height: 200px;
+  padding: 24px 16px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+  padding: 16px 24px;
+  border-radius: $radius-md;
+  background-color: $color-bg-form;
+}
+
+.spinner {
+  width: 22px;
+  height: 22px;
+  border-radius: $radius-round;
+  border: 2px solid rgba(127, 32, 123, 0.2);
+  border-top-color: $color-primary;
+  animation: spin 0.9s linear infinite;
+}
+
+.message {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

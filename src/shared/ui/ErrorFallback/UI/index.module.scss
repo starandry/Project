@@ -1,0 +1,47 @@
+@use '@/shared/styles/variables' as *;
+
+.fallback {
+  width: 100%;
+  min-height: 60vh;
+  padding: 48px 16px;
+  color: $color-text-primary;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap-md;
+  max-width: 520px;
+  padding: 32px 36px;
+  border-radius: $radius-md;
+  background-color: $color-bg-form;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+}
+
+.message {
+  margin: 0;
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+}
+
+.action {
+  padding: 10px 18px;
+  border: none;
+  border-radius: $radius-md;
+  background-color: $color-primary;
+  color: #ffffff;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.action:hover {
+  background-color: $color-primary-hover;
+}

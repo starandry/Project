@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { CountrySelector } from '@/features/country-selector';
-import { LinkButton, Logo, Menu, ScrollButton, SvgIcon } from '@/shared/ui';
+import { LinkButton, Logo, Menu, ScrollButton, SvgIcon, LoadingFallback } from '@/shared/ui';
 import { Header, Footer, FooterNav, FooterLegal } from '@/widgets/layout';
 import logoIcon from '@/shared/assets/icons/Logo.svg?react';
 import LogoFooter from '@/shared/assets/icons/LogoFooter.svg?react';
@@ -60,7 +60,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, showAuthButtons }) => {
                 </div>
             </Header>
 
-            {children}
+            <Suspense fallback={<LoadingFallback variant="section" />}>{children}</Suspense>
 
             <Footer>
                 <div className="bg-light-pink">
