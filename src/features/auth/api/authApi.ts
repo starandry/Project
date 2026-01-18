@@ -1,61 +1,68 @@
-import { LoginCredentials, RegisterCredentials, User } from '../model/authTypes';
-import { API_BASE_URL, PUBLIC_BASE_URL } from '@/shared/config/env';
+import { LoginCredentials, RegisterCredentials, User } from '@/features/auth';
+import { PUBLIC_BASE_URL } from '@/shared/config/env';
+import { apiClient } from '@/shared/api/httpClient';
+import { getApiErrorData, getApiErrorMessage } from '@/shared/api/errors';
+
+type AuthResponse = { user: User; token: string };
 
 // --- Авторизация ---
-export const loginUser = async (
-    credentials: LoginCredentials
-): Promise<{ user: User; token: string }> => {
-    const response = await fetch(`${API_BASE_URL}/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(credentials),
-    });
-
-    if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || 'Ошибка входа');
+export const loginUser = async (credentials: LoginCredentials): Promise<AuthResponse> => {
+    try {
+        const response = await apiClient.post<AuthResponse>('/login', credentials);
+        return response.data;
+    } catch (error) {
+        throw new Error(getApiErrorMessage(error, 'Ошибка входа'));
     }
-
-    return await response.json(); // ожидаем { user, token }
 };
 
 // --- Регистрация ---
-export const registerUser = async (
-    credentials: RegisterCredentials
-): Promise<{ user: User; token: string }> => {
-    const response = await fetch(`${API_BASE_URL}/registration/`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(credentials),
-    });
-
-    const data = await response.json().catch(() => ({}));
-
-    if (!response.ok) {
+export const registerUser = async (credentials: RegisterCredentials): Promise<AuthResponse> => {
+    try {
+        const response = await apiClient.post<AuthResponse>('/registration/', credentials);
+        return response.data;
+    } catch (error) {
+        const data = getApiErrorData<Record<string, unknown>>(error);
         let message = 'Ошибка регистрации. Попробуйте позже.';
 
-        if (data.email) {
-            message = 'Данная почта уже используется.';
-        } else if (data.username) {
-            message = 'Данный логин уже существует.';
-        } else if (data.detail) {
-            message = 'Ошибка: ' + data.detail;
+        if (data && typeof data === 'object') {
+            const fields = data as {
+                email?: unknown;
+                username?: unknown;
+                detail?: unknown;
+                message?: unknown;
+            };
+
+            if (fields.email) {
+                message = 'Данная почта уже используется.';
+            } else if (fields.username) {
+                message = 'Данный логин уже существует.';
+            } else if (typeof fields.detail === 'string') {
+                message = `Ошибка: ${fields.detail}`;
+            } else if (typeof fields.message === 'string') {
+                message = fields.message;
+            }
+        } else {
+            message = getApiErrorMessage(error, message);
         }
 
         throw new Error(message);
     }
-
-    return data;
 };
 
 export const activateLastUser = async () => {
-    const key = await getActivationKey();
-    await confirmEmailByKey(key);
+    try {
+        const key = await getActivationKey();
+        await confirmEmailByKey(key);
+    } catch (error) {
+        throw new Error(getApiErrorMessage(error, 'Не удалось активировать пользователя'));
+    }
 };
 
 const getActivationKey = async (): Promise<string> => {
-    const res = await fetch(`${API_BASE_URL}/activation_link/`);
-    const html = await res.text();
+    const response = await apiClient.get<string>('/activation_link/', {
+        responseType: 'text',
+    });
+    const html = response.data;
 
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
@@ -76,40 +83,37 @@ const getActivationKey = async (): Promise<string> => {
 };
 
 const confirmEmailByKey = async (key: string) => {
-    const res = await fetch(`${API_BASE_URL}/registration/account-confirm-email/`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ key }),
-    });
+    try {
+        const response = await apiClient.post<{ redirect?: string }>(
+            '/registration/account-confirm-email/',
+            { key }
+        );
+        let redirectUrl = response.data?.redirect;
 
-    if (!res.ok) {
-        throw new Error('Не удалось подтвердить email');
-    }
+        if (redirectUrl) {
+            try {
+                const incomingUrl = new URL(redirectUrl);
+                const base = new URL(PUBLIC_BASE_URL);
 
-    const data = await res.json().catch(() => ({}));
-    let redirectUrl = data.redirect;
+                incomingUrl.protocol = base.protocol;
+                incomingUrl.host = base.host;
 
-    if (redirectUrl) {
-        try {
-            const incomingUrl = new URL(redirectUrl);
-            const base = new URL(PUBLIC_BASE_URL);
-
-            incomingUrl.protocol = base.protocol;
-            incomingUrl.host = base.host;
-
-            redirectUrl = incomingUrl.toString();
-        } catch {
-            if (!redirectUrl.startsWith('http')) {
-                redirectUrl = `${PUBLIC_BASE_URL}${redirectUrl.startsWith('/') ? '' : '/'}${redirectUrl}`;
-            } else {
-                redirectUrl = PUBLIC_BASE_URL;
+                redirectUrl = incomingUrl.toString();
+            } catch {
+                if (!redirectUrl.startsWith('http')) {
+                    redirectUrl = `${PUBLIC_BASE_URL}${
+                        redirectUrl.startsWith('/') ? '' : '/'
+                    }${redirectUrl}`;
+                } else {
+                    redirectUrl = PUBLIC_BASE_URL;
+                }
             }
+        } else {
+            redirectUrl = PUBLIC_BASE_URL;
         }
-    } else {
-        redirectUrl = PUBLIC_BASE_URL;
-    }
 
-    window.location.href = redirectUrl;
+        window.location.href = redirectUrl;
+    } catch (error) {
+        throw new Error(getApiErrorMessage(error, 'Не удалось подтвердить email'));
+    }
 };
