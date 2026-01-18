@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from '@/stores/slices/authSlice.ts';
-import { RegisterCredentials } from '@/stores/types/authTypes';
-import { AppDispatch } from '@/stores/store.ts';
+import { register, RegisterCredentials } from '@/features/auth';
+import { AppDispatch } from '@/app/providers';
 import styles from './index.module.scss';
-import EyeEmpty from '@/assets/icons/EyeEmpty.svg?react';
-import NavArrowDown from '@/assets/icons/NavArrowDown.svg?react';
-import NavArrowUp from '@/assets/icons/NavArrowUp.svg?react';
+import EyeEmpty from '@/shared/assets/icons/EyeEmpty.svg?react';
+import NavArrowDown from '@/shared/assets/icons/NavArrowDown.svg?react';
+import NavArrowUp from '@/shared/assets/icons/NavArrowUp.svg?react';
 import {
     validateLogin,
     passwordValidator,
     validatePasswordConfirmation,
     validateEmail,
-} from '@/utils';
-import { Button, Input, LinkButton, Picture, SvgIcon } from '@/components';
-import { useDropdown } from '@/hooks';
+    useDropdown,
+} from '@/shared/lib';
+import { Button, Input, LinkButton, Picture, SvgIcon } from '@/shared/ui';
 
 interface Errors {
     role: string;

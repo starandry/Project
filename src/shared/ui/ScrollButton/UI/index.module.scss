@@ -1,0 +1,16 @@
+@use '@/shared/styles/variables' as *;
+
+.scrollBtn {
+  font-size: $font-size-md;
+  color: $color-bg-card;
+  position: fixed;
+  top: 10%;
+  right: 10%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 9999px;
+  background-color: #1976d2;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  z-index: $z-modal-content;
+}

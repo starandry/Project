@@ -1,0 +1,17 @@
+@use '@/shared/styles/variables' as *;
+
+.nav {
+  gap: 35px;
+}
+
+.navLink {
+  font-size: $font-size-md;
+  color: $color-primary-hover;
+  transition: color 0.3s ease;
+}
+
+.navLink.active {
+  color: $color-primary;
+  padding-bottom: 10px;
+  border-bottom: 3px solid $color-primary;
+}

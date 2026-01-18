@@ -1,0 +1,14 @@
+@use '@/shared/styles/variables' as *;
+
+.sliderWrap {
+  width: 100%;
+  max-width: 1100px;
+
+  :global(.swiper) {
+    padding-top: $gap-md;
+  }
+
+  :global(.swiper-slide) {
+    width: auto !important;
+  }
+}

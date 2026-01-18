@@ -13,6 +13,7 @@
 
         /* Bundler mode */
         "moduleResolution": "Bundler", //использовать режим разрешения модулей, совместимый с vite
+        "allowSyntheticDefaultImports": true,
         "allowImportingTsExtensions": true, //Разрешает явное указание расширений .ts при импорте модулей
         "isolatedModules": true, //Гарантирует, что каждый файл компилируется отдельно, как если бы он был модулем
         "moduleDetection": "force", //Принуждает компилятор считать все файлы с импортами или экспортами модулями

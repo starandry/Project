@@ -1,0 +1,21 @@
+@use '@/shared/styles/variables' as *;
+
+.footerNav {
+}
+
+.wrappClients,
+.wrappMasters,
+.wrappAbout {
+  width: 100%;
+  max-width: 25%;
+}
+
+.titleFooterNav {
+  font-weight: $font-weight-semibold;
+  font-size: 17px;
+  color: $color-primary;
+}
+
+.wrappItemFooter {
+  padding-top: 15px;
+}

@@ -1,0 +1,11 @@
+@use '../../shared/styles/reset' as *;
+@use '../../shared/styles/globals' as *;
+@use '../../shared/styles/helpers' as *;
+@use '../../shared/styles/variables' as *;
+@use '../../shared/styles/utilities' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  font-family: Manroupe, sans-serif;
+}

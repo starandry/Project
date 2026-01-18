@@ -1,5 +1,4 @@
-import { AppLayout, Main } from '@/layouts';
-import { ClientPromoSection } from '@/components/client';
+import { AppLayout, Main, ClientPromoSection } from '@/widgets';
 
 const ClientPreLogin = () => {
     return (

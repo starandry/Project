@@ -1,0 +1,7 @@
+@use '@/shared/styles/variables' as *;
+
+.desc {
+  font-size: $font-size-2xl;
+  color: #191919;
+  line-height: 32px;
+}

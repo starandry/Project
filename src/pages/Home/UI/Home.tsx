@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { SearchPanel } from '@/features/search';
 import {
-    SearchPanel,
+    AppLayout,
+    Main,
     MastersToolbar,
     MasterList,
     MastersMap,
@@ -8,9 +10,8 @@ import {
     JoinSection,
     HelpSection,
     BannerContainer,
-} from '@/components';
-import type { ViewMode } from '@/components';
-import { Main, AppLayout } from '@/layouts';
+} from '@/widgets';
+import type { ViewMode } from '@/widgets';
 import styles from './index.module.scss';
 import type { HomeProps } from '@/pages/Home/index.model.ts';
 

@@ -1,5 +1,4 @@
-import { AppLayout, Main } from '@/layouts';
-import { MasterBenefits, MasterPromoSection } from '@/components';
+import { AppLayout, Main, MasterBenefits, MasterPromoSection } from '@/widgets';
 
 const MasterPreLogin = () => {
     return (

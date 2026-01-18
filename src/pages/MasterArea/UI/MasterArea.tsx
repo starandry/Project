@@ -2,7 +2,6 @@ import React from 'react';
 import {
     MasterSidebar,
     MasterProfileContainer,
-    ScheduleContainer,
     MasterAboutContainer,
     MasterEducationContainer,
     MasterAddressesContainer,
@@ -10,8 +9,9 @@ import {
     MasterExperienceContainer,
     Diplomas,
     MasterPortfolio,
-} from '@/components';
-import { Main, AppLayout } from '@/layouts';
+} from '@/widgets';
+import { ScheduleContainer } from '@/shared/ui';
+import { Main, AppLayout } from '@/widgets';
 import styles from './index.module.scss';
 import type { MasterAreaProps } from '@/pages/MasterArea/index.model.ts';
 

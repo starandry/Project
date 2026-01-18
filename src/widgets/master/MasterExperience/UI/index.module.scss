@@ -1,0 +1,35 @@
+@use '@/shared/styles/variables' as *;
+
+.text {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: $line-height-relaxed;
+  flex: 0 1 660px;
+  min-width: 0;
+}
+
+.experienceYearBlock {
+  display: flex;
+  gap: 6px;
+  flex-direction: column;
+  flex: 0 1 232px;
+  min-width: 0;
+}
+
+.label {
+  font-size: 15px;
+  color: $color-text-label;
+  line-height: $line-height-tight;
+}
+
+.years {
+  display: flex;
+}
+
+.year {
+  font-family: Manrope-Semibold, sans-serif;
+  font-weight: $font-weight-semibold;
+  font-size: 17px;
+  color: $color-text-primary;
+  width: 50%;
+}

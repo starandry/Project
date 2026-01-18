@@ -1,0 +1,33 @@
+@use '@/shared/styles/variables' as *;
+
+.title {
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-xl;
+  color: $color-text-primary;
+  line-height: 36px;
+  padding-bottom: $gap-md;
+}
+
+.addressItem {
+  padding: 0 $gap-lg;
+}
+
+.addressRow {
+  display: flex;
+  align-items: center;
+}
+
+.addressText,
+.regionText {
+  padding-left: 55px;
+}
+
+.addressLabel,
+.addressText,
+.regionLabel,
+.regionText {
+  font-weight: $font-weight-medium;
+  font-size: $font-size-lg;
+  color: $color-text-primary;
+  line-height: 28px;
+}

@@ -1,0 +1,17 @@
+@use '@/shared/styles/variables' as *;
+
+.promoContent {
+  gap: 49px;
+  width: 848px;
+  margin: 0 30px;
+}
+
+.title {
+  align-items: center;
+  height: 60px;
+  font-family: Playfair, sans-serif;
+  font-weight: $font-weight-bold;
+  font-size: 40px;
+  color: $color-secondary;
+  line-height: 40px;
+}
