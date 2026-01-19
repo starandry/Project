@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { LoadingFallback } from '@/shared/ui';
+import { Home } from '@/pages/Home';
 
 const MasterArea = lazy(() =>
     import('@/pages/MasterArea').then((module) => ({ default: module.MasterArea }))
@@ -20,7 +21,8 @@ function App() {
     return (
         <Suspense fallback={<LoadingFallback variant="page" />}>
             <Routes>
-                <Route path="/" element={<MasterArea />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/master-area" element={<MasterArea />} />
                 <Route path="/master-profiles/:id/" element={<MasterArea />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register/master" element={<RegisterMaster />} />
