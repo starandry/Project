@@ -23,20 +23,24 @@ export const login = createAsyncThunk<
 });
 
 export const register = createAsyncThunk<
-    { user: User; token: string },
+    { user: User },
     RegisterCredentials,
     { rejectValue: string }
 >('auth/register', async (credentials, { rejectWithValue }) => {
     try {
-        const { user, token } = await registerUser(credentials);
-        await activateLastUser();
-        localStorage.setItem('token', token);
-        return { user, token };
+        await registerUser(credentials);
+        const activatedUser = await activateLastUser();
+
+        if (!activatedUser) {
+            return rejectWithValue('Не удалось получить данные пользователя');
+        }
+
+        return { user: activatedUser };
     } catch (error: unknown) {
         if (error instanceof Error) {
             return rejectWithValue(error.message);
         } else {
-            return rejectWithValue('Ошибка авторизации');
+            return rejectWithValue('Ошибка регистрации');
         }
     }
 });
@@ -87,15 +91,12 @@ const authSlice = createSlice({
             state.loading = true;
             state.error = null;
         });
-        builder.addCase(
-            register.fulfilled,
-            (state, action: PayloadAction<{ user: User; token: string }>) => {
-                state.loading = false;
-                state.isAuthenticated = true;
-                state.user = action.payload.user;
-                state.token = action.payload.token;
-            }
-        );
+        builder.addCase(register.fulfilled, (state, action: PayloadAction<{ user: User }>) => {
+            state.loading = false;
+            state.isAuthenticated = false; // Пользователь должен залогиниться
+            state.user = action.payload.user; // Сохраняем user с ID
+            state.token = null; // Токена пока нет
+        });
         builder.addCase(register.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload || 'Ошибка регистрации';

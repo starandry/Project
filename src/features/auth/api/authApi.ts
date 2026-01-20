@@ -4,6 +4,7 @@ import { apiClient } from '@/shared/api/httpClient';
 import { getApiErrorData, getApiErrorMessage } from '@/shared/api/errors';
 
 type AuthResponse = { user: User; token: string };
+type RegisterResponse = { detail: string };
 
 // --- Авторизация ---
 export const loginUser = async (credentials: LoginCredentials): Promise<AuthResponse> => {
@@ -16,10 +17,9 @@ export const loginUser = async (credentials: LoginCredentials): Promise<AuthResp
 };
 
 // --- Регистрация ---
-export const registerUser = async (credentials: RegisterCredentials): Promise<AuthResponse> => {
+export const registerUser = async (credentials: RegisterCredentials): Promise<void> => {
     try {
-        const response = await apiClient.post<AuthResponse>('/registration/', credentials);
-        return response.data;
+        await apiClient.post<RegisterResponse>('/registration/', credentials);
     } catch (error) {
         const data = getApiErrorData<Record<string, unknown>>(error);
         let message = 'Ошибка регистрации. Попробуйте позже.';
@@ -49,10 +49,10 @@ export const registerUser = async (credentials: RegisterCredentials): Promise<Au
     }
 };
 
-export const activateLastUser = async () => {
+export const activateLastUser = async (): Promise<User | null> => {
     try {
         const key = await getActivationKey();
-        await confirmEmailByKey(key);
+        return await confirmEmailByKey(key);
     } catch (error) {
         throw new Error(getApiErrorMessage(error, 'Не удалось активировать пользователя'));
     }
@@ -82,9 +82,9 @@ const getActivationKey = async (): Promise<string> => {
     return key;
 };
 
-const confirmEmailByKey = async (key: string) => {
+const confirmEmailByKey = async (key: string): Promise<User | null> => {
     try {
-        const response = await apiClient.post<{ redirect?: string }>(
+        const response = await apiClient.post<{ redirect?: string; user?: User }>(
             '/registration/account-confirm-email/',
             { key }
         );
@@ -113,6 +113,8 @@ const confirmEmailByKey = async (key: string) => {
         }
 
         window.location.href = redirectUrl;
+
+        return response.data?.user || null;
     } catch (error) {
         throw new Error(getApiErrorMessage(error, 'Не удалось подтвердить email'));
     }

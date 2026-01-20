@@ -1,9 +1,11 @@
 {
-  "permissions": {
-    "allow": [
-      "mcp__filesystem__directory_tree",
-      "Bash(grep:*)",
-      "mcp__filesystem__read_multiple_files"
-    ]
-  }
+    "permissions": {
+        "allow": [
+            "mcp__filesystem__directory_tree",
+            "Bash(grep:*)",
+            "mcp__filesystem__read_multiple_files",
+            "Bash(npm run type-check:*)",
+            "Bash(npm run typecheck:*)"
+        ]
+    }
 }

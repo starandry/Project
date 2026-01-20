@@ -5,13 +5,12 @@ import styles from './index.module.scss';
 
 type FormTitleProps = {
     title: string;
-    className?: string;
     onClose?: () => void;
 };
 
-const FormTitle: React.FC<FormTitleProps> = ({ title, className, onClose }) => {
+const FormTitle: React.FC<FormTitleProps> = ({ title, onClose }) => {
     return (
-        <div className={`flex-between ${className || ''}`}>
+        <div className={styles.wrappFormTitle}>
             <h2 className={styles.formTitleText}>{title}</h2>
             <Button classNames={{ buttonClass: 'closeFormBtn' }} onClick={onClose}>
                 <SvgIcon Icon={BadgeChip} />
