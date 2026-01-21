@@ -12,6 +12,10 @@
   background: $color-bg-form;
 }
 
+.editButtonWrapper {
+  align-self: flex-start;
+}
+
 .infoGroup {
   display: flex;
   gap: 56px;

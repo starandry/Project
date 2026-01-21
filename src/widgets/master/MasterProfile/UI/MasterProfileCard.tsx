@@ -33,9 +33,14 @@ export const MasterProfileCard: React.FC = () => {
                         </div>
                     )}
                     <h2 className="card-title">Мой профиль</h2>
-                    <Button classNames={{ buttonClass: 'editButton' }} onClick={handleEditClick}>
-                        <SvgIcon Icon={Edit} />
-                    </Button>
+                    <div className={styles.editButtonWrapper}>
+                        <Button
+                            classNames={{ buttonClass: 'editButton' }}
+                            onClick={handleEditClick}
+                        >
+                            <SvgIcon Icon={Edit} />
+                        </Button>
+                    </div>
                 </div>
 
                 <div className={styles.infoGroup}>
