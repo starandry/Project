@@ -4,11 +4,31 @@
   width: 100%;
   height: 50px;
   margin-bottom: 12px;
+  resize: vertical;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.masterAboutFormActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.masterAboutErrorContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .masterAboutError {
-  font-family: Roboto Flex, sans-serif;
+  font-family:
+    Roboto Flex,
+    sans-serif;
   font-size: 14px;
   color: #ee443f;
   line-height: 20px;
+  margin: 0;
 }

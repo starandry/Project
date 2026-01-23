@@ -22,19 +22,22 @@ const MasterAboutForm: React.FC<MasterAboutFormProps> = ({ onCancel, onSaved }) 
                 />
             </label>
 
-            {error && <p className={styles.masterAboutError}>{error}</p>}
-
-            <div className="flex-end">
-                <Button
-                    classNames={{ buttonClass: 'cancelButton ' }}
-                    onClick={onCancel}
-                    type="button"
-                >
-                    Отменить
-                </Button>
-                <Button classNames={{ buttonClass: 'submitButton ' }} type="submit">
-                    Сохранить
-                </Button>
+            <div className={styles.masterAboutFormActions}>
+                <div className={styles.masterAboutErrorContainer}>
+                    {error && <p className={styles.masterAboutError}>{error}</p>}
+                </div>
+                <div className="flex-end">
+                    <Button
+                        classNames={{ buttonClass: 'cancelButton ' }}
+                        onClick={onCancel}
+                        type="button"
+                    >
+                        Отменить
+                    </Button>
+                    <Button classNames={{ buttonClass: 'submitButton ' }} type="submit">
+                        Сохранить
+                    </Button>
+                </div>
             </div>
         </form>
     );
