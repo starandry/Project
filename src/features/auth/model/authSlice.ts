@@ -23,19 +23,22 @@ export const login = createAsyncThunk<
 });
 
 export const register = createAsyncThunk<
-    { user: User },
+    { user: User; redirectUrl: string },
     RegisterCredentials,
     { rejectValue: string }
->('auth/register', async (credentials, { rejectWithValue }) => {
+>('auth/register', async (credentials, { rejectWithValue, dispatch }) => {
     try {
         await registerUser(credentials);
-        const activatedUser = await activateLastUser();
+        const result = await activateLastUser();
 
-        if (!activatedUser) {
+        if (!result) {
             return rejectWithValue('Не удалось получить данные пользователя');
         }
 
-        return { user: activatedUser };
+        // Сохраняем пользователя в Redux state
+        dispatch(setUser(result.user));
+
+        return { user: result.user, redirectUrl: result.redirectUrl };
     } catch (error: unknown) {
         if (error instanceof Error) {
             return rejectWithValue(error.message);
@@ -64,7 +67,12 @@ const initialState: AuthState = {
 const authSlice = createSlice({
     name: 'auth',
     initialState,
-    reducers: {},
+    reducers: {
+        setUser: (state, action: PayloadAction<User>) => {
+            state.user = action.payload;
+            state.isAuthenticated = true;
+        },
+    },
     extraReducers: (builder) => {
         // LOGIN
         builder.addCase(login.pending, (state) => {
@@ -91,12 +99,15 @@ const authSlice = createSlice({
             state.loading = true;
             state.error = null;
         });
-        builder.addCase(register.fulfilled, (state, action: PayloadAction<{ user: User }>) => {
-            state.loading = false;
-            state.isAuthenticated = false; // Пользователь должен залогиниться
-            state.user = action.payload.user; // Сохраняем user с ID
-            state.token = null; // Токена пока нет
-        });
+        builder.addCase(
+            register.fulfilled,
+            (state, action: PayloadAction<{ user: User; redirectUrl: string }>) => {
+                state.loading = false;
+                state.isAuthenticated = true;
+                state.user = action.payload.user;
+                state.token = null;
+            }
+        );
         builder.addCase(register.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload || 'Ошибка регистрации';
@@ -114,4 +125,5 @@ const authSlice = createSlice({
     },
 });
 
+export const { setUser } = authSlice.actions;
 export default authSlice.reducer;

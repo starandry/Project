@@ -49,7 +49,7 @@ export const registerUser = async (credentials: RegisterCredentials): Promise<vo
     }
 };
 
-export const activateLastUser = async (): Promise<User | null> => {
+export const activateLastUser = async (): Promise<{ user: User; redirectUrl: string } | null> => {
     try {
         const key = await getActivationKey();
         return await confirmEmailByKey(key);
@@ -82,7 +82,9 @@ const getActivationKey = async (): Promise<string> => {
     return key;
 };
 
-const confirmEmailByKey = async (key: string): Promise<User | null> => {
+const confirmEmailByKey = async (
+    key: string
+): Promise<{ user: User; redirectUrl: string } | null> => {
     try {
         const response = await apiClient.post<{ redirect?: string; user?: User }>(
             '/registration/account-confirm-email/',
@@ -112,9 +114,14 @@ const confirmEmailByKey = async (key: string): Promise<User | null> => {
             redirectUrl = PUBLIC_BASE_URL;
         }
 
-        window.location.href = redirectUrl;
+        if (!response.data?.user) {
+            return null;
+        }
 
-        return response.data?.user || null;
+        return {
+            user: response.data.user,
+            redirectUrl,
+        };
     } catch (error) {
         throw new Error(getApiErrorMessage(error, 'Не удалось подтвердить email'));
     }

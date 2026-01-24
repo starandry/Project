@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { register, RegisterCredentials } from '@/features/auth';
 import { AppDispatch } from '@/app/providers';
 import styles from './index.module.scss';
@@ -73,6 +74,7 @@ const RegisterMaster: React.FC = () => {
     } = useDropdown<HTMLDivElement>();
 
     const dispatch: AppDispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (blurredField === 'password1') {
@@ -158,7 +160,14 @@ const RegisterMaster: React.FC = () => {
                 ...credentials,
                 role: credentials.role,
             };
-            await dispatch(register(submitCredentials)).unwrap();
+            const result = await dispatch(register(submitCredentials)).unwrap();
+
+            // Делаем редирект на URL из ответа
+            if (result.redirectUrl) {
+                // Извлекаем путь из URL для react-router
+                const url = new URL(result.redirectUrl);
+                navigate(url.pathname);
+            }
         } catch (error) {
             if (error instanceof Error) {
                 setLoginError(error.message);
@@ -362,9 +371,7 @@ const RegisterMaster: React.FC = () => {
                                         {errors.role}
                                     </span>
                                 ) : (
-                                    <span className={styles.inputHint}>
-                                        выберите тип профиля
-                                    </span>
+                                    <span className={styles.inputHint}>выберите тип профиля</span>
                                 )}
                             </div>
 
