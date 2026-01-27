@@ -3,7 +3,7 @@ import { PUBLIC_BASE_URL } from '@/shared/config/env';
 import { apiClient } from '@/shared/api/httpClient';
 import { getApiErrorData, getApiErrorMessage } from '@/shared/api/errors';
 
-type AuthResponse = { user: User; token: string };
+type AuthResponse = { user: User };
 type RegisterResponse = { detail: string };
 
 // --- Авторизация ---

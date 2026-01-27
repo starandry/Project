@@ -4,23 +4,21 @@ import { AuthState, User, LoginCredentials, RegisterCredentials } from './authTy
 
 // --- Асинхронные экшены ---
 
-export const login = createAsyncThunk<
-    { user: User; token: string },
-    LoginCredentials,
-    { rejectValue: string }
->('auth/login', async (credentials, { rejectWithValue }) => {
-    try {
-        const { user, token } = await loginUser(credentials);
-        localStorage.setItem('token', token);
-        return { user, token };
-    } catch (error: unknown) {
-        if (error instanceof Error) {
-            return rejectWithValue(error.message);
-        } else {
-            return rejectWithValue('Ошибка авторизации');
+export const login = createAsyncThunk<{ user: User }, LoginCredentials, { rejectValue: string }>(
+    'auth/login',
+    async (credentials, { rejectWithValue }) => {
+        try {
+            const { user } = await loginUser(credentials);
+            return { user };
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                return rejectWithValue(error.message);
+            } else {
+                return rejectWithValue('Ошибка авторизации');
+            }
         }
     }
-});
+);
 
 export const register = createAsyncThunk<
     { user: User; redirectUrl: string },
@@ -48,16 +46,13 @@ export const register = createAsyncThunk<
     }
 });
 
-export const logout = createAsyncThunk('auth/logout', async () => {
-    localStorage.removeItem('token');
-});
+export const logout = createAsyncThunk('auth/logout', async () => undefined);
 
 // --- Начальное состояние ---
 
 const initialState: AuthState = {
     isAuthenticated: false,
     user: null,
-    token: null,
     loading: false,
     error: null,
 };
@@ -79,15 +74,11 @@ const authSlice = createSlice({
             state.loading = true;
             state.error = null;
         });
-        builder.addCase(
-            login.fulfilled,
-            (state, action: PayloadAction<{ user: User; token: string }>) => {
-                state.loading = false;
-                state.isAuthenticated = true;
-                state.user = action.payload.user;
-                state.token = action.payload.token;
-            }
-        );
+        builder.addCase(login.fulfilled, (state, action: PayloadAction<{ user: User }>) => {
+            state.loading = false;
+            state.isAuthenticated = true;
+            state.user = action.payload.user;
+        });
         builder.addCase(login.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload || 'Ошибка входа';
@@ -105,7 +96,6 @@ const authSlice = createSlice({
                 state.loading = false;
                 state.isAuthenticated = true;
                 state.user = action.payload.user;
-                state.token = null;
             }
         );
         builder.addCase(register.rejected, (state, action) => {
@@ -118,7 +108,6 @@ const authSlice = createSlice({
         builder.addCase(logout.fulfilled, (state) => {
             state.isAuthenticated = false;
             state.user = null;
-            state.token = null;
             state.loading = false;
             state.error = null;
         });

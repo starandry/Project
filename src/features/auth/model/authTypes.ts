@@ -8,7 +8,6 @@ export interface User {
 export interface AuthState {
     isAuthenticated: boolean;
     user: User | null;
-    token: string | null;
     loading: boolean;
     error: string | null;
 }
@@ -26,7 +25,6 @@ interface LoginSuccessAction {
     type: typeof LOGIN_SUCCESS;
     payload: {
         user: User;
-        token: string;
     };
 }
 
