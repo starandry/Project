@@ -1,10 +1,16 @@
-import { LoginCredentials, RegisterCredentials, User } from '@/features/auth';
+import { ActivationResult, LoginCredentials, RegisterCredentials, User } from '@/features/auth';
 import { PUBLIC_BASE_URL } from '@/shared/config/env';
 import { apiClient } from '@/shared/api/httpClient';
 import { getApiErrorData, getApiErrorMessage } from '@/shared/api/errors';
 
 type AuthResponse = { user: User };
 type RegisterResponse = { detail: string };
+
+const buildActivationResult = (user: User, redirectUrl: string) => ({
+    user,
+    redirectUrl,
+    profileId: getProfileIdFromRedirect(redirectUrl),
+});
 
 // --- Авторизация ---
 export const loginUser = async (credentials: LoginCredentials): Promise<AuthResponse> => {
@@ -49,7 +55,7 @@ export const registerUser = async (credentials: RegisterCredentials): Promise<vo
     }
 };
 
-export const activateLastUser = async (): Promise<{ user: User; redirectUrl: string } | null> => {
+export const activateLastUser = async (): Promise<ActivationResult | null> => {
     try {
         const key = await getActivationKey();
         return await confirmEmailByKey(key);
@@ -82,9 +88,7 @@ const getActivationKey = async (): Promise<string> => {
     return key;
 };
 
-const confirmEmailByKey = async (
-    key: string
-): Promise<{ user: User; redirectUrl: string } | null> => {
+const confirmEmailByKey = async (key: string): Promise<ActivationResult | null> => {
     try {
         const response = await apiClient.post<{ redirect?: string; user?: User }>(
             '/registration/account-confirm-email/',
@@ -118,11 +122,21 @@ const confirmEmailByKey = async (
             return null;
         }
 
-        return {
-            user: response.data.user,
-            redirectUrl,
-        };
+        return buildActivationResult(response.data.user, redirectUrl);
     } catch (error) {
         throw new Error(getApiErrorMessage(error, 'Не удалось подтвердить email'));
+    }
+};
+
+const getProfileIdFromRedirect = (redirectUrl: string): number | null => {
+    try {
+        const url = new URL(redirectUrl);
+        const match = url.pathname.match(/\/(\d+)\/?$/);
+        if (!match) {
+            return null;
+        }
+        return Number(match[1]);
+    } catch {
+        return null;
     }
 };

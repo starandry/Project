@@ -21,7 +21,7 @@ export const login = createAsyncThunk<{ user: User }, LoginCredentials, { reject
 );
 
 export const register = createAsyncThunk<
-    { user: User; redirectUrl: string },
+    { user: User; redirectUrl: string; profileId: number | null },
     RegisterCredentials,
     { rejectValue: string }
 >('auth/register', async (credentials, { rejectWithValue, dispatch }) => {
@@ -36,7 +36,7 @@ export const register = createAsyncThunk<
         // Сохраняем пользователя в Redux state
         dispatch(setUser(result.user));
 
-        return { user: result.user, redirectUrl: result.redirectUrl };
+        return result;
     } catch (error: unknown) {
         if (error instanceof Error) {
             return rejectWithValue(error.message);
@@ -53,6 +53,7 @@ export const logout = createAsyncThunk('auth/logout', async () => undefined);
 const initialState: AuthState = {
     isAuthenticated: false,
     user: null,
+    profileId: null,
     loading: false,
     error: null,
 };
@@ -92,10 +93,14 @@ const authSlice = createSlice({
         });
         builder.addCase(
             register.fulfilled,
-            (state, action: PayloadAction<{ user: User; redirectUrl: string }>) => {
+            (
+                state,
+                action: PayloadAction<{ user: User; redirectUrl: string; profileId: number | null }>
+            ) => {
                 state.loading = false;
                 state.isAuthenticated = true;
                 state.user = action.payload.user;
+                state.profileId = action.payload.profileId;
             }
         );
         builder.addCase(register.rejected, (state, action) => {
@@ -108,6 +113,7 @@ const authSlice = createSlice({
         builder.addCase(logout.fulfilled, (state) => {
             state.isAuthenticated = false;
             state.user = null;
+            state.profileId = null;
             state.loading = false;
             state.error = null;
         });
