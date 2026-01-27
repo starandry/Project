@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { activateLastUser, loginUser, registerUser } from '@/features/auth/api/authApi';
+import { clearAuthHeader, setAuthHeader } from '@/shared/api/httpClient';
+import { getCookieValue } from '@/shared/lib';
 import { AuthState, User, LoginCredentials, RegisterCredentials } from './authTypes';
 
 // --- Асинхронные экшены ---
@@ -21,7 +23,7 @@ export const login = createAsyncThunk<{ user: User }, LoginCredentials, { reject
 );
 
 export const register = createAsyncThunk<
-    { user: User; redirectUrl: string; profileId: number | null },
+    { user: User; redirectUrl: string; profileId: number | null; token: string | null },
     RegisterCredentials,
     { rejectValue: string }
 >('auth/register', async (credentials, { rejectWithValue, dispatch }) => {
@@ -36,7 +38,16 @@ export const register = createAsyncThunk<
         // Сохраняем пользователя в Redux state
         dispatch(setUser(result.user));
 
-        return result;
+        let token = result.token;
+        if (!token) {
+            token = getCookieValue('auth_token');
+        }
+
+        if (token) {
+            setAuthHeader(token);
+        }
+
+        return { ...result, token: token ?? null };
     } catch (error: unknown) {
         if (error instanceof Error) {
             return rejectWithValue(error.message);
@@ -46,13 +57,17 @@ export const register = createAsyncThunk<
     }
 });
 
-export const logout = createAsyncThunk('auth/logout', async () => undefined);
+export const logout = createAsyncThunk('auth/logout', async () => {
+    clearAuthHeader();
+    return undefined;
+});
 
 // --- Начальное состояние ---
 
 const initialState: AuthState = {
     isAuthenticated: false,
     user: null,
+    token: null,
     profileId: null,
     loading: false,
     error: null,
@@ -74,16 +89,19 @@ const authSlice = createSlice({
         builder.addCase(login.pending, (state) => {
             state.loading = true;
             state.error = null;
+            state.token = null;
         });
         builder.addCase(login.fulfilled, (state, action: PayloadAction<{ user: User }>) => {
             state.loading = false;
             state.isAuthenticated = true;
             state.user = action.payload.user;
+            state.token = null;
         });
         builder.addCase(login.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload || 'Ошибка входа';
             state.isAuthenticated = false;
+            state.token = null;
         });
 
         // REGISTER
@@ -95,12 +113,18 @@ const authSlice = createSlice({
             register.fulfilled,
             (
                 state,
-                action: PayloadAction<{ user: User; redirectUrl: string; profileId: number | null }>
+                action: PayloadAction<{
+                    user: User;
+                    redirectUrl: string;
+                    profileId: number | null;
+                    token: string | null;
+                }>
             ) => {
                 state.loading = false;
                 state.isAuthenticated = true;
                 state.user = action.payload.user;
                 state.profileId = action.payload.profileId;
+                state.token = action.payload.token;
             }
         );
         builder.addCase(register.rejected, (state, action) => {
@@ -113,6 +137,7 @@ const authSlice = createSlice({
         builder.addCase(logout.fulfilled, (state) => {
             state.isAuthenticated = false;
             state.user = null;
+            state.token = null;
             state.profileId = null;
             state.loading = false;
             state.error = null;

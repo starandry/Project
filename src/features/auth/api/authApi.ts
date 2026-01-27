@@ -1,22 +1,26 @@
 import { ActivationResult, LoginCredentials, RegisterCredentials, User } from '@/features/auth';
 import { PUBLIC_BASE_URL } from '@/shared/config/env';
-import { apiClient } from '@/shared/api/httpClient';
+import { apiClient, setAuthHeader } from '@/shared/api/httpClient';
 import { getApiErrorData, getApiErrorMessage } from '@/shared/api/errors';
 
-type AuthResponse = { user: User };
+type AuthTokenResponse = { user?: User; token?: string; key?: string; auth_token?: string };
 type RegisterResponse = { detail: string };
 
-const buildActivationResult = (user: User, redirectUrl: string) => ({
+const buildActivationResult = (user: User, redirectUrl: string, token: string | null) => ({
     user,
     redirectUrl,
     profileId: getProfileIdFromRedirect(redirectUrl),
+    token,
 });
 
 // --- Авторизация ---
-export const loginUser = async (credentials: LoginCredentials): Promise<AuthResponse> => {
+export const loginUser = async (credentials: LoginCredentials): Promise<{ user: User }> => {
     try {
-        const response = await apiClient.post<AuthResponse>('/login', credentials);
-        return response.data;
+        const response = await apiClient.post<AuthTokenResponse>('/login', credentials);
+        if (!response.data.user) {
+            throw new Error('Не удалось получить данные пользователя.');
+        }
+        return { user: response.data.user };
     } catch (error) {
         throw new Error(getApiErrorMessage(error, 'Ошибка входа'));
     }
@@ -90,7 +94,7 @@ const getActivationKey = async (): Promise<string> => {
 
 const confirmEmailByKey = async (key: string): Promise<ActivationResult | null> => {
     try {
-        const response = await apiClient.post<{ redirect?: string; user?: User }>(
+        const response = await apiClient.post<AuthTokenResponse & { redirect?: string }>(
             '/registration/account-confirm-email/',
             { key }
         );
@@ -122,20 +126,67 @@ const confirmEmailByKey = async (key: string): Promise<ActivationResult | null> 
             return null;
         }
 
-        return buildActivationResult(response.data.user, redirectUrl);
+        const token = response.data.token ?? response.data.key ?? response.data.auth_token ?? null;
+
+        if (token && typeof token === 'string') {
+            setAuthHeader(token);
+        }
+
+        return buildActivationResult(
+            response.data.user,
+            redirectUrl,
+            typeof token === 'string' ? token : null
+        );
     } catch (error) {
         throw new Error(getApiErrorMessage(error, 'Не удалось подтвердить email'));
     }
 };
 
+const extractProfileId = (value: string): number | null => {
+    if (!value) {
+        return null;
+    }
+
+    const normalized = value.startsWith('/') ? value : `/${value}`;
+    const regex = /\/(\d+)(?=\/|$)/g;
+    let match: RegExpExecArray | null = null;
+    let lastId: number | null = null;
+
+    while ((match = regex.exec(normalized)) !== null) {
+        lastId = Number(match[1]);
+    }
+
+    return Number.isFinite(lastId) ? lastId : null;
+};
+
 const getProfileIdFromRedirect = (redirectUrl: string): number | null => {
+    if (!redirectUrl) {
+        return null;
+    }
+
+    const normalizedUrl = redirectUrl.startsWith('http')
+        ? redirectUrl
+        : `${PUBLIC_BASE_URL}${redirectUrl.startsWith('/') ? '' : '/'}${redirectUrl}`;
+
     try {
-        const url = new URL(redirectUrl);
-        const match = url.pathname.match(/\/(\d+)\/?$/);
-        if (!match) {
-            return null;
+        const url = new URL(normalizedUrl);
+        const fromPath = extractProfileId(url.pathname);
+        if (fromPath) {
+            return fromPath;
         }
-        return Number(match[1]);
+
+        const hashValue = url.hash.replace(/^#/, '');
+        const fromHash = extractProfileId(hashValue);
+        if (fromHash) {
+            return fromHash;
+        }
+
+        const fromQuery = url.searchParams.get('profileId') || url.searchParams.get('id');
+        if (fromQuery && /^\d+$/.test(fromQuery)) {
+            return Number(fromQuery);
+        }
+
+        return null;
     } catch {
         return null;
     }
