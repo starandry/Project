@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { register, RegisterCredentials } from '@/features/auth';
-import { AppDispatch } from '@/app/providers';
+import {
+    useRegisterMutation,
+    useGetActivationLinkMutation,
+    useConfirmEmailMutation,
+    parseActivationKeyFromHtml,
+} from '@/features/auth/api/authApi';
+import { setToken } from '@/features/auth/model/authSlice';
+import { getRegistrationErrorMessage } from '@/shared/api/errors';
+import { getCookieValue } from '@/shared/lib';
+import type { RegisterCredentials } from '@/features/auth';
+import type { AppDispatch } from '@/app/providers';
 import styles from './index.module.scss';
 import EyeEmpty from '@/shared/assets/icons/EyeEmpty.svg?react';
 import NavArrowDown from '@/shared/assets/icons/NavArrowDown.svg?react';
@@ -75,6 +84,12 @@ const RegisterMaster: React.FC = () => {
 
     const dispatch: AppDispatch = useDispatch();
     const navigate = useNavigate();
+
+    const [registerMutation, { isLoading: isRegistering }] = useRegisterMutation();
+    const [getActivationLink] = useGetActivationLinkMutation();
+    const [confirmEmail] = useConfirmEmailMutation();
+
+    const isLoading = isRegistering;
 
     useEffect(() => {
         if (blurredField === 'password1') {
@@ -160,22 +175,33 @@ const RegisterMaster: React.FC = () => {
                 ...credentials,
                 role: credentials.role,
             };
-            const result = await dispatch(register(submitCredentials)).unwrap();
 
-            // Делаем редирект на URL из ответа
+            await registerMutation(submitCredentials).unwrap();
+
+            const html = await getActivationLink().unwrap();
+            const key = parseActivationKeyFromHtml(html);
+
+            const result = await confirmEmail({ key }).unwrap();
+
+            if (!result) {
+                setLoginError('Не удалось получить данные пользователя');
+                return;
+            }
+
+            let token = result.token;
+            if (!token) {
+                token = getCookieValue('auth_token');
+            }
+            if (token) {
+                dispatch(setToken(token));
+            }
+
             if (result.redirectUrl) {
-                // Извлекаем путь из URL для react-router
                 const url = new URL(result.redirectUrl);
                 navigate(url.pathname);
             }
         } catch (error) {
-            if (error instanceof Error) {
-                setLoginError(error.message);
-            } else if (typeof error === 'string') {
-                setLoginError(error);
-            } else {
-                setLoginError('Произошла неизвестная ошибка');
-            }
+            setLoginError(getRegistrationErrorMessage(error));
         }
     };
 
@@ -499,7 +525,7 @@ const RegisterMaster: React.FC = () => {
                                         name="agree"
                                         checked={agreeToPersonalData}
                                         onChange={handleAgreeChange}
-                                        className={`${styles.checkboxInput} 
+                                        className={`${styles.checkboxInput}
                                         ${errors.agreeToPersonalData ? styles.checkboxError : ''}`}
                                     />
                                 </label>
@@ -516,9 +542,10 @@ const RegisterMaster: React.FC = () => {
                                     <div className={styles.errorServer}>{loginError}</div>
                                 )}
                                 <Button
-                                    children="Продолжить"
+                                    children={isLoading ? 'Загрузка...' : 'Продолжить'}
                                     type="submit"
                                     classNames={{ buttonClass: 'registerButton' }}
+                                    disabled={isLoading}
                                 />
                             </div>
                         </form>

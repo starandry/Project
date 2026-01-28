@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, SvgIcon } from '@/shared/ui';
 import { MasterEditForm } from '@/features/master-forms';
 import Avatar from '@/shared/assets/icons/Avatar.svg?react';
 import Edit from '@/shared/assets/icons/Edit.svg?react';
-import { apiClient } from '@/shared/api/httpClient';
+import { useGetMasterProfileQuery } from '@/features/master/api/masterProfileApi';
 import { RootState } from '@/app/providers';
 import styles from './index.module.scss';
 
@@ -13,21 +13,13 @@ export const MasterProfileCard: React.FC = () => {
     const profileId = useSelector((state: RootState) => state.auth.profileId);
     const temp = false;
 
-    useEffect(() => {
-        const id = profileId;
-
-        const loadProfile = async () => {
-            try {
-                const response = await apiClient.get(`/master-profiles/${id}/`);
-                console.log('Master profile response:', response.data);
-            } catch (error) {
-                console.error('Failed to fetch master profile', error);
-            }
-        };
-
-        void loadProfile();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    const {
+        data: profile,
+        isLoading,
+        error,
+    } = useGetMasterProfileQuery(profileId!, {
+        skip: !profileId,
+    });
 
     const handleEditClick = () => {
         setIsEditing(true);
@@ -40,6 +32,14 @@ export const MasterProfileCard: React.FC = () => {
     const handleSaved = () => {
         setIsEditing(false);
     };
+
+    if (isLoading) {
+        return <div className={`card ${styles.masterProfileCard}`}>Загрузка...</div>;
+    }
+
+    if (error) {
+        console.error('Failed to fetch master profile', error);
+    }
 
     return (
         <>
@@ -65,13 +65,17 @@ export const MasterProfileCard: React.FC = () => {
 
                 <div className={styles.infoGroup}>
                     <div className={`flex-between ${styles.infoItem}`}>
-                        <p className={styles.masterName}>Маргарита Чернышова</p>
+                        <p className={styles.masterName}>
+                            {profile?.name || 'Маргарита Чернышова'}
+                        </p>
                     </div>
                     <div className={`flex-between ${styles.infoItem}`}>
-                        <p className={styles.masterEmail}>margarita.chernushova@gmail.com</p>
+                        <p className={styles.masterEmail}>
+                            {profile?.user?.email || 'margarita.chernushova@gmail.com'}
+                        </p>
                     </div>
                     <div className={`flex-between ${styles.infoItem}`}>
-                        <p className={styles.masterPhone}>89-99--078</p>
+                        <p className={styles.masterPhone}>{profile?.phone || '89-99--078'}</p>
                     </div>
                 </div>
             </div>

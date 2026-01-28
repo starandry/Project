@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { login, LoginCredentials } from '@/features/auth';
-import { AppDispatch } from '@/app/providers';
+import { useLoginMutation } from '@/features/auth/api/authApi';
+import { getApiErrorMessage } from '@/shared/api/errors';
+import type { LoginCredentials } from '@/features/auth';
 import styles from './index.module.scss';
 import EyeEmpty from '@/shared/assets/icons/EyeEmpty.svg?react';
 import NavArrowDown from '@/shared/assets/icons/NavArrowDown.svg?react';
@@ -58,7 +58,7 @@ const Login: React.FC = () => {
         ref: roleMenuRef,
     } = useDropdown<HTMLDivElement>();
 
-    const dispatch: AppDispatch = useDispatch();
+    const [loginMutation, { isLoading }] = useLoginMutation();
 
     useEffect(() => {
         if (blurredField === 'password') {
@@ -140,24 +140,16 @@ const Login: React.FC = () => {
             return;
         }
 
-        setLoginError(
-            errors.role || errors.login || errors.password || errors.agreeToPersonalData
-        );
+        setLoginError(errors.role || errors.login || errors.password || errors.agreeToPersonalData);
 
         try {
             const submitCredentials: LoginCredentials = {
                 login: credentials.login,
                 password: credentials.password,
             };
-            await dispatch(login(submitCredentials)).unwrap();
+            await loginMutation(submitCredentials).unwrap();
         } catch (error) {
-            if (error instanceof Error) {
-                setLoginError(error.message);
-            } else if (typeof error === 'string') {
-                setLoginError(error);
-            } else {
-                setLoginError('Произошла неизвестная ошибка');
-            }
+            setLoginError(getApiErrorMessage(error, 'Произошла неизвестная ошибка'));
         }
     };
 
@@ -238,8 +230,8 @@ const Login: React.FC = () => {
                     <div className={`${styles.leftSIdeText} flex-col`}>
                         <h3 className={styles.leftSideTitle}>Маникюр как искусство</h3>
                         <p className={styles.leftSideDesc}>
-                            Мастер ты или Клиент, наш сайт поможет тебе легко и красиво
-                            предоставить или получить качественную услугу маникюра.
+                            Мастер ты или Клиент, наш сайт поможет тебе легко и красиво предоставить
+                            или получить качественную услугу маникюра.
                         </p>
                         <p className={styles.leftSideDesc}>
                             Лучшие мастера и Клиенты у нас на сайте!
@@ -411,7 +403,10 @@ const Login: React.FC = () => {
                                 )}
 
                                 <div className={styles.forgotPasswordWrapper}>
-                                    <LinkButton to="/forgot-password" className={styles.forgotPasswordLink}>
+                                    <LinkButton
+                                        to="/forgot-password"
+                                        className={styles.forgotPasswordLink}
+                                    >
                                         Забыли пароль?
                                     </LinkButton>
                                 </div>
@@ -422,9 +417,10 @@ const Login: React.FC = () => {
                                     <div className={styles.errorServer}>{loginError}</div>
                                 )}
                                 <Button
-                                    children="Продолжить"
+                                    children={isLoading ? 'Загрузка...' : 'Продолжить'}
                                     type="submit"
                                     classNames={{ buttonClass: 'registerButton' }}
+                                    disabled={isLoading}
                                 />
                             </div>
                         </form>
