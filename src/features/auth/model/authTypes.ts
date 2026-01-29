@@ -8,7 +8,6 @@ export interface User {
 export interface AuthState {
     isAuthenticated: boolean;
     user: User | null;
-    token: string | null;
     profileId: number | null;
     loading: boolean;
     error: string | null;
@@ -18,7 +17,6 @@ export type ActivationResult = {
     user: User;
     redirectUrl: string;
     profileId: number | null;
-    token: string | null;
 };
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';

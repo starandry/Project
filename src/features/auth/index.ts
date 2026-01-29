@@ -1,4 +1,4 @@
-export { setUser, setToken, setProfileId, logout, setError } from './model/authSlice';
+export { setUser, setProfileId, logout, setError } from './model/authSlice';
 export { default as authReducer } from './model/authSlice';
 
 export {

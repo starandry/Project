@@ -5,7 +5,6 @@ import type { AuthState, User } from './authTypes';
 const initialState: AuthState = {
     isAuthenticated: false,
     user: null,
-    token: null,
     profileId: null,
     loading: false,
     error: null,
@@ -19,16 +18,12 @@ const authSlice = createSlice({
             state.user = action.payload;
             state.isAuthenticated = true;
         },
-        setToken: (state, action: PayloadAction<string | null>) => {
-            state.token = action.payload;
-        },
         setProfileId: (state, action: PayloadAction<number | null>) => {
             state.profileId = action.payload;
         },
         logout: (state) => {
             state.isAuthenticated = false;
             state.user = null;
-            state.token = null;
             state.profileId = null;
             state.loading = false;
             state.error = null;
@@ -60,7 +55,6 @@ const authSlice = createSlice({
             if (payload) {
                 state.isAuthenticated = true;
                 state.user = payload.user;
-                state.token = payload.token;
                 state.profileId = payload.profileId;
             }
             state.loading = false;
@@ -68,5 +62,5 @@ const authSlice = createSlice({
     },
 });
 
-export const { setUser, setToken, setProfileId, logout, setError } = authSlice.actions;
+export const { setUser, setProfileId, logout, setError } = authSlice.actions;
 export default authSlice.reducer;

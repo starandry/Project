@@ -1,19 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { API_BASE_URL } from '@/shared/config/env';
-import type { RootState } from '@/app/providers';
 
 const baseQuery = fetchBaseQuery({
     baseUrl: API_BASE_URL,
     timeout: 15000,
-    prepareHeaders: (headers, { getState }) => {
+    credentials: 'include',
+    prepareHeaders: (headers) => {
         headers.set('Content-Type', 'application/json');
-
-        const token = (getState() as RootState).auth.token;
-        if (token) {
-            headers.set('Authorization', `Token ${token}`);
-        }
-
         return headers;
     },
 });

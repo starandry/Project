@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { Button, SvgIcon } from '@/shared/ui';
 import { MasterEditForm } from '@/features/master-forms';
 import Avatar from '@/shared/assets/icons/Avatar.svg?react';
 import Edit from '@/shared/assets/icons/Edit.svg?react';
 import { useGetMasterProfileQuery } from '@/features/master/api/masterProfileApi';
-import { RootState } from '@/app/providers';
 import styles from './index.module.scss';
 
 export const MasterProfileCard: React.FC = () => {
     const [isEditing, setIsEditing] = useState(false);
-    const profileId = useSelector((state: RootState) => state.auth.profileId);
+    const { id } = useParams<{ id: string }>();
+    const profileId = id ? Number(id) : null;
     const temp = false;
 
     const {

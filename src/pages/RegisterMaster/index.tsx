@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
     useRegisterMutation,
@@ -7,11 +6,8 @@ import {
     useConfirmEmailMutation,
     parseActivationKeyFromHtml,
 } from '@/features/auth/api/authApi';
-import { setToken } from '@/features/auth/model/authSlice';
 import { getRegistrationErrorMessage } from '@/shared/api/errors';
-import { getCookieValue } from '@/shared/lib';
 import type { RegisterCredentials } from '@/features/auth';
-import type { AppDispatch } from '@/app/providers';
 import styles from './index.module.scss';
 import EyeEmpty from '@/shared/assets/icons/EyeEmpty.svg?react';
 import NavArrowDown from '@/shared/assets/icons/NavArrowDown.svg?react';
@@ -82,7 +78,6 @@ const RegisterMaster: React.FC = () => {
         ref: roleMenuRef,
     } = useDropdown<HTMLDivElement>();
 
-    const dispatch: AppDispatch = useDispatch();
     const navigate = useNavigate();
 
     const [registerMutation, { isLoading: isRegistering }] = useRegisterMutation();
@@ -186,14 +181,6 @@ const RegisterMaster: React.FC = () => {
             if (!result) {
                 setLoginError('Не удалось получить данные пользователя');
                 return;
-            }
-
-            let token = result.token;
-            if (!token) {
-                token = getCookieValue('auth_token');
-            }
-            if (token) {
-                dispatch(setToken(token));
             }
 
             if (result.redirectUrl) {

@@ -38,6 +38,12 @@ export default defineConfig(({ mode }) => {
         server: {
             port: 8080,
             open: true,
+            proxy: {
+                '/auth': {
+                    target: 'http://10.196.132.209:8000',
+                    changeOrigin: true,
+                },
+            },
         },
     };
 });

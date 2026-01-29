@@ -7,18 +7,15 @@ import type {
     ActivationResult,
 } from '@/features/auth';
 
-type AuthTokenResponse = {
+type AuthResponse = {
     user?: User;
-    token?: string;
-    key?: string;
-    auth_token?: string;
 };
 
 type RegisterResponse = {
     detail: string;
 };
 
-type ConfirmEmailResponse = AuthTokenResponse & {
+type ConfirmEmailResponse = AuthResponse & {
     redirect?: string;
 };
 
@@ -116,7 +113,7 @@ export const authApi = baseApi.injectEndpoints({
                 method: 'POST',
                 body: credentials,
             }),
-            transformResponse: (response: AuthTokenResponse) => {
+            transformResponse: (response: AuthResponse) => {
                 if (!response.user) {
                     throw new Error('Не удалось получить данные пользователя.');
                 }
@@ -151,13 +148,11 @@ export const authApi = baseApi.injectEndpoints({
                 if (!response.user) return null;
 
                 const redirectUrl = normalizeRedirectUrl(response.redirect);
-                const token = response.token ?? response.key ?? response.auth_token ?? null;
 
                 return {
                     user: response.user,
                     redirectUrl,
                     profileId: getProfileIdFromRedirect(redirectUrl),
-                    token: typeof token === 'string' ? token : null,
                 };
             },
             invalidatesTags: ['Auth'],
