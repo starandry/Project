@@ -178,6 +178,20 @@ const RegisterMaster: React.FC = () => {
 
             const result = await confirmEmail({ key }).unwrap();
 
+            const token = document.cookie
+                .split('; ')
+                .find((row) => row.startsWith('auth_token='))
+                ?.split('=')[1];
+
+            if (token) {
+                localStorage.setItem('auth_token', token);
+            }
+
+            if (!result) {
+                setLoginError('Не удалось получить данные пользователя');
+                return;
+            }
+
             if (!result) {
                 setLoginError('Не удалось получить данные пользователя');
                 return;
