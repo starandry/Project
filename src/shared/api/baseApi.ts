@@ -7,9 +7,6 @@ const baseQuery = fetchBaseQuery({
     timeout: 15000,
     credentials: 'include',
     prepareHeaders: (headers) => {
-        const token = localStorage.getItem('auth_token');
-        console.log(token);
-        if (token) headers.set('Authorization', 'Token ' + token);
         headers.set('Content-Type', 'application/json');
         const token = localStorage.getItem('auth_token');
         if (token) {
