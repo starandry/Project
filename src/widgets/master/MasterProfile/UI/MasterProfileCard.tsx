@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Button, SvgIcon } from '@/shared/ui';
+import { Button, SvgIcon, SuccessModal } from '@/shared/ui';
 import { MasterEditForm } from '@/features/master-forms';
 import Avatar from '@/shared/assets/icons/Avatar.svg?react';
 import Edit from '@/shared/assets/icons/Edit.svg?react';
@@ -9,6 +9,7 @@ import styles from './index.module.scss';
 
 export const MasterProfileCard: React.FC = () => {
     const [isEditing, setIsEditing] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
     const { id } = useParams<{ id: string }>();
     const profileId = id ? Number(id) : null;
     const temp = false;
@@ -31,6 +32,7 @@ export const MasterProfileCard: React.FC = () => {
 
     const handleSaved = () => {
         setIsEditing(false);
+        setShowSuccess(true);
     };
 
     if (isLoading) {
@@ -65,22 +67,37 @@ export const MasterProfileCard: React.FC = () => {
 
                 <div className={styles.infoGroup}>
                     <div className={`flex-between ${styles.infoItem}`}>
-                        <p className={styles.masterName}>
-                            {profile?.name || 'Маргарита Чернышова'}
-                        </p>
+                        <p className={styles.masterName}>{profile?.user?.username}</p>
                     </div>
                     <div className={`flex-between ${styles.infoItem}`}>
-                        <p className={styles.masterEmail}>
-                            {profile?.user?.email || 'margarita.chernushova@gmail.com'}
-                        </p>
+                        <p className={styles.masterEmail}>{profile?.user?.email}</p>
                     </div>
                     <div className={`flex-between ${styles.infoItem}`}>
-                        <p className={styles.masterPhone}>{profile?.phone || '89-99--078'}</p>
+                        <p
+                            className={
+                                profile?.phone ? styles.masterPhone : styles.phonePlaceholder
+                            }
+                        >
+                            {profile?.phone || 'Укажите номер телефона'}
+                        </p>
                     </div>
                 </div>
             </div>
 
-            {isEditing && <MasterEditForm onCancel={handleCancel} onSaved={handleSaved} />}
+            {isEditing && profileId && (
+                <MasterEditForm
+                    profileId={profileId}
+                    onCancel={handleCancel}
+                    onSaved={handleSaved}
+                />
+            )}
+
+            {showSuccess && (
+                <SuccessModal
+                    message="Изменения успешно сохранены"
+                    onClose={() => setShowSuccess(false)}
+                />
+            )}
         </>
     );
 };

@@ -1,6 +1,7 @@
 import type { ChangeEvent, FormEvent } from 'react';
 
 export type UseMasterAboutFormProps = {
+    profileId: number;
     onSaved?: () => void;
 };
 

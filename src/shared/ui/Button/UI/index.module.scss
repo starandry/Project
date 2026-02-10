@@ -20,8 +20,6 @@
   background-color: #7f207b;
 }
 
-
-
 .searchBtn {
   display: flex;
   align-items: center;
@@ -238,9 +236,7 @@
 }
 
 .closeFormBtn {
-  display: flex;
-  justify-content: start;
-  flex-direction: column;
+  align-self: end;
   padding: 0;
   background-color: transparent;
 }

@@ -4,12 +4,13 @@ import { useMasterAboutForm } from '../model/useMasterAboutForm';
 import styles from './index.module.scss';
 
 type MasterAboutFormProps = {
+    profileId: number;
     onCancel?: () => void;
     onSaved?: () => void;
 };
 
-const MasterAboutForm: React.FC<MasterAboutFormProps> = ({ onCancel, onSaved }) => {
-    const { about, error, handleChange, handleSubmit } = useMasterAboutForm({ onSaved });
+const MasterAboutForm: React.FC<MasterAboutFormProps> = ({ profileId, onCancel, onSaved }) => {
+    const { about, error, handleChange, handleSubmit } = useMasterAboutForm({ profileId, onSaved });
 
     return (
         <form onSubmit={handleSubmit}>

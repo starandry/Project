@@ -6,11 +6,12 @@ import Upload from '@/shared/assets/icons/Upload.svg?react';
 import styles from './index.module.scss';
 
 type MasterEditFormProps = {
+    profileId: number;
     onCancel?: () => void;
     onSaved?: () => void;
 };
 
-export const MasterEditForm: React.FC<MasterEditFormProps> = ({ onCancel, onSaved }) => {
+export const MasterEditForm: React.FC<MasterEditFormProps> = ({ profileId, onCancel, onSaved }) => {
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
 
@@ -24,7 +25,7 @@ export const MasterEditForm: React.FC<MasterEditFormProps> = ({ onCancel, onSave
         handlePhotoDelete,
         handleSubmit,
         handleCancel,
-    } = useMasterEditForm({ onSaved, onCancel });
+    } = useMasterEditForm({ profileId, onSaved, onCancel });
 
     const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0] || null;
@@ -101,10 +102,7 @@ export const MasterEditForm: React.FC<MasterEditFormProps> = ({ onCancel, onSave
                         />
 
                         {formData.photoPreview ? (
-                            <div
-                                className={styles.photoPreviewWrapper}
-                                onClick={handlePhotoClick}
-                            >
+                            <div className={styles.photoPreviewWrapper} onClick={handlePhotoClick}>
                                 <img
                                     src={formData.photoPreview}
                                     alt="Фото профиля"

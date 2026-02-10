@@ -8,6 +8,10 @@ const baseQuery = fetchBaseQuery({
     credentials: 'include',
     prepareHeaders: (headers) => {
         headers.set('Content-Type', 'application/json');
+        const token = localStorage.getItem('auth_token');
+        if (token) {
+            headers.set('Authorization', `Token ${token}`);
+        }
         return headers;
     },
 });

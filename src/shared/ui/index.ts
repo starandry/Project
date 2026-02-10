@@ -11,6 +11,7 @@ export * from './LoadingFallback';
 export * from './Logo';
 export * from './Picture';
 export * from './ScrollButton';
+export * from './SuccessModal';
 export * from './SvgIcon';
 export * from './forms/common';
 export * from './forms/fields';

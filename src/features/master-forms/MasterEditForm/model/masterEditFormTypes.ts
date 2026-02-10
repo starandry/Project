@@ -16,6 +16,7 @@ export type MasterEditFormErrors = {
 };
 
 export type UseMasterEditFormProps = {
+    profileId: number;
     onSaved?: () => void;
     onCancel?: () => void;
     initialData?: Partial<MasterEditFormData>;

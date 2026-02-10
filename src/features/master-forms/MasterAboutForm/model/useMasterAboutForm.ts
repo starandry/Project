@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
+import { message } from 'antd';
+import { useUpdateMasterProfileMutation } from '@/features/master/api/masterProfileApi';
 import type { UseMasterAboutFormProps, UseMasterAboutFormReturn } from './masterAboutFormTypes';
 
 const ABOUT_MIN_LENGTH = 150;
@@ -26,10 +28,9 @@ const validateAbout = (value: string): string | null => {
     return null;
 };
 
-export const useMasterAboutForm = (
-    props: UseMasterAboutFormProps = {}
-): UseMasterAboutFormReturn => {
-    const { onSaved } = props;
+export const useMasterAboutForm = (props: UseMasterAboutFormProps): UseMasterAboutFormReturn => {
+    const { profileId, onSaved } = props;
+    const [updateProfile] = useUpdateMasterProfileMutation();
 
     const [about, setAbout] = useState('');
     const [error, setError] = useState<string | null>(null);
@@ -39,7 +40,7 @@ export const useMasterAboutForm = (
         setAbout(value);
     };
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const validationError = validateAbout(about);
@@ -51,11 +52,19 @@ export const useMasterAboutForm = (
 
         setError(null);
 
-        // здесь логика отправки на сервер / в Redux (позже можно добавить)
-        // ...
+        try {
+            await updateProfile({
+                id: profileId,
+                body: {
+                    about_master: about,
+                },
+            }).unwrap();
 
-        if (onSaved) {
-            onSaved();
+            if (onSaved) {
+                onSaved();
+            }
+        } catch {
+            message.error('Не удалось сохранить данные. Попробуйте ещё раз.');
         }
     };
 

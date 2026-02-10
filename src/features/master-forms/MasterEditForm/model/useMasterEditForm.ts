@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
+import { message } from 'antd';
 import type {
     MasterEditFormData,
     MasterEditFormErrors,
     UseMasterEditFormProps,
     UseMasterEditFormReturn,
 } from './masterEditFormTypes';
+import { useUpdateMasterProfileMutation } from '@/features/master/api/masterProfileApi';
 
 const NAME_MIN_LENGTH = 2;
 const NAME_MAX_LENGTH = 50;
@@ -93,10 +95,9 @@ const initialErrors: MasterEditFormErrors = {
     photo: null,
 };
 
-export const useMasterEditForm = (
-    props: UseMasterEditFormProps = {}
-): UseMasterEditFormReturn => {
-    const { onSaved, onCancel, initialData } = props;
+export const useMasterEditForm = (props: UseMasterEditFormProps): UseMasterEditFormReturn => {
+    const { profileId, onSaved, onCancel, initialData } = props;
+    const [updateProfile] = useUpdateMasterProfileMutation();
 
     const [formData, setFormData] = useState<MasterEditFormData>({
         ...initialFormData,
@@ -161,7 +162,7 @@ export const useMasterEditForm = (
         setErrors((prev) => ({ ...prev, photo: null }));
     };
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const nameError = validateName(formData.name);
@@ -184,11 +185,24 @@ export const useMasterEditForm = (
             return;
         }
 
-        // Здесь логика отправки на сервер / в Redux (позже можно добавить)
-        // ...
+        try {
+            await updateProfile({
+                id: profileId,
+                body: {
+                    user: {
+                        username: formData.name,
+                        email: formData.email,
+                        role: 'master',
+                    },
+                    phone: formData.phone,
+                },
+            }).unwrap();
 
-        if (onSaved) {
-            onSaved();
+            if (onSaved) {
+                onSaved();
+            }
+        } catch {
+            message.error('Не удалось сохранить профиль. Попробуйте ещё раз.');
         }
     };
 
